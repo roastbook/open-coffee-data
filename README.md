@@ -32,7 +32,6 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 | Not yet assessed | 0 |
 | Cities | 0 |
 | Brew methods | 21 |
-| Dataset version | `2026.11.05.1` |
 | Schema version | `0.1.0` |
 
 <!-- stats:end -->
@@ -80,7 +79,6 @@ One record, shortened:
 datasets/
   coffee-places/<country>/<city>.json   one file per city: $schema, meta, places[]
   brew-methods/brew-methods.json        brew methods (global)
-schema-version.txt                      the schema version this data release pins
 scripts/                                validate.sh, build.sh, link-check.sh and their helpers
 site/                                   Data Explorer (Astro, MapLibre GL, TanStack Table)
 agent/                                  Sourcing agent that proposes changes as pull requests
@@ -101,8 +99,8 @@ Before schema v0.1.0 is tagged, point validation at a local checkout: `OPEN_COFF
 
 ## Versioning and stability
 
-- Data releases are date tags `YYYY.MM.DD.N`, for example `2026.11.05.1`. Each tag is a GitHub Release and a Pages deploy.
-- `schema-version.txt` pins one schema version. A schema release opens a “bump schema” pull request here; the data moves to a new schema only through that PR.
+- The dataset version is the release tag `YYYY.MM.DD.N`, for example `2026.11.05.1`, created by the Release workflow. Each tag is a GitHub Release and a Pages deploy. The version is not written into the dataset files; the build stamps it into `/artifacts/index.json` (`dataset_version`) and the Data Explorer footer.
+- The schema version is the `$schema` URL of each file, for example `…/coffee-places.schema.v0.1.0.json`; `meta` holds no version. All files of a family use the same version, and validation fetches the schemas of that version. A schema release opens a “bump schema” pull request here that rewrites the `$schema` URLs; the data moves to a new schema only through that PR. `/artifacts/index.json` lists the version per family in `schema_version`.
 - Ids (`cp-` plus 10 random characters) are permanent. Records are never deleted: closed places keep `status: closed`, duplicates become tombstones with `merged_into`. CI fails if an id disappears.
 - URLs under `https://data.roastbook.coffee/datasets/` and `/artifacts/` are stable.
 

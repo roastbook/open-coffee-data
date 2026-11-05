@@ -40,7 +40,7 @@ scripts/validate.sh
 scripts/build.sh     # optional: preview in dist/
 ```
 
-If the README stats change, run `bun scripts/readme-stats.mjs` and commit the result. Keep one city per pull request where you can. Changes to `scripts/`, `.github/`, `schema-version.txt` and `agent/` always need a maintainer's review.
+If the README stats change, run `bun scripts/readme-stats.mjs` and commit the result. Keep one city per pull request where you can. Changes to `scripts/`, `.github/` and `agent/` always need a maintainer's review.
 
 ## Developer Certificate of Origin
 

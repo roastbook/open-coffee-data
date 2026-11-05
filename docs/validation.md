@@ -4,8 +4,8 @@
 
 ## Schema
 
-- The schema version comes from `schema-version.txt`. The script downloads `https://raw.githubusercontent.com/Roastbook/open-coffee-schema/v<version>/schemas/<family>/<family>.schema.v<version>.json` for every family into `.cache/schemas/`. `OPEN_COFFEE_SCHEMA_DIR=<path to schemas/>` uses a local checkout instead (development before a tag exists).
-- Every `datasets/**/*.json` is validated against the schema named in its `$schema` (Ajv, JSON Schema 2020-12, `ajv-formats`, strict mode, all errors). The `$schema` version must equal the pin, and `meta.schema_version`, when present, too.
+- The schema versions come from the `$schema` URLs of the dataset files. All files of a family must name the same version. For every version in use the script downloads `https://raw.githubusercontent.com/Roastbook/open-coffee-schema/v<version>/schemas/<family>/<family>.schema.v<version>.json` for every family into `.cache/schemas/v<version>/`. `OPEN_COFFEE_SCHEMA_DIR=<path to schemas/>` uses a local checkout instead (development before a tag exists).
+- Every `datasets/**/*.json` is validated against the schema named in its `$schema` (Ajv, JSON Schema 2020-12, `ajv-formats`, strict mode, all errors). `meta` holds only `licence` (plus the city fields below); it carries no version.
 - Files in `datasets/<family>/` must use the `<family>` schema.
 
 ## Ids
@@ -26,7 +26,7 @@ No URL anywhere in a record (links, image, prices, roasters, awards, references)
 
 ## Coffee places only
 
-- Files live at `datasets/coffee-places/<country>/<city>.json`; `meta.country_code` equals the folder in upper case, `meta.city` equals the file name, and `meta.schema_version` is required.
+- Files live at `datasets/coffee-places/<country>/<city>.json`; `meta.country_code` equals the folder in upper case, and `meta.city` equals the file name.
 - `opening_hours` must parse with the [`opening_hours`](https://github.com/opening-hours/opening_hours.js) library (OpenStreetMap syntax, used as a format only). Its style hints are reported as warnings.
 
 ## README

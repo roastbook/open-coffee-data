@@ -5,7 +5,7 @@ import { basename, join } from "node:path";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import addFormatsModule from "ajv-formats";
 import OpeningHours from "opening_hours";
-import { listJson, parseSchemaUrl, recordsKey } from "./datasets.mjs";
+import { listJson, parseSchemaUrl, recordsKey, schemaVersions } from "./datasets.mjs";
 
 const addFormats = addFormatsModule.default ?? addFormatsModule;
 // Licences an image may carry. Anything else needs a maintainer to extend this list.
@@ -43,11 +43,10 @@ export function denyMatch(url, path, denylist) {
  * @param {object} o
  * @param {string} o.datasetsDir
  * @param {string} o.schemaDir
- * @param {string} o.schemaVersion  pinned version from schema-version.txt
  * @param {{rules: object[]}} o.denylist
  * @param {Map<string,string>|null} [o.baseFiles]  dataset files at BASE_REF (path relative to datasets/ -> text); null skips the check
  */
-export function check({ datasetsDir, schemaDir, schemaVersion, denylist, baseFiles = null }) {
+export function check({ datasetsDir, schemaDir, denylist, baseFiles = null }) {
   const errors = [];
   const warnings = [];
   const err = (file, message) => errors.push(`${file}: ${message}`);
@@ -55,23 +54,25 @@ export function check({ datasetsDir, schemaDir, schemaVersion, denylist, baseFil
   const ajv = createAjv(schemaDir);
 
   const docs = [];
+  const named = []; // every file with a valid $schema URL, validated or not, for the version check
   for (const rel of listJson(datasetsDir)) {
     const file = `datasets/${rel}`;
     let doc;
     try { doc = JSON.parse(readFileSync(join(datasetsDir, rel), "utf8")); } catch (e) { err(file, `invalid JSON: ${e.message}`); continue; }
-    const named = parseSchemaUrl(doc.$schema);
-    if (!named) { err(file, `$schema must be a canonical https://schema.roastbook.coffee/<family>/<family>.schema.vX.Y.Z.json URL, got ${JSON.stringify(doc.$schema)}`); continue; }
-    if (named.version !== schemaVersion) err(file, `$schema names v${named.version}; schema-version.txt pins ${schemaVersion}`);
+    const schema = parseSchemaUrl(doc.$schema);
+    if (!schema) { err(file, `$schema must be a canonical https://schema.roastbook.coffee/<family>/<family>.schema.vX.Y.Z.json URL, got ${JSON.stringify(doc.$schema)}`); continue; }
+    named.push({ doc });
     const validate = ajv.getSchema(doc.$schema);
-    if (!validate) { err(file, `schema ${doc.$schema} is not part of the pinned schema release`); continue; }
+    if (!validate) { err(file, `schema ${doc.$schema} is not in ${schemaDir} (is v${schema.version} released?)`); continue; }
     if (!validate(doc)) for (const e of validate.errors) err(file, `schema: ${fmtAjvError(e)}`);
-    if (doc.meta?.schema_version !== undefined && doc.meta.schema_version !== schemaVersion)
-      err(file, `meta.schema_version ${doc.meta.schema_version} differs from schema-version.txt ${schemaVersion}`);
-    docs.push({ rel, file, doc, family: named.family });
+    docs.push({ rel, file, doc, family: schema.family });
   }
 
+  let versions = {};
+  try { versions = schemaVersions(named); } catch (e) { err("datasets", e.message); }
+
   const ids = new Map(); // family -> Map(id -> {file, record})
-  const stats = { files: docs.length, records: 0, families: {} };
+  const stats = { files: docs.length, records: 0, families: {}, schemaVersions: versions };
 
   for (const d of docs) {
     const { rel, file, doc, family } = d;
@@ -86,7 +87,6 @@ export function check({ datasetsDir, schemaDir, schemaVersion, denylist, baseFil
         if (doc.meta?.country_code !== cc.toUpperCase()) err(file, `meta.country_code ${doc.meta?.country_code} must equal the folder (${cc.toUpperCase()})`);
         if (doc.meta?.city !== basename(name, ".json")) err(file, `meta.city ${doc.meta?.city} must equal the file name (${basename(name, ".json")})`);
       }
-      if (doc.meta?.schema_version === undefined) err(file, `meta.schema_version is required and must equal schema-version.txt (${schemaVersion})`);
     }
     const records = doc[recordsKey(doc)] ?? [];
     stats.records += records.length;

@@ -10,7 +10,7 @@ const artifactsDir = resolve(process.env.ARTIFACTS_DIR ?? resolve(process.cwd(),
 export interface DatasetFile { rel: string; family: string; doc: any; records: any[] }
 export const files: DatasetFile[] = loadDatasets(datasetsDir);
 export const places: any[] = coffeePlaces(files).filter((p: any) => !p.merged_into);
-export const version: string = datasetVersion(files) ?? "unreleased";
+export const version: string = datasetVersion(resolve(process.cwd(), ".."));
 export const buildDate: string = process.env.BUILD_DATE ?? new Date().toISOString().slice(0, 10);
 export const brewMethods: any[] = files.filter((f) => f.family === "brew-methods").flatMap((f) => f.records);
 export const artifactsIndex: any = existsSync(resolve(artifactsDir, "index.json"))

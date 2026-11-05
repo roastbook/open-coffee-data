@@ -1,5 +1,6 @@
 // Shared helpers for reading the datasets folder. Used by the checker, the artifact build,
 // the README stats generator and the Data Explorer build.
+import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 
@@ -42,10 +43,36 @@ export function loadDatasets(datasetsDir) {
   return files;
 }
 
-/** Highest meta.version across files (date tags sort as YYYY.MM.DD.N with numeric N). */
-export function datasetVersion(files) {
-  const key = (v) => v.split(".").map((n) => n.padStart(4, "0")).join(".");
-  return files.map((f) => f.doc?.meta?.version).filter(Boolean).sort((a, b) => key(a).localeCompare(key(b))).at(-1) ?? null;
+/**
+ * Dataset version: the release tag. DATASET_VERSION wins (set by a workflow), else `git describe` against
+ * the newest CalVer tag (YYYY.MM.DD.N, or YYYY.MM.DD.N-<commits>-g<sha> after it), else "unreleased".
+ */
+export function datasetVersion(root) {
+  if (process.env.DATASET_VERSION) return process.env.DATASET_VERSION;
+  try {
+    return execFileSync("git", ["-C", root, "describe", "--tags", "--match", "[0-9]*"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim() || "unreleased";
+  } catch {
+    return "unreleased";
+  }
+}
+
+/** Schema version per family, read from the files' $schema URLs. Throws when a family uses more than one version. */
+export function schemaVersions(files) {
+  const seen = {};
+  for (const f of files) {
+    const s = parseSchemaUrl(f.doc?.$schema);
+    if (s) (seen[s.family] ??= new Set()).add(s.version);
+  }
+  const mixed = Object.entries(seen).filter(([, v]) => v.size > 1);
+  if (mixed.length) throw new Error(`all files of a family must use the same schema version: ${mixed.map(([f, v]) => `${f} uses ${[...v].sort().join(" and ")}`).join("; ")}`);
+  return Object.fromEntries(Object.entries(seen).sort(([a], [b]) => a.localeCompare(b)).map(([f, v]) => [f, [...v][0]]));
+}
+
+/** "0.1.0" when every family uses the same schema version, else "brew-methods 0.1.0, coffee-places 0.2.0". */
+export function describeSchemaVersions(versions) {
+  const distinct = new Set(Object.values(versions));
+  if (distinct.size <= 1) return [...distinct][0] ?? "none";
+  return Object.entries(versions).map(([f, v]) => `${f} ${v}`).join(", ");
 }
 
 /** Coffee places with their file context, for every consumer that needs city/country. */

@@ -15,7 +15,8 @@ This repository is the Roastbook Open Coffee dataset. Read [README.md](README.md
 
 - Ids: `cp-` plus 10 random characters from `0123456789abcdefghjkmnpqrstvwxyz`, generated with a cryptographic random source, never derived from names. Never delete, rename or reuse an id; use `status: closed` or `merged_into`.
 - Unknown values are absent; `false` means confirmed not offered.
-- Do not edit `scripts/`, `.github/`, `schema-version.txt` or `agent/` in data pull requests; they need a maintainer.
+- `meta` holds only `licence`, `country_code`, `city` and `city_name`. Never add a version: the schema version is the `$schema` URL (change it only in a schema bump pull request), the dataset version is the release tag.
+- Do not edit `scripts/`, `.github/` or `agent/` in data pull requests; they need a maintainer.
 
 ## Use the scripts
 

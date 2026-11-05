@@ -1,8 +1,6 @@
 {
   "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.1.0.json",
   "meta": {
-    "version": "2026.11.05.1",
-    "generated_at": "2026-11-05T18:00:00Z",
     "licence": "MIT"
   },
   "brew_methods": [

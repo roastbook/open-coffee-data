@@ -7,6 +7,7 @@ import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 import { check, denyMatch } from "../lib/check.mjs";
+import { datasetVersion, describeSchemaVersions, schemaVersions } from "../lib/datasets.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const fx = (name) => JSON.parse(readFileSync(join(here, "fixtures", name), "utf8"));
@@ -20,17 +21,18 @@ function city() {
   return full;
 }
 
-function run({ cityDoc = city(), brew = fx("brew-methods.json"), baseFiles = null } = {}) {
+function run({ cityDoc = city(), brew = fx("brew-methods.json"), baseFiles = null, extra = {} } = {}) {
   const dir = mkdtempSync(join(tmpdir(), "ocd-check-"));
   const files = {
     "datasets/coffee-places/de/example-city.json": cityDoc,
     "datasets/brew-methods/brew-methods.json": brew,
+    ...extra,
   };
   for (const [p, v] of Object.entries(files)) {
     mkdirSync(dirname(join(dir, p)), { recursive: true });
     writeFileSync(join(dir, p), JSON.stringify(v));
   }
-  return check({ datasetsDir: join(dir, "datasets"), schemaDir, schemaVersion: "0.1.0", denylist, baseFiles });
+  return check({ datasetsDir: join(dir, "datasets"), schemaDir, denylist, baseFiles });
 }
 const has = (r, re) => assert.ok(r.errors.some((e) => re.test(e)), `expected an error matching ${re}, got:\n${r.errors.join("\n")}`);
 
@@ -98,15 +100,41 @@ test("opening_hours must parse", { skip: !schemaDir }, () => {
   has(run({ cityDoc: c }), /opening_hours does not parse/);
 });
 
-test("meta must match path and pin", { skip: !schemaDir }, () => {
+test("meta must match the path", { skip: !schemaDir }, () => {
   const c = city();
   c.meta.city = "elsewhere";
   c.meta.country_code = "AT";
-  c.meta.schema_version = "1.1.0";
   const r = run({ cityDoc: c });
   has(r, /meta.city elsewhere must equal the file name/);
   has(r, /meta.country_code AT must equal the folder/);
-  has(r, /meta.schema_version 1.1.0 differs/);
+});
+
+test("a family must not mix schema versions", { skip: !schemaDir }, () => {
+  const other = city();
+  other.$schema = other.$schema.replace("v0.1.0", "v9.0.0");
+  other.meta.city = "other-city";
+  other.places = [];
+  const r = run({ extra: { "datasets/coffee-places/de/other-city.json": other } });
+  has(r, /coffee-places uses 0\.1\.0 and 9\.0\.0/);
+  has(r, /other-city\.json: schema .*v9\.0\.0\.json is not in/);
+});
+
+test("schema and dataset versions", () => {
+  const doc = (family, v) => ({ doc: { $schema: `https://schema.roastbook.coffee/${family}/${family}.schema.v${v}.json` } });
+  const same = schemaVersions([doc("coffee-places", "0.1.0"), doc("brew-methods", "0.1.0")]);
+  assert.deepEqual(same, { "brew-methods": "0.1.0", "coffee-places": "0.1.0" });
+  assert.equal(describeSchemaVersions(same), "0.1.0");
+  assert.equal(describeSchemaVersions({ "brew-methods": "0.1.0", "coffee-places": "0.2.0" }), "brew-methods 0.1.0, coffee-places 0.2.0");
+  assert.throws(() => schemaVersions([doc("coffee-places", "0.1.0"), doc("coffee-places", "0.2.0")]), /coffee-places uses 0.1.0 and 0.2.0/);
+  const saved = process.env.DATASET_VERSION;
+  try {
+    process.env.DATASET_VERSION = "2026.11.05.2";
+    assert.equal(datasetVersion(tmpdir()), "2026.11.05.2");
+    delete process.env.DATASET_VERSION;
+    assert.equal(datasetVersion(mkdtempSync(join(tmpdir(), "ocd-nogit-"))), "unreleased");
+  } finally {
+    if (saved === undefined) delete process.env.DATASET_VERSION; else process.env.DATASET_VERSION = saved;
+  }
 });
 
 test("brew method parents exist and do not loop", { skip: !schemaDir }, () => {

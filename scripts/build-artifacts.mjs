@@ -4,20 +4,20 @@
 //   coffee-places/<cc>/<city>.geojson  Point features, flat properties
 //   coffee-places.geoparquet           all places, GeoParquet 1.x via DuckDB spatial
 //   coffee-places.csv                  all places, flat columns
-//   index.json                         manifest with sizes and record counts (all families)
+//   index.json                         manifest: dataset version (release tag), schema version per family
+//                                      (from $schema), build time, sizes and record counts (all families)
 // Usage: bun scripts/build-artifacts.mjs <out> ; env DATASETS_DIR overrides datasets/.
-import { mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { mkdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DuckDBInstance } from "@duckdb/node-api";
-import { coffeePlaces, datasetVersion, loadDatasets } from "./lib/datasets.mjs";
+import { coffeePlaces, datasetVersion, loadDatasets, schemaVersions } from "./lib/datasets.mjs";
 import { csvEscape, flattenPlace } from "./lib/flatten.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const out = resolve(process.argv[2] ?? join(root, ".cache/artifacts"));
 const datasetsDir = resolve(process.env.DATASETS_DIR ?? join(root, "datasets"));
 const DATA = "https://data.roastbook.coffee/";
-const schemaVersion = readFileSync(join(root, "schema-version.txt"), "utf8").trim();
 
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
@@ -73,9 +73,9 @@ if (rows.length) {
 } else console.log("::warning::no coffee places; skipped coffee-places.geoparquet")
 
 const index = {
-  dataset_version: datasetVersion(files),
-  schema_version: schemaVersion,
-  generated_at: new Date().toISOString(),
+  dataset_version: datasetVersion(root),
+  schema_version: schemaVersions(files),
+  built_at: new Date().toISOString(),
   licence: "MIT",
   datasets: files.map((f) => ({ path: `datasets/${f.rel}`, url: `${DATA}datasets/${f.rel}`, family: f.family, bytes: statSync(join(datasetsDir, f.rel)).size, records: f.records.length, ...(f.family === "coffee-places" ? { city: f.doc.meta.city, country_code: f.doc.meta.country_code } : {}) })),
   artifacts,

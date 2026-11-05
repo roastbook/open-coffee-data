@@ -5,12 +5,11 @@ import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { check } from "./lib/check.mjs";
-import { datasetVersion, loadDatasets } from "./lib/datasets.mjs";
+import { datasetVersion, describeSchemaVersions } from "./lib/datasets.mjs";
 import { mergeReport } from "./lib/report.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const datasetsDir = resolve(process.env.DATASETS_DIR ?? join(root, "datasets"));
-const schemaVersion = readFileSync(join(root, "schema-version.txt"), "utf8").trim();
 const schemaDir = process.env.SCHEMA_DIR;
 const baseRef = process.env.BASE_REF || "origin/main";
 if (!schemaDir) throw new Error("SCHEMA_DIR is not set; run scripts/validate.sh");
@@ -36,7 +35,6 @@ if (process.env.DATASETS_DIR) {
 const result = check({
   datasetsDir,
   schemaDir,
-  schemaVersion,
   denylist: JSON.parse(readFileSync(join(root, "scripts/config/denylist.json"), "utf8")),
   baseFiles,
 });
@@ -44,12 +42,10 @@ result.warnings.unshift(...warnings);
 
 for (const w of result.warnings) console.log(`::warning::${w}`);
 for (const e of result.errors) console.log(`::error::${e}`);
-let version = null;
-try { version = datasetVersion(loadDatasets(datasetsDir)); } catch { /* reported above */ }
 mergeReport(root, {
   records_validated: result.stats.records,
   files_validated: result.stats.files,
-  versions: { schema: schemaVersion, dataset: version },
+  versions: { schema: describeSchemaVersions(result.stats.schemaVersions), dataset: datasetVersion(root) },
   warnings: result.warnings,
 });
 console.log(`checked ${result.stats.files} files, ${result.stats.records} records (${Object.entries(result.stats.families).map(([f, n]) => `${f}: ${n}`).join(", ") || "none"}); ${result.errors.length} errors, ${result.warnings.length} warnings`);

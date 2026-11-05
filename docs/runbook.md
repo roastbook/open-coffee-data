@@ -3,17 +3,16 @@
 ## Adding a city
 
 1. Make sure the city is next in the Sourcing queue (Berlin, Hamburg, Munich, Cologne, Frankfurt, Düsseldorf, Leipzig, Stuttgart, then all German cities over 100,000 inhabitants, then Austria and Switzerland), or that a contributor is preparing it.
-2. Create `datasets/coffee-places/<country>/<city>.json`: `<country>` is the lower-case ISO code (`de`), `<city>` a lower-case ASCII slug (`koeln`, `frankfurt-am-main`). Fill `meta`: `version` (the next data tag), `generated_at`, `licence: MIT`, `schema_version` (equal to `schema-version.txt`), `country_code` (upper case), `city` (the slug), `city_name` (local name).
+2. Create `datasets/coffee-places/<country>/<city>.json`: `<country>` is the lower-case ISO code (`de`), `<city>` a lower-case ASCII slug (`koeln`, `frankfurt-am-main`). Set `$schema` to the coffee-places schema URL the other files use, and fill `meta`: `licence: MIT`, `country_code` (upper case), `city` (the slug), `city_name` (local name). There is no version field; the schema version is the `$schema` URL and the dataset version is the release tag.
 3. Add places through the Sourcing agent (`data-agent.yml`, `workflow_dispatch` with the city) or by hand. Check every fact on a primary source.
 4. Run `scripts/validate.sh`, then `bun scripts/readme-stats.mjs` to refresh the README numbers, and `scripts/build.sh` to check the Explorer (the city appears in the city filter automatically; artifacts are generated per city).
 5. Open a pull request. Add the city to `docs/pilots/` if it gets a report, and to the repository topics if it is a major city (`scripts/repo-metadata.sh` in Roastbook/workflows).
 
 ## Releasing a dataset version
 
-1. On `main`, with CI green, pick the tag `YYYY.MM.DD.N` (N starts at 1 for the day).
-2. Set `meta.version` in every changed dataset file to that tag (the Sourcing agent and `bump-schema.yml` do this in their PRs), run `bun scripts/readme-stats.mjs`, merge.
-3. Tag and push: `git tag -s 2026.11.05.1 -m "Data 2026.11.05.1" && git push origin 2026.11.05.1`. `release.yml` creates the GitHub Release with the changelog (`cliff.toml`) and `deploy.yml` deploys Pages.
-4. Check https://data.roastbook.coffee/ (footer shows the new version) and `/artifacts/index.json`.
+1. On `main`, with CI green and the README stats current, run the Release workflow (`release.yml`). It creates the next tag `YYYY.MM.DD.N` (N starts at 1 for the day) and the GitHub Release with the changelog (`cliff.toml`). No dataset file changes: the version lives only in the tag.
+2. The tag push runs `deploy.yml`. The build reads the version from `DATASET_VERSION` or `git describe --tags --match '[0-9]*'` (builds between releases show `<tag>-<commits>-g<sha>`, builds without a tag show `unreleased`).
+3. Check https://data.roastbook.coffee/ (footer shows the new version) and `/artifacts/index.json` (`dataset_version`).
 
 ## Rolling back a deploy
 
