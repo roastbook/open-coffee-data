@@ -18,7 +18,6 @@ If you run a café or roastery, you can claim its record:
 
 Owners may also suggest a photo: link the original file, published under an open licence (CC0, CC BY or CC BY-SA), with its author. We link to it; we do not host image files.
 
-To keep our crawler away from your site, see https://data.roastbook.coffee/bot/.
 
 ## Rules for data
 

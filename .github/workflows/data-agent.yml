@@ -17,7 +17,7 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: Roastbook/workflows/.github/workflows/agent-run.yml@7c716b16de05cc8c9cb80cdd907bf6a87587b1b5 # main
+    uses: Roastbook/workflows/.github/workflows/agent-run.yml@24c0af08d419c4c214e9dd3b5dc0b3389dc88e86 # main
     with:
       app_id: ${{ vars.SOURCING_APP_ID }}
       llm_base_url: ${{ vars.LLM_BASE_URL }}

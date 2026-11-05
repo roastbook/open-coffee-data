@@ -5,7 +5,6 @@
 #   site_url: https://data.roastbook.coffee/
 #   smoke_paths:
 #     - datasets/coffee-places/de/munich.json
-#     - bot/
 # @end-orcastrate
 
 name: Link check
@@ -27,10 +26,9 @@ jobs:
     name: Link and smoke checks
     permissions:
       contents: read
-    uses: Roastbook/workflows/.github/workflows/link-check.yml@7c716b16de05cc8c9cb80cdd907bf6a87587b1b5 # main
+    uses: Roastbook/workflows/.github/workflows/link-check.yml@24c0af08d419c4c214e9dd3b5dc0b3389dc88e86 # main
     with:
       link_check: true
       smoke_urls: >-
         https://data.roastbook.coffee/
         https://data.roastbook.coffee/datasets/coffee-places/de/munich.json
-        https://data.roastbook.coffee/bot/

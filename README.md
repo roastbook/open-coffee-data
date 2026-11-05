@@ -112,15 +112,13 @@ Corrections and new places are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). 
 
 **Owners can claim their place** by opening an issue about it from an email address on the place's website domain, or by linking the issue from the place's website or Instagram bio. Owners may also suggest a photo by linking an openly licensed original.
 
-The Sourcing agent opens pull requests for `datasets/coffee-places/**` only; schemas, scripts and `.github/` always need a maintainer's review; CI fails any Sourcing-bot pull request that touches other paths.
+The Sourcing agent opens pull requests for `datasets/coffee-places/**` only; schemas, scripts and `.github/` always need a maintainer's review; CI fails any Sourcing agent pull request that touches other paths.
 
-## Sources and licensing
+## Licensing
 
 - Everything in this repository (data, code, site and docs) is [MIT](LICENSE).
-- Images are not stored here. A record's `image` links to the original file and names its licence, author and source page; the image keeps its own licence.
-- Facts come from open datasets (Overture Maps, Foursquare Open Source Places, Wikidata), roasters' partner pages, the places' own websites and Instagram bios (facts only, never texts or photos), and owner or community submissions.
+- Images are not stored here. A record's `image` links to the original file and names its licence, author and original page; the image keeps its own licence.
 - **No Google Maps data and no OpenStreetMap data are used.** Google Places may only confirm that a known place still exists, and we store nothing but its place id. OpenStreetMap is share-alike and is not used. Closed guides and review sites are never scraped or imported; ratings appear only as links.
-- Our crawler identifies itself as `RoastbookOpenCoffeeBot/1.0 (+https://data.roastbook.coffee/bot)`, respects robots.txt and stays at or below one request per second per host. See [the crawler page](https://data.roastbook.coffee/bot/) to opt out.
 
 ## Related
 

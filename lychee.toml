@@ -1,7 +1,6 @@
 # lychee configuration for scripts/link-check.sh. Respectful defaults: few parallel requests,
-# a project User-Agent, a cache and retries. Social sites often answer bots with 403/429;
+# a cache and retries. Social sites often answer automated requests with 403/429;
 # scripts/link-check.sh reports those as warnings, never as failures.
-user_agent = "RoastbookOpenCoffeeBot/1.0 (+https://data.roastbook.coffee/bot)"
 max_concurrency = 4
 max_redirects = 5
 max_retries = 2

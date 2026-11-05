@@ -20,7 +20,7 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: Roastbook/workflows/.github/workflows/site-build.yml@7c716b16de05cc8c9cb80cdd907bf6a87587b1b5 # main
+    uses: Roastbook/workflows/.github/workflows/site-build.yml@24c0af08d419c4c214e9dd3b5dc0b3389dc88e86 # main
 
   deploy:
     name: Deploy
@@ -28,4 +28,4 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    uses: Roastbook/workflows/.github/workflows/pages-deploy.yml@7c716b16de05cc8c9cb80cdd907bf6a87587b1b5 # main
+    uses: Roastbook/workflows/.github/workflows/pages-deploy.yml@24c0af08d419c4c214e9dd3b5dc0b3389dc88e86 # main

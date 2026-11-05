@@ -2,7 +2,7 @@
 # Checks the links in the datasets and the Markdown files with lychee.
 #   scripts/link-check.sh         pull-request mode: report broken links as warnings, exit 0
 #   scripts/link-check.sh --full  weekly mode: fail on broken links
-# Social sites (Instagram, Facebook, …) that answer 403/429 to bots are always warnings.
+# Social sites (Instagram, Facebook, …) that answer 403/429 to automated requests are always warnings.
 # Needs lychee on PATH (CI installs the release binary) or Docker (lycheeverse/lychee image).
 # No package dependencies, so CI can run it without installing the workspace (Bun only writes the report).
 set -euo pipefail

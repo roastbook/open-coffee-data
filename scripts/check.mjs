@@ -25,8 +25,7 @@ if (process.env.DATASETS_DIR) {
     git("rev-parse", "--verify", "--quiet", `${baseRef}^{commit}`);
     baseFiles = new Map();
     for (const path of git("ls-tree", "-r", "--name-only", baseRef, "--", "datasets").split("\n")) {
-      // sources.json and i18n/ were removed with schema v0.1.0 changes; older base refs may still have them.
-      if (!path.endsWith(".json") || path === "datasets/sources.json" || path.startsWith("datasets/i18n/")) continue;
+      if (!path.endsWith(".json")) continue;
       baseFiles.set(path.slice("datasets/".length), git("show", `${baseRef}:${path}`));
     }
   } catch {
