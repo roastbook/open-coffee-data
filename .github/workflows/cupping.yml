@@ -1,0 +1,26 @@
+# @orcastrate
+# template: open-coffee/cupping
+# params:
+#   kind: data
+# @end-orcastrate
+
+name: Roastbook · ☕ Cupping (validate)
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: cupping-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate
+    permissions:
+      contents: read
+    uses: Roastbook/workflows/.github/workflows/dataset-validate.yml@3fef09ed6f5c71c190a27ece5378697dbf76e8cb # main

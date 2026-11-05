@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v1.0.0.json",
+  "meta": {
+    "version": "2026.11.05.1",
+    "generated_at": "2026-11-05T12:00:00Z",
+    "licence": "CC-BY-4.0",
+    "attribution": "Roastbook Open Coffee",
+    "schema_version": "1.0.0",
+    "country_code": "DE",
+    "city": "example-city",
+    "city_name": "Example City"
+  },
+  "places": [
+    {
+      "id": "cp-example0001",
+      "name": "Example Coffee Bar",
+      "status": "open",
+      "opened_on": "2019-04-01",
+      "last_verified_at": "2026-11-01T09:00:00Z",
+      "checked_at": "2026-11-01T09:00:00Z",
+      "address": {
+        "street_address": "Beispielstraße 1",
+        "postal_code": "80331",
+        "locality": "Example City",
+        "country_code": "DE"
+      },
+      "location": { "lat": 48.1371, "lon": 11.5754 },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 09:00-17:00",
+      "open_sunday": true,
+      "description": "Coffee-led espresso bar that roasts its own beans and serves pour-over and batch brew. Sells beans and brewing gear, and runs public cuppings.",
+      "specialty_tier": "A",
+      "specialty_evidence": [
+        { "claim": "Roasts its own coffee on site", "url": "https://example.com/about" }
+      ],
+      "roasts_own_beans": true,
+      "roasters_served": [{ "name": "Example Coffee Bar", "own": true }],
+      "serving": { "espresso": true, "filter": true, "pour_over": true, "batch_brew": true, "cold_brew": false, "decaf": true, "plant_milk": true },
+      "amenities": { "wifi": true, "laptop_friendly": false, "card_payment": true, "outdoor_seating": true, "wheelchair_accessible": true },
+      "food": { "focus": "coffee_led", "cakes_baked_in_house": true },
+      "sells_beans": true,
+      "sells_equipment": true,
+      "offers_courses": true,
+      "reusable_cup_systems": ["recup"],
+      "good_for": ["coffee_nerds", "quick_espresso"],
+      "prices": { "cappuccino": { "amount": 3.9, "currency": "EUR", "observed_on": "2026-10-20", "source_url": "https://example.com/menu" } },
+      "operator": { "name": "Example Coffee GmbH", "legal_form": "GmbH", "register_id": "HRB 000000" },
+      "links": { "website": "https://example.com/", "instagram": "https://www.instagram.com/example.coffee/" },
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/example.jpg",
+        "licence": "CC-BY-SA-4.0",
+        "author": "Jane Doe",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Example.jpg"
+      },
+      "xref": { "overture": "08f1f8a1b2c3d4e5", "wikidata": "Q42" },
+      "external_ratings": [{ "source": "example-reviews", "id": "abc123", "url": "https://reviews.example.org/place/abc123" }],
+      "method": "llm_extraction",
+      "confidence": 0.9,
+      "sources": [
+        { "source_id": "overture-places", "retrieved_at": "2026-10-30T10:00:00Z" },
+        { "source_id": "place-website", "url": "https://example.com/about", "retrieved_at": "2026-11-01T09:00:00Z" }
+      ],
+      "field_provenance": {
+        "opening_hours": {
+          "method": "crawl",
+          "confidence": 0.95,
+          "sources": [{ "source_id": "place-website", "url": "https://example.com/", "retrieved_at": "2026-11-01T09:00:00Z" }],
+          "checked_at": "2026-11-01T09:00:00Z"
+        },
+        "image": { "method": "manual", "confidence": 1 }
+      }
+    }
+  ]
+}

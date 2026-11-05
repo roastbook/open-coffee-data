@@ -1,0 +1,14 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  // Base config shared by all of michidk's and Roastbook's repositories.
+  extends: ['github>michidk/workflows//templates/presets/renovate'],
+  packageRules: [
+    {
+      description: 'Bump pinned Roastbook/workflows refs weekly, separately from third-party actions',
+      matchManagers: ['github-actions'],
+      matchPackageNames: ['Roastbook/workflows'],
+      groupName: 'Roastbook workflows',
+      schedule: ['before 6am on monday'],
+    },
+  ],
+}

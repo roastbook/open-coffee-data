@@ -1,0 +1,156 @@
+{
+  "$schema": "https://schema.roastbook.coffee/sources/sources.schema.v1.0.0.json",
+  "meta": { "version": "2026.11.05.1", "generated_at": "2026-11-05T12:00:00Z", "licence": "CC-BY-4.0", "attribution": "Roastbook Open Coffee" },
+  "sources": [
+    {
+      "id": "overture-places",
+      "name": "Overture Maps Foundation, places theme",
+      "kind": "open_dataset",
+      "url": "https://docs.overturemaps.org/guides/places/",
+      "licence": "CDLA-Permissive-2.0",
+      "attribution": "Overture Maps Foundation",
+      "allowed_for": ["discovery", "facts"],
+      "how_to_use": "Query the GeoParquet release for coffee categories inside the city boundary. Keep only records whose every sources[].dataset is CDLA-Permissive-2.0 or Apache-2.0 licensed; drop any record carrying OpenStreetMap data. Store the GERS id in xref.overture and keep the attribution.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "foursquare-os-places",
+      "name": "Foursquare Open Source Places",
+      "kind": "open_dataset",
+      "url": "https://docs.foursquare.com/data-products/docs/access-fsq-os-places",
+      "licence": "Apache-2.0",
+      "attribution": "Foursquare Open Source Places",
+      "allowed_for": ["discovery", "facts"],
+      "how_to_use": "Query the Parquet release for coffee shop and café categories inside the city boundary. Drop rows with date_closed set or a stale date_refreshed unless another source confirms the place. Store fsq_place_id in xref.foursquare.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "roaster-partner-page",
+      "name": "Roaster 'where to drink our coffee' and wholesale partner pages",
+      "kind": "roaster_page",
+      "licence": "facts only; no text or images copied",
+      "allowed_for": ["discovery", "facts"],
+      "how_to_use": "Read the list of cafés a roaster supplies. Record the café name and the roaster relationship (roasters_served) with the page URL. Confirm the café itself on its own website or an open dataset. Crawl politely (robots.txt, project User-Agent, at most 1 request per second per host).",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "place-website",
+      "name": "The place's own website, including menu, shop, about and legal notice pages",
+      "kind": "primary_website",
+      "licence": "facts only; no text or images copied",
+      "allowed_for": ["discovery", "facts"],
+      "how_to_use": "Extract facts (hours, serving, amenities, roasters, operator) and cite the page URL. Never copy sentences or photos. Respect robots.txt, use the Open Coffee crawler User-Agent and stay at or below 1 request per second per host.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "place-instagram",
+      "name": "The place's own Instagram profile bio",
+      "kind": "social_profile",
+      "licence": "facts only; no text or images copied",
+      "allowed_for": ["facts"],
+      "how_to_use": "Read only the public bio (name, address, opening hours, linked website) when it is visible without logging in. Never copy captions, posts or photos.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "web-search",
+      "name": "Web search results",
+      "kind": "web_search",
+      "licence": "not a data source; discovery only",
+      "allowed_for": ["discovery"],
+      "how_to_use": "Find candidate places and their websites. Every fact must then be confirmed on a primary source (place-website, place-instagram or an open dataset) and cited there. At most about 3 searches per place.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "wikidata",
+      "name": "Wikidata",
+      "kind": "open_knowledge",
+      "url": "https://www.wikidata.org/",
+      "licence": "CC0-1.0",
+      "allowed_for": ["discovery", "facts"],
+      "how_to_use": "Use statements such as official website, inception and coordinates. Store the Q-id in xref.wikidata.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "wikimedia-commons",
+      "name": "Wikimedia Commons",
+      "kind": "image_repository",
+      "url": "https://commons.wikimedia.org/",
+      "licence": "per file (CC0-1.0, CC-BY-4.0, CC-BY-SA-4.0 and similar)",
+      "allowed_for": ["images"],
+      "how_to_use": "Use files with a free licence. Store licence, author and the file description page as source_url for each image.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "mapillary",
+      "name": "Mapillary street-level imagery",
+      "kind": "image_repository",
+      "url": "https://www.mapillary.com/",
+      "licence": "CC-BY-SA-4.0",
+      "attribution": "Mapillary contributors",
+      "allowed_for": ["images"],
+      "how_to_use": "Use an image showing the storefront. Store the image page as source_url, the uploader as author and CC-BY-SA-4.0 as licence. Do not use Mapillary-derived map features.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "panoramax",
+      "name": "Panoramax",
+      "kind": "image_repository",
+      "url": "https://panoramax.fr/",
+      "licence": "per file (usually CC-BY-SA-4.0)",
+      "allowed_for": ["images"],
+      "how_to_use": "Use a storefront image. Store its licence, author and picture page as source_url.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "owner-submission",
+      "name": "Submission by the place's owner or operator",
+      "kind": "community",
+      "licence": "CC-BY-4.0 (contributed under DCO sign-off)",
+      "allowed_for": ["discovery", "facts", "images"],
+      "how_to_use": "Accept facts and photos submitted through an issue or pull request with DCO sign-off. Photos must be the submitter's own and licensed CC-BY-4.0. Set method owner_submitted.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "community-submission",
+      "name": "Community submission",
+      "kind": "community",
+      "licence": "CC-BY-4.0 (contributed under DCO sign-off)",
+      "allowed_for": ["discovery", "facts", "images"],
+      "how_to_use": "Accept corrections and new places from contributors with DCO sign-off. Facts need a primary-source URL or a reviewer visit; photos must be the contributor's own, licensed CC-BY-4.0.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "manual-review",
+      "name": "Maintainer review",
+      "kind": "community",
+      "licence": "CC-BY-4.0",
+      "allowed_for": ["facts"],
+      "how_to_use": "A maintainer resolved a conflict or confirmed a fact by hand. Cite the page the decision relied on in field_provenance where one exists.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    },
+    {
+      "id": "google-places-verification",
+      "name": "Google Places API (verification only)",
+      "kind": "verification_api",
+      "url": "https://developers.google.com/maps/documentation/places/web-service",
+      "licence": "Google Maps Platform Terms; no data may be stored except place_id",
+      "allowed_for": ["verification"],
+      "how_to_use": "Optional. Only for a place already known from other sources: look up businessStatus and store only xref.google_place_id. Never store names, addresses, hours, ratings or photos from Google, never use it for discovery, and never write content based on it. A CLOSED_PERMANENTLY result opens a human review instead of changing the record.",
+      "vetted": true,
+      "checked_at": "2026-11-05"
+    }
+  ]
+}

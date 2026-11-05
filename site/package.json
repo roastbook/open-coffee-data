@@ -1,0 +1,23 @@
+{
+  "name": "open-coffee-data-site",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@roastbook/open-coffee-ui": "github:Roastbook/open-coffee-schema#22db32c1bbf34b5bc4bb16de5dd66aebf3f9ce68&path:packages/ui",
+    "@tanstack/table-core": "9.3.1",
+    "astro": "7.4.6",
+    "maplibre-gl": "6.16.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@types/geojson": "7946.0.16",
+    "@types/node": "26.6.6",
+    "typescript": "6.0.3"
+  }
+}

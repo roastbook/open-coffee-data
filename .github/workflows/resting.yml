@@ -1,0 +1,36 @@
+# @orcastrate
+# template: open-coffee/resting
+# params:
+#   kind: data
+#   site_url: https://data.roastbook.coffee/
+#   smoke_paths:
+#     - datasets/coffee-places/de/munich.json
+#     - bot/
+# @end-orcastrate
+
+name: Roastbook · ⏳ Resting (link and smoke checks)
+
+on:
+  pull_request:
+  schedule:
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: resting-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Link and smoke checks
+    permissions:
+      contents: read
+    uses: Roastbook/workflows/.github/workflows/link-check.yml@3fef09ed6f5c71c190a27ece5378697dbf76e8cb # main
+    with:
+      link_check: true
+      smoke_urls: >-
+        https://data.roastbook.coffee/
+        https://data.roastbook.coffee/datasets/coffee-places/de/munich.json
+        https://data.roastbook.coffee/bot/

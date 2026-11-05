@@ -1,0 +1,50 @@
+---
+import Layout from "@roastbook/open-coffee-ui/Layout.astro";
+import Nav from "../components/Nav.astro";
+import { artifactsIndex, buildDate, formatBytes, version } from "../lib/data";
+import "../styles/pages.css";
+
+const FORMAT: Record<string, string> = { ndjson: "NDJSON, one record per line", geojson: "GeoJSON points", geoparquet: "GeoParquet", csv: "CSV, flat columns" };
+const csv = artifactsIndex.artifacts.find((a: any) => a.format === "csv");
+const datasette = csv ? `https://lite.datasette.io/?csv=${encodeURIComponent(csv.url)}` : null;
+---
+<Layout title="Downloads" site="data" version={version} buildDate={buildDate} description="Download the Open Coffee dataset as JSON, NDJSON, GeoJSON, GeoParquet or CSV.">
+  <Nav current="downloads" />
+  <h1>Downloads</h1>
+  <p class="lead">All files are licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Credit “Roastbook Open Coffee” and link to <a href="https://data.roastbook.coffee/">data.roastbook.coffee</a>. Images are licensed per file; see each place's image credit.</p>
+  <p>
+    {datasette && <a class="button" data-variant="primary" href={datasette}>Open in Datasette Lite</a>}
+    <a class="button" href="/artifacts/index.json">Manifest (index.json)</a>
+  </p>
+  <p class="muted">Datasette Lite runs in your browser and loads the CSV straight from this site.</p>
+
+  <h2>Source files</h2>
+  <p>The canonical data, one JSON file per city (coffee places) or per dataset, validated against the schema named in its <code>$schema</code>.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th scope="col">File</th><th scope="col">Dataset</th><th scope="col">Records</th><th scope="col">Size</th></tr></thead>
+      <tbody>
+        {artifactsIndex.datasets.map((d: any) => (
+          <tr><th scope="row"><a href={`/${d.path}`}>{d.path.replace("datasets/", "")}</a></th><td>{d.family}{d.city ? ` · ${d.city}` : ""}</td><td class="tabular">{d.records}</td><td class="tabular">{formatBytes(d.bytes)}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Compiled artifacts</h2>
+  <p>Built from the source files on every release. Columns in CSV, GeoJSON and GeoParquet use the schema's dotted field paths, for example <code>serving.filter</code>; per-field provenance is only in the JSON and NDJSON files.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th scope="col">File</th><th scope="col">Format</th><th scope="col">Records</th><th scope="col">Size</th></tr></thead>
+      <tbody>
+        {artifactsIndex.artifacts.map((a: any) => (
+          <tr><th scope="row"><a href={`/${a.path}`}>{a.path.replace("artifacts/", "")}</a></th><td>{FORMAT[a.format] ?? a.format}</td><td class="tabular">{a.records}</td><td class="tabular">{formatBytes(a.bytes)}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Quick start</h2>
+  <pre><code>{`curl -sO https://data.roastbook.coffee/datasets/coffee-places/de/munich.json
+duckdb -c "INSTALL spatial; LOAD spatial; SELECT name, \\"serving.filter\\" FROM 'https://data.roastbook.coffee/artifacts/coffee-places.geoparquet' WHERE specialty_tier = 'A'"`}</code></pre>
+</Layout>

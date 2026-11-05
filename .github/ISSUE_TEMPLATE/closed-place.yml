@@ -1,0 +1,33 @@
+name: Report a closed place
+description: A place has closed for good, or is closed for a long time.
+title: "Closed: "
+labels: ["data", "status"]
+body:
+  - type: input
+    id: place
+    attributes:
+      label: Place
+      description: Name, city and id (cp-…) from the Data Explorer.
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - Closed permanently
+        - Temporarily closed (more than a month)
+    validations:
+      required: true
+  - type: input
+    id: since
+    attributes:
+      label: Since when?
+      description: Date or month, if known.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A link (announcement on the website or Instagram, news article), or what you saw yourself and when. Closures are reviewed by a maintainer before the record changes.
+    validations:
+      required: true

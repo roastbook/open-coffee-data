@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below and credit “Roastbook Open Coffee” (CC BY 4.0)."
+type: dataset
+title: "Roastbook Open Coffee Data"
+abstract: "Open dataset of coffee places and specialty cafés, validated against the Open Coffee Schema, with sources and retrieval dates for every fact."
+authors:
+  - name: "Roastbook Open Coffee contributors"
+    website: "https://roastbook.coffee/"
+license: CC-BY-4.0
+repository-code: "https://github.com/Roastbook/open-coffee-data"
+url: "https://data.roastbook.coffee/"
+keywords:
+  - open data
+  - coffee
+  - specialty coffee
+  - cafes
+  - points of interest
+  - geojson
+  - geoparquet

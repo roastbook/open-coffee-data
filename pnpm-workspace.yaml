@@ -1,0 +1,11 @@
+packages:
+  - site
+
+
+onlyBuiltDependencies:
+  - "@duckdb/node-bindings"
+  - esbuild
+  - sharp
+
+minimumReleaseAgeExclude:
+  - astro@7.4.6

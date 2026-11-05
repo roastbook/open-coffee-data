@@ -1,0 +1,1784 @@
+{
+  "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v1.0.0.json",
+  "meta": {
+    "version": "2026.11.05.1",
+    "generated_at": "2026-11-05T18:00:00Z",
+    "licence": "CC-BY-4.0",
+    "attribution": "Roastbook Open Coffee"
+  },
+  "brew_methods": [
+    {
+      "id": "espresso",
+      "name": "Espresso",
+      "aliases": [
+        "Espresso",
+        "Caffè espresso"
+      ],
+      "category": "espresso",
+      "extraction": "percolation",
+      "description": "Finely ground coffee in a portafilter basket brewed with hot water at about 9 bar, giving a small, concentrated drink with crema.",
+      "introduced_year": 1884,
+      "origin_country_code": "IT",
+      "equipment_types": [
+        "espresso_machine",
+        "grinder",
+        "tamper",
+        "basket"
+      ],
+      "typical_parameters": {
+        "dose_g": {
+          "min": 7,
+          "max": 22,
+          "typical": 18
+        },
+        "ratio": {
+          "min": 1.5,
+          "max": 3,
+          "typical": 2
+        },
+        "brew_time_seconds": {
+          "min": 20,
+          "max": 35,
+          "typical": 28
+        },
+        "water_temperature_celsius": {
+          "min": 88,
+          "max": 96,
+          "typical": 93
+        },
+        "brew_pressure_bar": {
+          "min": 6,
+          "max": 10,
+          "typical": 9
+        },
+        "grind_size": [
+          "fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "yield_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "preinfusion_time_seconds",
+        "preinfusion_pressure_bar",
+        "brew_pressure_bar",
+        "flow_rate_ml_per_second",
+        "tamp_force_kg",
+        "paper_filter_position",
+        "distribution_method"
+      ],
+      "typical_drinks": [
+        "espresso",
+        "doppio",
+        "ristretto",
+        "lungo",
+        "americano",
+        "cappuccino",
+        "latte",
+        "flat white",
+        "cortado",
+        "macchiato"
+      ],
+      "xref": {
+        "wikidata": "Q180289",
+        "beanconqueror": "PORTAFILTER"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q180289",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "introduced_year": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q180289",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "origin_country_code": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q180289",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ristretto",
+      "name": "Ristretto",
+      "parent": "espresso",
+      "category": "espresso",
+      "extraction": "percolation",
+      "description": "A shorter espresso pulled with the same dose but less water, giving a more concentrated, less bitter shot.",
+      "origin_country_code": "IT",
+      "equipment_types": [
+        "espresso_machine",
+        "grinder",
+        "tamper",
+        "basket"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 1,
+          "max": 1.5,
+          "typical": 1.25
+        },
+        "brew_time_seconds": {
+          "min": 15,
+          "max": 25
+        },
+        "grind_size": [
+          "fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "yield_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "preinfusion_time_seconds",
+        "preinfusion_pressure_bar",
+        "brew_pressure_bar",
+        "flow_rate_ml_per_second",
+        "tamp_force_kg",
+        "paper_filter_position",
+        "distribution_method"
+      ],
+      "xref": {
+        "wikidata": "Q59047"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q59047",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "origin_country_code": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q59047",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "lungo",
+      "name": "Lungo",
+      "parent": "espresso",
+      "category": "espresso",
+      "extraction": "percolation",
+      "description": "A longer espresso pulled with more water through the same puck, giving a larger, more diluted and often more bitter cup.",
+      "origin_country_code": "IT",
+      "equipment_types": [
+        "espresso_machine",
+        "grinder",
+        "tamper",
+        "basket"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 2.5,
+          "max": 4,
+          "typical": 3
+        },
+        "brew_time_seconds": {
+          "min": 30,
+          "max": 45
+        },
+        "grind_size": [
+          "fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "yield_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "preinfusion_time_seconds",
+        "preinfusion_pressure_bar",
+        "brew_pressure_bar",
+        "flow_rate_ml_per_second",
+        "tamp_force_kg",
+        "paper_filter_position",
+        "distribution_method"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pour-over",
+      "name": "Pour-over",
+      "aliases": [
+        "Hand brew",
+        "Handfilter",
+        "Filterkaffee",
+        "Drip coffee"
+      ],
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Hot water poured by hand over ground coffee in a filter cone or basket, so it drains through the coffee bed into a cup or carafe.",
+      "filter_types": [
+        "paper"
+      ],
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "dose_g": {
+          "min": 12,
+          "max": 30,
+          "typical": 15
+        },
+        "ratio": {
+          "min": 14,
+          "max": 18,
+          "typical": 16
+        },
+        "brew_time_seconds": {
+          "min": 120,
+          "max": 240,
+          "typical": 180
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium_fine",
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "typical_drinks": [
+        "filter coffee",
+        "iced pour-over"
+      ],
+      "xref": {
+        "wikidata": "Q1155703",
+        "beanconqueror": "DRIPPER"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q1155703",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v60",
+      "name": "V60",
+      "aliases": [
+        "Hario V60"
+      ],
+      "parent": "pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Pour-over in a 60-degree cone with a single large hole and spiral ribs, made by Hario; flow rate depends mostly on grind and pouring.",
+      "filter_types": [
+        "paper"
+      ],
+      "introduced_year": 2004,
+      "origin_country_code": "JP",
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "dose_g": {
+          "min": 12,
+          "max": 30,
+          "typical": 15
+        },
+        "ratio": {
+          "min": 15,
+          "max": 17,
+          "typical": 16.7
+        },
+        "brew_time_seconds": {
+          "min": 150,
+          "max": 210
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium_fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      },
+      "xref": {
+        "beanconqueror": "V60"
+      }
+    },
+    {
+      "id": "kalita-wave",
+      "name": "Kalita Wave",
+      "parent": "pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Pour-over in a flat-bottomed dripper with three small holes and fluted wave filters, made by Kalita; the flat bed favours even extraction.",
+      "filter_types": [
+        "paper"
+      ],
+      "origin_country_code": "JP",
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "dose_g": {
+          "min": 15,
+          "max": 30,
+          "typical": 20
+        },
+        "ratio": {
+          "min": 15,
+          "max": 17,
+          "typical": 16
+        },
+        "brew_time_seconds": {
+          "min": 180,
+          "max": 240
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium_fine",
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      },
+      "xref": {
+        "beanconqueror": "KALITA_WAVE"
+      }
+    },
+    {
+      "id": "chemex",
+      "name": "Chemex",
+      "aliases": [
+        "Chemex Coffeemaker"
+      ],
+      "parent": "pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Pour-over in an hourglass-shaped glass brewer with thick bonded paper filters that hold back more oils, giving a very clean cup.",
+      "filter_types": [
+        "paper"
+      ],
+      "introduced_year": 1941,
+      "origin_country_code": "US",
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "dose_g": {
+          "min": 20,
+          "max": 50,
+          "typical": 30
+        },
+        "ratio": {
+          "min": 15,
+          "max": 17,
+          "typical": 16
+        },
+        "brew_time_seconds": {
+          "min": 210,
+          "max": 300
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium",
+          "medium_coarse"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "xref": {
+        "wikidata": "Q5090371",
+        "beanconqueror": "CHEMEX"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q5090371",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "introduced_year": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q5090371",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "origin_country_code": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q5090371",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "melitta",
+      "name": "Melitta filter",
+      "aliases": [
+        "Melitta",
+        "Filtertüte"
+      ],
+      "parent": "pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Pour-over in a wedge-shaped dripper with one or few small holes and folded paper filters; the classic household filter method.",
+      "filter_types": [
+        "paper"
+      ],
+      "introduced_year": 1908,
+      "origin_country_code": "DE",
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 15,
+          "max": 18,
+          "typical": 16
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "origami",
+      "name": "Origami dripper",
+      "parent": "pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Pour-over in a ceramic dripper with deep folds that accepts both cone and flat-bottom filters.",
+      "filter_types": [
+        "paper"
+      ],
+      "origin_country_code": "JP",
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 15,
+          "max": 17,
+          "typical": 16
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium_fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      },
+      "xref": {
+        "beanconqueror": "ORIGAMI"
+      }
+    },
+    {
+      "id": "clever-dripper",
+      "name": "Clever dripper",
+      "aliases": [
+        "Clever Coffee Dripper"
+      ],
+      "parent": "pour-over",
+      "category": "immersion",
+      "extraction": "hybrid",
+      "description": "A cone dripper with a valve: the coffee steeps first, then drains through a paper filter when placed on a cup, combining immersion and filtration.",
+      "filter_types": [
+        "paper"
+      ],
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 14,
+          "max": 17,
+          "typical": 15
+        },
+        "brew_time_seconds": {
+          "min": 150,
+          "max": 240
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "steep_time_seconds",
+        "brew_time_seconds",
+        "water_temperature_celsius",
+        "yield_g"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "batch-brew",
+      "name": "Batch brew",
+      "aliases": [
+        "Filter machine",
+        "Filterkaffeemaschine"
+      ],
+      "parent": "pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Filter coffee made by an electric brewer that heats water and spreads it over a bed of coffee; common in cafés for larger volumes.",
+      "filter_types": [
+        "paper"
+      ],
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "grinder"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 15,
+          "max": 18,
+          "typical": 16.5
+        },
+        "brew_time_seconds": {
+          "min": 240,
+          "max": 360
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "water_temperature_celsius",
+        "yield_g"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "french-press",
+      "name": "French press",
+      "aliases": [
+        "Cafetière",
+        "Press pot",
+        "Stempelkanne"
+      ],
+      "category": "immersion",
+      "extraction": "immersion",
+      "description": "Coarse coffee steeped in hot water in a jug, then separated by pressing a metal mesh plunger down; full-bodied with some sediment.",
+      "filter_types": [
+        "metal"
+      ],
+      "equipment_types": [
+        "brewer",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 12,
+          "max": 17,
+          "typical": 15
+        },
+        "brew_time_seconds": {
+          "min": 240,
+          "max": 600,
+          "typical": 240
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "coarse",
+          "medium_coarse"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "steep_time_seconds",
+        "brew_time_seconds",
+        "water_temperature_celsius",
+        "yield_g"
+      ],
+      "xref": {
+        "wikidata": "Q1147545",
+        "beanconqueror": "FRENCH_PRESS"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q1147545",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "aeropress",
+      "name": "AeroPress",
+      "category": "pressure",
+      "extraction": "hybrid",
+      "description": "Coffee steeped in a plastic cylinder, then pushed through a small paper or metal filter with a plunger; quick, forgiving and portable.",
+      "filter_types": [
+        "paper",
+        "metal"
+      ],
+      "introduced_year": 2005,
+      "origin_country_code": "US",
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "dose_g": {
+          "min": 11,
+          "max": 20,
+          "typical": 15
+        },
+        "ratio": {
+          "min": 6,
+          "max": 17,
+          "typical": 14
+        },
+        "brew_time_seconds": {
+          "min": 60,
+          "max": 180,
+          "typical": 120
+        },
+        "water_temperature_celsius": {
+          "min": 80,
+          "max": 96
+        },
+        "grind_size": [
+          "fine",
+          "medium_fine",
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "steep_time_seconds",
+        "brew_time_seconds",
+        "water_temperature_celsius",
+        "yield_g",
+        "paper_filter_position"
+      ],
+      "xref": {
+        "wikidata": "Q381188",
+        "beanconqueror": "AEROPRESS"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q381188",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "introduced_year": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q381188",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "origin_country_code": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q381188",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "moka-pot",
+      "name": "Moka pot",
+      "aliases": [
+        "Bialetti",
+        "Caffettiera",
+        "Espressokocher"
+      ],
+      "category": "pressure",
+      "extraction": "percolation",
+      "description": "Stovetop brewer in which steam pressure in the lower chamber pushes hot water up through a bed of coffee into the top chamber; strong and intense.",
+      "filter_types": [
+        "metal"
+      ],
+      "introduced_year": 1933,
+      "origin_country_code": "IT",
+      "equipment_types": [
+        "brewer",
+        "grinder"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 7,
+          "max": 10,
+          "typical": 8
+        },
+        "brew_time_seconds": {
+          "min": 180,
+          "max": 300
+        },
+        "brew_pressure_bar": {
+          "min": 1,
+          "max": 2
+        },
+        "grind_size": [
+          "medium_fine",
+          "fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "water_temperature_celsius",
+        "yield_g"
+      ],
+      "xref": {
+        "wikidata": "Q1054566",
+        "beanconqueror": "BIALETTI"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q1054566",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "introduced_year": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q1054566",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "origin_country_code": {
+          "method": "manual",
+          "confidence": 0.85,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "neapolitan-flip",
+      "name": "Neapolitan flip pot",
+      "aliases": [
+        "Cuccumella",
+        "Napoletana"
+      ],
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "A two-chamber pot heated on the stove and then flipped so the hot water drips through the coffee by gravity.",
+      "filter_types": [
+        "metal"
+      ],
+      "introduced_year": 1819,
+      "origin_country_code": "FR",
+      "equipment_types": [
+        "brewer",
+        "grinder"
+      ],
+      "typical_parameters": {
+        "grind_size": [
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "xref": {
+        "wikidata": "Q2541439"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q2541439",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "introduced_year": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q2541439",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "origin_country_code": {
+          "method": "manual",
+          "confidence": 0.85,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "siphon",
+      "name": "Siphon",
+      "aliases": [
+        "Vacuum pot",
+        "Syphon"
+      ],
+      "category": "vacuum",
+      "extraction": "hybrid",
+      "description": "Vapour pressure pushes water into an upper chamber where it steeps the coffee; when the heat is removed, the cooling vacuum pulls the brew back down through a filter.",
+      "filter_types": [
+        "cloth",
+        "paper",
+        "metal"
+      ],
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 13,
+          "max": 16,
+          "typical": 15
+        },
+        "brew_time_seconds": {
+          "min": 60,
+          "max": 120
+        },
+        "water_temperature_celsius": {
+          "min": 88,
+          "max": 96
+        },
+        "grind_size": [
+          "medium",
+          "medium_fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "steep_time_seconds",
+        "brew_time_seconds",
+        "water_temperature_celsius",
+        "yield_g"
+      ],
+      "xref": {
+        "wikidata": "Q1704731",
+        "beanconqueror": "SIPHON"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q1704731",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "percolator",
+      "name": "Percolator",
+      "category": "boiling",
+      "extraction": "percolation",
+      "description": "Boiling water is driven repeatedly up a tube and over the coffee bed, recirculating the brew; tends to over-extract.",
+      "filter_types": [
+        "metal"
+      ],
+      "equipment_types": [
+        "brewer",
+        "grinder"
+      ],
+      "typical_parameters": {
+        "grind_size": [
+          "coarse"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds"
+      ],
+      "xref": {
+        "wikidata": "Q2342885"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q2342885",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cezve",
+      "name": "Cezve",
+      "aliases": [
+        "Ibrik",
+        "Turkish coffee",
+        "Türk kahvesi",
+        "Džezva"
+      ],
+      "category": "boiling",
+      "extraction": "immersion",
+      "description": "Extra-fine coffee, water and optionally sugar heated together in a small long-handled pot until it foams, then served unfiltered.",
+      "filter_types": [
+        "none"
+      ],
+      "origin_country_code": "TR",
+      "equipment_types": [
+        "brewer",
+        "grinder"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 8,
+          "max": 12,
+          "typical": 10
+        },
+        "grind_size": [
+          "extra_fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds"
+      ],
+      "typical_drinks": [
+        "Turkish coffee"
+      ],
+      "xref": {
+        "wikidata": "Q43022",
+        "beanconqueror": "TURKISH"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q43022",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "origin_country_code": {
+          "method": "import",
+          "confidence": 0.95,
+          "sources": [
+            {
+              "source_id": "wikidata",
+              "url": "https://www.wikidata.org/wiki/Q43022",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "phin",
+      "name": "Phin",
+      "aliases": [
+        "Vietnamese phin",
+        "Cà phê phin"
+      ],
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "A small Vietnamese metal filter that sits on the cup; water drips slowly through a pressed bed of coffee, often over condensed milk.",
+      "filter_types": [
+        "metal"
+      ],
+      "origin_country_code": "VN",
+      "equipment_types": [
+        "brewer",
+        "kettle",
+        "grinder"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 5,
+          "max": 10,
+          "typical": 8
+        },
+        "brew_time_seconds": {
+          "min": 240,
+          "max": 360
+        },
+        "grind_size": [
+          "medium_fine",
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "typical_drinks": [
+        "cà phê sữa đá",
+        "cà phê đen"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        },
+        "origin_country_code": {
+          "method": "manual",
+          "confidence": 0.85,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cold-brew",
+      "name": "Cold brew",
+      "aliases": [
+        "Cold Brew"
+      ],
+      "category": "cold",
+      "extraction": "immersion",
+      "description": "Coarse coffee steeped in cold or room-temperature water for many hours, then filtered; smooth, low in acidity, often diluted before serving.",
+      "filter_types": [
+        "paper",
+        "cloth",
+        "metal"
+      ],
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 4,
+          "max": 12,
+          "typical": 8
+        },
+        "brew_time_seconds": {
+          "min": 43200,
+          "max": 86400,
+          "typical": 57600
+        },
+        "water_temperature_celsius": {
+          "min": 4,
+          "max": 22
+        },
+        "grind_size": [
+          "coarse",
+          "extra_coarse"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "steep_time_seconds",
+        "brew_time_seconds",
+        "water_temperature_celsius",
+        "yield_g"
+      ],
+      "typical_drinks": [
+        "cold brew",
+        "cold brew concentrate"
+      ],
+      "xref": {
+        "wikidata": "Q5142444",
+        "beanconqueror": "COLD_BREW"
+      },
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        },
+        {
+          "source_id": "wikidata",
+          "url": "https://www.wikidata.org/wiki/Q5142444",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "japanese-iced",
+      "name": "Japanese iced coffee",
+      "aliases": [
+        "Flash brew",
+        "Iced pour-over"
+      ],
+      "parent": "pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Pour-over brewed hot directly onto ice, with part of the water replaced by ice, so it chills instantly and keeps aromatics.",
+      "filter_types": [
+        "paper"
+      ],
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "min": 14,
+          "max": 17,
+          "typical": 15
+        },
+        "water_temperature_celsius": {
+          "min": 90,
+          "max": 96,
+          "typical": 93
+        },
+        "grind_size": [
+          "medium_fine"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "brew_time_seconds",
+        "target_time_seconds",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "pour_count",
+        "yield_g"
+      ],
+      "method": "manual",
+      "confidence": 0.9,
+      "sources": [
+        {
+          "source_id": "manual-review",
+          "retrieved_at": "2026-11-05T18:00:00Z"
+        }
+      ],
+      "checked_at": "2026-11-05T18:00:00Z",
+      "field_provenance": {
+        "typical_parameters": {
+          "method": "manual",
+          "confidence": 0.8,
+          "sources": [
+            {
+              "source_id": "manual-review",
+              "retrieved_at": "2026-11-05T18:00:00Z"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

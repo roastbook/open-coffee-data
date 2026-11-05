@@ -1,0 +1,33 @@
+# @orcastrate
+# template: common/release
+# params:
+#   ci_workflow: cupping.yml
+#   version_scheme: date
+# @end-orcastrate
+
+name: Roastbook · 🫘 Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: Version bump from Conventional Commits or an explicit override
+        required: true
+        type: choice
+        default: auto
+        options: [auto, patch, minor, major]
+
+permissions: {}
+
+jobs:
+  release:
+    name: Release
+    permissions:
+      contents: read
+      actions: read
+    uses: Roastbook/workflows/.github/workflows/release.yml@3fef09ed6f5c71c190a27ece5378697dbf76e8cb # main
+    with:
+      bump_type: ${{ inputs.bump_type }}
+      ci_workflow: cupping.yml
+      version_scheme: date
+    secrets: inherit

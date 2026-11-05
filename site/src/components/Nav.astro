@@ -1,0 +1,20 @@
+---
+export interface Props { current: "explorer" | "downloads" | "brew-methods" | "sources" | "bot" }
+const { current } = Astro.props;
+const items = [
+  ["explorer", "/", "Explorer"],
+  ["downloads", "/downloads/", "Downloads"],
+  ["brew-methods", "/brew-methods/", "Brew methods"],
+  ["sources", "/sources/", "Sources"],
+  ["bot", "/bot/", "Crawler"],
+] as const;
+---
+<nav class="subnav" aria-label="Data Explorer">
+  {items.map(([id, href, label]) => <a href={href} aria-current={id === current ? "page" : undefined}>{label}</a>)}
+</nav>
+<style>
+  .subnav { display: flex; flex-wrap: wrap; gap: 0.25rem; margin: 0 0 1rem; }
+  .subnav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.85rem; border-radius: 999px; border: 1px solid var(--border); color: var(--foreground); text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+  .subnav a:hover { background: var(--secondary); }
+  .subnav a[aria-current="page"] { background: var(--primary); border-color: var(--primary); color: var(--primary-foreground); }
+</style>

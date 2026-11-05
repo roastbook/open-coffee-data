@@ -1,0 +1,46 @@
+name: Propose a source
+description: Suggest a new source for the allow-list (datasets/sources.json).
+title: "Source: "
+labels: ["sources"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Sources must allow redistribution of what we take from them under CC BY 4.0. We never use Google Maps, OpenStreetMap (share-alike), closed café guides or review sites as sources.
+  - type: input
+    id: name
+    attributes:
+      label: Source name and URL
+    validations:
+      required: true
+  - type: input
+    id: licence
+    attributes:
+      label: Licence
+      description: SPDX identifier if there is one (for example CC0-1.0, CDLA-Permissive-2.0), or "facts only".
+    validations:
+      required: true
+  - type: textarea
+    id: terms
+    attributes:
+      label: Terms of use
+      description: Link to the terms and quote the parts that allow or restrict reuse, crawling and storage.
+    validations:
+      required: true
+  - type: checkboxes
+    id: allowed_for
+    attributes:
+      label: Allowed for
+      description: What the source may be used for (sources.json allowed_for).
+      options:
+        - label: discovery (finding places)
+        - label: facts (values in records)
+        - label: images
+        - label: verification only (nothing stored)
+  - type: textarea
+    id: how
+    attributes:
+      label: How to use it
+      description: Which records or fields, attribution needed, rate limits, anything to avoid.
+    validations:
+      required: true

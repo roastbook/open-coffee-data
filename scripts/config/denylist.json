@@ -1,0 +1,18 @@
+{
+  "description": "Domains that must never appear in a dataset URL. Kept under scripts/ so that only maintainers (CODEOWNERS) can change it; the Sourcing agent may not touch scripts/. Each rule matches the URL host (regex) and optionally the path (regex). external_ratings_ok: the URL may appear in external_ratings[].url as a reference link (never as a data source).",
+  "rules": [
+    { "id": "extract-coffee", "host": "(^|\\.)extract\\.coffee$", "reason": "closed guide; never scrape or import (SPEC section 2)" },
+    { "id": "european-coffee-trip", "host": "(^|\\.)europeancoffeetrip\\.com$", "reason": "closed guide; never scrape or import" },
+    { "id": "roasters-app", "host": "(^|\\.)roasters\\.app$", "reason": "closed guide; never scrape or import" },
+    { "id": "caffe-atlas", "host": "caffe-?atlas", "reason": "closed guide; never scrape or import" },
+    { "id": "google-maps", "host": "(^|\\.)google\\.[a-z.]+$", "path": "^/maps", "reason": "Google Maps content may not be stored (only xref.google_place_id)" },
+    { "id": "google-maps-host", "host": "^maps\\.google\\.[a-z.]+$", "reason": "Google Maps content may not be stored (only xref.google_place_id)" },
+    { "id": "google-maps-short", "host": "^(maps\\.app\\.goo\\.gl|goo\\.gl|g\\.page|g\\.co)$", "reason": "Google Maps short links may not be stored" },
+    { "id": "google-places-api", "host": "^(maps|places)\\.googleapis\\.com$", "reason": "Google Places API content may not be stored" },
+    { "id": "openstreetmap", "host": "(^|\\.)(openstreetmap\\.(org|de|fr)|osm\\.org)$", "reason": "OpenStreetMap data is share-alike (ODbL) and not used" },
+    { "id": "yelp", "host": "(^|\\.)yelp\\.[a-z.]+$", "reason": "review site; never a data source", "external_ratings_ok": true },
+    { "id": "tripadvisor", "host": "(^|\\.)tripadvisor\\.[a-z.]+$", "reason": "review site; never a data source", "external_ratings_ok": true },
+    { "id": "happycow", "host": "(^|\\.)happycow\\.net$", "reason": "review site; never a data source", "external_ratings_ok": true },
+    { "id": "foursquare-app", "host": "^(www\\.)?foursquare\\.com$", "path": "^/v/", "reason": "Foursquare app venue pages are not the open dataset; cite foursquare-os-places with xref.foursquare instead" }
+  ]
+}

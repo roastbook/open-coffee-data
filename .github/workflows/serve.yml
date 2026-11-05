@@ -1,0 +1,30 @@
+# @orcastrate
+# template: open-coffee/serve
+# params:
+#   kind: data
+# @end-orcastrate
+
+name: Roastbook · 🫖 Serve (deploy)
+
+on:
+  push:
+    branches: [main]
+    tags: ["[0-9]*.[0-9]*.[0-9]*.[0-9]*"]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  build:
+    name: Build site
+    permissions:
+      contents: read
+    uses: Roastbook/workflows/.github/workflows/site-build.yml@3fef09ed6f5c71c190a27ece5378697dbf76e8cb # main
+
+  deploy:
+    name: Deploy
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    uses: Roastbook/workflows/.github/workflows/pages-deploy.yml@3fef09ed6f5c71c190a27ece5378697dbf76e8cb # main

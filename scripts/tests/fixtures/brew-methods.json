@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v1.0.0.json",
+  "meta": { "version": "2026.11.05.1", "generated_at": "2026-11-05T12:00:00Z", "licence": "CC-BY-4.0", "attribution": "Roastbook Open Coffee" },
+  "brew_methods": [
+    {
+      "id": "pour-over",
+      "name": "Pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Hot water is poured by hand over ground coffee in a filter cone.",
+      "xref": { "wikidata": "Q1" },
+      "typical_parameters": { "ratio": { "min": 15, "max": 17, "typical": 16 }, "grind_size": ["medium"] },
+      "sources": [{ "source_id": "wikidata", "retrieved_at": "2026-11-05T12:00:00Z" }],
+      "checked_at": "2026-11-05T12:00:00Z"
+    },
+    {
+      "id": "v60",
+      "name": "Hario V60",
+      "parent": "pour-over",
+      "category": "filter",
+      "extraction": "percolation",
+      "description": "Pour-over with a conical dripper with spiral ribs and one large hole.",
+      "equipment_types": ["brewer", "filter"],
+      "sources": [{ "source_id": "wikidata", "retrieved_at": "2026-11-05T12:00:00Z" }],
+      "checked_at": "2026-11-05T12:00:00Z"
+    }
+  ]
+}

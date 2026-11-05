@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.roast/
+.cache/
+.lycheecache
+.astro/
+site/.astro/
+*.log
+.DS_Store

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Propose a schema change
+    url: https://github.com/Roastbook/open-coffee-schema/issues/new/choose
+    about: New fields, enums or changes to the Open Coffee Schema belong in the schema repository.
+  - name: Questions and ideas
+    url: https://github.com/Roastbook/open-coffee-data/discussions
+    about: Ask and discuss in GitHub Discussions.
+  - name: Security or personal data
+    url: https://github.com/Roastbook/open-coffee-data/security/advisories/new
+    about: Report vulnerabilities or personal data privately.

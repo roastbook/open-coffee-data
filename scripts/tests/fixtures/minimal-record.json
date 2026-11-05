@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v1.0.0.json",
+  "meta": { "version": "2026.11.05.1", "generated_at": "2026-11-05T12:00:00Z", "country_code": "DE", "city": "example-city" },
+  "places": [
+    {
+      "id": "cp-example0002",
+      "name": "Corner Café",
+      "status": "unverified",
+      "checked_at": "2026-11-05T12:00:00Z",
+      "address": { "country_code": "DE" },
+      "location": { "lat": 48.14, "lon": 11.58 },
+      "specialty_tier": "unknown",
+      "sources": [{ "source_id": "foursquare-os-places", "retrieved_at": "2026-11-05T12:00:00Z" }]
+    },
+    {
+      "id": "cp-example0003",
+      "name": "Former Roastery",
+      "status": "closed",
+      "closed_on": "2025-12-31",
+      "checked_at": "2026-11-05T12:00:00Z",
+      "address": { "country_code": "DE", "locality": "Example City" },
+      "location": { "lat": 48.15, "lon": 11.59 },
+      "specialty_tier": "A",
+      "merged_into": "cp-example0001",
+      "sources": [{ "source_id": "manual-review", "retrieved_at": "2026-11-05T12:00:00Z" }]
+    }
+  ]
+}

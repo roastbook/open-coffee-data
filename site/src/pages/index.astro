@@ -1,0 +1,109 @@
+---
+import Layout from "@roastbook/open-coffee-ui/Layout.astro";
+import { fieldUrl } from "@roastbook/open-coffee-ui/sites";
+import Nav from "../components/Nav.astro";
+import { buildDate, cities, places, version } from "../lib/data";
+import { AMENITIES, SERVING } from "../scripts/fields";
+import "maplibre-gl/dist/maplibre-gl.css";
+import "../styles/explorer.css";
+---
+<Layout title="Explorer" site="data" version={version} buildDate={buildDate} description="Map and table of open coffee place data: specialty cafés with sources for every fact." canonical="https://data.roastbook.coffee/">
+  <Nav current="explorer" />
+  <h1>Coffee places</h1>
+  <p class="lead muted">{places.length} places from open, redistributable sources. Every value links to its definition and shows where it came from.</p>
+
+  <div class="explorer" data-explorer>
+    <form class="filters card" data-filters aria-label="Filter places" onsubmit="return false">
+      <div class="filters__head">
+        <h2 class="filters__title">Filters</h2>
+        <button type="button" class="filters__toggle" data-filters-toggle aria-expanded="true" aria-controls="filters-body">Show filters</button>
+        <button type="reset" class="link-button">Clear all</button>
+      </div>
+      <div class="filters__body" id="filters-body">
+      <label class="field">
+        <span>Search</span>
+        <input type="search" name="q" placeholder="Name, street, roaster…" autocomplete="off" />
+      </label>
+      <label class="field">
+        <span><a href={fieldUrl("address.locality")}>City</a></span>
+        <select name="city">
+          <option value="">All cities</option>
+          {cities.map((c) => <option value={c.slug}>{c.name} ({c.country})</option>)}
+        </select>
+      </label>
+      <fieldset>
+        <legend><a href={fieldUrl("specialty_tier")}>Specialty tier</a></legend>
+        <label class="check"><input type="checkbox" name="tier" value="A" /> <span class="tier-icon" data-tier="A" aria-hidden="true"></span> A · specialty-focused</label>
+        <label class="check"><input type="checkbox" name="tier" value="B" /> <span class="tier-icon" data-tier="B" aria-hidden="true"></span> B · serves specialty</label>
+        <label class="check"><input type="checkbox" name="tier" value="none" /> <span class="tier-icon" data-tier="other" aria-hidden="true"></span> Not specialty</label>
+        <label class="check"><input type="checkbox" name="tier" value="unknown" /> <span class="tier-icon" data-tier="other" aria-hidden="true"></span> Not yet assessed</label>
+      </fieldset>
+      <fieldset>
+        <legend><a href={fieldUrl("status")}>Status</a></legend>
+        {[["open", "Open"], ["temporarily_closed", "Temporarily closed"], ["closed", "Closed"], ["unverified", "Unverified"]].map(([v, l]) => (
+          <label class="check"><input type="checkbox" name="status" value={v} /> {l}</label>
+        ))}
+      </fieldset>
+      <fieldset>
+        <legend>Coffee and shop</legend>
+        <label class="check"><input type="checkbox" name="roasts" value="1" /> <a href={fieldUrl("roasts_own_beans")}>Roasts own beans</a></label>
+        <label class="check"><input type="checkbox" name="equipment" value="1" /> <a href={fieldUrl("sells_equipment")}>Sells equipment</a></label>
+      </fieldset>
+      <details>
+        <summary>Serving</summary>
+        <fieldset>
+          <legend class="visually-hidden">Serving</legend>
+          {SERVING.map(([k, l]) => <label class="check"><input type="checkbox" name="serving" value={k} /> <a href={fieldUrl(`serving.${k}`)}>{l}</a></label>)}
+        </fieldset>
+      </details>
+      <details>
+        <summary>Amenities</summary>
+        <fieldset>
+          <legend class="visually-hidden">Amenities</legend>
+          {AMENITIES.map(([k, l]) => <label class="check"><input type="checkbox" name="amenities" value={k} /> <a href={fieldUrl(`amenities.${k}`)}>{l}</a></label>)}
+        </fieldset>
+      </details>
+      <label class="check"><input type="checkbox" name="inview" value="1" /> Only places in the map view</label>
+      </div>
+    </form>
+
+    <section class="results" aria-label="Results">
+      <div class="results__bar">
+        <p class="results__count tabular" role="status" aria-live="polite" data-count>Loading places…</p>
+        <div class="view-toggle" role="group" aria-label="View">
+          <button type="button" data-view="map" aria-pressed="true">Map</button>
+          <button type="button" data-view="table" aria-pressed="false">Table</button>
+        </div>
+      </div>
+      <div class="panes" data-panes data-active="map">
+        <div class="pane pane--map">
+          <div class="map" data-map role="region" aria-label="Map of the filtered places. The table lists the same places for keyboard and screen reader use."></div>
+          <ul class="legend card" aria-label="Map legend">
+            <li><span class="tier-icon" data-tier="A" aria-hidden="true"></span> Tier A</li>
+            <li><span class="tier-icon" data-tier="B" aria-hidden="true"></span> Tier B</li>
+            <li><span class="tier-icon" data-tier="other" aria-hidden="true"></span> Other</li>
+            <li><span class="cluster-icon" aria-hidden="true">3</span> Group</li>
+          </ul>
+          <p class="map-note muted">Basemap © <a href="https://openfreemap.org/">OpenFreeMap</a>, <a href="https://openmaptiles.org/">OpenMapTiles</a>, data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>. The basemap is for display only; the coffee place dataset contains no OpenStreetMap data.</p>
+        </div>
+        <div class="pane pane--table">
+          <div class="table-wrap">
+            <table data-table>
+              <caption class="visually-hidden">Filtered coffee places. Column headers sort; names open the details.</caption>
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <nav class="pager" aria-label="Table pages" data-pager></nav>
+        </div>
+      </div>
+    </section>
+
+    <aside class="detail card" data-detail hidden aria-labelledby="detail-title" tabindex="-1"></aside>
+  </div>
+  <noscript><p>The map and table need JavaScript. Download the data from the <a href="/downloads/">downloads page</a>.</p></noscript>
+</Layout>
+
+<script>
+  import "../scripts/explorer";
+</script>

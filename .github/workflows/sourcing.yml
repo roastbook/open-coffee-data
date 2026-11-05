@@ -1,0 +1,27 @@
+# @orcastrate
+# template: open-coffee/sourcing
+# @end-orcastrate
+
+name: Roastbook · 🌱 Sourcing (data agent)
+
+on:
+  schedule:
+    - cron: "41 3 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  agent:
+    name: Sourcing run
+    permissions:
+      contents: read
+    uses: Roastbook/workflows/.github/workflows/agent-run.yml@3fef09ed6f5c71c190a27ece5378697dbf76e8cb # main
+    with:
+      app_id: ${{ vars.SOURCING_APP_ID }}
+      llm_base_url: ${{ vars.LLM_BASE_URL }}
+      llm_model: ${{ vars.LLM_MODEL }}
+      budget_usd: ${{ vars.SOURCING_BUDGET_USD }}
+    secrets:
+      app_private_key: ${{ secrets.SOURCING_APP_PRIVATE_KEY }}
+      llm_api_key: ${{ secrets.LLM_API_KEY }}

@@ -1,0 +1,69 @@
+---
+import Layout from "@roastbook/open-coffee-ui/Layout.astro";
+import { fieldUrl } from "@roastbook/open-coffee-ui/sites";
+import Nav from "../components/Nav.astro";
+import { brewMethods, buildDate, version } from "../lib/data";
+import "../styles/pages.css";
+
+const f = (path: string) => fieldUrl(path, "latest", "brew-methods");
+// Depth-first order so children follow their parent.
+const children = new Map<string | undefined, any[]>();
+for (const m of brewMethods) children.set(m.parent, [...(children.get(m.parent) ?? []), m]);
+const ids = new Set(brewMethods.map((m) => m.id));
+const ordered: { m: any; depth: number }[] = [];
+const walk = (parent: string | undefined, depth: number) => {
+  for (const m of (children.get(parent) ?? []).sort((a, b) => a.name.localeCompare(b.name))) { ordered.push({ m, depth }); walk(m.id, depth + 1); }
+};
+walk(undefined, 0);
+for (const m of brewMethods) if (m.parent && !ids.has(m.parent)) ordered.push({ m, depth: 0 });
+
+const range = (r: any, unit: string, fmt = (n: number) => `${n}`) =>
+  r ? `${r.min !== undefined && r.max !== undefined ? `${fmt(r.min)}–${fmt(r.max)}` : fmt(r.min ?? r.max ?? r.typical)}${unit}${r.typical !== undefined && (r.min !== undefined || r.max !== undefined) ? ` (typically ${fmt(r.typical)}${unit})` : ""}` : null;
+const params = (t: any = {}) => [
+  ["dose_g", range(t.dose_g, " g")],
+  ["ratio", range(t.ratio, "", (n) => `1:${n}`)],
+  ["water_temperature_celsius", range(t.water_temperature_celsius, " °C")],
+  ["brew_time_seconds", range(t.brew_time_seconds, " s")],
+  ["brew_pressure_bar", range(t.brew_pressure_bar, " bar")],
+  ["grind_size", t.grind_size?.map((g: string) => g.replaceAll("_", " ")).join(", ")],
+].filter(([, v]) => v) as [string, string][];
+const LABEL: Record<string, string> = { dose_g: "Dose", ratio: "Ratio", water_temperature_celsius: "Water", brew_time_seconds: "Time", brew_pressure_bar: "Pressure", grind_size: "Grind" };
+---
+<Layout title="Brew methods" site="data" version={version} buildDate={buildDate} description="Open list of coffee brew methods with categories, typical parameters and Wikidata links.">
+  <Nav current="brew-methods" />
+  <h1>Brew methods</h1>
+  <p class="lead">Ways of brewing coffee and their usual starting parameters, as a tree from general methods to specific devices. Download <a href="/datasets/brew-methods/brew-methods.json">brew-methods.json</a>. Column headings link to the field definitions.</p>
+  {ordered.length === 0 ? <p class="muted">No brew methods are published yet.</p> : (
+    <div class="table-scroll">
+      <table>
+        <caption class="visually-hidden">Brew methods, indented under their parent method</caption>
+        <thead>
+          <tr>
+            <th scope="col"><a href={f("name")}>Name</a></th>
+            <th scope="col"><a href={f("category")}>Category</a></th>
+            <th scope="col"><a href={f("typical_parameters")}>Typical parameters</a></th>
+            <th scope="col"><a href={f("xref.wikidata")}>Wikidata</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          {ordered.map(({ m, depth }) => (
+            <tr class={`depth-${Math.min(depth, 3)}`} id={m.id}>
+              <th scope="row">
+                <span class="tree-name">{depth > 0 && <span aria-hidden="true">↳</span>}{m.name}</span>
+                {m.parent && <span class="visually-hidden">, a kind of {brewMethods.find((x) => x.id === m.parent)?.name ?? m.parent}</span>}
+                <div class="muted small">{m.description}</div>
+              </th>
+              <td>{m.category}<div class="muted small"><a href={f("extraction")}>{m.extraction}</a></div></td>
+              <td>
+                {params(m.typical_parameters).length ? (
+                  <dl class="facts">{params(m.typical_parameters).map(([k, v]) => <div><dt><a href={f(`typical_parameters.${k}`)}>{LABEL[k]}</a></dt><dd>{v}</dd></div>)}</dl>
+                ) : <span class="muted">—</span>}
+              </td>
+              <td>{m.xref?.wikidata ? <a href={`https://www.wikidata.org/wiki/${m.xref.wikidata}`}>{m.xref.wikidata}</a> : <span class="muted">—</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</Layout>
