@@ -7,3 +7,19 @@ dist/
 site/.astro/
 *.log
 .DS_Store
+
+# AI assistant and agent tool files never belong in the repository
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.claude/
+.codex/
+.agents/
+.serena/
+.gitnexus/
+.cursor/
+.cursorrules
+.aider*
+.windsurf/
+.continue/
+.github/copilot-instructions.md

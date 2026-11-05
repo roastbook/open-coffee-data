@@ -28,6 +28,7 @@ Owners may also suggest a photo: link the original file, published under an open
 - **Ids are permanent.** New places get `cp-` plus 10 random characters from `0123456789abcdefghjkmnpqrstvwxyz`. Never reuse, rename or delete an id. A duplicate keeps its record with `merged_into` pointing to the surviving id.
 - **Images** need `licence`, `author` and `source_url`, and an open licence (CC0, CC BY, CC BY-SA). Link the original file; never add image files to the repository.
 - **No personal data.** Operators only when they are companies or other legal entities.
+- **No versions in data files.** `meta` holds only `licence`, `country_code`, `city` and `city_name`. The schema version is the `$schema` URL (changed only by the schema bump pull request); the dataset version is the release tag.
 
 The checks behind these rules are listed in [docs/validation.md](docs/validation.md).
 
