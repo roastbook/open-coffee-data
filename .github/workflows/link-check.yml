@@ -1,5 +1,5 @@
 # @orcastrate
-# template: open-coffee/resting
+# template: open-coffee/link-check
 # params:
 #   kind: data
 #   site_url: https://data.roastbook.coffee/
@@ -8,7 +8,7 @@
 #     - bot/
 # @end-orcastrate
 
-name: Roastbook · ⏳ Resting (link and smoke checks)
+name: Link check
 
 on:
   pull_request:
@@ -19,7 +19,7 @@ on:
 permissions: {}
 
 concurrency:
-  group: resting-${{ github.ref }}
+  group: link-check-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
     name: Link and smoke checks
     permissions:
       contents: read
-    uses: Roastbook/workflows/.github/workflows/link-check.yml@baecffcb84dd5587b8cb91f64e09392e678704ae # main
+    uses: Roastbook/workflows/.github/workflows/link-check.yml@7c716b16de05cc8c9cb80cdd907bf6a87587b1b5 # main
     with:
       link_check: true
       smoke_urls: >-

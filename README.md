@@ -7,7 +7,7 @@
 <p align="center">An open dataset of coffee places and specialty cafés that anyone may reuse.</p>
 
 <p align="center">
-  <a href="https://github.com/Roastbook/open-coffee-data/actions/workflows/cupping.yml"><img src="https://github.com/Roastbook/open-coffee-data/actions/workflows/cupping.yml/badge.svg" alt="Cupping (validation)" /></a>
+  <a href="https://github.com/Roastbook/open-coffee-data/actions/workflows/ci.yml"><img src="https://github.com/Roastbook/open-coffee-data/actions/workflows/ci.yml/badge.svg" alt="CI (validation)" /></a>
   <a href="https://github.com/Roastbook/open-coffee-data/tags"><img src="https://img.shields.io/github/v/tag/Roastbook/open-coffee-data?label=dataset" alt="Dataset version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue" alt="Licence: MIT" /></a>
   <a href="https://data.roastbook.coffee/"><img src="https://img.shields.io/badge/explorer-data.roastbook.coffee-aa612f" alt="Data Explorer on GitHub Pages" /></a>

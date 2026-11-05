@@ -1,11 +1,11 @@
 # @orcastrate
 # template: common/release
 # params:
-#   ci_workflow: cupping.yml
+#   ci_workflow: ci.yml
 #   version_scheme: date
 # @end-orcastrate
 
-name: Roastbook · 🫘 Release
+name: Release
 
 on:
   workflow_dispatch:
@@ -26,9 +26,9 @@ jobs:
       contents: read
       actions: read
       packages: read
-    uses: Roastbook/workflows/.github/workflows/release.yml@baecffcb84dd5587b8cb91f64e09392e678704ae # main
+    uses: Roastbook/workflows/.github/workflows/release.yml@7c716b16de05cc8c9cb80cdd907bf6a87587b1b5 # main
     with:
       bump_type: ${{ inputs.bump_type }}
-      ci_workflow: cupping.yml
+      ci_workflow: ci.yml
       version_scheme: date
     secrets: inherit

@@ -1,8 +1,8 @@
 # @orcastrate
-# template: open-coffee/roast
+# template: open-coffee/build
 # @end-orcastrate
 
-name: Roastbook · 🔥 Roast (build)
+name: Build
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ on:
 permissions: {}
 
 concurrency:
-  group: roast-${{ github.ref }}
+  group: build-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -20,4 +20,4 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: Roastbook/workflows/.github/workflows/site-build.yml@baecffcb84dd5587b8cb91f64e09392e678704ae # main
+    uses: Roastbook/workflows/.github/workflows/site-build.yml@7c716b16de05cc8c9cb80cdd907bf6a87587b1b5 # main

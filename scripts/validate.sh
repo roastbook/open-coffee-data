@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# All repository checks. Same behaviour locally and in CI (cupping.yml).
+# All repository checks. Same behaviour locally and in CI (ci.yml).
 # Env:
 #   OPEN_COFFEE_SCHEMA_DIR  use a local schemas/ folder instead of the pinned release (development before a tag exists)
 #   BASE_REF                ref to compare ids against (default origin/main; skipped with a notice when missing)
@@ -30,7 +30,7 @@ else
 fi
 export SCHEMA_DIR
 
-rm -f .roast/report.json
+rm -f .ci/report.json
 status=0
 echo "== Dataset checks (schema v$version)"
 bun scripts/check.mjs || status=1

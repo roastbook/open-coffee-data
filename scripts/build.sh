@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Builds the Pages artifact into dist/: Data Explorer, datasets/ verbatim, compiled
-# artifacts/ and CNAME. Same behaviour locally and in CI (roast.yml).
+# artifacts/ and CNAME. Same behaviour locally and in CI (build.yml).
 # Env: DATASETS_DIR (test override only), BUILD_DATE (default: today, UTC).
 source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 ensure_deps

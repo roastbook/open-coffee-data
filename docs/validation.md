@@ -1,6 +1,6 @@
 # Validation rules
 
-`scripts/validate.sh` runs these checks locally and in CI (`cupping.yml`). It fails on any error and writes `.roast/report.json` for the Roast report. The rules live in `scripts/lib/check.mjs`; the deny-list in `scripts/config/denylist.json`. Both are under `scripts/`, which the Sourcing agent cannot edit: CI fails its pull requests outside `datasets/coffee-places/**`.
+`scripts/validate.sh` runs these checks locally and in CI (`ci.yml`). It fails on any error and writes `.ci/report.json` for the CI summary. The rules live in `scripts/lib/check.mjs`; the deny-list in `scripts/config/denylist.json`. Both are under `scripts/`, which the Sourcing agent cannot edit: CI fails its pull requests outside `datasets/coffee-places/**`.
 
 ## Schema
 

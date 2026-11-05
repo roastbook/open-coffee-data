@@ -16,7 +16,7 @@ SOCIAL='(^|\.)(instagram\.com|facebook\.com|fb\.com|x\.com|twitter\.com|tiktok\.
 mapfile -t inputs < <(git ls-files --cached --others --exclude-standard -- '*.md' 'datasets/**/*.json' 2>/dev/null || find . -name '*.md' -not -path './node_modules/*')
 [ "${#inputs[@]}" -gt 0 ] || { echo "no inputs"; exit 0; }
 mkdir -p .roast
-out=.roast/lychee.json
+out=.ci/lychee.json
 
 args=(--config lychee.toml --format json --output "$out" --no-progress)
 [ -n "${GITHUB_TOKEN:-}" ] && args+=(--github-token "$GITHUB_TOKEN")
