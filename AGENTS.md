@@ -15,13 +15,15 @@ This repository is the Roastbook Open Coffee dataset. Read [README.md](README.md
 
 - Ids: `cp-` plus 10 random characters from `0123456789abcdefghjkmnpqrstvwxyz`, generated with a cryptographic random source, never derived from names. Never delete, rename or reuse an id; use `status: closed` or `merged_into`.
 - Unknown values are absent; `false` means confirmed not offered.
+- `links.website` is the place's own website, never a directory, delivery, booking, review or social page (Gelbe Seiten, Lieferando, Facebook …). Names are the name on the sign: no legal forms, SEO text or owners' names. Addresses hold "street number" only, with no email addresses or phone numbers.
+- Duplicates are never deleted: mark the extra record with `merged_into` the one you keep.
 - `meta` holds only `licence`, `country_code`, `city` and `city_name`. Never add a version: the schema version is the `$schema` URL (change it only in a schema bump pull request), the dataset version is the release tag.
 - Do not edit `scripts/`, `.github/` or `agent/` in data pull requests; they need a maintainer.
 
 ## Use the scripts
 
-- `scripts/validate.sh` before every commit (set `OPEN_COFFEE_SCHEMA_DIR` to a local `open-coffee-schema/schemas` until the schema tag exists).
+- `scripts/validate.sh` before every commit (set `OPEN_COFFEE_SCHEMA_DIR` to a local `open-coffee-schema/schemas` until the schema tag exists). It includes the data lint (`bun agent/src/lint.ts`; rules in `docs/validation.md#data-lint`); `bun agent/src/lint.ts --fix` applies only repairs that remove or derive values.
 - `bun scripts/readme-stats.mjs` after changing records; never edit the stats block by hand.
 - `scripts/build.sh` to check the Explorer and artifacts; `scripts/link-check.sh` for links.
-- `scripts/agent.sh` runs the Sourcing agent; see `docs/agent.md`.
+- `bash scripts/agent.sh` runs the data agent; see `docs/agent.md`.
 - Use Bun (`.bun-version`): `bun install`, `bun run`, `bun test`; no Node, npm or pnpm. `@roastbook/open-coffee-ui` comes from GitHub Packages (`docs/runbook.md#shared-ui-package`). Commits need a DCO sign-off (`git commit -s`) and Conventional Commit messages.
