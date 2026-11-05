@@ -13,6 +13,6 @@ export type Candidate = {
   category?: string | null;
   brand?: string | null;
   wikidata?: string; image?: string;
-  roasters: { name: string; url: string; quote: string }[];
+  roasters: { name: string; url: string; quote: string; specialty?: boolean }[];
   origins: Origin[];
 };

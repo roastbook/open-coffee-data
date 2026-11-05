@@ -38,6 +38,8 @@ rm -f .ci/report.json
 status=0
 echo "== Dataset checks (schema ${versions[*]:-none})"
 bun scripts/check.mjs || status=1
+echo "== Data lint (agent/src/lint.ts: values that pass the schema but are wrong, e.g. directory pages as websites, contact data, duplicates)"
+bun agent/src/lint.ts || status=1
 echo "== README stats"
 if [ -n "${DATASETS_DIR:-}" ]; then
   echo "::notice::DATASETS_DIR is set; skipped the README stats check"

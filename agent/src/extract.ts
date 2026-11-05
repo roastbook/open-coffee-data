@@ -6,6 +6,7 @@ import { normaliseHours, timesInQuote } from "./hours";
 import { chat } from "./llm";
 import { fold, parseStreet, tokens } from "./names";
 import type { SitePage } from "./site";
+import { CASH_ONLY, LEGAL_FORM, NOT_LEGAL_ENTITY } from "./rules";
 
 export const BOOL_FIELDS = {
   "serving.espresso": /espresso|cappuccino|flat ?white|latte|cortado|macchiato|americano|siebträger|lungo|ristretto/,
@@ -53,8 +54,6 @@ const FOCUS: Record<string, RegExp> = {
   food_led: /restaurant|küche|kitchen|brunch|frühstück|breakfast|speisen|gerichte|dishes|bistro|bäckerei|bakery|konditorei|patisserie|eis|gelato|bar\b|food|essen/,
   balanced: /kaffee|coffee/,
 };
-const LEGAL_FORM = /\b(GmbH & Co\.? KG|gGmbH|GmbH|UG \(haftungsbeschränkt\)|UG|AG|KG|OHG|SE|eG|e\.\s?V\.|Ltd\.?|S\.?r\.?l\.?|SARL|Sàrl)(?![\w])/;
-const NOT_LEGAL_ENTITY = /\be\.\s?K(fm|fr)?\.|\beK\b|\bGbR\b|\bInh(\.|aber)|\bInhaberin\b|\beingetragene[rn]? Kauf/;
 const CUPS = ["recup", "vytal", "faircup", "relevo", "cup2go", "refill", "own_cup"];
 
 export type Proposal = { field: Field; value: string | number | boolean; page: number; quote: string };
@@ -140,6 +139,7 @@ export function verify(proposals: Proposal[], pages: SitePage[], ctx: { street?:
       if (!(BOOL_FIELDS as any)[f].test(q)) { reject(p, "quote does not mention the field"); continue; }
       if (!p.value && !NEGATION.test(q)) { reject(p, "false without a negation in the quote"); continue; }
       if (f === "food.cakes_baked_in_house" && !CAKE.test(q)) { reject(p, "quote does not mention cakes"); continue; }
+      if (f === "amenities.cash_only" && p.value === true && !CASH_ONLY.test(q)) { reject(p, "quote does not say cash is the only way to pay"); continue; }
       ok(p.value);
     } else if (f in FLAG_FIELDS) {
       if (p.value !== true) continue;
@@ -167,7 +167,8 @@ export function verify(proposals: Proposal[], pages: SitePage[], ctx: { street?:
       const v = String(p.value).trim();
       if (!q.includes(norm(v))) { reject(p, "operator not in quote"); continue; }
       if (!LEGAL_FORM.test(v) || NOT_LEGAL_ENTITY.test(v) || NOT_LEGAL_ENTITY.test(p.quote)) { reject(p, "not a legal entity"); continue; }
-      if (!/impressum|imprint|legal|kontakt|contact|datenschutz|privacy|agb/i.test(page.url + " " + text.slice(0, 300))) { reject(p, "operator not from a legal notice"); continue; }
+      if (!/impressum|imprint|legal|rechtlich|anbieterkennzeichnung/i.test(page.url) && !/impressum|angaben gemäß|imprint|legal notice/i.test(text)) { reject(p, "operator not from a legal notice"); continue; }
+      if (/copyright|©|\(c\)/i.test(p.quote)) { reject(p, "a copyright line names the site owner, not the operator"); continue; }
       ok(v);
     } else if (f === "register_id") {
       const m = String(p.value).match(/\b(HR[AB])\s?(\d{2,7})\b/);

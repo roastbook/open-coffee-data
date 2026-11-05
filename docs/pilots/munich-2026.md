@@ -9,7 +9,7 @@ Every stored value was confirmed in this run on a page we fetched (the place's o
 | Criterion | Target | Result | Met |
 |---|---|---|---|
 | Coverage of extract.coffee's still-open Munich cafés | ≥ 90% | 36 of 41 (87.8%) | no |
-| Tier A/B places with complete core fields | ≥ 60 | 9 (7 A, 2 B) | no |
+| Tier A/B places with complete core fields | ≥ 60 | 8 (all tier A) | no |
 | Validation passes, nothing non-redistributable committed | yes | `scripts/validate.sh`: 0 errors (30 style warnings for hours past midnight); no page text, images or third-party lists committed | yes |
 
 Neither data target is met. The main reasons are below ("Why the targets are missed"). We did not lower the bar to reach them: a value nobody confirmed stays out.
@@ -20,15 +20,23 @@ The SPEC's candidates CSV and its 59-place ground truth list were never provided
 
 | Tier | Places |
 |---|---:|
-| A (specialty-focused) | 23 |
-| B (serves specialty) | 18 |
-| none (not specialty: chains, restaurants, bakeries, non-coffee businesses) | 228 |
-| unknown (no specialty evidence found) | 803 |
-| **Total** | **1072** |
+| A (specialty-focused) | 21 |
+| B (serves specialty) | 17 |
+| none (not specialty: chains, restaurants, bakeries, non-coffee businesses) | 237 |
+| unknown (no specialty evidence found) | 795 |
+| **Total** | **1070** (plus 6 duplicates kept as `merged_into` tombstones) |
 
-Status: 354 `open` (website fetched in this run and it names the place and its address), 718 `unverified` (found in open data, not yet confirmed by a primary page). None is marked `closed`. Overture places flagged `permanently_closed` were not added (59).
+Status: 344 `open` (website fetched in this run and it names the place and its address), 726 `unverified` (found in open data, not yet confirmed by a primary page). None is marked `closed`. Overture places flagged `permanently_closed` were not added (59).
 
 "Unknown" is large on purpose: 277 places have no website, and many café websites never name a roaster or describe their coffee, so there is nothing to base a tier on.
+
+## Data quality safeguards (added after the first publication)
+
+An analysis of the first published file found defects the schema cannot catch: 10 records used a directory or platform page (Gelbe Seiten, Lieferando, speisekartenweb, gastroguide, Facebook) as their website and took values from it, one street address contained an email address, four names contained an owner's (natural person's) name, three places were duplicated, and some names carried legal forms or SEO text. A sample of 18 soft facts had one wrong value (`cash_only` from the word "Barzahlung", which only says cash is accepted).
+
+Fixes: the data linter `agent/src/lint.ts` now runs in `scripts/validate.sh` (CI) and inside the agent before it writes ([docs/validation.md](../validation.md#data-lint)). Platform pages are never used as websites, names and street strings are cleaned, cash only needs an explicit "only cash" statement, operators must come from a legal notice, a full refresh drops values that are no longer confirmed, duplicates became `merged_into` tombstones, and records that still fail are not written. The file now has 0 lint errors and 7 warnings (5 long names, 2 possible non-coffee places), down from 15 errors and 101 warnings. All numbers in this report are for the corrected file.
+
+A research step (search-capable model for leads, every lead checked in code) was added afterwards; its results will update these numbers in a later run.
 
 ## Discovery
 
@@ -40,7 +48,7 @@ Status: 354 `open` (website fetched in this run and it names the place and its a
 | Web search (names and websites, 116 queries) | 103 places | 88 matched existing places, 14 added; the rest could not be placed |
 | Wikidata cafés | 5 | 2 matched (ids attached); 3 had no Overture counterpart |
 | Foursquare Open Source Places | 0 | gated, see blockers |
-| **Places in the file** | **1072** | |
+| **Places in the file** | **1070** live, 6 merged duplicates | |
 
 - Overture licences seen inside the bounding box: CDLA-Permissive-2.0 (all records), Apache-2.0 (records with a Foursquare contribution) and CC0-1.0 (AllThePlaces). No record had an OpenStreetMap source, so none was dropped.
 - The city boundary is the official municipality polygon from BKG VG250 (key 09162000). It is used only to filter points.
@@ -68,64 +76,64 @@ Status: 354 `open` (website fetched in this run and it names the place and its a
 
 `status=open` counts records whose status is `open`.
 
-| Field | All places (1072) | Tier A/B (41) |
+| Field | All places (1070) | Tier A/B (38) |
 |---|---:|---:|
-| `address.street_address` | 1030 (96%) | 40 (98%) |
-| `address.postal_code` | 991 (92%) | 40 (98%) |
-| `status=open` | 354 (33%) | 39 (95%) |
-| `opening_hours` | 220 (21%) | 32 (78%) |
-| `open_sunday` | 220 (21%) | 32 (78%) |
-| `description` | 41 (4%) | 41 (100%) |
-| `roasts_own_beans` | 41 (4%) | 24 (59%) |
-| `roasters_served` | 52 (5%) | 23 (56%) |
-| `serving.espresso` | 82 (8%) | 17 (41%) |
-| `serving.filter` | 22 (2%) | 11 (27%) |
+| `address.street_address` | 1002 (94%) | 37 (97%) |
+| `address.postal_code` | 966 (90%) | 37 (97%) |
+| `status=open` | 344 (32%) | 36 (95%) |
+| `opening_hours` | 204 (19%) | 29 (76%) |
+| `open_sunday` | 204 (19%) | 29 (76%) |
+| `description` | 38 (4%) | 38 (100%) |
+| `roasts_own_beans` | 40 (4%) | 22 (58%) |
+| `roasters_served` | 48 (4%) | 21 (55%) |
+| `serving.espresso` | 77 (7%) | 13 (34%) |
+| `serving.filter` | 21 (2%) | 10 (26%) |
 | `serving.pour_over` | 6 (1%) | 2 (5%) |
-| `serving.batch_brew` | 1 (0%) | 1 (2%) |
-| `serving.cold_brew` | 7 (1%) | 2 (5%) |
-| `serving.decaf` | 17 (2%) | 3 (7%) |
-| `serving.plant_milk` | 36 (3%) | 7 (17%) |
-| `amenities.wifi` | 10 (1%) | 3 (7%) |
-| `amenities.laptop_friendly` | 4 (0%) | 1 (2%) |
+| `serving.batch_brew` | 0 (0%) | 0 (0%) |
+| `serving.cold_brew` | 4 (0%) | 0 (0%) |
+| `serving.decaf` | 17 (2%) | 4 (11%) |
+| `serving.plant_milk` | 35 (3%) | 6 (16%) |
+| `amenities.wifi` | 10 (1%) | 4 (11%) |
+| `amenities.laptop_friendly` | 4 (0%) | 1 (3%) |
 | `amenities.kids_friendly` | 12 (1%) | 0 (0%) |
-| `amenities.vegan_options` | 59 (6%) | 7 (17%) |
-| `amenities.dogs_allowed` | 7 (1%) | 1 (2%) |
-| `amenities.outdoor_seating` | 70 (7%) | 7 (17%) |
-| `amenities.card_payment` | 28 (3%) | 2 (5%) |
-| `amenities.cash_only` | 5 (0%) | 0 (0%) |
-| `amenities.wheelchair_accessible` | 7 (1%) | 1 (2%) |
-| `food.focus` | 77 (7%) | 22 (54%) |
-| `food.breakfast` | 81 (8%) | 7 (17%) |
-| `food.lunch` | 67 (6%) | 6 (15%) |
-| `food.cakes_baked_in_house` | 44 (4%) | 5 (12%) |
-| `sells_beans` | 24 (2%) | 7 (17%) |
-| `sells_equipment` | 13 (1%) | 4 (10%) |
-| `offers_courses` | 17 (2%) | 5 (12%) |
+| `amenities.vegan_options` | 55 (5%) | 7 (18%) |
+| `amenities.dogs_allowed` | 7 (1%) | 1 (3%) |
+| `amenities.outdoor_seating` | 63 (6%) | 7 (18%) |
+| `amenities.card_payment` | 25 (2%) | 2 (5%) |
+| `amenities.cash_only` | 1 (0%) | 0 (0%) |
+| `amenities.wheelchair_accessible` | 7 (1%) | 1 (3%) |
+| `food.focus` | 55 (5%) | 15 (39%) |
+| `food.breakfast` | 69 (6%) | 8 (21%) |
+| `food.lunch` | 63 (6%) | 5 (13%) |
+| `food.cakes_baked_in_house` | 36 (3%) | 3 (8%) |
+| `sells_beans` | 20 (2%) | 5 (13%) |
+| `sells_equipment` | 9 (1%) | 3 (8%) |
+| `offers_courses` | 13 (1%) | 4 (11%) |
 | `reusable_cup_systems` | 3 (0%) | 0 (0%) |
-| `prices.cappuccino` | 38 (4%) | 6 (15%) |
-| `operator` | 151 (14%) | 22 (54%) |
-| `links.website` | 354 (33%) | 39 (95%) |
-| `links.instagram` | 228 (21%) | 28 (68%) |
-| `links.facebook` | 144 (13%) | 19 (46%) |
+| `prices.cappuccino` | 37 (3%) | 5 (13%) |
+| `operator` | 145 (14%) | 20 (53%) |
+| `links.website` | 344 (32%) | 36 (95%) |
+| `links.instagram` | 221 (21%) | 24 (63%) |
+| `links.facebook` | 145 (14%) | 16 (42%) |
 | `image` | 0 (0%) | 0 (0%) |
-| `xref.overture` | 1072 (100%) | 41 (100%) |
+| `xref.overture` | 1070 (100%) | 38 (100%) |
 | `xref.wikidata` | 2 (0%) | 0 (0%) |
 
-Core fields of tier A/B places that are still missing: `serving.filter` (30 places), `serving.espresso` (24), `opening_hours` (9), status not `open` (2), website or Instagram (2), street and postcode (1).
+Core fields of tier A/B places that are still missing: `serving.filter` (28 places), `serving.espresso` (25), `opening_hours` (9), status not `open` (2), website or Instagram (2), street and postcode (1).
 
 ## Coverage against extract.coffee
 
 extract.coffee lists 41 Munich cafés. We read their pages one at a time, only to measure coverage. The names are kept in `.cache/coverage/` and are not committed. The comparison ran after discovery and was not used to find places.
 
 - None of the 41 is closed according to our data, so all 41 count as still open.
-- 36 are in the dataset (87.8%): 17 tier A, 4 tier B, 1 none, 14 unknown; 27 confirmed `open`; 6 with complete core fields.
+- 36 are in the dataset (87.8%): 17 tier A, 4 tier B, 1 none, 14 unknown; 27 confirmed `open`; 5 with complete core fields.
 - Of the 5 missing, 4 have no record at their street and house number at all: they are not in Overture's places in Munich. One shares an address with a record of a different name; it may be another business in the same building, so we did not merge it.
 
 extract.coffee shows, per café, hours, a rating, photos, amenities and an AI-written description, matched from Google Maps. We store hours where the café's own site publishes them (78% of tier A/B), no ratings (only rating links are allowed and none were collected), and our own descriptions generated from stored fields. The amenity fields we could fill from open sources are in the table above; most stay low because cafés rarely state them on their websites.
 
 ## Images
 
-- No tier A place has an image (0 of 23).
+- No tier A place has an image (0 of 21).
 - The first image pass matched Commons files near a place whose title shared one word with its name. That picked a cheese stall at Viktualienmarkt, a church tower for "Turm Kaffee" and the wrong house for "Café Königin 43", so the rule was tightened: the file title must contain the place's full name, or the image must be the place's Wikidata image. Under that rule nothing qualifies. Wikidata has images only for a few traditional coffee houses (for example Café Luitpold), which are not tier A.
 - Mapillary needs an API token, and Panoramax street images cannot be confirmed automatically to show a given café.
 - To close the gap, ask owners to contribute their own photos under an open licence through the claim process in `CONTRIBUTING.md`, and upload them to Wikimedia Commons with the café's name in the title.
@@ -163,7 +171,7 @@ The search agents used about 620,000 Claude tokens in the development session; t
 
 ## Why the targets are missed
 
-1. **Filter coffee and espresso are rarely stated.** Specialty roasteries list their coffees ("Espresso blend", "Filter roast") as beans for sale. That does not show the café serves those drinks, and the verifier rejects it. Menus are often images, so `serving.filter` is known for only 27% of tier A/B places. This is the field that most often blocks "complete core fields".
+1. **Filter coffee and espresso are rarely stated.** Specialty roasteries list their coffees ("Espresso blend", "Filter roast") as beans for sale. That does not show the café serves those drinks, and the verifier rejects it. Menus are often images, so `serving.filter` is known for only 26% of tier A/B places. This is the field that most often blocks "complete core fields".
 2. **Specialty evidence is thin.** Many cafés that serve specialty coffee never name their roaster or describe their coffee on their own website. Without that, the tier stays unknown. The Instagram bio is often the only such statement, and it cannot be read.
 3. **Websites are missing or wrong** for many places in open data, and the search quota covered only a third of them.
 4. **Places missing from Overture** have no open source of coordinates: Overture has no German address points, and other geocoders are either OpenStreetMap-based or not openly licensed.

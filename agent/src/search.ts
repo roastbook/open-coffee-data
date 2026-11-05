@@ -1,6 +1,6 @@
 // Web search is used for discovery and for finding websites only; every fact is then confirmed on the primary page.
-// Providers: a seed file (results of a search done elsewhere, e.g. by a maintainer) and, optionally, the Brave Search API
-// (BRAVE_SEARCH_API_KEY; a paid service, so enabling it is a maintainer decision).
+// Providers: a seed file (results of a search done elsewhere), the Brave Search API (BRAVE_SEARCH_API_KEY, paid) or a
+// self-hosted SearXNG metasearch (SEARXNG_URL, free; it queries public search engines, whose terms apply).
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { CACHE } from "./config";
@@ -21,19 +21,40 @@ export function websiteSeeds(slug: string): Map<string, string> {
   return new Map(existsSync(f) ? JSON.parse(readFileSync(f, "utf8")).found.filter((x: any) => /^https?:\/\//.test(x.website ?? "")).map((x: any) => [x.id, x.website]) : []);
 }
 
-export const searchEnabled = () => !!process.env.BRAVE_SEARCH_API_KEY;
+export type Result = { url: string; title: string; snippet: string };
+export const searchEnabled = () => !!(process.env.BRAVE_SEARCH_API_KEY || process.env.SEARXNG_URL);
 export const searchLog: { query: string; results: number; error?: string }[] = [];
+const searchCache = new Map<string, Result[]>();
 
-export async function search(query: string): Promise<{ url: string; title: string }[]> {
+/** Web search through Brave (paid key) or a self-hosted SearXNG. Guides, maps and review sites are removed from results. */
+let queue: Promise<unknown> = Promise.resolve();
+/** Searches run one at a time, whatever the caller's concurrency, so the provider sees a steady low rate. */
+export function search(query: string): Promise<Result[]> {
+  const run = queue.then(() => searchNow(query));
+  queue = run.catch(() => {});
+  return run;
+}
+
+async function searchNow(query: string): Promise<Result[]> {
   if (!searchEnabled()) return [];
-  await Bun.sleep(1100);
+  if (searchCache.has(query)) return searchCache.get(query)!;
+  await Bun.sleep(process.env.BRAVE_SEARCH_API_KEY ? 1100 : 2000);
   try {
-    const res = await fetch(`https://api.search.brave.com/res/v1/web/search?count=10&q=${encodeURIComponent(query)}`, { headers: { "x-subscription-token": process.env.BRAVE_SEARCH_API_KEY!, accept: "application/json" } });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const out = ((await res.json() as any).web?.results ?? []).map((r: any) => ({ url: r.url, title: r.title })).filter((r: any) => !BLOCKED_RESULT.test(new URL(r.url).hostname));
+    let raw: Result[];
+    if (process.env.BRAVE_SEARCH_API_KEY) {
+      const res = await fetch(`https://api.search.brave.com/res/v1/web/search?count=10&q=${encodeURIComponent(query)}`, { headers: { "x-subscription-token": process.env.BRAVE_SEARCH_API_KEY, accept: "application/json" }, signal: AbortSignal.timeout(20000) });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      raw = ((await res.json() as any).web?.results ?? []).map((r: any) => ({ url: r.url, title: r.title ?? "", snippet: r.description ?? "" }));
+    } else {
+      const res = await fetch(`${process.env.SEARXNG_URL!.replace(/\/$/, "")}/search?format=json&language=de&q=${encodeURIComponent(query)}`, { signal: AbortSignal.timeout(30000) });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      raw = ((await res.json() as any).results ?? []).map((r: any) => ({ url: r.url, title: r.title ?? "", snippet: r.content ?? "" }));
+    }
+    const out = raw.filter((r) => { try { return !BLOCKED_RESULT.test(new URL(r.url).hostname); } catch { return false; } }).slice(0, 12);
     searchLog.push({ query, results: out.length });
+    searchCache.set(query, out);
     return out;
-  } catch (e) { searchLog.push({ query, results: 0, error: String(e) }); return []; }
+  } catch (e) { searchLog.push({ query, results: 0, error: String(e).slice(0, 120) }); return []; }
 }
 
 /** Up to three queries for a place's own website; candidates are returned for the caller to verify on the page. */

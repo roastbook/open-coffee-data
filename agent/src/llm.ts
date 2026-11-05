@@ -52,3 +52,31 @@ export async function chat(system: string, user: string, { model = llm.model, ma
     }
   }
 }
+
+/** One Responses API call with the provider's web_search tool. Returns the final text; tokens and cost are tracked. */
+export async function searchingModel(prompt: string, { model = llm.researchModel } = {}): Promise<string> {
+  if (!llm.baseUrl || !llm.apiKey) throw new Error("LLM_BASE_URL and LLM_API_KEY are required");
+  checkBudget();
+  const url = /\/v1$/.test(llm.baseUrl) ? `${llm.baseUrl}/responses` : `${llm.baseUrl}/v1/responses`;
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { authorization: `Bearer ${llm.apiKey}`, "content-type": "application/json" },
+        body: JSON.stringify({ model, tools: [{ type: "web_search" }], input: prompt }),
+        signal: AbortSignal.timeout(300_000),
+      });
+      if (!res.ok) throw new Error(`LLM HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+      const j: any = await res.json();
+      const i = j.usage?.input_tokens ?? 0, o = j.usage?.output_tokens ?? 0, c = cost(model, i, o);
+      usage.calls++; usage.inputTokens += i; usage.outputTokens += o; usage.usd += c;
+      const m = (usage.byModel[model] ??= { calls: 0, in: 0, out: 0, usd: 0 });
+      m.calls++; m.in += i; m.out += o; m.usd += c;
+      addToLedger(c);
+      return (j.output ?? []).filter((x: any) => x.type === "message").flatMap((x: any) => x.content ?? []).map((c: any) => c.text ?? "").join("\n");
+    } catch (e) {
+      if (attempt >= 2) { usage.failures++; throw e; }
+      await Bun.sleep(3000 * (attempt + 1));
+    }
+  }
+}

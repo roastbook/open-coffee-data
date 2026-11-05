@@ -13,6 +13,8 @@ export const llm = {
   apiKey: process.env.LLM_API_KEY ?? "",
   model: process.env.LLM_MODEL ?? "claude/claude-haiku-5-5",
   escalationModel: process.env.LLM_ESCALATION_MODEL ?? "claude/claude-sonnet-5-5",
+  // A model the gateway serves through the Responses API with its built-in web_search tool; used to find leads only.
+  researchModel: process.env.RESEARCH_MODEL ?? "cx/gpt-5.6-luna",
 };
 
 // USD per million tokens (input, output). Haiku 5.5 rates apply to prompts up to 100k tokens, which we never exceed.

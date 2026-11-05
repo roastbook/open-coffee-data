@@ -29,6 +29,24 @@ No URL anywhere in a record (links, image, prices, roasters, awards, references)
 - Files live at `datasets/coffee-places/<country>/<city>.json`; `meta.country_code` equals the folder in upper case, and `meta.city` equals the file name.
 - `opening_hours` must parse with the [`opening_hours`](https://github.com/opening-hours/opening_hours.js) library (OpenStreetMap syntax, used as a format only). Its style hints are reported as warnings.
 
+## Data lint
+
+`agent/src/lint.ts` checks values that pass the schema but are still wrong. The data agent applies the same rules before it writes. Run it alone with `bun agent/src/lint.ts`; `--strict` also fails on warnings, and `--fix` applies the safe repairs below and rewrites the files.
+
+Errors (CI fails):
+
+- `website-platform`: `links.website` is a directory, delivery, booking, review or social page (Gelbe Seiten, Lieferando, speisekartenweb, Facebook …), not the place's own site.
+- `contact-data`: an email address or phone number outside `links`.
+- `duplicate`: two live records with nearly the same name within 40 m (or the same name within 60 m). Mark one with `merged_into`.
+- `status-open-unverified`: `status: open` without `last_verified_at`.
+- `open-sunday`, `payment`, `serving`: contradictions (`open_sunday` against `opening_hours`, cash only and card payment both true, pour-over true but filter false).
+- `operator`: not a legal entity; `price`: an implausible cappuccino price; `postcode`: wrong format for the country.
+- `tier-evidence`: tier A or B without `roasts_own_beans` or `roasters_served`.
+
+Warnings: names with a legal form, SEO tails or a bare street name; street strings that are not "street number"; tier `unknown` for a name that looks like a non-coffee business; descriptions on places that are not tier A or B; open places not verified for half a year; more than 3 places sharing one website; images not from an open image repository.
+
+`--fix` only removes doubtful values or derives values from stored fields; it never adds a fact. A platform page used as a website is removed together with every value read from it. Duplicates become tombstones (`merged_into`), so no id disappears.
+
 ## README
 
 The `<!-- stats:start -->` block in `README.md` must match `bun scripts/readme-stats.mjs` output.
