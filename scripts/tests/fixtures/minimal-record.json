@@ -1,13 +1,14 @@
 {
-  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.1.0.json",
+  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.3.0.json",
   "meta": {
-    "licence": "MIT",
     "country_code": "DE",
-    "city": "example-city"
+    "city": "example-city",
+    "licence": "CC-BY-4.0"
   },
   "places": [
     {
       "id": "cp-example0002",
+      "type": "CafeOrCoffeeShop",
       "name": "Corner Café",
       "status": "unverified",
       "checked_at": "2026-11-05T12:00:00Z",
@@ -22,6 +23,7 @@
     },
     {
       "id": "cp-example0003",
+      "type": "CafeOrCoffeeShop",
       "name": "Former Roastery",
       "status": "closed",
       "closed_on": "2025-12-31",

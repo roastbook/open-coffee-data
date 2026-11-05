@@ -67,6 +67,13 @@ test("merged_into target must exist", { skip: !schemaDir }, () => {
   has(run({ cityDoc: c }), /merged_into cp-missing0001 does not exist/);
 });
 
+test("brew-method ranges must be ordered", { skip: !schemaDir }, () => {
+  const brew = fx("brew-methods.json");
+  const m = brew.brew_methods.find((x) => x.typical_parameters?.brew_ratio);
+  m.typical_parameters.brew_ratio = { min: 18, typical: 16, max: 17 };
+  has(run({ brew }), /typical_parameters\.brew_ratio: expected min <= typical <= max/);
+});
+
 test("deny-listed URLs", { skip: !schemaDir }, () => {
   const c = city();
   c.places[0].links.website = "https://www.google.com/maps/place/x";
@@ -111,11 +118,11 @@ test("meta must match the path", { skip: !schemaDir }, () => {
 
 test("a family must not mix schema versions", { skip: !schemaDir }, () => {
   const other = city();
-  other.$schema = other.$schema.replace("v0.1.0", "v9.0.0");
+  other.$schema = other.$schema.replace(/v\d+\.\d+\.\d+\.json$/, "v9.0.0.json");
   other.meta.city = "other-city";
   other.places = [];
   const r = run({ extra: { "datasets/coffee-places/de/other-city.json": other } });
-  has(r, /coffee-places uses 0\.1\.0 and 9\.0\.0/);
+  has(r, /coffee-places uses \d+\.\d+\.\d+ and 9\.0\.0/);
   has(r, /other-city\.json: schema .*v9\.0\.0\.json is not in/);
 });
 

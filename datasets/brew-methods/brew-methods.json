@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.1.0.json",
+  "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.3.0.json",
   "meta": {
     "licence": "MIT"
   },
@@ -24,7 +24,7 @@
           "max": 22,
           "typical": 18
         },
-        "ratio": {
+        "yield_ratio": {
           "min": 1.5,
           "max": 3,
           "typical": 2
@@ -51,7 +51,7 @@
       "recorded_parameters": [
         "dose_g",
         "yield_g",
-        "ratio",
+        "yield_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -97,7 +97,7 @@
         "basket"
       ],
       "typical_parameters": {
-        "ratio": {
+        "yield_ratio": {
           "min": 1,
           "max": 1.5,
           "typical": 1.25
@@ -113,7 +113,7 @@
       "recorded_parameters": [
         "dose_g",
         "yield_g",
-        "ratio",
+        "yield_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -146,7 +146,7 @@
         "basket"
       ],
       "typical_parameters": {
-        "ratio": {
+        "yield_ratio": {
           "min": 2.5,
           "max": 4,
           "typical": 3
@@ -162,7 +162,7 @@
       "recorded_parameters": [
         "dose_g",
         "yield_g",
-        "ratio",
+        "yield_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -203,7 +203,7 @@
           "max": 30,
           "typical": 15
         },
-        "ratio": {
+        "brew_ratio": {
           "min": 14,
           "max": 18,
           "typical": 16
@@ -226,7 +226,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -274,7 +274,7 @@
           "max": 30,
           "typical": 15
         },
-        "ratio": {
+        "brew_ratio": {
           "min": 15,
           "max": 17,
           "typical": 16.7
@@ -295,7 +295,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -334,7 +334,7 @@
           "max": 30,
           "typical": 20
         },
-        "ratio": {
+        "brew_ratio": {
           "min": 15,
           "max": 17,
           "typical": 16
@@ -356,7 +356,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -399,7 +399,7 @@
           "max": 50,
           "typical": 30
         },
-        "ratio": {
+        "brew_ratio": {
           "min": 15,
           "max": 17,
           "typical": 16
@@ -421,7 +421,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -459,7 +459,7 @@
         "grinder"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 15,
           "max": 18,
           "typical": 16
@@ -476,7 +476,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -507,7 +507,7 @@
         "scale"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 15,
           "max": 17,
           "typical": 16
@@ -524,7 +524,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -560,7 +560,7 @@
         "scale"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 14,
           "max": 17,
           "typical": 15
@@ -581,7 +581,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
@@ -609,7 +609,7 @@
         "grinder"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 15,
           "max": 18,
           "typical": 16.5
@@ -630,7 +630,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "water_temperature_celsius",
@@ -658,7 +658,7 @@
         "scale"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 12,
           "max": 17,
           "typical": 15
@@ -681,7 +681,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
@@ -719,7 +719,7 @@
           "max": 20,
           "typical": 15
         },
-        "ratio": {
+        "brew_ratio": {
           "min": 6,
           "max": 17,
           "typical": 14
@@ -742,7 +742,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
@@ -775,7 +775,7 @@
         "grinder"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 7,
           "max": 10,
           "typical": 8
@@ -796,7 +796,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "water_temperature_celsius",
@@ -835,7 +835,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -872,7 +872,7 @@
         "scale"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 13,
           "max": 16,
           "typical": 15
@@ -893,7 +893,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
@@ -927,7 +927,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds"
       ],
@@ -955,7 +955,7 @@
         "grinder"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 8,
           "max": 12,
           "typical": 10
@@ -967,7 +967,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds"
       ],
@@ -999,7 +999,7 @@
         "grinder"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 5,
           "max": 10,
           "typical": 8
@@ -1016,7 +1016,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
@@ -1053,7 +1053,7 @@
         "scale"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 4,
           "max": 12,
           "typical": 8
@@ -1075,7 +1075,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
@@ -1114,7 +1114,7 @@
         "scale"
       ],
       "typical_parameters": {
-        "ratio": {
+        "brew_ratio": {
           "min": 14,
           "max": 17,
           "typical": 15
@@ -1131,7 +1131,7 @@
       "recorded_parameters": [
         "dose_g",
         "brew_water_g",
-        "ratio",
+        "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",

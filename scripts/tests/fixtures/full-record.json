@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.1.0.json",
+  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.3.0.json",
   "meta": {
     "licence": "MIT",
     "country_code": "DE",
@@ -9,6 +9,7 @@
   "places": [
     {
       "id": "cp-example0001",
+      "type": "CafeOrCoffeeShop",
       "name": "Example Coffee Bar",
       "status": "open",
       "opened_on": "2019-04-01",
@@ -25,7 +26,6 @@
         "lon": 11.5754
       },
       "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 09:00-17:00",
-      "open_sunday": true,
       "description": "Coffee-led espresso bar that roasts its own beans and serves pour-over and batch brew. Sells beans and brewing gear, and runs public cuppings.",
       "specialty_tier": "A",
       "roasts_own_beans": true,
@@ -79,7 +79,7 @@
         "register_id": "HRB 000000"
       },
       "links": {
-        "website": "https://example.com/",
+        "website": "https://kaffee-münchen.example/über-uns",
         "instagram": "https://www.instagram.com/example.coffee/"
       },
       "image": {

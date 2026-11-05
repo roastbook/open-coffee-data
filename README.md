@@ -32,7 +32,7 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 | Not yet assessed | 795 |
 | Cities | 1 |
 | Brew methods | 21 |
-| Schema version | `0.1.0` |
+| Schema version | `brew-methods 0.3.0, coffee-places 0.1.0` |
 
 <!-- stats:end -->
 

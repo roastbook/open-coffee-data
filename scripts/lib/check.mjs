@@ -11,9 +11,17 @@ const addFormats = addFormatsModule.default ?? addFormatsModule;
 // Licences an image may carry. Anything else needs a maintainer to extend this list.
 const IMAGE_LICENCE = /^(CC0-1\.0|PDM-1\.0|CC-BY-[1-4]\.0|CC-BY-SA-[1-4]\.0)$/;
 
+// format "iri" (schemas v0.3.0+), same rule as isIri in open-coffee-schema/lib/formats.ts.
+// shortcut: copied instead of depending on @roastbook/open-coffee-schema; switch when that package is a dependency here.
+const isIri = (v) => {
+  if (typeof v !== "string" || !/^[A-Za-z][A-Za-z0-9+.-]*:[^\s<>"{}|\\^`\u0000-\u001f\u007f]+$/.test(v)) return false;
+  try { return Boolean(new URL(v)); } catch { return false; }
+};
+
 export function createAjv(schemaDir) {
   const ajv = new Ajv2020({ strict: true, allErrors: true });
   addFormats(ajv);
+  ajv.addFormat("iri", isIri);
   for (const rel of listJson(schemaDir)) {
     const schema = JSON.parse(readFileSync(join(schemaDir, rel), "utf8"));
     if (schema.$id) ajv.addSchema(schema);
@@ -127,6 +135,14 @@ export function check({ datasetsDir, schemaDir, denylist, baseFiles = null }) {
         if (!target) err(where, `merged_into ${record.merged_into} does not exist`);
         else if (record.merged_into === id) err(where, "merged_into points to itself");
         else if (target.record.merged_into) warn(where, `merged_into ${record.merged_into}, which is itself merged; point at the final record`);
+      }
+      if (family === "brew-methods") {
+        // JSON Schema cannot compare two numbers, so the range order lives here.
+        for (const [k, r] of Object.entries(record.typical_parameters ?? {})) {
+          if (!r || typeof r !== "object" || Array.isArray(r)) continue;
+          const nums = [r.min, r.typical, r.max].filter((n) => typeof n === "number");
+          if (nums.some((n, i) => i > 0 && n < nums[i - 1])) err(where, `typical_parameters.${k}: expected min <= typical <= max`);
+        }
       }
       if (family === "brew-methods" && record.parent !== undefined) {
         if (!famIds.has(record.parent)) err(where, `parent ${record.parent} does not exist`);

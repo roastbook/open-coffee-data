@@ -9,7 +9,7 @@ export const AMENITIES: [string, string][] = [
   ["wheelchair_accessible", "Step-free entrance"],
 ];
 export const LABELS: Record<string, string> = {
-  id: "Id", name: "Name", status: "Status", merged_into: "Merged into", opened_on: "Opened", closed_on: "Closed",
+  id: "Id", type: "Type", name: "Name", status: "Status", merged_into: "Merged into", opened_on: "Opened", closed_on: "Closed",
   last_verified_at: "Last verified", checked_at: "Checked", address: "Address", "address.street_address": "Street",
   "address.postal_code": "Postal code", "address.locality": "City", "address.region": "Region", "address.country_code": "Country",
   location: "Coordinates", opening_hours: "Opening hours", open_sunday: "Open on Sundays", description: "Description",
