@@ -1,0 +1,59 @@
+// Opens one pull request per city through the GitHub API as the roastbook-sourcing GitHub App (GH_TOKEN = installation token).
+// The commit is created with createCommitOnBranch, so GitHub signs it. Never merges: every PR gets human review.
+import { readFileSync } from "node:fs";
+import { relative } from "node:path";
+import { REPO } from "./config";
+import type { Change } from "./pipeline";
+
+const REPOSITORY = process.env.GITHUB_REPOSITORY ?? "Roastbook/open-coffee-data";
+const ALLOWED = /^datasets\/coffee-places\//; // the data agent may change nothing else
+
+async function gh(path: string, init: RequestInit = {}) {
+  const res = await fetch(`https://api.github.com${path}`, { ...init, headers: { authorization: `Bearer ${process.env.GH_TOKEN}`, accept: "application/vnd.github+json", "content-type": "application/json", ...(init.headers ?? {}) } });
+  const body = await res.text();
+  if (!res.ok) throw new Error(`GitHub ${init.method ?? "GET"} ${path}: ${res.status} ${body.slice(0, 300)}`);
+  return body ? JSON.parse(body) : null;
+}
+
+const fmt = (v: any) => (v === undefined ? "–" : "`" + (typeof v === "string" ? v : JSON.stringify(v)).replace(/`/g, "'").slice(0, 120) + "`");
+
+export function prBody(city: string, changes: Change[], metrics: any, conflicts: { name: string; reason: string }[], labels: string[]) {
+  const byField = new Map<string, Change[]>();
+  for (const c of changes) byField.set(c.field, [...(byField.get(c.field) ?? []), c]);
+  const lines = [
+    `Data agent run \`${metrics.run_id}\` for **${city}**: ${metrics.places_touched} places touched, ${changes.length} field changes.`,
+    "", "Every value below was confirmed on the linked page in this run (quoted snippets are checked in code to occur in the fetched text). Please review before merging; this PR is never merged automatically.",
+    "", `Review flags: ${labels.length ? labels.map((l) => `\`${l}\``).join(", ") : "none"}.`, "",
+    "| Metric | Value |", "|---|---|",
+    `| Tiers (city) | A ${metrics.tiers.A}, B ${metrics.tiers.B}, none ${metrics.tiers.none}, unknown ${metrics.tiers.unknown} |`,
+    `| Tier A/B with complete core fields | ${metrics.tier_ab_core_complete} |`,
+    `| LLM | ${metrics.llm.calls} calls, ${metrics.llm.inputTokens + metrics.llm.outputTokens} tokens, $${metrics.llm.usd.toFixed(3)} |`,
+    `| Pages fetched | ${metrics.pages.requests} requests, ${metrics.pages.disallowed} not fetched because of site rules |`,
+    "",
+  ];
+  if (conflicts.length) lines.push("### Conflicts (need a human)", "", ...conflicts.map((c) => `- ${c.name}: ${c.reason}`), "");
+  lines.push("### Changes by field", "");
+  for (const [field, cs] of [...byField].sort((a, b) => a[0].localeCompare(b[0]))) {
+    lines.push(`<details><summary><code>${field}</code> (${cs.length})</summary>`, "");
+    for (const c of cs.slice(0, 200)) lines.push(`- ${c.name} (\`${c.id}\`): ${fmt(c.old)} → ${fmt(c.new)}${c.url ? ` ([source](${c.url}))` : ""}${c.quote ? ` — “${String(c.quote).replace(/\s+/g, " ").slice(0, 100)}”` : ""}`);
+    lines.push("", "</details>");
+  }
+  const body = lines.join("\n");
+  return body.length > 60000 ? body.slice(0, 60000) + "\n\n… truncated; the full run log is in the workflow artifact." : body;
+}
+
+export async function openPr(city: string, files: string[], title: string, body: string, labels: string[]) {
+  if (!process.env.GH_TOKEN) throw new Error("GH_TOKEN (roastbook-sourcing App installation token) is required to open a pull request");
+  const paths = files.map((f) => relative(REPO, f));
+  for (const p of paths) if (!ALLOWED.test(p)) throw new Error(`refusing to commit ${p}: the data agent may only change datasets/coffee-places/**`);
+  const main = await gh(`/repos/${REPOSITORY}/git/ref/heads/main`);
+  const branch = `data-agent/${city}-${new Date().toISOString().slice(0, 10)}-${Date.now().toString(36)}`;
+  await gh(`/repos/${REPOSITORY}/git/refs`, { method: "POST", body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: main.object.sha }) });
+  const mutation = "mutation($i:CreateCommitOnBranchInput!){createCommitOnBranch(input:$i){commit{oid}}}";
+  const additions = paths.map((p, i) => ({ path: p, contents: Buffer.from(readFileSync(files[i])).toString("base64") }));
+  const res = await gh("/graphql", { method: "POST", body: JSON.stringify({ query: mutation, variables: { i: { branch: { repositoryNameWithOwner: REPOSITORY, branchName: branch }, expectedHeadOid: main.object.sha, message: { headline: title }, fileChanges: { additions } } } }) });
+  if (res.errors) throw new Error(JSON.stringify(res.errors));
+  const pr = await gh(`/repos/${REPOSITORY}/pulls`, { method: "POST", body: JSON.stringify({ title, head: branch, base: "main", body }) });
+  await gh(`/repos/${REPOSITORY}/issues/${pr.number}/labels`, { method: "POST", body: JSON.stringify({ labels: ["data-agent", ...labels] }) });
+  return pr.html_url as string;
+}

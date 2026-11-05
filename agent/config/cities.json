@@ -1,0 +1,870 @@
+{
+ "description": "Cities in queue order (Berlin, Hamburg, Munich, Cologne, Frankfurt, Düsseldorf, Leipzig, Stuttgart, then German cities over 100,000 inhabitants by population from Wikidata, then Austria and Switzerland). boundary: bkg-vg250 (German municipality by AGS, BKG open data, dl-de/by-2.0), swisstopo (Swiss municipality by BFS number), geojson ({url, property?, value?}) or null when no open boundary is configured yet; the agent refuses a city without one. Boundaries only filter points and are never stored.",
+ "cities": [
+  {
+   "slug": "berlin",
+   "name": "Berlin",
+   "country": "DE",
+   "wikidata": "Q64",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "11000000"
+   }
+  },
+  {
+   "slug": "hamburg",
+   "name": "Hamburg",
+   "country": "DE",
+   "wikidata": "Q1055",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "02000000"
+   }
+  },
+  {
+   "slug": "munich",
+   "name": "München",
+   "country": "DE",
+   "wikidata": "Q1726",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "09162000"
+   }
+  },
+  {
+   "slug": "koeln",
+   "name": "Köln",
+   "country": "DE",
+   "wikidata": "Q365",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05315000"
+   }
+  },
+  {
+   "slug": "frankfurt-am-main",
+   "name": "Frankfurt am Main",
+   "country": "DE",
+   "wikidata": "Q1794",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "06412000"
+   }
+  },
+  {
+   "slug": "duesseldorf",
+   "name": "Düsseldorf",
+   "country": "DE",
+   "wikidata": "Q1718",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05111000"
+   }
+  },
+  {
+   "slug": "leipzig",
+   "name": "Leipzig",
+   "country": "DE",
+   "wikidata": "Q2079",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "14713000"
+   }
+  },
+  {
+   "slug": "stuttgart",
+   "name": "Stuttgart",
+   "country": "DE",
+   "wikidata": "Q1022",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08111000"
+   }
+  },
+  {
+   "slug": "dortmund",
+   "name": "Dortmund",
+   "country": "DE",
+   "wikidata": "Q1295",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05913000"
+   }
+  },
+  {
+   "slug": "bremen",
+   "name": "Bremen",
+   "country": "DE",
+   "wikidata": "Q24879",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "04011000"
+   }
+  },
+  {
+   "slug": "essen",
+   "name": "Essen",
+   "country": "DE",
+   "wikidata": "Q2066",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05113000"
+   }
+  },
+  {
+   "slug": "dresden",
+   "name": "Dresden",
+   "country": "DE",
+   "wikidata": "Q1731",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "14612000"
+   }
+  },
+  {
+   "slug": "nuernberg",
+   "name": "Nürnberg",
+   "country": "DE",
+   "wikidata": "Q2090",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "09564000"
+   }
+  },
+  {
+   "slug": "hannover",
+   "name": "Hannover",
+   "country": "DE",
+   "wikidata": "Q1715",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "03241001"
+   }
+  },
+  {
+   "slug": "duisburg",
+   "name": "Duisburg",
+   "country": "DE",
+   "wikidata": "Q2100",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05112000"
+   }
+  },
+  {
+   "slug": "bochum",
+   "name": "Bochum",
+   "country": "DE",
+   "wikidata": "Q2103",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05911000"
+   }
+  },
+  {
+   "slug": "wuppertal",
+   "name": "Wuppertal",
+   "country": "DE",
+   "wikidata": "Q2107",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05124000"
+   }
+  },
+  {
+   "slug": "bielefeld",
+   "name": "Bielefeld",
+   "country": "DE",
+   "wikidata": "Q2112",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05711000"
+   }
+  },
+  {
+   "slug": "bonn",
+   "name": "Bonn",
+   "country": "DE",
+   "wikidata": "Q586",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05314000"
+   }
+  },
+  {
+   "slug": "mannheim",
+   "name": "Mannheim",
+   "country": "DE",
+   "wikidata": "Q2119",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08222000"
+   }
+  },
+  {
+   "slug": "karlsruhe",
+   "name": "Karlsruhe",
+   "country": "DE",
+   "wikidata": "Q1040",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08212000"
+   }
+  },
+  {
+   "slug": "muenster",
+   "name": "Münster",
+   "country": "DE",
+   "wikidata": "Q2742",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05515000"
+   }
+  },
+  {
+   "slug": "augsburg",
+   "name": "Augsburg",
+   "country": "DE",
+   "wikidata": "Q2749",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "09761000"
+   }
+  },
+  {
+   "slug": "moenchengladbach",
+   "name": "Mönchengladbach",
+   "country": "DE",
+   "wikidata": "Q2758",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05116000"
+   }
+  },
+  {
+   "slug": "gelsenkirchen",
+   "name": "Gelsenkirchen",
+   "country": "DE",
+   "wikidata": "Q2765",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05513000"
+   }
+  },
+  {
+   "slug": "aachen",
+   "name": "Aachen",
+   "country": "DE",
+   "wikidata": "Q1017",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05334002"
+   }
+  },
+  {
+   "slug": "braunschweig",
+   "name": "Braunschweig",
+   "country": "DE",
+   "wikidata": "Q2773",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "03101000"
+   }
+  },
+  {
+   "slug": "kiel",
+   "name": "Kiel",
+   "country": "DE",
+   "wikidata": "Q1707",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "01002000"
+   }
+  },
+  {
+   "slug": "chemnitz",
+   "name": "Chemnitz",
+   "country": "DE",
+   "wikidata": "Q2795",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "14511000"
+   }
+  },
+  {
+   "slug": "magdeburg",
+   "name": "Magdeburg",
+   "country": "DE",
+   "wikidata": "Q1733",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "15003000"
+   }
+  },
+  {
+   "slug": "freiburg-im-breisgau",
+   "name": "Freiburg im Breisgau",
+   "country": "DE",
+   "wikidata": "Q2833",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08311000"
+   }
+  },
+  {
+   "slug": "krefeld",
+   "name": "Krefeld",
+   "country": "DE",
+   "wikidata": "Q2805",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05114000"
+   }
+  },
+  {
+   "slug": "halle",
+   "name": "Halle (Saale)",
+   "country": "DE",
+   "wikidata": "Q2814",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "15002000"
+   }
+  },
+  {
+   "slug": "mainz",
+   "name": "Mainz",
+   "country": "DE",
+   "wikidata": "Q1720",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "07315000"
+   }
+  },
+  {
+   "slug": "erfurt",
+   "name": "Erfurt",
+   "country": "DE",
+   "wikidata": "Q1729",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "16051000"
+   }
+  },
+  {
+   "slug": "luebeck",
+   "name": "Lübeck",
+   "country": "DE",
+   "wikidata": "Q2843",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "01003000"
+   }
+  },
+  {
+   "slug": "oberhausen",
+   "name": "Oberhausen",
+   "country": "DE",
+   "wikidata": "Q2838",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05119000"
+   }
+  },
+  {
+   "slug": "kassel",
+   "name": "Kassel",
+   "country": "DE",
+   "wikidata": "Q2865",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "06611000"
+   }
+  },
+  {
+   "slug": "hagen",
+   "name": "Hagen",
+   "country": "DE",
+   "wikidata": "Q2871",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05914000"
+   }
+  },
+  {
+   "slug": "potsdam",
+   "name": "Potsdam",
+   "country": "DE",
+   "wikidata": "Q1711",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "12054000"
+   }
+  },
+  {
+   "slug": "saarbruecken",
+   "name": "Saarbrücken",
+   "country": "DE",
+   "wikidata": "Q1724",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "10041100"
+   }
+  },
+  {
+   "slug": "hamm",
+   "name": "Hamm",
+   "country": "DE",
+   "wikidata": "Q2880",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05915000"
+   }
+  },
+  {
+   "slug": "ludwigshafen-am-rhein",
+   "name": "Ludwigshafen am Rhein",
+   "country": "DE",
+   "wikidata": "Q2910",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "07314000"
+   }
+  },
+  {
+   "slug": "oldenburg",
+   "name": "Oldenburg",
+   "country": "DE",
+   "wikidata": "Q2936",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "03403000"
+   }
+  },
+  {
+   "slug": "muelheim-an-der-ruhr",
+   "name": "Mülheim an der Ruhr",
+   "country": "DE",
+   "wikidata": "Q2899",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05117000"
+   }
+  },
+  {
+   "slug": "leverkusen",
+   "name": "Leverkusen",
+   "country": "DE",
+   "wikidata": "Q2938",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05316000"
+   }
+  },
+  {
+   "slug": "osnabrueck",
+   "name": "Osnabrück",
+   "country": "DE",
+   "wikidata": "Q2916",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "03404000"
+   }
+  },
+  {
+   "slug": "solingen",
+   "name": "Solingen",
+   "country": "DE",
+   "wikidata": "Q2942",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05122000"
+   }
+  },
+  {
+   "slug": "herne",
+   "name": "Herne",
+   "country": "DE",
+   "wikidata": "Q2904",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05916000"
+   }
+  },
+  {
+   "slug": "heidelberg",
+   "name": "Heidelberg",
+   "country": "DE",
+   "wikidata": "Q2966",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08221000"
+   }
+  },
+  {
+   "slug": "paderborn",
+   "name": "Paderborn",
+   "country": "DE",
+   "wikidata": "Q2971",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05774032"
+   }
+  },
+  {
+   "slug": "neuss",
+   "name": "Neuss",
+   "country": "DE",
+   "wikidata": "Q2948",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05162024"
+   }
+  },
+  {
+   "slug": "regensburg",
+   "name": "Regensburg",
+   "country": "DE",
+   "wikidata": "Q2978",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "09362000"
+   }
+  },
+  {
+   "slug": "ingolstadt",
+   "name": "Ingolstadt",
+   "country": "DE",
+   "wikidata": "Q3004",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "09161000"
+   }
+  },
+  {
+   "slug": "pforzheim",
+   "name": "Pforzheim",
+   "country": "DE",
+   "wikidata": "Q3046",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08231000"
+   }
+  },
+  {
+   "slug": "wuerzburg",
+   "name": "Würzburg",
+   "country": "DE",
+   "wikidata": "Q2999",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "09663000"
+   }
+  },
+  {
+   "slug": "offenbach-am-main",
+   "name": "Offenbach am Main",
+   "country": "DE",
+   "wikidata": "Q3042",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "06413000"
+   }
+  },
+  {
+   "slug": "heilbronn",
+   "name": "Heilbronn",
+   "country": "DE",
+   "wikidata": "Q715",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08121000"
+   }
+  },
+  {
+   "slug": "fuerth",
+   "name": "Fürth",
+   "country": "DE",
+   "wikidata": "Q3075",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "09563000"
+   }
+  },
+  {
+   "slug": "goettingen",
+   "name": "Göttingen",
+   "country": "DE",
+   "wikidata": "Q3033",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "03159016"
+   }
+  },
+  {
+   "slug": "ulm",
+   "name": "Ulm",
+   "country": "DE",
+   "wikidata": "Q3012",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08421000"
+   }
+  },
+  {
+   "slug": "wolfsburg",
+   "name": "Wolfsburg",
+   "country": "DE",
+   "wikidata": "Q3014",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "03103000"
+   }
+  },
+  {
+   "slug": "reutlingen",
+   "name": "Reutlingen",
+   "country": "DE",
+   "wikidata": "Q3085",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "08415061"
+   }
+  },
+  {
+   "slug": "bremerhaven",
+   "name": "Bremerhaven",
+   "country": "DE",
+   "wikidata": "Q2706",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "04012000"
+   }
+  },
+  {
+   "slug": "bottrop",
+   "name": "Bottrop",
+   "country": "DE",
+   "wikidata": "Q3069",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05512000"
+   }
+  },
+  {
+   "slug": "erlangen",
+   "name": "Erlangen",
+   "country": "DE",
+   "wikidata": "Q3126",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "09562000"
+   }
+  },
+  {
+   "slug": "recklinghausen",
+   "name": "Recklinghausen",
+   "country": "DE",
+   "wikidata": "Q3050",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05562032"
+   }
+  },
+  {
+   "slug": "remscheid",
+   "name": "Remscheid",
+   "country": "DE",
+   "wikidata": "Q3097",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05120000"
+   }
+  },
+  {
+   "slug": "koblenz",
+   "name": "Koblenz",
+   "country": "DE",
+   "wikidata": "Q3104",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "07111000"
+   }
+  },
+  {
+   "slug": "bergisch-gladbach",
+   "name": "Bergisch Gladbach",
+   "country": "DE",
+   "wikidata": "Q3117",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05378004"
+   }
+  },
+  {
+   "slug": "jena",
+   "name": "Jena",
+   "country": "DE",
+   "wikidata": "Q3150",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "16053000"
+   }
+  },
+  {
+   "slug": "trier",
+   "name": "Trier",
+   "country": "DE",
+   "wikidata": "Q3138",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "07211000"
+   }
+  },
+  {
+   "slug": "salzgitter",
+   "name": "Salzgitter",
+   "country": "DE",
+   "wikidata": "Q3200",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "03102000"
+   }
+  },
+  {
+   "slug": "siegen",
+   "name": "Siegen",
+   "country": "DE",
+   "wikidata": "Q3167",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05970040"
+   }
+  },
+  {
+   "slug": "moers",
+   "name": "Moers",
+   "country": "DE",
+   "wikidata": "Q3132",
+   "boundary": {
+    "type": "bkg-vg250",
+    "ags": "05170024"
+   }
+  },
+  {
+   "slug": "wien",
+   "name": "Wien",
+   "country": "AT",
+   "wikidata": "Q1741",
+   "boundary": null
+  },
+  {
+   "slug": "graz",
+   "name": "Graz",
+   "country": "AT",
+   "wikidata": "Q13298",
+   "boundary": null
+  },
+  {
+   "slug": "linz",
+   "name": "Linz",
+   "country": "AT",
+   "wikidata": "Q41329",
+   "boundary": null
+  },
+  {
+   "slug": "salzburg",
+   "name": "Salzburg",
+   "country": "AT",
+   "wikidata": "Q34713",
+   "boundary": null
+  },
+  {
+   "slug": "innsbruck",
+   "name": "Innsbruck",
+   "country": "AT",
+   "wikidata": "Q1735",
+   "boundary": null
+  },
+  {
+   "slug": "zuerich",
+   "name": "Zürich",
+   "country": "CH",
+   "wikidata": "Q72",
+   "boundary": {
+    "type": "swisstopo",
+    "bfs": 261
+   }
+  },
+  {
+   "slug": "geneve",
+   "name": "Genève",
+   "country": "CH",
+   "wikidata": "Q71",
+   "boundary": {
+    "type": "swisstopo",
+    "bfs": 6621
+   }
+  },
+  {
+   "slug": "basel",
+   "name": "Basel",
+   "country": "CH",
+   "wikidata": "Q78",
+   "boundary": {
+    "type": "swisstopo",
+    "bfs": 2701
+   }
+  },
+  {
+   "slug": "lausanne",
+   "name": "Lausanne",
+   "country": "CH",
+   "wikidata": "Q807",
+   "boundary": {
+    "type": "swisstopo",
+    "bfs": 5586
+   }
+  },
+  {
+   "slug": "bern",
+   "name": "Bern",
+   "country": "CH",
+   "wikidata": "Q70",
+   "boundary": {
+    "type": "swisstopo",
+    "bfs": 351
+   }
+  },
+  {
+   "slug": "winterthur",
+   "name": "Winterthur",
+   "country": "CH",
+   "wikidata": "Q9125",
+   "boundary": {
+    "type": "swisstopo",
+    "bfs": 230
+   }
+  },
+  {
+   "slug": "luzern",
+   "name": "Luzern",
+   "country": "CH",
+   "wikidata": "Q4191",
+   "boundary": {
+    "type": "swisstopo",
+    "bfs": 1061
+   }
+  },
+  {
+   "slug": "st-gallen",
+   "name": "St. Gallen",
+   "country": "CH",
+   "wikidata": "Q25607",
+   "boundary": {
+    "type": "swisstopo",
+    "bfs": 3203
+   }
+  }
+ ]
+}
