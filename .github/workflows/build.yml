@@ -20,4 +20,4 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: Roastbook/workflows/.github/workflows/site-build.yml@24c0af08d419c4c214e9dd3b5dc0b3389dc88e86 # main
+    uses: Roastbook/workflows/.github/workflows/site-build.yml@04dec2345383aed39b464c059062713a05030705 # main
