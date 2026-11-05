@@ -59,7 +59,7 @@ A research step (search-capable model for leads, every lead checked in code) was
 
 - Before the website search, 601 places that are not tier none had no verified website.
 - The search found candidates for 110 of the 201 places it reached (197 queries, one per place). 20 of those candidates passed verification: the site names the place and shows its street or postcode.
-- 400 places were never searched. The session's web-search quota (about 200 searches) ran out. There is no search API key for the agent; see blockers. Failures are logged in `.cache/discovery/munich-websites.json`.
+- 400 places were never searched: the web-search quota available for this run (about 200 searches) ran out. There is no search API key for the agent; see blockers. Failures are logged in `.cache/discovery/munich-websites.json`.
 - Sites listed in Overture often turned out to be parked domains, domains for sale or dead (DNS failure or expired certificate). The verification rejects them. Dead sites are a closure signal for the next run.
 
 ## Enrichment
@@ -148,12 +148,12 @@ Wall-clock times per stage (UTC, 2026-11-05):
 
 | Stage | Time |
 |---|---|
-| Reading the brief, repository and schema; testing data access | 18:37–18:42 |
-| Web-search discovery (one search agent, in parallel with building the agent) | 18:42–18:55, 13 min |
+| Setup: repository, schema and data access | 18:37–18:42 |
+| Web-search discovery (seed file, in parallel with building the agent) | 18:42–18:55, 13 min |
 | Building the agent, tests and a 20-place dry run | 18:42–19:08 |
 | First full run, cold page cache: discover 141 s, enrich 714 s, build 9 s, images 12 s | 19:08–19:23, 14.6 min (0.8 s per place) |
 | Review and fixes (multi-branch facts, dead sites, PDF menus, tier rule) | 19:23–19:43 |
-| Website search for places without a site (four search agents) | about 2.5 min |
+| Website search for places without a site (seed file) | about 2.5 min |
 | Final run, warm page cache: discover 153 s, enrich 314 s, build 4 s, images 10 s | 20:00–20:08, 8 min |
 | Checks, coverage, image correction, report | 20:08–20:30 |
 | **Total** | **about 1 h 55 min** |
@@ -167,7 +167,7 @@ Model cost:
 | Final run: 428 calls, 4.78 M input and 0.81 M output tokens ($0.86 Haiku, $0.53 Sonnet escalations) | $1.38 |
 | All runs this month, including the first full run, the dry runs and the failed run | $3.96 |
 
-The search agents used about 620,000 Claude tokens in the development session; that is not part of the agent's own cost. There were no other API costs (Overture, BKG, Wikidata and Commons are free).
+Web searches for the seed files are not included. There were no other API costs (Overture, BKG, Wikidata and Commons are free).
 
 ## Why the targets are missed
 
@@ -188,7 +188,7 @@ The search agents used about 620,000 Claude tokens in the development session; t
 
 - **Foursquare Open Source Places** moved to a gated Hugging Face dataset. Access needs an account and accepting terms that let Foursquare name the organisation in its marketing. That is a maintainer decision; not done.
 - **Instagram** forbids automated access in its site rules and terms. Instagram-only places (27 from web search) can be found but not verified.
-- **Web search** has no API key for the agent. Brave Search would cost money, a decision for the maintainers. The development session's quota of about 200 searches limited website finding.
+- **Web search** has no API key for the agent. Brave Search would cost money, a decision for the maintainers. The quota of about 200 searches available for this run limited website finding; the research step added later uses a search-capable model instead.
 - **Coordinates** for places missing from Overture: Bavaria publishes official house coordinates (Hauskoordinaten) as open data under CC BY 4.0. Using them needs a decision on attribution in an MIT dataset.
 - **Schema v0.1.0 is not tagged yet**, so CI fetches of the released schema fail until the tag exists. Local validation uses the schema checkout.
 
