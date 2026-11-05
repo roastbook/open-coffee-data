@@ -1,4 +1,4 @@
-// Field labels for the Explorer, in the order of the coffee-places schema v1.0.0.
+// Field labels for the Explorer, in the order of the coffee-places schema v0.1.0.
 export const SERVING: [string, string][] = [
   ["espresso", "Espresso"], ["filter", "Filter coffee"], ["pour_over", "Pour-over"], ["batch_brew", "Batch brew"],
   ["cold_brew", "Cold brew"], ["decaf", "Decaf"], ["plant_milk", "Plant milk"],

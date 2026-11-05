@@ -33,7 +33,7 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 | Cities | 0 |
 | Brew methods | 21 |
 | Dataset version | `2026.11.05.1` |
-| Schema version | `1.0.0` |
+| Schema version | `0.1.0` |
 
 <!-- stats:end -->
 
@@ -45,10 +45,10 @@ Download a city and validate it against the schema it names in `$schema`:
 
 ```sh
 curl -sO https://data.roastbook.coffee/datasets/coffee-places/de/munich.json
-curl -sO https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v1.0.0.json
-curl -sO https://schema.roastbook.coffee/common/common.schema.v1.0.0.json
+curl -sO https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.1.0.json
+curl -sO https://schema.roastbook.coffee/common/common.schema.v0.1.0.json
 npx -p ajv-cli@5 -p ajv-formats@3 ajv validate --spec=draft2020 --strict=true -c ajv-formats \
-  -s coffee-places.schema.v1.0.0.json -r common.schema.v1.0.0.json -d munich.json
+  -s coffee-places.schema.v0.1.0.json -r common.schema.v0.1.0.json -d munich.json
 ```
 
 Other formats (NDJSON and GeoJSON per city, one GeoParquet and one CSV for all places) are on the [downloads page](https://data.roastbook.coffee/downloads/), listed in [`/artifacts/index.json`](https://data.roastbook.coffee/artifacts/index.json). Explore the CSV in your browser with [Datasette Lite](https://lite.datasette.io/?csv=https%3A%2F%2Fdata.roastbook.coffee%2Fartifacts%2Fcoffee-places.csv).
@@ -106,7 +106,7 @@ scripts/build.sh             # dist/: Explorer, datasets, artifacts, CNAME
 scripts/link-check.sh        # links in data and docs (warnings; --full fails)
 ```
 
-Before schema v1.0.0 is tagged, point validation at a local checkout: `OPEN_COFFEE_SCHEMA_DIR=../open-coffee-schema/schemas scripts/validate.sh`. The rules are described in [docs/validation.md](docs/validation.md).
+Before schema v0.1.0 is tagged, point validation at a local checkout: `OPEN_COFFEE_SCHEMA_DIR=../open-coffee-schema/schemas scripts/validate.sh`. The rules are described in [docs/validation.md](docs/validation.md).
 
 ## Versioning and stability
 
@@ -117,9 +117,9 @@ Before schema v1.0.0 is tagged, point validation at a local checkout: `OPEN_COFF
 
 ## Contributing
 
-Corrections and new places are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). In short: open an issue with the [add or correct a place](https://github.com/Roastbook/open-coffee-data/issues/new?template=correct-place.yml) form or send a pull request, cite a primary source, and sign off your commits (`git commit -s`).
+Corrections and new places are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). In short: open an [issue](https://github.com/Roastbook/open-coffee-data/issues/new) or send a pull request, cite a primary source, and sign off your commits (`git commit -s`).
 
-**Owners can claim their place** by opening the “Add or correct a place” issue from an email address on the place's website domain, or by linking the issue from the place's website or Instagram bio. Owners may also submit their own photos under CC BY 4.0.
+**Owners can claim their place** by opening an issue about it from an email address on the place's website domain, or by linking the issue from the place's website or Instagram bio. Owners may also submit their own photos under CC BY 4.0.
 
 The Sourcing agent opens pull requests for `datasets/coffee-places/**` and `assets/**` only; schemas, `sources.json`, scripts and `.github/` always need a maintainer's review (see [CODEOWNERS](.github/CODEOWNERS)).
 
@@ -139,4 +139,4 @@ The Sourcing agent opens pull requests for `datasets/coffee-places/**` and `asse
 
 ## Maintained by Roastbook
 
-Roastbook Open Coffee is maintained by [Roastbook](https://roastbook.coffee/). Questions and ideas go to [Discussions](https://github.com/Roastbook/open-coffee-data/discussions); security reports to [SECURITY.md](SECURITY.md).
+Roastbook Open Coffee is maintained by [Roastbook](https://roastbook.coffee/). Questions and ideas go to [Discussions](https://github.com/Roastbook/open-coffee-data/discussions).

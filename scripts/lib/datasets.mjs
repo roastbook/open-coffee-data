@@ -19,7 +19,7 @@ export function listJson(dir) {
   return out;
 }
 
-/** Family and version named by a $schema URL, e.g. coffee-places / 1.0.0. */
+/** Family and version named by a $schema URL, e.g. coffee-places / 0.1.0. */
 export function parseSchemaUrl(url) {
   const m = /^https:\/\/schema\.roastbook\.coffee\/([a-z0-9-]+)\/\1\.schema\.v(\d+\.\d+\.\d+)\.json$/.exec(url ?? "");
   return m ? { family: m[1], version: m[2] } : null;

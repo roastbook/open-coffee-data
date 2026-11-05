@@ -253,7 +253,7 @@ function renderDetail(p: any) {
     <h3 id="detail-sources">Record sources</h3>
     <p>${sourceList(p.sources ?? [])}</p>
     <p class="muted">Checked ${esc(date(p.checked_at))}${p.method ? ` · method ${esc(p.method.replaceAll("_", " "))}` : ""}${p.confidence !== undefined ? ` · confidence ${p.confidence}` : ""}. Values without their own sources come from these.</p>
-    <p class="muted small">Something wrong? <a href="https://github.com/Roastbook/open-coffee-data/issues/new?template=correct-place.yml&title=${encodeURIComponent(`Correct ${p.name} (${p.id})`)}">Suggest a correction</a>.</p>`;
+    <p class="muted small">Something wrong? <a href="https://github.com/Roastbook/open-coffee-data/issues/new?title=${encodeURIComponent(`Correct ${p.name} (${p.id})`)}">Suggest a correction</a>.</p>`;
 }
 
 function openPlace(id: string | null, { fromHash = false } = {}) {

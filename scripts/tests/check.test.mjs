@@ -32,7 +32,7 @@ function run({ cityDoc = city(), brew = fx("brew-methods.json"), extra = {}, ass
     mkdirSync(dirname(join(dir, p)), { recursive: true });
     writeFileSync(join(dir, p), typeof v === "string" ? v : JSON.stringify(v));
   }
-  return check({ datasetsDir: join(dir, "datasets"), assetsDir: join(dir, "assets"), schemaDir, schemaVersion: "1.0.0", denylist, baseFiles });
+  return check({ datasetsDir: join(dir, "datasets"), assetsDir: join(dir, "assets"), schemaDir, schemaVersion: "0.1.0", denylist, baseFiles });
 }
 const has = (r, re) => assert.ok(r.errors.some((e) => re.test(e)), `expected an error matching ${re}, got:\n${r.errors.join("\n")}`);
 
@@ -142,7 +142,7 @@ test("meta must match path and pin", { skip: !schemaDir }, () => {
 
 test("translations reference existing ids", { skip: !schemaDir }, () => {
   const tr = {
-    $schema: "https://schema.roastbook.coffee/translations/translations.schema.v1.0.0.json",
+    $schema: "https://schema.roastbook.coffee/translations/translations.schema.v0.1.0.json",
     meta: { version: "2026.11.05.1", generated_at: "2026-11-05T12:00:00Z", locale: "de", base: "datasets/coffee-places/de/example-city.json" },
     entries: { "cp-example0001": { name: "Beispiel" }, "cp-nothere0001": { name: "Fehlt" } },
   };

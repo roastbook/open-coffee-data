@@ -4,16 +4,16 @@ Thank you for helping. Roastbook Open Coffee is only as good as its sources, so 
 
 ## Ways to help
 
-- **Correct or add a place**: open the [add or correct a place](https://github.com/Roastbook/open-coffee-data/issues/new?template=correct-place.yml) form, or edit `datasets/coffee-places/<country>/<city>.json` in a pull request.
-- **Report a closed place**: use the [closed place](https://github.com/Roastbook/open-coffee-data/issues/new?template=closed-place.yml) form. Closed places are never deleted; they get `status: closed` and `closed_on`.
-- **Propose a source**: use the [propose a source](https://github.com/Roastbook/open-coffee-data/issues/new?template=propose-source.yml) form. New sources are reviewed by a maintainer, who checks the licence and terms.
-- **Propose a schema change**: in [open-coffee-schema](https://github.com/Roastbook/open-coffee-schema/issues/new/choose).
+- **Correct or add a place**: open an [issue](https://github.com/Roastbook/open-coffee-data/issues/new) with the place, the change and a primary-source link, or edit `datasets/coffee-places/<country>/<city>.json` in a pull request.
+- **Report a closed place**: open an [issue](https://github.com/Roastbook/open-coffee-data/issues/new) with evidence (for example a closure notice). Closed places are never deleted; they get `status: closed` and `closed_on`.
+- **Propose a source**: open an [issue](https://github.com/Roastbook/open-coffee-data/issues/new) stating the source's licence, terms and what it may be used for (discovery, facts, images). New sources are reviewed by a maintainer, who checks the licence and terms.
+- **Propose a schema change**: in [open-coffee-schema](https://github.com/Roastbook/open-coffee-schema/issues/new).
 
 ## Owners: claim your place
 
 If you run a café or roastery, you can claim its record:
 
-1. Open the “Add or correct a place” issue and tick “I own or run this place”.
+1. Open an [issue](https://github.com/Roastbook/open-coffee-data/issues/new) and say that you own or run the place.
 2. Prove it in one of two ways: send the issue from an email address on the place's website domain (or mention such an address and reply from it when we write), or link the issue from your website or Instagram bio for a few days.
 3. Tell us what to change. Facts you submit are recorded with `method: owner_submitted` and the source `owner-submission`.
 
