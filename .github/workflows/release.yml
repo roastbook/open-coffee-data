@@ -26,9 +26,11 @@ jobs:
       contents: write
       actions: read
       packages: read
-    uses: Roastbook/workflows/.github/workflows/release.yml@04dec2345383aed39b464c059062713a05030705 # main
+    uses: Roastbook/workflows/.github/workflows/release.yml@7c22b2422f46e888ace66cddbef68401aeaadda7 # main
     with:
       bump_type: ${{ inputs.bump_type }}
       ci_workflow: ci.yml
       version_scheme: date
-    secrets: inherit
+    secrets:
+      RELEASER_APP_ID: ${{ secrets.RELEASER_APP_ID }}
+      RELEASER_APP_PRIVATE_KEY: ${{ secrets.RELEASER_APP_PRIVATE_KEY }}
