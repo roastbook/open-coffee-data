@@ -77,10 +77,10 @@ A dead website (DNS failure, 404/410, refused connection) on a place that was `o
 ## Usage
 
 ```sh
-scripts/agent.sh --city munich --limit 50              # full run, opens a pull request
-scripts/agent.sh --city munich --limit 2000 --no-pr    # write the city file locally, no pull request
-scripts/agent.sh --city munich --dry-run               # nothing written (still fetches pages and calls the LLM)
-scripts/agent.sh                                       # next city from the queue
+bash scripts/agent.sh --city munich --limit 50              # full run, opens a pull request
+bash scripts/agent.sh --city munich --limit 2000 --no-pr    # write the city file locally, no pull request
+bash scripts/agent.sh --city munich --dry-run               # nothing written (still fetches pages and calls the LLM)
+bash scripts/agent.sh                                       # next city from the queue
 cd agent && bun test                                   # unit tests: dedupe, ids, hours, evidence check, injection guard, site rules
 ```
 
