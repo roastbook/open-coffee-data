@@ -30,7 +30,6 @@ const date = (s?: string) => (s ? s.slice(0, 10) : "");
 let state: HashState = parseHash(location.hash);
 let places: any[] = [];
 let byId = new Map<string, any>();
-let sources: Record<string, { name: string }> = {};
 let map: PlaceMap | null = null;
 let lastOpener: HTMLElement | null = null;
 
@@ -175,22 +174,6 @@ toggle.addEventListener("click", () => setFiltersOpen(form.hasAttribute("data-co
 setFiltersOpen(!matchMedia("(max-width: 959px)").matches);
 
 // ---- Detail panel ----
-function provenance(p: any, path: string) {
-  const fp = p.field_provenance ?? {};
-  const parts = path.split(".");
-  for (let i = parts.length; i > 0; i--) {
-    const own = fp[parts.slice(0, i).join(".")];
-    if (own) return { own: true, sources: own.sources ?? p.sources, checked: own.checked_at ?? p.checked_at, method: own.method ?? p.method, confidence: own.confidence ?? p.confidence };
-  }
-  return { own: false, sources: p.sources, checked: p.checked_at, method: p.method, confidence: p.confidence };
-}
-
-const sourceList = (refs: any[]) =>
-  refs.map((s) => {
-    const name = esc(sources[s.source_id]?.name ?? s.source_id);
-    return `${s.url ? `<a href="${esc(s.url)}" rel="nofollow noopener">${name}</a>` : name} <span class="muted">(retrieved ${esc(date(s.retrieved_at))})</span>`;
-  }).join("; ");
-
 function formatValue(path: string, v: any): string {
   if (v === true || v === false) return yesNo(v);
   if (path === "specialty_tier") return esc(TIER_LABEL[v] ?? v);
@@ -203,7 +186,6 @@ function formatValue(path: string, v: any): string {
   if (Array.isArray(v)) {
     return `<ul class="plain">${v.map((x) => `<li>${
       typeof x !== "object" ? esc(String(x).replaceAll("_", " "))
-      : path === "specialty_evidence" ? `${esc(x.claim)} (<a href="${esc(x.url)}" rel="nofollow noopener">source</a>)`
       : path === "roasters_served" ? `${x.url ? `<a href="${esc(x.url)}" rel="nofollow noopener">${esc(x.name)}</a>` : esc(x.name)}${x.own ? " (own roastery)" : ""}`
       : path === "awards" ? `${x.url ? `<a href="${esc(x.url)}" rel="nofollow noopener">${esc(x.name)}</a>` : esc(x.name)}${x.year ? ` ${x.year}` : ""}`
       : path === "external_ratings" ? `${x.url ? `<a href="${esc(x.url)}" rel="nofollow noopener">${esc(x.source)}</a>` : esc(x.source)} <span class="muted">(reference only; we store no rating values)</span>`
@@ -213,17 +195,13 @@ function formatValue(path: string, v: any): string {
   return esc(typeof v === "string" ? v.replaceAll("_", " ").replace(/^(coffee|food) led$/, "$1-led") : v);
 }
 
-const SKIP = new Set(["id", "name", "sources", "field_provenance", "method", "confidence", "image", "checked_at"]);
+const SKIP = new Set(["id", "name", "image", "checked_at", "last_verified_at"]);
 
 function detailRows(p: any) {
   const rows: string[] = [];
   const row = (path: string, v: any) => {
-    const prov = provenance(p, path);
     const label = LABELS[path] ?? path.split(".").pop()!.replaceAll("_", " ");
-    const provText = prov.own
-      ? `${sourceList(prov.sources ?? [])}${prov.method ? ` · ${esc(prov.method.replaceAll("_", " "))}` : ""}${prov.confidence !== undefined ? ` · confidence ${prov.confidence}` : ""} · checked ${esc(date(prov.checked))}`
-      : `<a href="#detail-sources">record sources</a> · checked ${esc(date(prov.checked))}`;
-    rows.push(`<div class="kv"><dt><a href="${esc(fieldUrl(path))}" title="Definition of ${esc(path)} in the Schema Explorer">${esc(label)}</a></dt><dd>${formatValue(path, v)}<span class="prov">${provText}</span></dd></div>`);
+    rows.push(`<div class="kv"><dt><a href="${esc(fieldUrl(path))}" title="Definition of ${esc(path)} in the Schema Explorer">${esc(label)}</a></dt><dd>${formatValue(path, v)}</dd></div>`);
   };
   for (const [k, v] of Object.entries(p)) {
     if (k.startsWith("_") || SKIP.has(k) || v === undefined) continue;
@@ -238,7 +216,7 @@ function detailRows(p: any) {
 function renderDetail(p: any) {
   const img = p.image
     ? `<figure class="detail__image"><img src="${esc(p.image.url)}" alt="${esc(p.image.title ?? `Photo of ${p.name}`)}" loading="lazy" ${p.image.width ? `width="${p.image.width}" height="${p.image.height}"` : ""} />
-        <figcaption>Photo: ${esc(p.image.author)}, <a href="${esc(fieldUrl("image.licence"))}">licence</a> ${esc(p.image.licence)}, <a href="${esc(p.image.source_url)}" rel="nofollow noopener">source</a>${p.field_provenance?.image?.sources ? ` · ${sourceList(p.field_provenance.image.sources)}` : ""}</figcaption></figure>`
+        <figcaption>Photo: ${esc(p.image.author)}, <a href="${esc(fieldUrl("image.licence"))}">licence</a> ${esc(p.image.licence)}, <a href="${esc(p.image.source_url)}" rel="nofollow noopener">source</a></figcaption></figure>`
     : "";
   const permalink = `${location.origin}${location.pathname}#place=${encodeURIComponent(p.id)}`;
   detail.innerHTML = `
@@ -250,9 +228,7 @@ function renderDetail(p: any) {
     <p class="detail__links"><a href="${esc(permalink)}" data-permalink>Permalink</a> · <a href="/${esc(p._file)}">JSON file</a> · <code>${esc(p.id)}</code></p>
     ${img}
     <dl class="kvs">${detailRows(p)}</dl>
-    <h3 id="detail-sources">Record sources</h3>
-    <p>${sourceList(p.sources ?? [])}</p>
-    <p class="muted">Checked ${esc(date(p.checked_at))}${p.method ? ` · method ${esc(p.method.replaceAll("_", " "))}` : ""}${p.confidence !== undefined ? ` · confidence ${p.confidence}` : ""}. Values without their own sources come from these.</p>
+    <p class="muted"><a href="${esc(fieldUrl("checked_at"))}">Checked</a> ${esc(date(p.checked_at))}${p.last_verified_at ? ` · <a href="${esc(fieldUrl("last_verified_at"))}">last verified</a> ${esc(date(p.last_verified_at))}` : ""}</p>
     <p class="muted small">Something wrong? <a href="https://github.com/Roastbook/open-coffee-data/issues/new?title=${encodeURIComponent(`Correct ${p.name} (${p.id})`)}">Suggest a correction</a>.</p>`;
 }
 
@@ -300,7 +276,6 @@ window.addEventListener("hashchange", () => {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const payload = await res.json();
     places = payload.places;
-    sources = payload.sources;
     byId = new Map(places.map((p) => [p.id, p]));
   } catch (e) {
     countEl.textContent = `Could not load the places (${(e as Error).message}). Try the downloads page.`;

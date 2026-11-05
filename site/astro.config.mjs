@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 
-// scripts/build.sh builds into the repository's dist/ and then adds datasets/, assets/ and artifacts/.
+// scripts/build.sh builds into the repository's dist/ and then adds datasets/ and artifacts/.
 export default defineConfig({
   site: "https://data.roastbook.coffee",
   outDir: process.env.SITE_OUT_DIR ?? "../dist",

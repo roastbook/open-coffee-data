@@ -30,11 +30,10 @@ export function recordsKey(doc) {
   return Object.keys(doc ?? {}).find((k) => k !== "$schema" && k !== "meta" && Array.isArray(doc[k]));
 }
 
-/** Files that hold records (not sources.json, not i18n), parsed. Throws on unreadable JSON. */
+/** Files that hold records, parsed. Throws on unreadable JSON. */
 export function loadDatasets(datasetsDir) {
   const files = [];
   for (const rel of listJson(datasetsDir)) {
-    if (rel === "sources.json" || rel.startsWith("i18n/")) continue;
     const doc = JSON.parse(readFileSync(join(datasetsDir, rel), "utf8"));
     const family = rel.split("/")[0];
     const key = recordsKey(doc);

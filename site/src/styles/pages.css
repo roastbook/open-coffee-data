@@ -2,8 +2,6 @@
 .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); margin-bottom: 1rem; }
 .table-scroll tbody tr:last-child > * { border-bottom: 0; }
 .table-scroll tbody th { font-weight: 600; color: var(--foreground); font-size: 1rem; }
-.source-list { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); }
-.source h2 { margin: 0 0 0.25rem; }
 .facts { display: grid; gap: 0.25rem; margin: 0.75rem 0; }
 .facts > div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.5rem; }
 .facts dt { font-weight: 600; font-size: 0.875rem; color: var(--muted-foreground); }

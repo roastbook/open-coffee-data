@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 // CLI for scripts/lib/check.mjs; called by scripts/validate.sh with SCHEMA_DIR set.
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
@@ -10,7 +10,6 @@ import { mergeReport } from "./lib/report.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const datasetsDir = resolve(process.env.DATASETS_DIR ?? join(root, "datasets"));
-const assetsDir = resolve(process.env.ASSETS_DIR ?? join(root, "assets"));
 const schemaVersion = readFileSync(join(root, "schema-version.txt"), "utf8").trim();
 const schemaDir = process.env.SCHEMA_DIR;
 const baseRef = process.env.BASE_REF || "origin/main";
@@ -26,6 +25,7 @@ if (process.env.DATASETS_DIR) {
     git("rev-parse", "--verify", "--quiet", `${baseRef}^{commit}`);
     baseFiles = new Map();
     for (const path of git("ls-tree", "-r", "--name-only", baseRef, "--", "datasets").split("\n")) {
+      // sources.json and i18n/ were removed with schema v0.1.0 changes; older base refs may still have them.
       if (!path.endsWith(".json") || path === "datasets/sources.json" || path.startsWith("datasets/i18n/")) continue;
       baseFiles.set(path.slice("datasets/".length), git("show", `${baseRef}:${path}`));
     }
@@ -36,7 +36,6 @@ if (process.env.DATASETS_DIR) {
 
 const result = check({
   datasetsDir,
-  assetsDir,
   schemaDir,
   schemaVersion,
   denylist: JSON.parse(readFileSync(join(root, "scripts/config/denylist.json"), "utf8")),

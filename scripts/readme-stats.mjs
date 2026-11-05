@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 // Rewrites the <!-- stats:start --> ... <!-- stats:end --> block in README.md from the datasets.
 // --check: exit 1 when the block is stale (validate.sh). Nobody edits the numbers by hand.
 import { readFileSync, writeFileSync } from "node:fs";
@@ -39,7 +39,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const files = loadDatasets(resolve(process.env.DATASETS_DIR ?? join(root, "datasets")));
   const next = readme.slice(0, a) + statsBlock(files, readFileSync(join(root, "schema-version.txt"), "utf8").trim()) + readme.slice(b + END.length);
   if (process.argv.includes("--check")) {
-    if (next !== readme) { console.log("::error::README.md stats are stale; run node scripts/readme-stats.mjs and commit the result"); process.exit(1); }
+    if (next !== readme) { console.log("::error::README.md stats are stale; run bun scripts/readme-stats.mjs and commit the result"); process.exit(1); }
     console.log("README stats are current");
   } else if (next !== readme) {
     writeFileSync(readmePath, next);

@@ -74,7 +74,5 @@ button.sort:hover { color: var(--foreground); }
 .kv { display: grid; grid-template-columns: minmax(7rem, 35%) 1fr; gap: 0.5rem; padding: 0.45rem 0; border-bottom: 1px solid var(--border); }
 .kv dt { font-weight: 600; font-size: 0.875rem; }
 .kv dd { margin: 0; overflow-wrap: anywhere; }
-.prov { display: block; font-size: 0.75rem; color: var(--muted-foreground); margin-top: 0.15rem; }
-.prov a { color: var(--muted-foreground); }
 ul.plain { margin: 0; padding-left: 1.1rem; }
 .small { font-size: 0.8125rem; }

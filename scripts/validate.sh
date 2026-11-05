@@ -3,12 +3,12 @@
 # Env:
 #   OPEN_COFFEE_SCHEMA_DIR  use a local schemas/ folder instead of the pinned release (development before a tag exists)
 #   BASE_REF                ref to compare ids against (default origin/main; skipped with a notice when missing)
-#   DATASETS_DIR, ASSETS_DIR  test overrides only
+#   DATASETS_DIR            test override only
 source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 ensure_deps
 
 version="$(tr -d '[:space:]' < schema-version.txt)"
-families=(common coffee-places sources translations brew-methods equipment)
+families=(common coffee-places brew-methods equipment)
 
 if [ -n "${OPEN_COFFEE_SCHEMA_DIR:-}" ]; then
   SCHEMA_DIR="$(cd "$OPEN_COFFEE_SCHEMA_DIR" && pwd)"
@@ -33,13 +33,13 @@ export SCHEMA_DIR
 rm -f .roast/report.json
 status=0
 echo "== Dataset checks (schema v$version)"
-node scripts/check.mjs || status=1
+bun scripts/check.mjs || status=1
 echo "== README stats"
 if [ -n "${DATASETS_DIR:-}" ]; then
   echo "::notice::DATASETS_DIR is set; skipped the README stats check"
 else
-  node scripts/readme-stats.mjs --check || status=1
+  bun scripts/readme-stats.mjs --check || status=1
 fi
 echo "== Checker unit tests"
-node --test --test-reporter=dot scripts/tests/ || status=1
+bun test scripts/tests/ || status=1
 exit "$status"

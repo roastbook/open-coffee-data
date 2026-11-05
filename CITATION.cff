@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-message: "If you use this dataset, please cite it as below and credit “Roastbook Open Coffee” (CC BY 4.0)."
+message: "If you use this dataset, please cite it as below."
 type: dataset
 title: "Roastbook Open Coffee Data"
-abstract: "Open dataset of coffee places and specialty cafés, validated against the Open Coffee Schema, with sources and retrieval dates for every fact."
+abstract: "Open dataset of coffee places and specialty cafés, validated against the Open Coffee Schema."
 authors:
   - name: "Roastbook Open Coffee contributors"
     website: "https://roastbook.coffee/"
-license: CC-BY-4.0
+license: MIT
 repository-code: "https://github.com/Roastbook/open-coffee-data"
 url: "https://data.roastbook.coffee/"
 keywords:

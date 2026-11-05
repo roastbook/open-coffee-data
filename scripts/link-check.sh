@@ -4,7 +4,7 @@
 #   scripts/link-check.sh --full  weekly mode: fail on broken links
 # Social sites (Instagram, Facebook, …) that answer 403/429 to bots are always warnings.
 # Needs lychee on PATH (CI installs the release binary) or Docker (lycheeverse/lychee image).
-# No Node dependencies, so CI can run it without installing the workspace.
+# No package dependencies, so CI can run it without installing the workspace (Bun only writes the report).
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
@@ -55,10 +55,10 @@ while IFS=$'\t' read -r kind file url status; do
 done <<< "$failures"
 
 total="$(jq -r '.total // 0' "$out")"
-if command -v node >/dev/null 2>&1; then
-  printf '%s\n' "${warnings[@]+"${warnings[@]}"}" | node --input-type=module -e "
+if command -v bun >/dev/null 2>&1; then
+  printf '%s\n' "${warnings[@]+"${warnings[@]}"}" | bun -e "
 import { mergeReport } from './scripts/lib/report.mjs';
-const lines = (await new Response(process.stdin).text()).split('\n').filter(Boolean);
+const lines = (await Bun.stdin.text()).split('\n').filter(Boolean);
 mergeReport(process.cwd(), { links: { checked: $total, broken: $broken, full: $full }, warnings: lines });
 "
 fi

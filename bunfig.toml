@@ -1,0 +1,5 @@
+# @roastbook/* (the shared UI package) comes from GitHub Packages, which needs a token even for public
+# packages. CI: the setup action sets NPM_GITHUB_TOKEN to GITHUB_TOKEN (job permission packages: read).
+# Locally: export NPM_GITHUB_TOKEN="$(gh auth token)" (needs the read:packages scope).
+[install.scopes]
+roastbook = { url = "https://npm.pkg.github.com/", token = "$NPM_GITHUB_TOKEN" }

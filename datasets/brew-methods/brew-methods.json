@@ -3,17 +3,12 @@
   "meta": {
     "version": "2026.11.05.1",
     "generated_at": "2026-11-05T18:00:00Z",
-    "licence": "CC-BY-4.0",
-    "attribution": "Roastbook Open Coffee"
+    "licence": "MIT"
   },
   "brew_methods": [
     {
       "id": "espresso",
       "name": "Espresso",
-      "aliases": [
-        "Espresso",
-        "Caffè espresso"
-      ],
       "category": "espresso",
       "extraction": "percolation",
       "description": "Finely ground coffee in a portafilter basket brewed with hot water at about 9 bar, giving a small, concentrated drink with crema.",
@@ -87,54 +82,7 @@
         "wikidata": "Q180289",
         "beanconqueror": "PORTAFILTER"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q180289",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "introduced_year": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q180289",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "origin_country_code": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q180289",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "ristretto",
@@ -183,43 +131,7 @@
       "xref": {
         "wikidata": "Q59047"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q59047",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "origin_country_code": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q59047",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "lungo",
@@ -265,35 +177,13 @@
         "paper_filter_position",
         "distribution_method"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "pour-over",
       "name": "Pour-over",
       "aliases": [
         "Hand brew",
-        "Handfilter",
-        "Filterkaffee",
         "Drip coffee"
       ],
       "category": "filter",
@@ -356,32 +246,7 @@
         "wikidata": "Q1155703",
         "beanconqueror": "DRIPPER"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q1155703",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "v60",
@@ -442,27 +307,7 @@
         "pour_count",
         "yield_g"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
       "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      },
       "xref": {
         "beanconqueror": "V60"
       }
@@ -523,27 +368,7 @@
         "pour_count",
         "yield_g"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
       "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      },
       "xref": {
         "beanconqueror": "KALITA_WAVE"
       }
@@ -612,61 +437,13 @@
         "wikidata": "Q5090371",
         "beanconqueror": "CHEMEX"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q5090371",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "introduced_year": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q5090371",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "origin_country_code": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q5090371",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "melitta",
       "name": "Melitta filter",
       "aliases": [
-        "Melitta",
-        "Filtertüte"
+        "Melitta"
       ],
       "parent": "pour-over",
       "category": "filter",
@@ -711,27 +488,7 @@
         "pour_count",
         "yield_g"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "origami",
@@ -779,27 +536,7 @@
         "pour_count",
         "yield_g"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
       "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      },
       "xref": {
         "beanconqueror": "ORIGAMI"
       }
@@ -853,34 +590,13 @@
         "water_temperature_celsius",
         "yield_g"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "batch-brew",
       "name": "Batch brew",
       "aliases": [
-        "Filter machine",
-        "Filterkaffeemaschine"
+        "Filter machine"
       ],
       "parent": "pour-over",
       "category": "filter",
@@ -922,35 +638,14 @@
         "water_temperature_celsius",
         "yield_g"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "french-press",
       "name": "French press",
       "aliases": [
         "Cafetière",
-        "Press pot",
-        "Stempelkanne"
+        "Press pot"
       ],
       "category": "immersion",
       "extraction": "immersion",
@@ -999,32 +694,7 @@
         "wikidata": "Q1147545",
         "beanconqueror": "FRENCH_PRESS"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q1147545",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "aeropress",
@@ -1086,62 +756,13 @@
         "wikidata": "Q381188",
         "beanconqueror": "AEROPRESS"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q381188",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "introduced_year": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q381188",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "origin_country_code": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q381188",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "moka-pot",
       "name": "Moka pot",
       "aliases": [
-        "Bialetti",
-        "Caffettiera",
-        "Espressokocher"
+        "Bialetti"
       ],
       "category": "pressure",
       "extraction": "percolation",
@@ -1187,53 +808,7 @@
         "wikidata": "Q1054566",
         "beanconqueror": "BIALETTI"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q1054566",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "introduced_year": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q1054566",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "origin_country_code": {
-          "method": "manual",
-          "confidence": 0.85,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "neapolitan-flip",
@@ -1275,53 +850,7 @@
       "xref": {
         "wikidata": "Q2541439"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q2541439",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "introduced_year": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q2541439",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "origin_country_code": {
-          "method": "manual",
-          "confidence": 0.85,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "siphon",
@@ -1377,32 +906,7 @@
         "wikidata": "Q1704731",
         "beanconqueror": "SIPHON"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q1704731",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "percolator",
@@ -1432,41 +936,14 @@
       "xref": {
         "wikidata": "Q2342885"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q2342885",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "cezve",
       "name": "Cezve",
       "aliases": [
         "Ibrik",
-        "Turkish coffee",
-        "Türk kahvesi",
-        "Džezva"
+        "Turkish coffee"
       ],
       "category": "boiling",
       "extraction": "immersion",
@@ -1503,50 +980,13 @@
         "wikidata": "Q43022",
         "beanconqueror": "TURKISH"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q43022",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "origin_country_code": {
-          "method": "import",
-          "confidence": 0.95,
-          "sources": [
-            {
-              "source_id": "wikidata",
-              "url": "https://www.wikidata.org/wiki/Q43022",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "phin",
       "name": "Phin",
       "aliases": [
-        "Vietnamese phin",
-        "Cà phê phin"
+        "Vietnamese phin"
       ],
       "category": "filter",
       "extraction": "percolation",
@@ -1589,40 +1029,10 @@
         "yield_g"
       ],
       "typical_drinks": [
-        "cà phê sữa đá",
-        "cà phê đen"
+        "Vietnamese iced coffee with condensed milk",
+        "Vietnamese black coffee"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        },
-        "origin_country_code": {
-          "method": "manual",
-          "confidence": 0.85,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "cold-brew",
@@ -1682,32 +1092,7 @@
         "wikidata": "Q5142444",
         "beanconqueror": "COLD_BREW"
       },
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        },
-        {
-          "source_id": "wikidata",
-          "url": "https://www.wikidata.org/wiki/Q5142444",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     },
     {
       "id": "japanese-iced",
@@ -1758,27 +1143,7 @@
         "pour_count",
         "yield_g"
       ],
-      "method": "manual",
-      "confidence": 0.9,
-      "sources": [
-        {
-          "source_id": "manual-review",
-          "retrieved_at": "2026-11-05T18:00:00Z"
-        }
-      ],
-      "checked_at": "2026-11-05T18:00:00Z",
-      "field_provenance": {
-        "typical_parameters": {
-          "method": "manual",
-          "confidence": 0.8,
-          "sources": [
-            {
-              "source_id": "manual-review",
-              "retrieved_at": "2026-11-05T18:00:00Z"
-            }
-          ]
-        }
-      }
+      "checked_at": "2026-11-05T18:00:00Z"
     }
   ]
 }

@@ -1,11 +1,10 @@
 ---
-export interface Props { current: "explorer" | "downloads" | "brew-methods" | "sources" | "bot" }
+export interface Props { current: "explorer" | "downloads" | "brew-methods" | "bot" }
 const { current } = Astro.props;
 const items = [
   ["explorer", "/", "Explorer"],
   ["downloads", "/downloads/", "Downloads"],
   ["brew-methods", "/brew-methods/", "Brew methods"],
-  ["sources", "/sources/", "Sources"],
   ["bot", "/bot/", "Crawler"],
 ] as const;
 ---

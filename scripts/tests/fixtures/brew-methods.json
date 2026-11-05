@@ -1,27 +1,88 @@
 {
   "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.1.0.json",
-  "meta": { "version": "2026.11.05.1", "generated_at": "2026-11-05T12:00:00Z", "licence": "CC-BY-4.0", "attribution": "Roastbook Open Coffee" },
+  "meta": {
+    "version": "2026.11.05.1",
+    "generated_at": "2026-11-05T12:00:00Z",
+    "licence": "MIT",
+    "attribution": "Roastbook Open Coffee"
+  },
   "brew_methods": [
     {
       "id": "pour-over",
       "name": "Pour-over",
+      "aliases": [
+        "Hand brew",
+        "Filterkaffee"
+      ],
       "category": "filter",
       "extraction": "percolation",
-      "description": "Hot water is poured by hand over ground coffee in a filter cone.",
-      "xref": { "wikidata": "Q1" },
-      "typical_parameters": { "ratio": { "min": 15, "max": 17, "typical": 16 }, "grind_size": ["medium"] },
-      "sources": [{ "source_id": "wikidata", "retrieved_at": "2026-11-05T12:00:00Z" }],
+      "description": "Hot water is poured by hand over ground coffee in a filter, and the brew drips through into a cup or carafe.",
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle",
+        "grinder",
+        "scale"
+      ],
+      "typical_parameters": {
+        "dose_g": {
+          "min": 12,
+          "max": 30,
+          "typical": 15
+        },
+        "ratio": {
+          "min": 14,
+          "max": 18,
+          "typical": 16
+        },
+        "water_temperature_celsius": {
+          "min": 88,
+          "max": 96,
+          "typical": 93
+        },
+        "brew_time_seconds": {
+          "min": 150,
+          "max": 240,
+          "typical": 180
+        },
+        "grind_size": [
+          "medium_fine",
+          "medium"
+        ]
+      },
+      "recorded_parameters": [
+        "dose_g",
+        "brew_water_g",
+        "ratio",
+        "grind_setting",
+        "water_temperature_celsius",
+        "bloom_time_seconds",
+        "bloom_water_g",
+        "brew_time_seconds",
+        "pour_count"
+      ],
       "checked_at": "2026-11-05T12:00:00Z"
     },
     {
-      "id": "v60",
-      "name": "Hario V60",
+      "id": "example-cone",
+      "name": "Example cone dripper",
       "parent": "pour-over",
       "category": "filter",
       "extraction": "percolation",
-      "description": "Pour-over with a conical dripper with spiral ribs and one large hole.",
-      "equipment_types": ["brewer", "filter"],
-      "sources": [{ "source_id": "wikidata", "retrieved_at": "2026-11-05T12:00:00Z" }],
+      "description": "Pour-over with a cone-shaped dripper and a paper filter; the single large hole lets the pouring speed control the flow.",
+      "equipment_types": [
+        "brewer",
+        "filter",
+        "kettle"
+      ],
+      "typical_parameters": {
+        "ratio": {
+          "typical": 16
+        },
+        "grind_size": [
+          "medium_fine"
+        ]
+      },
       "checked_at": "2026-11-05T12:00:00Z"
     }
   ]

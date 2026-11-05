@@ -1,15 +1,15 @@
 {
   "name": "open-coffee-data-site",
   "private": true,
-  "license": "Apache-2.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro check && astro build",
-    "check": "astro check"
+    "dev": "bun --bun astro dev",
+    "build": "bun --bun astro check && bun --bun astro build",
+    "check": "bun --bun astro check"
   },
   "dependencies": {
-    "@roastbook/open-coffee-ui": "github:Roastbook/open-coffee-schema#22db32c1bbf34b5bc4bb16de5dd66aebf3f9ce68&path:packages/ui",
+    "@roastbook/open-coffee-ui": "0.1.0",
     "@tanstack/table-core": "9.3.1",
     "astro": "7.4.6",
     "maplibre-gl": "6.16.0"

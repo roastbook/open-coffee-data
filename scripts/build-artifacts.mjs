@@ -1,11 +1,11 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 // Compiles download artifacts from datasets/ into <out>/ (CONTRACT "URLs"):
 //   coffee-places/<cc>/<city>.ndjson   one full record per line
 //   coffee-places/<cc>/<city>.geojson  Point features, flat properties
 //   coffee-places.geoparquet           all places, GeoParquet 1.x via DuckDB spatial
 //   coffee-places.csv                  all places, flat columns
 //   index.json                         manifest with sizes and record counts (all families)
-// Usage: node scripts/build-artifacts.mjs <out> ; env DATASETS_DIR overrides datasets/.
+// Usage: bun scripts/build-artifacts.mjs <out> ; env DATASETS_DIR overrides datasets/.
 import { mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -76,8 +76,7 @@ const index = {
   dataset_version: datasetVersion(files),
   schema_version: schemaVersion,
   generated_at: new Date().toISOString(),
-  licence: "CC-BY-4.0",
-  attribution: "Roastbook Open Coffee",
+  licence: "MIT",
   datasets: files.map((f) => ({ path: `datasets/${f.rel}`, url: `${DATA}datasets/${f.rel}`, family: f.family, bytes: statSync(join(datasetsDir, f.rel)).size, records: f.records.length, ...(f.family === "coffee-places" ? { city: f.doc.meta.city, country_code: f.doc.meta.country_code } : {}) })),
   artifacts,
 };

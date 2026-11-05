@@ -1,5 +1,5 @@
 // Build-time access to the datasets. scripts/build.sh sets DATASETS_DIR and ARTIFACTS_DIR;
-// the defaults work for `pnpm dev` inside site/.
+// the defaults work for `bun run dev` inside site/.
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { coffeePlaces, datasetVersion, loadDatasets } from "../../../scripts/lib/datasets.mjs";
@@ -12,7 +12,6 @@ export const files: DatasetFile[] = loadDatasets(datasetsDir);
 export const places: any[] = coffeePlaces(files).filter((p: any) => !p.merged_into);
 export const version: string = datasetVersion(files) ?? "unreleased";
 export const buildDate: string = process.env.BUILD_DATE ?? new Date().toISOString().slice(0, 10);
-export const sources: any = JSON.parse(readFileSync(resolve(datasetsDir, "sources.json"), "utf8"));
 export const brewMethods: any[] = files.filter((f) => f.family === "brew-methods").flatMap((f) => f.records);
 export const artifactsIndex: any = existsSync(resolve(artifactsDir, "index.json"))
   ? JSON.parse(readFileSync(resolve(artifactsDir, "index.json"), "utf8"))

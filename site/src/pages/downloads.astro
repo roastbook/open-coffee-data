@@ -11,7 +11,7 @@ const datasette = csv ? `https://lite.datasette.io/?csv=${encodeURIComponent(csv
 <Layout title="Downloads" site="data" version={version} buildDate={buildDate} description="Download the Open Coffee dataset as JSON, NDJSON, GeoJSON, GeoParquet or CSV.">
   <Nav current="downloads" />
   <h1>Downloads</h1>
-  <p class="lead">All files are licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Credit “Roastbook Open Coffee” and link to <a href="https://data.roastbook.coffee/">data.roastbook.coffee</a>. Images are licensed per file; see each place's image credit.</p>
+  <p class="lead">All files are licensed <a href="https://github.com/Roastbook/open-coffee-data/blob/main/LICENSE">MIT</a>. Images are not part of the dataset: records link to the original file, which keeps its own licence; see each place's image credit.</p>
   <p>
     {datasette && <a class="button" data-variant="primary" href={datasette}>Open in Datasette Lite</a>}
     <a class="button" href="/artifacts/index.json">Manifest (index.json)</a>
@@ -32,7 +32,7 @@ const datasette = csv ? `https://lite.datasette.io/?csv=${encodeURIComponent(csv
   </div>
 
   <h2>Compiled artifacts</h2>
-  <p>Built from the source files on every release. Columns in CSV, GeoJSON and GeoParquet use the schema's dotted field paths, for example <code>serving.filter</code>; per-field provenance is only in the JSON and NDJSON files.</p>
+  <p>Built from the source files on every release. Columns in CSV, GeoJSON and GeoParquet use the schema's dotted field paths, for example <code>serving.filter</code>.</p>
   <div class="table-scroll">
     <table>
       <thead><tr><th scope="col">File</th><th scope="col">Format</th><th scope="col">Records</th><th scope="col">Size</th></tr></thead>
