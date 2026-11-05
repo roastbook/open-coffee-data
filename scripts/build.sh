@@ -21,7 +21,7 @@ mkdir -p dist/artifacts
 cp -R "$ARTIFACTS_DIR/." dist/artifacts/
 cp -R "$DATASETS_DIR" dist/datasets
 # The Roastbook mark (all rights reserved) comes from the shared UI package at build time.
-cp "$(realpath site/node_modules/@roastbook/open-coffee-ui/assets/mark.svg)" dist/favicon.svg
+bun -e 'await Bun.write("dist/favicon.svg", Bun.file(new URL(import.meta.resolve("@roastbook/ui/assets/mark.svg", new URL("./site/package.json", import.meta.url).href))))'
 echo "data.roastbook.coffee" > dist/CNAME
 
 bytes="$(du -sb dist | cut -f1)"

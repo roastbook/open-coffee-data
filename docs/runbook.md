@@ -23,23 +23,16 @@ Pages serves whatever the last successful `deploy.yml` run uploaded. There is no
 - **A release tag points at bad data**: do not move or delete published tags. Release a new tag (`…N+1`) with the fix and mark the bad GitHub Release as such in its notes.
 - **Broken basemap**: the map tiles come from OpenFreeMap. If they are down, the table, detail pages and downloads still work; nothing to roll back.
 
-## Shared UI package
-
-The Explorer's header, footer and tokens come from `@roastbook/open-coffee-ui`, which the schema repository's release workflow publishes to GitHub Packages (`https://npm.pkg.github.com`) together with `@roastbook/open-coffee-schema`. `bunfig.toml` maps the `@roastbook` scope to that registry and reads the token from `NPM_GITHUB_TOKEN`; GitHub Packages needs a token even for public packages.
-
-- **Locally:** `export NPM_GITHUB_TOKEN="$(gh auth token)"` (the token needs `read:packages`: `gh auth refresh -s read:packages`), then `bun install`.
-- **CI:** the shared `setup` action passes `GITHUB_TOKEN` as `NPM_GITHUB_TOKEN`; every job that installs has `packages: read`. If the package cannot be resolved, `bun install` fails with a hint; it never falls back to a local copy.
-- **New version:** after a schema release, set the version in `site/package.json`, run `bun install` and commit `site/package.json` and `bun.lock`.
-
-Before the first release (`v0.1.0`) exists, link the sibling checkout for local development only. This changes nothing that is committed:
-
-```sh
-(cd ../roastbook-open-coffee-schema/packages/ui && bun link)
-(cd site && bun link @roastbook/open-coffee-ui)   # installs the workspace with the link
-```
-
-`bun.lock` is created by the first `bun install` against the published package; commit it then.
 
 ## Repository settings (manual)
 
 - Social preview: upload the 1280×640 Roastbook-branded image in Settings → General → Social preview.
+
+## Shared Roastbook UI
+
+The shared implementation lives in [Roastbook/ui](https://github.com/roastbook/ui).
+The site imports `@roastbook/ui/astro/Layout.astro` and `@roastbook/ui/sites`.
+Its dependency pins a public Git commit, so installing the UI needs no GitHub
+Packages token. Update the dependency and `bun.lock` together, then run the
+repository validation and build scripts. Layout, logo and theme changes belong
+in the UI repository.

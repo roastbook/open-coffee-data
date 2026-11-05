@@ -26,4 +26,9 @@ This repository is the Roastbook Open Coffee dataset. Read [README.md](README.md
 - `bun scripts/readme-stats.mjs` after changing records; never edit the stats block by hand.
 - `scripts/build.sh` to check the Explorer and artifacts; `scripts/link-check.sh` for links.
 - `bash scripts/agent.sh` runs the data agent; see `docs/agent.md`.
-- Use Bun (`.bun-version`): `bun install`, `bun run`, `bun test`; no Node, npm or pnpm. `@roastbook/open-coffee-ui` comes from GitHub Packages (`docs/runbook.md#shared-ui-package`). Commits need a DCO sign-off (`git commit -s`) and Conventional Commit messages.
+- Use Bun (`.bun-version`): `bun install`, `bun run`, `bun test`; no Node, npm or pnpm. `@roastbook/ui` is pinned to a public Git commit (`docs/runbook.md#shared-roastbook-ui`). Commits need a DCO sign-off (`git commit -s`) and Conventional Commit messages.
+
+## Shared UI
+
+Use `@roastbook/ui` from `Roastbook/ui` for shared layouts, branding and themes.
+Update the shared package instead of copying its implementation into this repo.
