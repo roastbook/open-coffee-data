@@ -121,7 +121,7 @@ Corrections and new places are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). 
 
 **Owners can claim their place** by opening an issue about it from an email address on the place's website domain, or by linking the issue from the place's website or Instagram bio. Owners may also submit their own photos under CC BY 4.0.
 
-The Sourcing agent opens pull requests for `datasets/coffee-places/**` and `assets/**` only; schemas, `sources.json`, scripts and `.github/` always need a maintainer's review (see [CODEOWNERS](.github/CODEOWNERS)).
+The Sourcing agent opens pull requests for `datasets/coffee-places/**` and `assets/**` only; schemas, `sources.json`, scripts and `.github/` always need a maintainer's review; CI fails any Sourcing-bot pull request that touches other paths.
 
 ## Sources and licensing
 

@@ -11,7 +11,6 @@ Goal: humans review everything except record and image changes, which the Sourci
 - Require a pull request before merging:
   - 1 approving review;
   - dismiss stale approvals on new commits;
-  - require review from Code Owners (`.github/CODEOWNERS`);
   - require conversation resolution.
 - Require status checks to pass, branch up to date:
   - `Roastbook · ☕ Cupping (validate)` (validation, actionlint);
@@ -22,7 +21,7 @@ Goal: humans review everything except record and image changes, which the Sourci
 
 ## Bot-allowed flow for records and images
 
-CODEOWNERS leaves `datasets/coffee-places/`, `datasets/i18n/` and `assets/` without owners, so code-owner review does not apply to them. Every other path (`datasets/sources.json`, `scripts/`, `.github/`, `schema-version.txt`, `agent/`, root config) is owned by `@michidk` and needs a human review.
+Pull requests from people always need a human review. For Sourcing-bot pull requests, `dataset-validate` fails when the diff leaves `datasets/coffee-places/**` and `assets/**`, so changes to `datasets/sources.json`, `scripts/`, `.github/`, `schema-version.txt` or `agent/` can only come from people.
 
 The approving review for an agent pull request comes from auto-merge plus a `review-gate` check in `cupping.yml` that passes only when:
 

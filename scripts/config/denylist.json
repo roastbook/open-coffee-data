@@ -1,5 +1,5 @@
 {
-  "description": "Domains that must never appear in a dataset URL. Kept under scripts/ so that only maintainers (CODEOWNERS) can change it; the Sourcing agent may not touch scripts/. Each rule matches the URL host (regex) and optionally the path (regex). external_ratings_ok: the URL may appear in external_ratings[].url as a reference link (never as a data source).",
+  "description": "Domains that must never appear in a dataset URL. Kept under scripts/, which the Sourcing agent may not touch (CI fails its pull requests outside datasets/coffee-places/** and assets/**). Each rule matches the URL host (regex) and optionally the path (regex). external_ratings_ok: the URL may appear in external_ratings[].url as a reference link (never as a data source).",
   "rules": [
     { "id": "extract-coffee", "host": "(^|\\.)extract\\.coffee$", "reason": "closed guide; never scrape or import (SPEC section 2)" },
     { "id": "european-coffee-trip", "host": "(^|\\.)europeancoffeetrip\\.com$", "reason": "closed guide; never scrape or import" },
