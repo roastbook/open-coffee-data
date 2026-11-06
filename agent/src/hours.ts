@@ -12,7 +12,8 @@ export function normaliseHours(raw: string, country = "de"): string | null {
     .replace(/\b(\d):(\d{2})\b/g, "0$1:$2")
     .replace(/([A-Za-z]{2}):\s+(?=\d)/g, "$1 ")
     .replace(/\s*;\s*/g, "; ").replace(/;\s*$/, "").replace(/\s+/g, " ")
-    .replace(/-00:00\b/g, "-24:00"); // closing at midnight is written 24:00
+    .replace(/-00:00\b/g, "-24:00") // closing at midnight is written 24:00
+    .replace(/(\d{2}:\d{2})\s*[-–→]\s*(open\s*end|open|end|offen)\b/gi, "$1+"); // "16:00 → open End" is OSM's open end
   if (s.length < 2 || /\b(unknown|n\/a|null)\b/i.test(s)) return null;
   try {
     const oh = new OpeningHours(s, { ...NOMINATIM, address: { country_code: country, state: "" } });

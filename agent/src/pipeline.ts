@@ -8,7 +8,7 @@ import { closeBrowser, pool, stats as fetchStats } from "./pages";
 import { readCity, writeCity } from "./dataset";
 import { dedupe, mergeInto, samePlace } from "./dedupe";
 import { describe } from "./describe";
-import { placeWordsFrom, postcodesOnSite, propose, siteMatches, type Verified, verify } from "./extract";
+import { keywordProposals, placeWordsFrom, postcodesOnSite, propose, siteMatches, type Verified, verify } from "./extract";
 import { distanceM } from "./geo";
 import { newId } from "./ids";
 import { findImage } from "./images";
@@ -56,6 +56,7 @@ export async function run(o: RunOptions) {
     // District, street and city names never identify a place on a website (siteMatches).
     const ds = o.city.wikidata ? await districts(o.city.wikidata).catch(() => [] as string[]) : [];
     for (const w of placeWordsFrom([...cityNames, ...ds, ...inside.map((r) => r.street)])) placeWords.add(w);
+    for (const r of inside) if (r.postcode) cityPostcodes.add(r.postcode);
     counts.place_words = placeWords.size;
     counts.overture_dropped_licence = dropped;
     // New places only from coffee categories, never clearly non-coffee businesses or seasonal venues.
@@ -151,8 +152,10 @@ export async function run(o: RunOptions) {
   const candFor = new Map<string, Candidate>();
   for (const c of cands) {
     // A tombstone's Overture id still points at its place: follow merged_into, so a merged duplicate never comes back.
-    const tomb = doc.places.find((p) => p.merged_into && c.overtureIds.includes(p.xref?.overture));
-    const rec = (tomb && doc.places.find((p) => p.id === finalId(doc.places, tomb.merged_into))) ?? doc.places.find((p) => !p.merged_into && (c.overtureIds.includes(p.xref?.overture) || samePlace(c, { ...p.location, name: p.name, street: p.address?.street_address, website: p.links?.website, overtureIds: [], origins: [], key: "" })));
+    // Merged duplicates live in the local archive; their Overture ids keep pointing at the record that survived.
+    const known = [...doc.places, ...archived];
+    const tomb = known.find((p) => p.merged_into && c.overtureIds.includes(p.xref?.overture));
+    const rec = (tomb && doc.places.find((p) => p.id === finalId(known, tomb.merged_into))) ?? doc.places.find((p) => !p.merged_into && (c.overtureIds.includes(p.xref?.overture) || samePlace(c, { ...p.location, name: p.name, street: p.address?.street_address, website: p.links?.website, overtureIds: [], origins: [], key: "" })));
     // A place taken out earlier and confirmed now gets its old id back (local archive, matched by Overture id).
     const back = rec ? undefined : archived.find((p) => c.overtureIds.includes(p.xref?.overture) && !byId.has(p.id));
     const id = rec?.id ?? back?.id ?? newId(taken);
@@ -320,6 +323,7 @@ function needsResearch(c: Candidate, e: Enriched | null) {
 }
 
 const placeWords = new Set<string>();
+const cityPostcodes = new Set<string>(); // postcodes inside the city, for telling branches from an operator's address elsewhere
 const siteCache = new Map<string, Enriched>(); // key: url|street, because facts are verified for one location
 
 function streetStemIn(street: string, foldedText: string) {
@@ -358,11 +362,12 @@ async function enrichSite(c: Candidate, url: string, _cityNames: string[], count
   const host = new URL(site.pages[0].url).hostname.replace(/^www\./, "");
   const m = siteMatches(site.pages, c, host, placeWords);
   if (!m.ok) return { site, facts: [], rejected: [], multi: false, websiteTried: [url], error: m.reason, injectionLines: 0 };
-  const multi = postcodesOnSite(site.pages, country).size > 1;
+  const multi = postcodesOnSite(site.pages, country, cityPostcodes).size > 1;
   const address = [c.street, c.postcode].filter(Boolean).join(", ");
   let p = await propose(c.name, address, site.pages);
   if (p.error) p = await propose(c.name, address, site.pages, llm.escalationModel); // hard case: escalate once
-  const v = verify(p.facts, site.pages, { street: c.street, postcode: c.postcode, country, ownName: c.name, multiLocation: multi });
+  // The model's proposals plus the keyword pass (verify drops failing quotes; conflicting values cancel each other).
+  const v = verify([...p.facts, ...keywordProposals(site.pages)], site.pages, { street: c.street, postcode: c.postcode, country, ownName: c.name, multiLocation: multi, cityPostcodes });
   return { site, match: m.reason, facts: v.kept, rejected: v.rejected, multi, websiteTried: [url], error: p.error ?? undefined, injectionLines: p.removed };
 }
 
@@ -483,8 +488,9 @@ function buildRecord(job: Job, c: Candidate, e: Enriched, old: any, ctx: { now: 
     const why = e.site?.dead ? `website dead: ${e.site.error}` : e.site && !e.site.ok ? `website not readable: ${e.site.error}` : "not confirmed on its own website in this run";
     return { record: null, keep: !!known, provenance: prov, conflict: known ? why : undefined, tierWhy: "" };
   }
-  // Seasonal venues (Oktoberfest tents, fairs, Christmas markets) are not coffee places you can visit all year.
-  if (SEASONAL.test(r.name)) return { record: null, keep: false, provenance: prov, conflict: undefined, tierWhy: "" };
+  // Seasonal venues (Oktoberfest tents, fairs, Christmas markets, places with a winter break) are not coffee places you can
+  // visit all year.
+  if (SEASONAL.test(r.name) || (temp && /winter|saison|season/i.test(temp.quote))) return { record: null, keep: false, provenance: prov, conflict: undefined, tierWhy: "" };
   if (r.status !== "closed") delete r.closed_on;
   r.checked_at = iso(ctx.now);
   if (job.mode === "refresh") {
@@ -550,10 +556,17 @@ function buildRecord(job: Job, c: Candidate, e: Enriched, old: any, ctx: { now: 
   r.xref = { ...(r.xref ?? {}), ...(overtureId ? { overture: overtureId } : {}), ...(c.wikidata ? { wikidata: c.wikidata } : {}) };
   if (!Object.keys(r.xref).length) delete r.xref;
 
+  // Not a coffee place you can visit: offices, staff cafeterias always; shops, schools, brands, playgrounds and centres unless
+  // the site shows café service (coffee on the menu and opening hours).
+  const business = fact("primary_business")?.value;
+  const cafeService = !!(r.serving?.espresso || r.serving?.filter) && !!r.opening_hours;
+  if (["office_service", "staff_canteen"].includes(business) || (["online_shop", "school", "manufacturer", "play_area", "youth_or_community_centre"].includes(business) && !cafeService))
+    return { record: null, keep: false, provenance: prov, conflict: undefined, tierWhy: `not a public coffee place (${business})` };
+
   // Tier.
   const t = tier({
     name: r.name, brand: c.brand, overtureCategory: c.category, roastsOwn: r.roasts_own_beans, filter: r.serving?.filter || r.serving?.pour_over,
-    specialtyClaim: !!fact("specialty"),
+    specialtyClaim: !!fact("specialty") || /specialty|speciality|spezialitäten/i.test(r.name),
     roasters: e.facts.filter((x) => x.field === "roaster").map((x) => ({ name: x.value })),
     business: fact("primary_business")?.value, focus: focus?.value, siteVerified: siteOk,
     open: r.status === "open",

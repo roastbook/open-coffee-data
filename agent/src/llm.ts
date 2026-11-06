@@ -26,9 +26,9 @@ export function cost(model: string, inTok: number, outTok: number) {
   return (inTok * pi + outTok * po) / 1e6;
 }
 
-export async function chat(system: string, user: string, { model = llm.model, maxTokens = 4000 } = {}): Promise<string> {
-  // The fence nonce differs per call; it is not part of what the reply depends on.
-  const key = { model, system, user: user.replace(/untrusted id="[0-9a-f]+"/g, "untrusted") };
+export async function chat(system: string, user: string, { model = llm.model, maxTokens = 4000, image = "" } = {}): Promise<string> {
+  // The fence nonce differs per call; it is not part of what the reply depends on. An image (data URL) is keyed by its hash.
+  const key = { model, system, user: user.replace(/untrusted id="[0-9a-f]+"/g, "untrusted"), ...(image && { image: createHash("sha1").update(image).digest("hex") }) };
   const hit = cached(key);
   if (hit !== null) { usage.cached = (usage.cached ?? 0) + 1; return hit; }
   if (!llm.baseUrl || !llm.apiKey) throw new Error("LLM_BASE_URL and LLM_API_KEY are required");
@@ -38,7 +38,7 @@ export async function chat(system: string, user: string, { model = llm.model, ma
       const res = await fetch(url, {
         method: "POST",
         headers: { authorization: `Bearer ${llm.apiKey}`, "content-type": "application/json" },
-        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: "system", content: system }, { role: "user", content: user }] }),
+        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: "system", content: system }, { role: "user", content: image ? [{ type: "text", text: user }, { type: "image_url", image_url: { url: image } }] : user }] }),
         signal: AbortSignal.timeout(180_000),
       });
       if (!res.ok) throw Object.assign(new Error(`LLM HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`), { status: res.status });

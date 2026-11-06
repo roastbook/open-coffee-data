@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
 import { findQuote, norm } from "../src/evidence";
 import { verify, type Proposal } from "../src/extract";
-import type { SitePage } from "../src/site";
+import { pickImages, type SitePage } from "../src/site";
 
 const page = (text: string, url = "https://cafe.example/"): SitePage => ({ url, fetchedAt: "2026-11-05T10:00:00Z", rendered: false, doc: { title: "", text, links: [], jsonld: "" } });
 
@@ -126,4 +126,29 @@ test("multi-branch sites: what a neutral menu page serves holds for every branch
   ];
   const kept = verify(props, pages, { street: "Reichenbachstr. 38", postcode: "80469", country: "DE", ownName: "x", multiLocation: true }).kept.map((k) => k.field);
   expect(kept).toEqual(["serving.filter"]); // wifi quote does not mention it; the 8-18 hours belong to the other branch
+});
+
+test("siteMatches: taglines, museum cafés and street spellings", () => {
+  const pg = (text: string, title = "") => [{ url: "https://x.example/", fetchedAt: "", rendered: false, doc: { title, text, links: [], jsonld: "" } }];
+  const words = placeWordsFrom(["München", "Brandhorst", "Hohenzollernstraße 59", "Bahnhofpl. 1"]);
+  expect(siteMatches(pg("The Spirited Goat, Hohenzollernstraße 59, 80796 München"), { name: "The Spirited Goat - Specialty Coffee", street: "Hohenzollernstraße 59" }, "thespiritedgoat.de", words).ok).toBe(true);
+  expect(siteMatches(pg("Café | Museum Brandhorst. Theresienstraße 35A 80333 München", "Café | Museum Brandhorst"), { name: "Café Im Museum Brandhorst", postcode: "80333" }, "museum-brandhorst.de", words).ok).toBe(true);
+  expect(siteMatches(pg("O Caffè Mio, Bahnhofsplatz 1-3 (Zwischengeschoss) München"), { name: "O Caffè Mio", street: "Bahnhofpl. 1 - 3/Im Untergeschoss" }, "ocaffemio.de", words).ok).toBe(true);
+});
+
+import { keywordProposals } from "../src/extract";
+test("keyword pass: menu lines become checked proposals; negated lines are rejected", () => {
+  const pages = [page("KAFFEE\nEspresso 2,50\nAufpreis Hafermilch +0,30 €\nalle Kaffees auch entkoffeiniert\nKein WLAN\nAußenbereich nicht reservierbar, Terrasse ab 10 Uhr")];
+  const props = keywordProposals(pages);
+  const kept = verify(props, pages, { country: "DE", ownName: "x", multiLocation: false }).kept.map((k) => k.field).sort();
+  expect(kept).toEqual(["amenities.outdoor_seating", "serving.decaf", "serving.espresso", "serving.plant_milk"]);
+});
+
+test("menu photos: named menus first, then images on a menu page; logos and other pages skipped", () => {
+  const withImages = (url: string, images: { href: string; text: string }[]): SitePage => ({ ...page("", url), doc: { title: "", text: "", links: [], jsonld: "", images } });
+  const picked = pickImages([
+    withImages("https://cafe.example/", [{ href: "https://cafe.example/logo.png", text: "Speisekarte" }, { href: "https://cafe.example/team.jpg", text: "" }, { href: "https://static.wixstatic.com/media/a.jpg", text: "Getränkekarte" }]),
+    withImages("https://cafe.example/speisekarte", [{ href: "https://cafe.example/p1.jpg", text: "" }]),
+  ]);
+  expect(picked).toEqual(["https://static.wixstatic.com/media/a.jpg", "https://cafe.example/p1.jpg"]);
 });

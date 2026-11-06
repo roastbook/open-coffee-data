@@ -59,7 +59,8 @@ async function leadsFromSearch(c: Candidate, city: string, siteHost: string | nu
 
 export async function research(c: Candidate, ctx: { cityName: string; country: string; site?: Site; placeWords?: Set<string> }): Promise<Research> {
   const out: Research = { queries: [], opened: [], extraPages: [] };
-  const siteHost = ctx.site?.ok ? ownHost(ctx.site.pages[0].url) : null;
+  // Compare sites by hostname: a café's own site can live on a site-builder domain that ownHost() treats as shared.
+  const siteHost = ctx.site?.ok ? new URL(ctx.site.pages[0].url).hostname.replace(/^www\./, "") : null;
   const leads = llm.researchModel && !process.env.SEARXNG_URL && !process.env.BRAVE_SEARCH_API_KEY
     ? await leadsFromSearchingModel(c, ctx.cityName, siteHost, out)
     : await leadsFromSearch(c, ctx.cityName, siteHost, out);
@@ -68,7 +69,7 @@ export async function research(c: Candidate, ctx: { cityName: string; country: s
   for (const url of leads) {
     if (seen.has(url) || isPlatformUrl(url)) continue;
     seen.add(url);
-    const host = ownHost(url);
+    const host = (() => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return null; } })();
     if (siteHost && host === siteHost) {
       // Another page of the site we already trust.
       const p = await get(url);

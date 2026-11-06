@@ -32,7 +32,7 @@ export function nameSim(a: string, b: string): number {
 /** "Türkenstraße 52a" -> { street: "turkenstrasse", number: "52a" }. Abbreviations str./straße unified. */
 export function parseStreet(s: string | null | undefined) {
   if (!s) return null;
-  const f = fold(s.replace(/str\.(?=\s|\d|$)/gi, "straße").replace(/strasse/gi, "straße")).replace(/\bstr\b/g, "strasse");
+  const f = fold(s.replace(/str\.(?=\s|\d|$)/gi, "straße").replace(/strasse/gi, "straße").replace(/pl\.(?=\s|\d|$)/gi, "platz")).replace(/\bstr\b/g, "strasse");
   const m = f.match(/^(.*?)\s+(\d+\s?[a-z]?)(\s|$)/);
   return m ? { street: m[1].replace(/\s+/g, ""), number: m[2].replace(/\s/g, "") } : { street: f.replace(/\s+/g, ""), number: null };
 }

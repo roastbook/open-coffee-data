@@ -1,4 +1,4 @@
-// Fetch a place's own website: the homepage plus up to 7 linked pages that usually carry facts (at most 2 of them menu PDFs).
+// Fetch a place's own website: the homepage plus up to 10 linked pages that usually carry facts (at most 3 of them PDFs).
 import { DEAD, get, render, type Page } from "./pages";
 import { type Doc, htmlToDoc } from "./html";
 
@@ -9,9 +9,9 @@ const KEYWORDS: [RegExp, number][] = [
   [/impressum|imprint|legal|rechtlich/i, 10],
   [/öffnungszeit|oeffnungszeit|opening|hours|zeiten/i, 9],
   [/kontakt|contact|anfahrt|standort|location|find.?us|visit|besuch|filiale|cafés?$|cafes?\b|stores?\b/i, 8],
-  [/speisekarte|menu|menü|karte|getränke|drinks|kaffee|coffee|angebot/i, 7],
+  [/speisekarte|speisen|essen|food|menu|menü|karte|getränke|drinks|kaffee|coffee|angebot|frühstück|breakfast|lunch|mittag/i, 7],
   [/über.?uns|ueber.?uns|about|story|philosoph|wir\b|team/i, 6],
-  [/rösterei|roastery|röst|bohnen|beans|shop/i, 5],
+  [/rösterei|roastery|röst|bohnen|beans|shop|produkte|products|zubehör|equipment|sortiment/i, 5],
   [/kurs|course|workshop|seminar|barista|cupping|schulung/i, 4],
 ];
 
@@ -21,21 +21,36 @@ function pickLinks(doc: Doc, base: URL): string[] {
   for (const l of doc.links) {
     let u: URL;
     try { u = new URL(l.href); } catch { continue; }
-    if (!/^https?:$/.test(u.protocol) || u.hostname.replace(/^www\./, "") !== host) continue;
     const pdf = /\.pdf$/i.test(u.pathname);
-    if (pdf && !/karte|menu|menü|speise|getränk|drink|kaffee|coffee|preis|fr(ü|ue)hst|lunch|mittag/i.test(`${decodeURIComponent(u.pathname)} ${l.text}`)) continue;
+    // A PDF linked from the site is the site's own document even on a file server (site builders host files elsewhere).
+    if (!/^https?:$/.test(u.protocol) || (!pdf && u.hostname.replace(/^www\./, "") !== host)) continue;
+    if (pdf && /agb|datenschutz|privacy|terms|widerruf|bewerbung|jobs?\b/i.test(`${decodeURIComponent(u.pathname)} ${l.text}`)) continue;
     if (/\.(jpe?g|png|gif|webp|zip|mp4|svg)$/i.test(u.pathname) || (!pdf && /\/(wp-content)\//i.test(u.pathname)) || /\/(cart|warenkorb|checkout|account|login|tag|category|blog\/page)\//i.test(u.pathname)) continue;
     u.hash = ""; u.search = "";
     const href = u.href;
     if (href === base.href) continue;
     const hay = `${decodeURIComponent(u.pathname)} ${l.text}`;
-    const score = Math.max(0, ...KEYWORDS.map(([re, s]) => (re.test(hay) ? s : 0)));
+    // A menu PDF is often linked only through an image (no link text); any other PDF still gets a low score.
+    const score = Math.max(pdf ? 3 : 0, ...KEYWORDS.map(([re, s]) => (re.test(hay) ? s : 0)));
     if (score && score > (scored.get(href) ?? 0)) scored.set(href, score);
   }
-  // Up to 6 HTML pages plus up to 2 menu PDFs.
+  // Up to 10 pages, at most 3 of them PDFs.
   const ranked = [...scored.entries()].sort((a, b) => b[1] - a[1]).map(([h]) => h);
-  const pdfs = ranked.filter((h) => /\.pdf$/i.test(new URL(h).pathname)).slice(0, 2);
-  return [...ranked.filter((h) => !/\.pdf$/i.test(new URL(h).pathname)).slice(0, 7 - pdfs.length), ...pdfs];
+  const pdfs = ranked.filter((h) => /\.pdf$/i.test(new URL(h).pathname)).slice(0, 3);
+  return [...ranked.filter((h) => !/\.pdf$/i.test(new URL(h).pathname)).slice(0, 10 - pdfs.length), ...pdfs];
+}
+
+const MENU = /speisekarte|karte|menu|menü|getränke|drinks|kaffee|coffee|frühstück|breakfast|preis|price/i;
+const NOT_MENU = /logo|icon|favicon|avatar|banner|sprite|\.svg$/i;
+/** Up to 4 menu photos: images named as a menu, or on a menu page. Any host (site builders serve media from a CDN). */
+export function pickImages(pages: SitePage[]): string[] {
+  const named: string[] = [], onMenuPage: string[] = [];
+  for (const p of pages) for (const i of p.doc.images ?? []) {
+    if (!/^https?:/.test(i.href) || NOT_MENU.test(i.href) || named.includes(i.href) || onMenuPage.includes(i.href)) continue;
+    if (MENU.test(`${i.href.split("/").pop()} ${i.text}`)) named.push(i.href);
+    else if (MENU.test(new URL(p.url).pathname)) onMenuPage.push(i.href);
+  }
+  return [...named, ...onMenuPage].slice(0, 4);
 }
 
 const toSitePage = (p: Page): SitePage => ({ url: p.finalUrl, fetchedAt: p.fetchedAt, doc: htmlToDoc(p.html, p.finalUrl), rendered: !!p.rendered });
@@ -67,6 +82,10 @@ export async function fetchSite(start: string): Promise<Site> {
   for (const href of pickLinks(home.doc, new URL(home.url))) {
     const sp = await fetchPage(href);
     if (sp && sp.doc.text.length > 50) pages.push(sp);
+  }
+  for (const src of pickImages(pages)) {
+    const p = await get(src);
+    if (p.status >= 200 && p.status < 300 && p.html) pages.push(toSitePage(p));
   }
   return { start, ok: true, dead: false, pages };
 }

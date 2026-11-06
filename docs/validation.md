@@ -48,7 +48,7 @@ Errors (CI fails):
 
 Warnings: names with a legal form, SEO tails or a bare street name; street strings that are not "street number"; tier `unknown` for a name that looks like a non-coffee business; descriptions on places that are not tier A or B; open places not verified for half a year; places of different names sharing one website host (a chain's locations page matched to a neighbouring shop looked like this); images not from an open image repository.
 
-`--fix` only removes doubtful values or derives values from stored fields; it never adds a fact. A platform page used as a website is removed together with every value read from it. Duplicates become tombstones (`merged_into`), so no id disappears.
+`--fix` only removes doubtful values or derives values from stored fields; it never adds a fact. A platform page used as a website is removed together with every value read from it. Duplicates become tombstones (`merged_into`); the data agent then moves them out of the repository into its local archive, which keeps their ids for later runs.
 
 ## README
 

@@ -2,7 +2,7 @@
 // Dependency-free except opening_hours, which the repository root also installs.
 
 /** Hosts that are never a place's own website: directories, delivery and booking platforms, social networks, guides, maps. */
-const PLATFORM = /(^|\.)(gelbeseiten\.de|dasoertliche\.de|11880\.com|cylex\.de|cylex-branchenbuch\.de|golocal\.de|meinestadt\.de|stadtbranchenbuch\.com|branchenbuch\.\w+|werkenntdenbesten\.de|yably\.de|muenchen\.de|speisekarte\.de|speisekartenweb\.de|speisekarte\.menu|lieferando\.\w+|sun-lieferservice\.de|ubereats\.com|wolt\.com|foodora\.\w+|facebook\.com|instagram\.com|tiktok\.com|linktr\.ee|linktree\.com|tripadvisor\.\w+|yelp\.\w+|opentable\.\w+|quandoo\.\w+|thefork\.\w+|restaurantguru\.\w+|wanderlog\.com|happycow\.net|foursquare\.com|google\.\w+|goo\.gl|g\.page|openstreetmap\.org|extract\.coffee|europeancoffeetrip\.com|roasters\.app|falstaff\.\w+|mitvergnuegen\.com|mucbook\.de|gastroguide\.\w+)$/i;
+const PLATFORM = /(^|\.)(gelbeseiten\.de|dasoertliche\.de|11880\.com|cylex\.de|cylex-branchenbuch\.de|golocal\.de|meinestadt\.de|stadtbranchenbuch\.com|branchenbuch\.\w+|werkenntdenbesten\.de|yably\.de|muenchen\.de|speisekarte\.de|speisekartenweb\.de|speisekarte\.menu|lieferando\.\w+|sun-lieferservice\.de|ubereats\.com|wolt\.com|foodora\.\w+|facebook\.com|instagram\.com|tiktok\.com|linktr\.ee|linktree\.com|tripadvisor\.\w+|yelp\.\w+|opentable\.\w+|quandoo\.\w+|thefork\.\w+|restaurantguru\.\w+|wanderlog\.com|happycow\.net|foursquare\.com|google\.\w+|goo\.gl|g\.page|openstreetmap\.org|extract\.coffee|europeancoffeetrip\.com|roasters\.app|falstaff\.\w+|mitvergnuegen\.com|mucbook\.de|gastroguide\.\w+|amazon\.\w+|ebay\.\w+)$/i;
 
 export function isPlatformUrl(url: string | undefined | null): boolean {
   if (!url) return false;
@@ -61,7 +61,7 @@ export const POSTCODE: Record<string, RegExp> = { DE: /^\d{5}$/, AT: /^\d{4}$/, 
 /** cash_only needs the page to say cash is the only way to pay, not just that cash is accepted. */
 export const CASH_ONLY = /\bnur\b.{0,20}bar|ausschließlich.{0,20}bar|nur cash|cash only|only cash|keine (ec|karten|kartenzahlung)|no cards?\b|kein(e)? kartenzahlung/;
 
-export const LEGAL_FORM = /\b(GmbH & Co\.? KG|gGmbH|GmbH|UG \(haftungsbeschränkt\)|UG|AG|KG|OHG|SE|eG|e\.\s?V\.|Ltd\.?|S\.?r\.?l\.?|SARL|Sàrl)(?![\w])/;
+export const LEGAL_FORM = /\b(GmbH & Co\.? KG|gGmbH|GmbH|mbH|UG \(haftungsbeschränkt\)|UG|AG|KG|OHG|SE|eG|e\.\s?V\.|Ltd\.?|S\.?r\.?l\.?|SARL|Sàrl)(?![\w])/i; // "KIOSK 1917 GMBH"
 export const NOT_LEGAL_ENTITY = /\be\.\s?K(fm|fr)?\.|\beK\b|\bGbR\b|\bInh(\.|aber)|\bInhaberin\b|\beingetragene[rn]? Kauf/;
 
 /** Share, dialog and intent endpoints are buttons on a page, never the place's own profile. */
