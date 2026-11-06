@@ -10,7 +10,7 @@ import {
   tableFeatures,
 } from "@tanstack/table-core";
 import { storeReactivityBindings } from "@tanstack/table-core/store-reactivity-bindings";
-import { fieldUrl } from "@roastbook/open-coffee-ui/sites";
+import { fieldUrl } from "@roastbook/ui/sites";
 import { activeCount, emptyFilters, matches, parseHash, toHash, type Filters, type HashState } from "./filter";
 import { LABELS, STATUS_LABEL, TIER_LABEL } from "./fields";
 import { createMap, type PlaceMap } from "./map";

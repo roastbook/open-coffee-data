@@ -35,7 +35,6 @@ The checks behind these rules are listed in [docs/validation.md](docs/validation
 ## Pull requests
 
 ```sh
-export NPM_GITHUB_TOKEN="$(gh auth token)"   # GitHub Packages, see docs/runbook.md#shared-ui-package
 bun install
 scripts/validate.sh
 scripts/build.sh     # optional: preview in dist/
