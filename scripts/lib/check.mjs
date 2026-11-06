@@ -47,133 +47,165 @@ export function denyMatch(url, path, denylist) {
     new RegExp(r.host).test(host) && (!r.path || new RegExp(r.path).test(u.pathname)) && !(inRatings && r.external_ratings_ok)) ?? null;
 }
 
-/**
- * @param {object} o
- * @param {string} o.datasetsDir
- * @param {string} o.schemaDir
- * @param {{rules: object[]}} o.denylist
- * @param {Map<string,string>|null} [o.baseFiles]  dataset files at BASE_REF (path relative to datasets/ -> text); null skips the check
- */
+function loadDocument(rel, { datasetsDir, schemaDir, ajv, named, err }) {
+  const file = `datasets/${rel}`;
+  let doc;
+  try { doc = JSON.parse(readFileSync(join(datasetsDir, rel), "utf8")); }
+  catch (e) { err(file, `invalid JSON: ${e.message}`); return null; }
+  const schema = parseSchemaUrl(doc.$schema);
+  if (!schema) {
+    err(file, `$schema must be a canonical https://schema.roastbook.coffee/<family>/<family>.schema.vX.Y.Z.json URL, got ${JSON.stringify(doc.$schema)}`);
+    return null;
+  }
+  named.push({ doc });
+  const validate = ajv.getSchema(doc.$schema);
+  if (!validate) { err(file, `schema ${doc.$schema} is not in ${schemaDir} (is v${schema.version} released?)`); return null; }
+  if (!validate(doc)) for (const error of validate.errors) err(file, `schema: ${fmtAjvError(error)}`);
+  return { rel, file, doc, family: schema.family };
+}
+
+function checkCityLayout({ rel, file, doc }, err) {
+  const parts = rel.split("/");
+  if (parts.length !== 3) err(file, "coffee places live at datasets/coffee-places/<country>/<city>.json");
+  else {
+    const [, cc, name] = parts;
+    if (!/^[a-z]{2}$/.test(cc)) err(file, "country folder must be a lower-case ISO 3166-1 alpha-2 code");
+    if (doc.meta?.country_code !== cc.toUpperCase()) err(file, `meta.country_code ${doc.meta?.country_code} must equal the folder (${cc.toUpperCase()})`);
+    if (doc.meta?.city !== basename(name, ".json")) err(file, `meta.city ${doc.meta?.city} must equal the file name (${basename(name, ".json")})`);
+  }
+}
+
+function checkLayout(dataset, err) {
+  const { rel, file, family } = dataset;
+  const folder = rel.split("/")[0];
+  if (folder !== family) err(file, `files in datasets/${folder}/ must use the ${folder} schema, not ${family}`);
+  if (family === "coffee-places") checkCityLayout(dataset, err);
+}
+
+function checkRecordUrls(r, where, denylist, err) {
+  for (const { path, url } of urlsIn(r)) {
+    const rule = denyMatch(url, path, denylist);
+    if (rule) err(where, `${path}: ${url} is on the deny-list (${rule.id}: ${rule.reason})`);
+  }
+}
+
+function checkImage(r, where, err) {
+  if (!r.image) return;
+  if (!IMAGE_LICENCE.test(r.image.licence ?? "")) err(where, `image.licence ${JSON.stringify(r.image.licence)} is not an open licence we accept (CC0-1.0, PDM-1.0, CC-BY-x.0, CC-BY-SA-x.0)`);
+}
+
+function checkHours(r, where, err, warn) {
+  try {
+    const oh = new OpeningHours(r.opening_hours, { lat: r.location?.lat, lon: r.location?.lon, address: { country_code: (r.address?.country_code ?? "de").toLowerCase(), state: r.address?.region ?? "" } }, { locale: "en" });
+    for (const w of oh.getWarnings()) warn(where, `opening_hours: ${w}`);
+  } catch (e) {
+    err(where, `opening_hours does not parse: ${String(e).replace(/\s+/g, " ").slice(0, 300)}`);
+  }
+}
+
+function indexRecords(dataset, { ids, stats, denylist, err, warn }) {
+  const { file, doc, family } = dataset;
+  const records = doc[recordsKey(doc)] ?? [];
+  stats.records += records.length;
+  stats.families[family] = (stats.families[family] ?? 0) + records.length;
+  if (!ids.has(family)) ids.set(family, new Map());
+  const famIds = ids.get(family);
+  for (const [i, record] of records.entries()) {
+    checkAndIndexRecord(record, i, { file, family, famIds, denylist, err, warn });
+  }
+}
+
+function checkAndIndexRecord(record, index, { file, family, famIds, denylist, err, warn }) {
+  const where = `${file} [${record?.id ?? `#${index}`}]`;
+  if (!record || typeof record !== "object") return;
+  if (famIds.has(record.id)) err(where, `duplicate id, also in ${famIds.get(record.id).file}`);
+  else famIds.set(record.id, { file, record });
+  checkRecordUrls(record, where, denylist, err);
+  checkImage(record, where, err);
+  if (family === "coffee-places" && record.opening_hours) checkHours(record, where, err, warn);
+}
+
+function checkMerge(record, id, famIds, where, err, warn) {
+  if (record.merged_into === undefined) return;
+  const target = famIds.get(record.merged_into);
+  if (!target) err(where, `merged_into ${record.merged_into} does not exist`);
+  else if (record.merged_into === id) err(where, "merged_into points to itself");
+  else if (target.record.merged_into) warn(where, `merged_into ${record.merged_into}, which is itself merged; point at the final record`);
+}
+
+function checkRanges(record, where, err) {
+  // JSON Schema cannot compare two numbers, so the range order lives here.
+  for (const [k, r] of Object.entries(record.typical_parameters ?? {})) {
+    if (!r || typeof r !== "object" || Array.isArray(r)) continue;
+    const nums = [r.min, r.typical, r.max].filter((n) => typeof n === "number");
+    if (nums.some((n, i) => i > 0 && n < nums[i - 1])) err(where, `typical_parameters.${k}: expected min <= typical <= max`);
+  }
+}
+
+function checkParent(record, id, famIds, where, err) {
+  if (record.parent === undefined) return;
+  if (!famIds.has(record.parent)) err(where, `parent ${record.parent} does not exist`);
+  const seen = new Set([id]);
+  for (let p = record.parent; p && famIds.has(p); p = famIds.get(p).record.parent) {
+    if (seen.has(p)) { err(where, `parent chain loops through ${p}`); break; }
+    seen.add(p);
+  }
+}
+
+function checkEquipment(record, ids, where, err) {
+  const methods = ids.get("brew-methods") ?? new Map();
+  for (const method of record.brew_methods ?? []) if (!methods.has(method)) err(where, `brew_methods: ${method} is not a brew method id`);
+}
+
+function checkReferences(ids, err, warn) {
+  for (const [family, famIds] of ids) {
+    for (const [id, { file, record }] of famIds) {
+      const where = `${file} [${id}]`;
+      checkMerge(record, id, famIds, where, err, warn);
+      if (family === "brew-methods") {
+        checkRanges(record, where, err);
+        checkParent(record, id, famIds, where, err);
+      }
+      if (family === "equipment") checkEquipment(record, ids, where, err);
+    }
+  }
+}
+
+// Coffee place removals are warnings; other families must retain permanent ids.
+function checkRemovals(baseFiles, ids, err, warn) {
+  for (const [rel, text] of baseFiles) {
+    let doc;
+    try { doc = JSON.parse(text); } catch { continue; }
+    const family = parseSchemaUrl(doc.$schema)?.family ?? rel.split("/")[0];
+    for (const r of doc[recordsKey(doc)] ?? []) {
+      if (r?.id && !ids.get(family)?.has(r.id)) {
+        if (family === "coffee-places") warn(`datasets/${rel}`, `id ${r.id} (${r.name}) was removed; check that it was unconfirmed or a duplicate`);
+        else err(`datasets/${rel}`, `id ${r.id} exists on the base branch but was deleted; ids are permanent, keep a tombstone (merged_into) instead`);
+      }
+    }
+  }
+}
+
+/** Validate datasets, their cross-record references and optional base-branch ids. */
 export function check({ datasetsDir, schemaDir, denylist, baseFiles = null }) {
   const errors = [];
   const warnings = [];
   const err = (file, message) => errors.push(`${file}: ${message}`);
   const warn = (file, message) => warnings.push(`${file}: ${message}`);
   const ajv = createAjv(schemaDir);
-
-  const docs = [];
-  const named = []; // every file with a valid $schema URL, validated or not, for the version check
-  for (const rel of listJson(datasetsDir)) {
-    const file = `datasets/${rel}`;
-    let doc;
-    try { doc = JSON.parse(readFileSync(join(datasetsDir, rel), "utf8")); } catch (e) { err(file, `invalid JSON: ${e.message}`); continue; }
-    const schema = parseSchemaUrl(doc.$schema);
-    if (!schema) { err(file, `$schema must be a canonical https://schema.roastbook.coffee/<family>/<family>.schema.vX.Y.Z.json URL, got ${JSON.stringify(doc.$schema)}`); continue; }
-    named.push({ doc });
-    const validate = ajv.getSchema(doc.$schema);
-    if (!validate) { err(file, `schema ${doc.$schema} is not in ${schemaDir} (is v${schema.version} released?)`); continue; }
-    if (!validate(doc)) for (const e of validate.errors) err(file, `schema: ${fmtAjvError(e)}`);
-    docs.push({ rel, file, doc, family: schema.family });
-  }
-
+  const named = [];
+  const docs = listJson(datasetsDir)
+    .map((rel) => loadDocument(rel, { datasetsDir, schemaDir, ajv, named, err }))
+    .filter(Boolean);
   let versions = {};
   try { versions = schemaVersions(named); } catch (e) { err("datasets", e.message); }
-
-  const ids = new Map(); // family -> Map(id -> {file, record})
+  const ids = new Map();
   const stats = { files: docs.length, records: 0, families: {}, schemaVersions: versions };
-
-  for (const d of docs) {
-    const { rel, file, doc, family } = d;
-    const folder = rel.split("/")[0];
-    if (folder !== family) err(file, `files in datasets/${folder}/ must use the ${folder} schema, not ${family}`);
-    if (family === "coffee-places") {
-      const parts = rel.split("/");
-      if (parts.length !== 3) err(file, "coffee places live at datasets/coffee-places/<country>/<city>.json");
-      else {
-        const [, cc, name] = parts;
-        if (!/^[a-z]{2}$/.test(cc)) err(file, "country folder must be a lower-case ISO 3166-1 alpha-2 code");
-        if (doc.meta?.country_code !== cc.toUpperCase()) err(file, `meta.country_code ${doc.meta?.country_code} must equal the folder (${cc.toUpperCase()})`);
-        if (doc.meta?.city !== basename(name, ".json")) err(file, `meta.city ${doc.meta?.city} must equal the file name (${basename(name, ".json")})`);
-      }
-    }
-    const records = doc[recordsKey(doc)] ?? [];
-    stats.records += records.length;
-    stats.families[family] = (stats.families[family] ?? 0) + records.length;
-    if (!ids.has(family)) ids.set(family, new Map());
-    const famIds = ids.get(family);
-
-    for (const [i, r] of records.entries()) {
-      const where = `${file} [${r?.id ?? `#${i}`}]`;
-      if (!r || typeof r !== "object") continue;
-      if (famIds.has(r.id)) err(where, `duplicate id, also in ${famIds.get(r.id).file}`);
-      else famIds.set(r.id, { file, record: r });
-
-      for (const { path, url } of urlsIn(r)) {
-        const rule = denyMatch(url, path, denylist);
-        if (rule) err(where, `${path}: ${url} is on the deny-list (${rule.id}: ${rule.reason})`);
-      }
-      if (r.image) {
-        if (!IMAGE_LICENCE.test(r.image.licence ?? "")) err(where, `image.licence ${JSON.stringify(r.image.licence)} is not an open licence we accept (CC0-1.0, PDM-1.0, CC-BY-x.0, CC-BY-SA-x.0)`);
-      }
-      if (family === "coffee-places" && r.opening_hours) {
-        try {
-          const oh = new OpeningHours(r.opening_hours, { lat: r.location?.lat, lon: r.location?.lon, address: { country_code: (r.address?.country_code ?? "de").toLowerCase(), state: r.address?.region ?? "" } }, { locale: "en" });
-          for (const w of oh.getWarnings()) warn(where, `opening_hours: ${w}`);
-        } catch (e) {
-          err(where, `opening_hours does not parse: ${String(e).replace(/\s+/g, " ").slice(0, 300)}`);
-        }
-      }
-    }
+  for (const dataset of docs) {
+    checkLayout(dataset, err);
+    indexRecords(dataset, { ids, stats, denylist, err, warn });
   }
-
-  // References inside and across families.
-  for (const [family, famIds] of ids) {
-    for (const [id, { file, record }] of famIds) {
-      const where = `${file} [${id}]`;
-      if (record.merged_into !== undefined) {
-        const target = famIds.get(record.merged_into);
-        if (!target) err(where, `merged_into ${record.merged_into} does not exist`);
-        else if (record.merged_into === id) err(where, "merged_into points to itself");
-        else if (target.record.merged_into) warn(where, `merged_into ${record.merged_into}, which is itself merged; point at the final record`);
-      }
-      if (family === "brew-methods") {
-        // JSON Schema cannot compare two numbers, so the range order lives here.
-        for (const [k, r] of Object.entries(record.typical_parameters ?? {})) {
-          if (!r || typeof r !== "object" || Array.isArray(r)) continue;
-          const nums = [r.min, r.typical, r.max].filter((n) => typeof n === "number");
-          if (nums.some((n, i) => i > 0 && n < nums[i - 1])) err(where, `typical_parameters.${k}: expected min <= typical <= max`);
-        }
-      }
-      if (family === "brew-methods" && record.parent !== undefined) {
-        if (!famIds.has(record.parent)) err(where, `parent ${record.parent} does not exist`);
-        const seen = new Set([id]);
-        for (let p = record.parent; p && famIds.has(p); p = famIds.get(p).record.parent) {
-          if (seen.has(p)) { err(where, `parent chain loops through ${p}`); break; }
-          seen.add(p);
-        }
-      }
-      if (family === "equipment") {
-        const methods = ids.get("brew-methods") ?? new Map();
-        for (const m of record.brew_methods ?? []) if (!methods.has(m)) err(where, `brew_methods: ${m} is not a brew method id`);
-      }
-    }
-  }
-
-  // Ids never deleted, except coffee places: the dataset holds only places confirmed on their own website, so a place that
-  // can no longer be confirmed, or a duplicate, is removed. Each removal is listed as a warning for the reviewer.
-  if (baseFiles) {
-    for (const [rel, text] of baseFiles) {
-      let doc;
-      try { doc = JSON.parse(text); } catch { continue; }
-      const family = parseSchemaUrl(doc.$schema)?.family ?? rel.split("/")[0];
-      for (const r of doc[recordsKey(doc)] ?? []) {
-        if (r?.id && !ids.get(family)?.has(r.id)) {
-          if (family === "coffee-places") warn(`datasets/${rel}`, `id ${r.id} (${r.name}) was removed; check that it was unconfirmed or a duplicate`);
-          else err(`datasets/${rel}`, `id ${r.id} exists on the base branch but was deleted; ids are permanent, keep a tombstone (merged_into) instead`);
-        }
-      }
-    }
-  }
-
+  checkReferences(ids, err, warn);
+  if (baseFiles) checkRemovals(baseFiles, ids, err, warn);
   return { errors, warnings, stats };
 }

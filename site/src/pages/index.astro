@@ -14,12 +14,12 @@ import "../styles/explorer.css";
 
   <div class="explorer" data-explorer>
     <form class="filters card" data-filters aria-label="Filter places" onsubmit="return false">
-      <div class="filters__head">
-        <h2 class="filters__title">Filters</h2>
-        <button type="button" class="filters__toggle" data-filters-toggle aria-expanded="true" aria-controls="filters-body">Show filters</button>
+      <div class="filters-head">
+        <h2 class="filters-title">Filters</h2>
+        <button type="button" class="filters-toggle" data-filters-toggle aria-expanded="true" aria-controls="filters-body">Show filters</button>
         <button type="reset" class="link-button">Clear all</button>
       </div>
-      <div class="filters__body" id="filters-body">
+      <div class="filters-body" id="filters-body">
       <label class="field">
         <span>Search</span>
         <input type="search" name="q" placeholder="Name, street, roaster…" autocomplete="off" />
@@ -68,15 +68,15 @@ import "../styles/explorer.css";
     </form>
 
     <section class="results" aria-label="Results">
-      <div class="results__bar">
-        <p class="results__count tabular" role="status" aria-live="polite" data-count>Loading places…</p>
+      <div class="results-bar">
+        <p class="results-count tabular" role="status" aria-live="polite" data-count>Loading places…</p>
         <div class="view-toggle" role="group" aria-label="View">
           <button type="button" data-view="map" aria-pressed="true">Map</button>
           <button type="button" data-view="table" aria-pressed="false">Table</button>
         </div>
       </div>
       <div class="panes" data-panes data-active="map">
-        <div class="pane pane--map">
+        <div class="pane pane-map">
           <div class="map" data-map role="region" aria-label="Map of the filtered places. The table lists the same places for keyboard and screen reader use."></div>
           <ul class="legend card" aria-label="Map legend">
             <li><span class="tier-icon" data-tier="A" aria-hidden="true"></span> Tier A</li>
@@ -86,7 +86,7 @@ import "../styles/explorer.css";
           </ul>
           <p class="map-note muted">Basemap © <a href="https://openfreemap.org/">OpenFreeMap</a>, <a href="https://openmaptiles.org/">OpenMapTiles</a>, data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>. The basemap is for display only; the coffee place dataset contains no OpenStreetMap data.</p>
         </div>
-        <div class="pane pane--table">
+        <div class="pane pane-table">
           <div class="table-wrap">
             <table data-table>
               <caption class="visually-hidden">Filtered coffee places. Column headers sort; names open the details.</caption>

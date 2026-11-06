@@ -30,3 +30,11 @@ test("matches combines every filter", () => {
   assert.ok(matches(place, { ...f, inview: true }, { west: 11, east: 12, south: 48, north: 49 }));
   assert.ok(!matches(place, { ...f, inview: true }, { west: 12, east: 13, south: 48, north: 49 }));
 });
+
+test("empty place hashes stay absent and unknown filter names never enable a feature", () => {
+  assert.equal(parseHash("#place=").place, null);
+  const f = emptyFilters();
+  assert.ok(!matches(place, { ...f, serving: ["__proto__"] }));
+  assert.ok(!matches(place, { ...f, amenities: ["constructor"] }));
+  assert.deepEqual(parseHash("#__proto__=1&constructor=1").filters, f);
+});

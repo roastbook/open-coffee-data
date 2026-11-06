@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Sourced by the scripts in scripts/. Sets ROOT and installs workspace dependencies when missing.
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"

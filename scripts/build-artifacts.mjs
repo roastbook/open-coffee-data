@@ -12,6 +12,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DuckDBInstance } from "@duckdb/node-api";
 import { coffeePlaces, datasetVersion, loadDatasets, schemaVersions } from "./lib/datasets.mjs";
+import { artifactPath, cityArtifactBase } from "./lib/artifact-path.mjs";
 import { csvEscape, flattenPlace } from "./lib/flatten.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -24,7 +25,7 @@ mkdirSync(out, { recursive: true });
 const files = loadDatasets(datasetsDir);
 const artifacts = [];
 const write = (rel, text, extra) => {
-  const p = join(out, rel);
+  const p = artifactPath(out, rel);
   mkdirSync(dirname(p), { recursive: true });
   writeFileSync(p, text);
   artifacts.push({ path: `artifacts/${rel}`, url: `${DATA}artifacts/${rel}`, bytes: statSync(p).size, ...extra });
@@ -32,7 +33,7 @@ const write = (rel, text, extra) => {
 
 for (const f of files.filter((x) => x.family === "coffee-places")) {
   const { country_code: cc, city } = f.doc.meta;
-  const base = `coffee-places/${cc.toLowerCase()}/${city}`;
+  const base = cityArtifactBase(f.doc.meta);
   const ctx = { city, country_code: cc };
   write(`${base}.ndjson`, f.records.map((r) => JSON.stringify(r)).join("\n") + (f.records.length ? "\n" : ""), { format: "ndjson", family: "coffee-places", city, country_code: cc, records: f.records.length });
   const geojson = {
@@ -43,23 +44,23 @@ for (const f of files.filter((x) => x.family === "coffee-places")) {
 }
 
 const all = coffeePlaces(files);
-const rows = all.map((p) => flattenPlace(p, { city: p._city, country_code: p._country_code }));
-const columns = [...new Set(rows.flatMap((r) => Object.keys(r)))];
-const types = Object.fromEntries(columns.map((c) => {
-  const seen = new Set(rows.map((r) => r[c]).filter((v) => v !== undefined && v !== null).map((v) => typeof v));
+const rows = all.map((p) => new Map(Object.entries(flattenPlace(p, { city: p._city, country_code: p._country_code }))));
+const columns = [...new Set(rows.flatMap((r) => [...r.keys()]))];
+const types = new Map(columns.map((c) => {
+  const seen = new Set(rows.map((r) => r.get(c)).filter((v) => v !== undefined && v !== null).map((v) => typeof v));
   return [c, seen.size === 1 && seen.has("boolean") ? "BOOLEAN" : seen.size === 1 && seen.has("number") ? "DOUBLE" : "VARCHAR"];
 }));
-write("coffee-places.csv", [columns.map(csvEscape).join(","), ...rows.map((r) => columns.map((c) => csvEscape(r[c])).join(","))].join("\n") + "\n", { format: "csv", family: "coffee-places", records: rows.length });
+write("coffee-places.csv", [columns.map(csvEscape).join(","), ...rows.map((r) => columns.map((c) => csvEscape(r.get(c))).join(","))].join("\n") + "\n", { format: "csv", family: "coffee-places", records: rows.length });
 
 if (rows.length) {
   // GeoParquet: DuckDB reads the flat rows with explicit types and writes a WKB point column; COPY adds the "geo" metadata.
   const tmp = join(out, ".rows.ndjson");
-  writeFileSync(tmp, rows.map((r) => JSON.stringify(Object.fromEntries(columns.map((c) => [c, r[c] ?? null])))).join("\n") + "\n");
+  writeFileSync(tmp, rows.map((r) => JSON.stringify(Object.fromEntries(columns.map((c) => [c, r.get(c) ?? null])))).join("\n") + "\n");
   const db = await DuckDBInstance.create(":memory:");
   const con = await db.connect();
   await con.run("INSTALL spatial; LOAD spatial;");
   const sqlStr = (s) => `'${s.replaceAll("'", "''")}'`;
-  const colSpec = `{${columns.map((c) => `${sqlStr(c)}: ${sqlStr(types[c])}`).join(", ")}}`;
+  const colSpec = `{${columns.map((c) => `${sqlStr(c)}: ${sqlStr(types.get(c))}`).join(", ")}}`;
   const parquet = join(out, "coffee-places.geoparquet");
   await con.run(`COPY (SELECT *, ST_Point("lon", "lat") AS geometry FROM read_json(${sqlStr(tmp)}, format = 'newline_delimited', columns = ${colSpec}) ORDER BY id) TO ${sqlStr(parquet)} (FORMAT parquet, COMPRESSION zstd)`);
   const geo = (await con.runAndReadAll(`SELECT value::VARCHAR AS v FROM parquet_kv_metadata(${sqlStr(parquet)}) WHERE key::VARCHAR = 'geo'`)).getRowObjects();

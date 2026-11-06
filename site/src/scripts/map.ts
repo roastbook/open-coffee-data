@@ -2,7 +2,8 @@
 // shape and size: tier A large circle, tier B diamond, other small square.
 import * as maplibregl from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
-import type { FeatureCollection, Point } from "geojson";
+import type { FeatureCollection } from "geojson";
+import type { ExplorerPlace } from "./place";
 import type { Bounds } from "./filter";
 
 // MapLibre 6 runs its tile worker as an ES module; let Vite bundle it and tell MapLibre where it is.
@@ -17,7 +18,8 @@ function icon(shape: "circle" | "diamond" | "square", size: number, fill: string
   const ratio = 2;
   const c = document.createElement("canvas");
   c.width = c.height = size * ratio;
-  const g = c.getContext("2d")!;
+  const g = c.getContext("2d");
+  if (!g) throw new Error("Canvas 2D context is unavailable");
   g.scale(ratio, ratio);
   const m = size / 2;
   const r = m - 2;
@@ -34,13 +36,13 @@ function icon(shape: "circle" | "diamond" | "square", size: number, fill: string
 }
 
 export interface PlaceMap {
-  setData(places: any[]): void;
-  focus(place: any): void;
+  setData(places: ExplorerPlace[]): void;
+  focus(place: ExplorerPlace): void;
   bounds(): Bounds | null;
   resize(): void;
 }
 
-export function createMap(el: HTMLElement, places: any[], onSelect: (id: string) => void, onMove: () => void): PlaceMap {
+export function createMap(el: HTMLElement, places: ExplorerPlace[], onSelect: (id: string) => void, onMove: () => void): PlaceMap {
   let data: FeatureCollection = { type: "FeatureCollection", features: [] };
   const map = new maplibregl.Map({ container: el, style: STYLE[theme()], center: [11.575, 48.137], zoom: 11, attributionControl: { compact: true } });
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
@@ -70,13 +72,18 @@ export function createMap(el: HTMLElement, places: any[], onSelect: (id: string)
   };
   map.on("style.load", addLayers);
 
-  map.on("click", "clusters", async (e) => {
+  map.on("click", "clusters", (e) => {
     const f = e.features?.[0];
     if (!f) return;
-    const zoom = await (map.getSource("places") as maplibregl.GeoJSONSource).getClusterExpansionZoom(f.properties.cluster_id);
-    map.easeTo({ center: (f.geometry as Point).coordinates as [number, number], zoom });
+    const source = map.getSource("places");
+    if (!(source instanceof maplibregl.GeoJSONSource) || f.geometry.type !== "Point") return;
+    const [lon, lat] = f.geometry.coordinates;
+    if (lon === undefined || lat === undefined || typeof f.properties.cluster_id !== "number") return;
+    source.getClusterExpansionZoom(f.properties.cluster_id).then((zoom) => {
+      map.easeTo({ center: [lon, lat], zoom });
+    }).catch((error: unknown) => { console.error("Could not expand map cluster", error); });
   });
-  map.on("click", "points", (e) => { const id = e.features?.[0]?.properties?.id; if (id) onSelect(id); });
+  map.on("click", "points", (e) => { const id = e.features?.[0]?.properties?.id; if (typeof id === "string" && id) onSelect(id); });
   for (const layer of ["clusters", "points"]) {
     map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
     map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
@@ -87,7 +94,8 @@ export function createMap(el: HTMLElement, places: any[], onSelect: (id: string)
   return {
     setData(list) {
       data = { type: "FeatureCollection", features: list.map((p) => ({ type: "Feature", geometry: { type: "Point", coordinates: [p.location.lon, p.location.lat] }, properties: { id: p.id, tier: p.specialty_tier } })) };
-      (map.getSource("places") as maplibregl.GeoJSONSource | undefined)?.setData(data);
+      const source = map.getSource("places");
+      if (source instanceof maplibregl.GeoJSONSource) source.setData(data);
     },
     focus(p) {
       map.easeTo({ center: [p.location.lon, p.location.lat], zoom: Math.max(map.getZoom(), 15) });

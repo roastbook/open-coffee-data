@@ -1,3 +1,5 @@
+import type { FilterPlace, SearchablePlace } from "./place";
+
 // Filter state, its URL-hash form and the place predicate. Shared by the map and the table so
 // both always show the same places. Plain TypeScript (erasable syntax only) so node --test can run it.
 
@@ -27,7 +29,7 @@ export function parseHash(hash: string): HashState {
   f.city = p.get("city") ?? "";
   for (const k of LISTS) f[k] = (p.get(k) ?? "").split(",").filter(Boolean);
   for (const k of FLAGS) f[k] = p.get(k) === "1";
-  return { filters: f, place: p.get("place") || null, view: p.get("view") === "table" ? "table" : "map" };
+  return { filters: f, place: p.get("place") === "" ? null : p.get("place"), view: p.get("view") === "table" ? "table" : "map" };
 }
 
 export function toHash({ filters: f, place, view }: HashState): string {
@@ -44,28 +46,37 @@ export function toHash({ filters: f, place, view }: HashState): string {
 export const fold = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
 
 /** Text the search box looks at. */
-export const searchText = (p: any) =>
-  fold([p.name, p.address?.street_address, p.address?.postal_code, p.address?.locality, p.operator?.name, ...(p.roasters_served ?? []).map((r: any) => r.name)].filter(Boolean).join(" "));
+export const searchText = (p: SearchablePlace) =>
+  fold([p.name, p.address?.street_address, p.address?.postal_code, p.address?.locality, p.operator?.name, ...(p.roasters_served ?? []).map((r) => r.name)].filter(Boolean).join(" "));
 
 export interface Bounds { west: number; south: number; east: number; north: number }
 
-export function matches(p: any, f: Filters, bounds: Bounds | null = null): boolean {
-  if (f.city && p._city !== f.city) return false;
-  if (f.tier.length && !f.tier.includes(p.specialty_tier)) return false;
-  if (f.status.length && !f.status.includes(p.status)) return false;
-  if (f.roasts && p.roasts_own_beans !== true) return false;
-  if (f.equipment && p.sells_equipment !== true) return false;
-  if (f.serving.some((k) => p.serving?.[k] !== true)) return false;
-  if (f.amenities.some((k) => p.amenities?.[k] !== true)) return false;
-  if (f.q) {
-    const text = (p._search ??= searchText(p));
-    if (!fold(f.q).split(/\s+/).filter(Boolean).every((w) => text.includes(w))) return false;
-  }
-  if (f.inview && bounds) {
-    const { lat, lon } = p.location;
-    if (lat < bounds.south || lat > bounds.north || lon < bounds.west || lon > bounds.east) return false;
-  }
-  return true;
+function matchesSelection(p: FilterPlace, f: Filters): boolean {
+  return (!f.city || p._city === f.city) &&
+    (!f.tier.length || f.tier.includes(p.specialty_tier)) &&
+    (!f.status.length || f.status.includes(p.status)) &&
+    (!f.roasts || p.roasts_own_beans === true) &&
+    (!f.equipment || p.sells_equipment === true);
+}
+
+function offersAll(values: FilterPlace["serving"] | FilterPlace["amenities"], selected: string[]): boolean {
+  const offered = new Set(Object.entries(values ?? {}).filter(([, value]) => value === true).map(([key]) => key));
+  return selected.every((key) => offered.has(key));
+}
+
+function matchesSearch(p: FilterPlace, query: string): boolean {
+  if (!query) return true;
+  const text = (p._search ??= searchText(p));
+  return fold(query).split(/\s+/).filter(Boolean).every((word) => text.includes(word));
+}
+
+function inBounds({ location: { lat, lon } }: FilterPlace, bounds: Bounds): boolean {
+  return lat >= bounds.south && lat <= bounds.north && lon >= bounds.west && lon <= bounds.east;
+}
+
+export function matches(p: FilterPlace, f: Filters, bounds: Bounds | null = null): boolean {
+  return matchesSelection(p, f) && offersAll(p.serving, f.serving) && offersAll(p.amenities, f.amenities) &&
+    matchesSearch(p, f.q) && (!f.inview || !bounds || inBounds(p, bounds));
 }
 
 export const activeCount = (f: Filters) =>

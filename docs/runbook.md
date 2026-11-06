@@ -12,7 +12,7 @@
 
 1. On `main`, with CI green and the README stats current, run the Release workflow (`release.yml`). It creates the next tag `YYYY.MM.DD.N` (N starts at 1 for the day) and the GitHub Release with the changelog (`cliff.toml`). No dataset file changes: the version lives only in the tag.
 2. The tag push runs `deploy.yml`. The build reads the version from `DATASET_VERSION` or `git describe --tags --match '[0-9]*'` (builds between releases show `<tag>-<commits>-g<sha>`, builds without a tag show `unreleased`).
-3. Check https://data.roastbook.coffee/ (footer shows the new version) and `/artifacts/index.json` (`dataset_version`).
+3. Check <https://data.roastbook.coffee/> (footer shows the new version) and `/artifacts/index.json` (`dataset_version`).
 
 ## Rolling back a deploy
 
@@ -22,7 +22,6 @@ Pages serves whatever the last successful `deploy.yml` run uploaded. There is no
 - **Urgent, before a revert can merge**: in Actions, open the last good `Deploy` run and choose “Re-run all jobs”. It rebuilds that commit and deploys it. The next push to `main` deploys again, so land the revert soon.
 - **A release tag points at bad data**: do not move or delete published tags. Release a new tag (`…N+1`) with the fix and mark the bad GitHub Release as such in its notes.
 - **Broken basemap**: the map tiles come from OpenFreeMap. If they are down, the table, detail pages and downloads still work; nothing to roll back.
-
 
 ## Repository settings (manual)
 

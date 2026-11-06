@@ -12,24 +12,29 @@ import {
 import { storeReactivityBindings } from "@tanstack/table-core/store-reactivity-bindings";
 import { fieldUrl } from "@roastbook/ui/sites";
 import { activeCount, emptyFilters, matches, parseHash, toHash, type Filters, type HashState } from "./filter";
-import { LABELS, STATUS_LABEL, TIER_LABEL } from "./fields";
+import { STATUS_LABEL, TIER_LABEL } from "./fields";
 import { createMap, type PlaceMap } from "./map";
+import { esc, yesNo, detailRows, httpUrl } from "./detail";
+import { parsePlacesPayload, type ExplorerPlace } from "./place";
 
-const root = document.querySelector<HTMLElement>("[data-explorer]")!;
-const form = root.querySelector<HTMLFormElement>("[data-filters]")!;
-const countEl = root.querySelector<HTMLElement>("[data-count]")!;
-const panes = root.querySelector<HTMLElement>("[data-panes]")!;
-const tableEl = root.querySelector<HTMLTableElement>("[data-table]")!;
-const pager = root.querySelector<HTMLElement>("[data-pager]")!;
-const detail = root.querySelector<HTMLElement>("[data-detail]")!;
+function requiredElement<T extends Element>(element: T | null, selector: string): T {
+  if (!element) throw new Error(`Missing Explorer element: ${selector}`);
+  return element;
+}
 
-const esc = (s: unknown) => String(s ?? "").replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
-const yesNo = (v: unknown) => (v === true ? "Yes" : v === false ? "No" : "—");
+const root = requiredElement(document.querySelector<HTMLElement>("[data-explorer]"), "[data-explorer]");
+const form = requiredElement(root.querySelector<HTMLFormElement>("[data-filters]"), "[data-filters]");
+const countEl = requiredElement(root.querySelector<HTMLElement>("[data-count]"), "[data-count]");
+const panes = requiredElement(root.querySelector<HTMLElement>("[data-panes]"), "[data-panes]");
+const tableEl = requiredElement(root.querySelector<HTMLTableElement>("[data-table]"), "[data-table]");
+const pager = requiredElement(root.querySelector<HTMLElement>("[data-pager]"), "[data-pager]");
+const detail = requiredElement(root.querySelector<HTMLElement>("[data-detail]"), "[data-detail]");
+
 const date = (s?: string) => (s ? s.slice(0, 10) : "");
 
 let state: HashState = parseHash(location.hash);
-let places: any[] = [];
-let byId = new Map<string, any>();
+let places: ExplorerPlace[] = [];
+let byId = new Map<string, ExplorerPlace>();
 let map: PlaceMap | null = null;
 let lastOpener: HTMLElement | null = null;
 
@@ -42,8 +47,8 @@ const features = tableFeatures({
   rowPaginationFeature,
   paginatedRowModel: createPaginatedRowModel(),
 });
-const col = createColumnHelper<typeof features, any>();
-const tierRank: Record<string, number> = { A: 0, B: 1, none: 2, unknown: 3 };
+const col = createColumnHelper<typeof features, ExplorerPlace>();
+const tierRank: Partial<Record<string, number>> = { A: 0, B: 1, none: 2, unknown: 3 };
 const columns = col.columns([
   col.accessor("name", { header: "Name", meta: { path: "name" } }),
   col.accessor((p) => p._city_name, { id: "city", header: "City", meta: { path: "address.locality" } }),
@@ -56,13 +61,13 @@ const columns = col.columns([
 const table = constructTable({
   features,
   columns,
-  data: [] as any[],
-  getRowId: (p: any) => p.id,
+  data: places,
+  getRowId: (p) => p.id,
   initialState: { pagination: { pageIndex: 0, pageSize: 25 }, sorting: [{ id: "tier", desc: false }] },
 });
 
 function renderTable() {
-  const thead = tableEl.tHead!;
+  const thead = tableEl.createTHead();
   thead.innerHTML = "";
   for (const group of table.getHeaderGroups()) {
     const tr = thead.insertRow();
@@ -81,7 +86,7 @@ function renderTable() {
     }
   }
   const rows = table.getRowModel().rows;
-  tableEl.tBodies[0].innerHTML = rows.length
+  requiredElement(tableEl.tBodies[0] ?? null, "tbody").innerHTML = rows.length
     ? rows.map((row) => {
         const p = row.original;
         const href = `#${toHash({ ...state, place: p.id })}`;
@@ -105,8 +110,8 @@ function renderTable() {
     <button type="button" data-page="next" ${table.getCanNextPage() ? "" : "disabled"}>Next</button>`;
 }
 pager.addEventListener("click", (e) => {
-  const which = (e.target as HTMLElement).closest<HTMLButtonElement>("[data-page]")?.dataset.page;
-  if (!which) return;
+  const which = (e.target instanceof Element ? e.target.closest<HTMLButtonElement>("[data-page]")?.dataset.page : undefined);
+  if (which !== "prev" && which !== "next") return;
   if (which === "prev") table.previousPage(); else table.nextPage();
   renderTable();
   pager.querySelector<HTMLButtonElement>(`[data-page="${which}"]:not([disabled])`)?.focus();
@@ -129,10 +134,12 @@ function readForm(): Filters {
 }
 
 function writeForm(f: Filters) {
-  (form.elements.namedItem("q") as HTMLInputElement).value = f.q;
-  (form.elements.namedItem("city") as HTMLSelectElement).value = f.city;
+  const queryInput = form.elements.namedItem("q");
+  if (queryInput instanceof HTMLInputElement) queryInput.value = f.q;
+  const cityInput = form.elements.namedItem("city");
+  if (cityInput instanceof HTMLSelectElement) cityInput.value = f.city;
   for (const input of form.querySelectorAll<HTMLInputElement>("input[type=checkbox]")) {
-    const v = (f as any)[input.name];
+    const v = Object.entries(f).find(([name]) => name === input.name)?.[1];
     input.checked = Array.isArray(v) ? v.includes(input.value) : Boolean(v);
   }
   for (const d of form.querySelectorAll("details")) if (d.querySelector("input:checked")) d.open = true;
@@ -149,7 +156,7 @@ function apply({ keepPage = false, fromMove = false } = {}) {
   const base = places.filter((p) => matches(p, state.filters, null));
   const bounds = state.filters.inview ? map?.bounds() ?? null : null;
   const list = bounds ? base.filter((p) => matches(p, state.filters, bounds)) : base;
-  table.setOptions((prev: any) => ({ ...prev, data: list }));
+  table.setOptions((prev) => ({ ...prev, data: list }));
   if (!keepPage) table.setPageIndex(0);
   renderTable();
   const n = activeCount(state.filters);
@@ -161,71 +168,32 @@ function apply({ keepPage = false, fromMove = false } = {}) {
 
 form.addEventListener("input", () => { state.filters = readForm(); apply(); });
 form.addEventListener("reset", () => setTimeout(() => { state.filters = emptyFilters(); writeForm(state.filters); apply(); }));
-for (const b of root.querySelectorAll<HTMLButtonElement>("[data-view]")) b.addEventListener("click", () => { setView(b.dataset.view as "map" | "table"); apply({ keepPage: true }); });
+for (const b of root.querySelectorAll<HTMLButtonElement>("[data-view]")) b.addEventListener("click", () => { setView(b.dataset.view === "table" ? "table" : "map"); apply({ keepPage: true }); });
 
 // Phone: filters collapse behind a toggle so the map stays in view.
-const toggle = form.querySelector<HTMLButtonElement>("[data-filters-toggle]")!;
+const toggle = requiredElement(form.querySelector<HTMLButtonElement>("[data-filters-toggle]"), "[data-filters-toggle]");
 const setFiltersOpen = (open: boolean) => {
   form.toggleAttribute("data-collapsed", !open);
   toggle.setAttribute("aria-expanded", String(open));
   toggle.textContent = open ? "Hide filters" : `Show filters${activeCount(state.filters) ? ` (${activeCount(state.filters)})` : ""}`;
 };
-toggle.addEventListener("click", () => setFiltersOpen(form.hasAttribute("data-collapsed")));
+toggle.addEventListener("click", () => { setFiltersOpen(form.hasAttribute("data-collapsed")); });
 setFiltersOpen(!matchMedia("(max-width: 959px)").matches);
 
 // ---- Detail panel ----
-function formatValue(path: string, v: any): string {
-  if (v === true || v === false) return yesNo(v);
-  if (path === "specialty_tier") return esc(TIER_LABEL[v] ?? v);
-  if (path === "status") return esc(STATUS_LABEL[v] ?? v);
-  if (path === "location") return `${v.lat}, ${v.lon}`;
-  if (path === "xref.wikidata") return `<a href="https://www.wikidata.org/wiki/${esc(v)}">${esc(v)}</a>`;
-  if (typeof v === "string" && /^https?:\/\//.test(v)) return `<a href="${esc(v)}" rel="nofollow noopener">${esc(v.replace(/^https?:\/\/(www\.)?/, ""))}</a>`;
-  if (path === "prices.cappuccino") return `${esc(v.amount.toFixed(2))} ${esc(v.currency)} <span class="muted">(observed ${esc(v.observed_on)}${v.source_url ? `, <a href="${esc(v.source_url)}" rel="nofollow noopener">menu</a>` : ""})</span>`;
-  if (path === "operator") return esc([v.name, v.legal_form && !v.name.includes(v.legal_form) ? v.legal_form : "", v.register_id].filter(Boolean).join(", "));
-  if (Array.isArray(v)) {
-    return `<ul class="plain">${v.map((x) => `<li>${
-      typeof x !== "object" ? esc(String(x).replaceAll("_", " "))
-      : path === "roasters_served" ? `${x.url ? `<a href="${esc(x.url)}" rel="nofollow noopener">${esc(x.name)}</a>` : esc(x.name)}${x.own ? " (own roastery)" : ""}`
-      : path === "awards" ? `${x.url ? `<a href="${esc(x.url)}" rel="nofollow noopener">${esc(x.name)}</a>` : esc(x.name)}${x.year ? ` ${x.year}` : ""}`
-      : path === "external_ratings" ? `${x.url ? `<a href="${esc(x.url)}" rel="nofollow noopener">${esc(x.source)}</a>` : esc(x.source)} <span class="muted">(reference only; we store no rating values)</span>`
-      : esc(JSON.stringify(x))
-    }</li>`).join("")}</ul>`;
-  }
-  return esc(typeof v === "string" ? v.replaceAll("_", " ").replace(/^(coffee|food) led$/, "$1-led") : v);
-}
-
-const SKIP = new Set(["id", "name", "image", "checked_at", "last_verified_at"]);
-
-function detailRows(p: any) {
-  const rows: string[] = [];
-  const row = (path: string, v: any) => {
-    const label = LABELS[path] ?? path.split(".").pop()!.replaceAll("_", " ");
-    rows.push(`<div class="kv"><dt><a href="${esc(fieldUrl(path))}" title="Definition of ${esc(path)} in the Schema Explorer">${esc(label)}</a></dt><dd>${formatValue(path, v)}</dd></div>`);
-  };
-  for (const [k, v] of Object.entries(p)) {
-    if (k.startsWith("_") || SKIP.has(k) || v === undefined) continue;
-    const nested = v && typeof v === "object" && !Array.isArray(v) && !["location", "operator", "prices"].includes(k);
-    if (nested) for (const [k2, v2] of Object.entries(v as object)) row(`${k}.${k2}`, v2);
-    else if (k === "prices") for (const [k2, v2] of Object.entries(v as object)) row(`prices.${k2}`, v2);
-    else row(k, v);
-  }
-  return rows.join("");
-}
-
-function renderDetail(p: any) {
+function renderDetail(p: ExplorerPlace) {
   const img = p.image
-    ? `<figure class="detail__image"><img src="${esc(p.image.url)}" alt="${esc(p.image.title ?? `Photo of ${p.name}`)}" loading="lazy" ${p.image.width ? `width="${p.image.width}" height="${p.image.height}"` : ""} />
-        <figcaption>Photo: ${esc(p.image.author)}, <a href="${esc(fieldUrl("image.licence"))}">licence</a> ${esc(p.image.licence)}, <a href="${esc(p.image.source_url)}" rel="nofollow noopener">source</a></figcaption></figure>`
+    ? `<figure class="detail-image"><img src="${esc(httpUrl(p.image.url))}" alt="${esc(p.image.title ?? `Photo of ${p.name}`)}" loading="lazy" ${p.image.width ? `width="${esc(p.image.width)}" height="${esc(p.image.height)}"` : ""} />
+        <figcaption>Photo: ${esc(p.image.author)}, <a href="${esc(fieldUrl("image.licence"))}">licence</a> ${esc(p.image.licence)}, <a href="${esc(httpUrl(p.image.source_url))}" rel="nofollow noopener">source</a></figcaption></figure>`
     : "";
   const permalink = `${location.origin}${location.pathname}#place=${encodeURIComponent(p.id)}`;
   detail.innerHTML = `
-    <div class="detail__head">
+    <div class="detail-head">
       <h2 id="detail-title">${esc(p.name)}</h2>
-      <button type="button" class="detail__close" data-close aria-label="Close details">✕</button>
+      <button type="button" class="detail-close" data-close aria-label="Close details">✕</button>
     </div>
-    <p class="detail__meta"><span class="tier-icon" data-tier="${p.specialty_tier === "A" || p.specialty_tier === "B" ? p.specialty_tier : "other"}" aria-hidden="true"></span> ${esc(TIER_LABEL[p.specialty_tier])} · ${esc(STATUS_LABEL[p.status])} · ${esc(p._city_name)}</p>
-    <p class="detail__links"><a href="${esc(permalink)}" data-permalink>Permalink</a> · <a href="/${esc(p._file)}">JSON file</a> · <code>${esc(p.id)}</code></p>
+    <p class="detail-meta"><span class="tier-icon" data-tier="${p.specialty_tier === "A" || p.specialty_tier === "B" ? p.specialty_tier : "other"}" aria-hidden="true"></span> ${esc(TIER_LABEL[p.specialty_tier])} · ${esc(STATUS_LABEL[p.status])} · ${esc(p._city_name)}</p>
+    <p class="detail-links"><a href="${esc(permalink)}" data-permalink>Permalink</a> · <a href="/${esc(p._file)}">JSON file</a> · <code>${esc(p.id)}</code></p>
     ${img}
     <dl class="kvs">${detailRows(p)}</dl>
     <p class="muted"><a href="${esc(fieldUrl("checked_at"))}">Checked</a> ${esc(date(p.checked_at))}${p.last_verified_at ? ` · <a href="${esc(fieldUrl("last_verified_at"))}">last verified</a> ${esc(date(p.last_verified_at))}` : ""}</p>
@@ -238,12 +206,12 @@ function openPlace(id: string | null, { fromHash = false } = {}) {
     if (!detail.hidden) { detail.hidden = true; root.classList.remove("has-detail"); lastOpener?.focus(); }
     return;
   }
-  if (!fromHash) lastOpener = document.activeElement as HTMLElement;
+  if (!fromHash) lastOpener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   renderDetail(p);
   detail.hidden = false;
   root.classList.add("has-detail");
   detail.focus({ preventScroll: true });
-  for (const tr of tableEl.tBodies[0].rows) tr.classList.toggle("is-selected", tr.dataset.id === p.id);
+  for (const tr of requiredElement(tableEl.tBodies[0] ?? null, "tbody").rows) tr.classList.toggle("is-selected", tr.dataset.id === p.id);
   if (state.view === "map") map?.focus(p);
 }
 
@@ -253,9 +221,9 @@ function closeDetail() {
   history.pushState(null, "", hash ? `#${hash}` : location.pathname + location.search);
   openPlace(null);
 }
-detail.addEventListener("click", (e) => { if ((e.target as HTMLElement).closest("[data-close]")) closeDetail(); });
+detail.addEventListener("click", (e) => { if (e.target instanceof Element && e.target.closest("[data-close]")) closeDetail(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !detail.hidden) closeDetail(); });
-tableEl.addEventListener("click", (e) => { if ((e.target as HTMLElement).closest("[data-place-link]")) lastOpener = e.target as HTMLElement; });
+tableEl.addEventListener("click", (e) => { if (e.target instanceof HTMLElement && e.target.closest("[data-place-link]")) lastOpener = e.target; });
 
 window.addEventListener("hashchange", () => {
   const next = parseHash(location.hash);
@@ -270,20 +238,23 @@ window.addEventListener("hashchange", () => {
 });
 
 // ---- Start ----
-(async () => {
+async function start() {
   try {
     const res = await fetch("/explorer/places.json");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const payload = await res.json();
-    places = payload.places;
+    const payload: unknown = await res.json();
+    places = parsePlacesPayload(payload);
     byId = new Map(places.map((p) => [p.id, p]));
   } catch (e) {
-    countEl.textContent = `Could not load the places (${(e as Error).message}). Try the downloads page.`;
+    countEl.textContent = `Could not load the places (${e instanceof Error ? e.message : String(e)}). Try the downloads page.`;
     return;
   }
   writeForm(state.filters);
   setView(state.view);
-  map = createMap(root.querySelector<HTMLElement>("[data-map]")!, places, (id) => { location.hash = toHash({ ...state, place: id }); }, () => { if (state.filters.inview) apply({ fromMove: true }); });
+  map = createMap(requiredElement(root.querySelector<HTMLElement>("[data-map]"), "[data-map]"), places, (id) => { location.hash = toHash({ ...state, place: id }); }, () => { if (state.filters.inview) apply({ fromMove: true }); });
   apply();
   if (state.place) openPlace(state.place, { fromHash: true });
-})();
+}
+start().catch((error: unknown) => {
+  countEl.textContent = `Could not start the Explorer (${error instanceof Error ? error.message : String(error)}). Try the downloads page.`;
+});

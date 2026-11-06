@@ -8,7 +8,7 @@ export const AMENITIES: [string, string][] = [
   ["dogs_allowed", "Dogs allowed"], ["outdoor_seating", "Outdoor seating"], ["card_payment", "Card payment"], ["cash_only", "Cash only"],
   ["wheelchair_accessible", "Step-free entrance"],
 ];
-export const LABELS: Record<string, string> = {
+export const LABELS: Partial<Record<string, string>> = {
   id: "Id", type: "Type", name: "Name", status: "Status", merged_into: "Merged into", opened_on: "Opened", closed_on: "Closed",
   last_verified_at: "Last verified", checked_at: "Checked", address: "Address", "address.street_address": "Street",
   "address.postal_code": "Postal code", "address.locality": "City", "address.region": "Region", "address.country_code": "Country",
@@ -25,5 +25,5 @@ export const LABELS: Record<string, string> = {
   ...Object.fromEntries(SERVING.map(([k, l]) => [`serving.${k}`, l])),
   ...Object.fromEntries(AMENITIES.map(([k, l]) => [`amenities.${k}`, l])),
 };
-export const TIER_LABEL: Record<string, string> = { A: "A · specialty-focused", B: "B · serves specialty", none: "Not specialty", unknown: "Not yet assessed" };
-export const STATUS_LABEL: Record<string, string> = { open: "Open", temporarily_closed: "Temporarily closed", closed: "Closed", unverified: "Unverified" };
+export const TIER_LABEL: Partial<Record<string, string>> = { A: "A · specialty-focused", B: "B · serves specialty", none: "Not specialty", unknown: "Not yet assessed" };
+export const STATUS_LABEL: Partial<Record<string, string>> = { open: "Open", temporarily_closed: "Temporarily closed", closed: "Closed", unverified: "Unverified" };

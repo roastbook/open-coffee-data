@@ -18,7 +18,6 @@ If you run a café or roastery, you can claim its record:
 
 Owners may also suggest a photo: link the original file, published under an open licence (CC0, CC BY or CC BY-SA), with its author. We link to it; we do not host image files.
 
-
 ## Rules for data
 
 - **Check every fact on a primary source** (the place's own website or an open dataset) and link it in your issue or pull request.
