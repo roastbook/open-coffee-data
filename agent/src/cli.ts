@@ -20,7 +20,7 @@ if (!c) { console.log("Nothing queued and no new city with a configured boundary
 const limit = Number(values.limit);
 console.error(`Data agent: ${c.name} (${c.slug}), limit ${limit}${values["dry-run"] ? ", dry run" : ""}`);
 
-const r = await run({ city: c, limit, dryRun: values["dry-run"]!, stages: values.stages?.split(",") });
+const r = await run({ city: c, limit, dryRun: values["dry-run"] ?? false, stages: values.stages?.split(",") });
 const m = r.metrics;
 const summary = [
   `## Data agent: ${c.name}`, "",

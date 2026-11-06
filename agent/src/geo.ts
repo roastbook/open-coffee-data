@@ -1,6 +1,7 @@
+import { payloadParser } from "./payload";
 export type Ring = [number, number][];
 export type Polygon = Ring[]; // outer ring first, then holes
-export type LatLon = { lat: number; lon: number };
+export interface LatLon { lat: number; lon: number }
 
 export function distanceM(a: LatLon, b: LatLon): number {
   const R = 6371000, rad = Math.PI / 180;
@@ -30,12 +31,27 @@ export function bbox(polys: Polygon[]) {
   return { xmin, ymin, xmax, ymax };
 }
 
+const position = { type: "array", items: { type: "number" }, minItems: 2 };
+const ring = { type: "array", items: position };
+const polygon = { type: "array", items: ring };
+const polygons = payloadParser<Polygon[]>({ type: "array", items: polygon });
+interface Geometry {
+  type: string;
+  features?: unknown[];
+  geometry?: unknown;
+  coordinates?: unknown;
+}
+const geometry = payloadParser<Geometry>({ type: "object", required: ["type"], properties: { type: { type: "string" }, features: { type: "array" } } });
+
 /** GeoJSON Polygon/MultiPolygon geometry (or Feature/FeatureCollection) to a list of polygons. */
-export function toPolygons(g: any): Polygon[] {
-  if (!g) return [];
-  if (g.type === "FeatureCollection") return g.features.flatMap((f: any) => toPolygons(f.geometry));
-  if (g.type === "Feature") return toPolygons(g.geometry);
-  if (g.type === "Polygon") return [g.coordinates];
-  if (g.type === "MultiPolygon") return g.coordinates;
-  return [];
+export function toPolygons(value: unknown): Polygon[] {
+  if (!value) return [];
+  const g = geometry(value);
+  switch (g.type) {
+    case "FeatureCollection": return (g.features ?? []).flatMap(toPolygons);
+    case "Feature": return toPolygons(g.geometry);
+    case "Polygon": return polygons([g.coordinates]);
+    case "MultiPolygon": return polygons(g.coordinates);
+    default: return [];
+  }
 }

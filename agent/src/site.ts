@@ -2,8 +2,8 @@
 import { DEAD, get, render, type Page } from "./pages";
 import { type Doc, htmlToDoc } from "./html";
 
-export type SitePage = { url: string; fetchedAt: string; doc: Doc; rendered: boolean };
-export type Site = { start: string; ok: boolean; dead: boolean; error?: string; pages: SitePage[] };
+export interface SitePage { url: string; fetchedAt: string; doc: Doc; rendered: boolean }
+export interface Site { start: string; ok: boolean; dead: boolean; error?: string; pages: SitePage[] }
 
 const KEYWORDS: [RegExp, number][] = [
   [/impressum|imprint|legal|rechtlich/i, 10],
@@ -22,17 +22,14 @@ function pickLinks(doc: Doc, base: URL): string[] {
     let u: URL;
     try { u = new URL(l.href); } catch { continue; }
     const pdf = /\.pdf$/i.test(u.pathname);
-    // A PDF linked from the site is the site's own document even on a file server (site builders host files elsewhere).
-    if (!/^https?:$/.test(u.protocol) || (!pdf && u.hostname.replace(/^www\./, "") !== host)) continue;
-    if (pdf && /agb|datenschutz|privacy|terms|widerruf|bewerbung|jobs?\b/i.test(`${decodeURIComponent(u.pathname)} ${l.text}`)) continue;
-    if (/\.(jpe?g|png|gif|webp|zip|mp4|svg)$/i.test(u.pathname) || (!pdf && /\/(wp-content)\//i.test(u.pathname)) || /\/(cart|warenkorb|checkout|account|login|tag|category|blog\/page)\//i.test(u.pathname)) continue;
+    if (!eligibleLink(u, l.text, host, pdf)) continue;
     u.hash = ""; u.search = "";
     const href = u.href;
     if (href === base.href) continue;
     const hay = `${decodeURIComponent(u.pathname)} ${l.text}`;
     // A menu PDF is often linked only through an image (no link text); any other PDF still gets a low score.
     const score = Math.max(pdf ? 3 : 0, ...KEYWORDS.map(([re, s]) => (re.test(hay) ? s : 0)));
-    if (score && score > (scored.get(href) ?? 0)) scored.set(href, score);
+    if (score > (scored.get(href) ?? 0)) scored.set(href, score);
   }
   // Up to 10 pages, at most 3 of them PDFs.
   const ranked = [...scored.entries()].sort((a, b) => b[1] - a[1]).map(([h]) => h);
@@ -46,11 +43,15 @@ const NOT_MENU = /logo|icon|favicon|avatar|banner|sprite|\.svg$/i;
 export function pickImages(pages: SitePage[]): string[] {
   const named: string[] = [], onMenuPage: string[] = [];
   for (const p of pages) for (const i of p.doc.images ?? []) {
-    if (!/^https?:/.test(i.href) || NOT_MENU.test(i.href) || named.includes(i.href) || onMenuPage.includes(i.href)) continue;
+    if (!menuImageCandidate(i.href, named, onMenuPage)) continue;
     if (MENU.test(`${i.href.split("/").pop()} ${i.text}`)) named.push(i.href);
     else if (MENU.test(new URL(p.url).pathname)) onMenuPage.push(i.href);
   }
   return [...named, ...onMenuPage].slice(0, 4);
+}
+
+function menuImageCandidate(href: string, named: string[], onMenuPage: string[]): boolean {
+  return /^https?:/.test(href) && !NOT_MENU.test(href) && !named.includes(href) && !onMenuPage.includes(href);
 }
 
 const toSitePage = (p: Page): SitePage => ({ url: p.finalUrl, fetchedAt: p.fetchedAt, doc: htmlToDoc(p.html, p.finalUrl), rendered: !!p.rendered });
@@ -70,14 +71,8 @@ async function fetchPage(url: string): Promise<SitePage | null> {
 export async function fetchSite(start: string): Promise<Site> {
   const first = await get(start);
   if (first.error === "site rules disallow") return { start, ok: false, dead: false, error: first.error, pages: [] };
-  let home: SitePage | null;
-  if (!first.html || first.status >= 400 || first.status === 0) {
-    // Retry once rendered before calling a site dead: some hosts block plain clients but serve browsers.
-    const r = first.status === 403 || (first.status === 0 && !DEAD.test(first.error ?? "") && !/site rules/.test(first.error ?? "")) ? await render(start) : null;
-    if (!r?.html || r.status >= 400) return { start, ok: false, dead: first.status === 404 || first.status === 410 || DEAD.test(first.error ?? ""), error: first.error ?? `HTTP ${first.status}`, pages: [] };
-    home = toSitePage(r);
-  } else home = await fetchPage(start);
-  if (!home) return { start, ok: false, dead: false, error: "no content", pages: [] };
+  const home = await homePage(start, first);
+  if (!home) return homeFailure(start, first);
   const pages = [home];
   for (const href of pickLinks(home.doc, new URL(home.url))) {
     const sp = await fetchPage(href);
@@ -88,4 +83,37 @@ export async function fetchSite(start: string): Promise<Site> {
     if (p.status >= 200 && p.status < 300 && p.html) pages.push(toSitePage(p));
   }
   return { start, ok: true, dead: false, pages };
+}
+
+function eligibleLink(u: URL, text: string, host: string, pdf: boolean): boolean {
+  if (!/^https?:$/.test(u.protocol)) return false;
+  if (!pdf && u.hostname.replace(/^www\./, "") !== host) return false;
+  if (pdf && /agb|datenschutz|privacy|terms|widerruf|bewerbung|jobs?\b/i.test(`${decodeURIComponent(u.pathname)} ${text}`)) return false;
+  return !excludedPath(u.pathname, pdf);
+}
+
+function excludedPath(path: string, pdf: boolean): boolean {
+  if (/\.(jpe?g|png|gif|webp|zip|mp4|svg)$/i.test(path)) return true;
+  if (!pdf && /\/(wp-content)\//i.test(path)) return true;
+  return /\/(cart|warenkorb|checkout|account|login|tag|category|blog\/page)\//i.test(path);
+}
+
+async function homePage(start: string, first: Page): Promise<SitePage | null> {
+  if (!first.html || first.status >= 400 || first.status === 0) {
+    // Retry once rendered before calling a site dead: some hosts block plain clients but serve browsers.
+    const r = canRenderFailure(first) ? await render(start) : null;
+    if (!r?.html || r.status >= 400) return null;
+    return toSitePage(r);
+  } else return fetchPage(start);
+}
+
+function homeFailure(start: string, first: Page): Site {
+  if (first.html && first.status < 400 && first.status !== 0) return { start, ok: false, dead: false, error: "no content", pages: [] };
+  return { start, ok: false, dead: first.status === 404 || first.status === 410 || DEAD.test(first.error ?? ""), error: first.error ?? `HTTP ${first.status}`, pages: [] };
+}
+
+function canRenderFailure(page: Page): boolean {
+  if (page.status === 403) return true;
+  const error = page.error ?? "";
+  return page.status === 0 && !DEAD.test(error) && !error.includes("site rules");
 }

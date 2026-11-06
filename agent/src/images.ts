@@ -1,3 +1,4 @@
+import { payloadParser, stringValue, numberValue } from "./payload";
 // Openly licensed images from Wikimedia Commons (via the Wikidata image or files near the place whose title names it).
 // We link to the original file; nothing is copied into the repository.
 import { USER_AGENT } from "./config";
@@ -12,17 +13,28 @@ const SPDX: [RegExp, (m: RegExpMatchArray) => string][] = [
 ];
 const strip = (h: string) => h.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 
+interface CommonsInfo {
+  mime: string; url: string; descriptionurl: string; width?: number; height?: number;
+  extmetadata?: { LicenseShortName?: { value: string }; Artist?: { value: string }; ObjectName?: { value: string } };
+}
+interface CommonsReply { query?: { pages?: Record<string, { imageinfo?: CommonsInfo[] }>; geosearch?: { title: string; dist: number }[] } }
+const metadata = { type: "object", required: ["value"], properties: { value: stringValue } };
+const commonsReply = payloadParser<CommonsReply>({ type: "object", properties: { query: { type: "object", properties: {
+  pages: { type: "object", additionalProperties: { type: "object", properties: { imageinfo: { type: "array", items: { type: "object", required: ["mime", "url", "descriptionurl"], properties: { mime: stringValue, url: stringValue, descriptionurl: stringValue, width: numberValue, height: numberValue, extmetadata: { type: "object", properties: { LicenseShortName: metadata, Artist: metadata, ObjectName: metadata } } } } } } } },
+  geosearch: { type: "array", items: { type: "object", required: ["title", "dist"], properties: { title: stringValue, dist: numberValue } } },
+} } } });
+
 async function api(params: Record<string, string>) {
-  const res = await fetch(`${API}?${new URLSearchParams({ format: "json", origin: "*", ...params })}`, { headers: { "user-agent": USER_AGENT } });
+  const res = await fetch(`${API}?${new URLSearchParams({ format: "json", origin: "*", ...params }).toString()}`, { headers: { "user-agent": USER_AGENT } });
   if (!res.ok) throw new Error(`Commons HTTP ${res.status}`);
-  return res.json() as Promise<any>;
+  return commonsReply(await res.json());
 }
 
-export type Image = { url: string; licence: string; author: string; source_url: string; title?: string; width?: number; height?: number };
+export interface Image { url: string; licence: string; author: string; source_url: string; title?: string; width?: number; height?: number }
 
 async function fileInfo(title: string): Promise<Image | null> {
   const j = await api({ action: "query", titles: title, prop: "imageinfo", iiprop: "url|size|extmetadata|mime", iiurlwidth: "1600" });
-  const p: any = Object.values(j.query?.pages ?? {})[0];
+  const p = Object.values(j.query?.pages ?? {})[0];
   const ii = p?.imageinfo?.[0];
   if (!ii || !/^image\/(jpeg|png|webp)$/.test(ii.mime)) return null;
   const m = ii.extmetadata ?? {};
@@ -35,7 +47,7 @@ async function fileInfo(title: string): Promise<Image | null> {
 
 export async function findImage(p: { name: string; lat: number; lon: number; wikidataImage?: string }): Promise<{ image: Image; how: string } | null> {
   if (p.wikidataImage) {
-    const title = "File:" + decodeURIComponent(p.wikidataImage.split("/").pop()!).replace(/_/g, " ");
+    const title = "File:" + decodeURIComponent(p.wikidataImage.split("/").at(-1) ?? "").replace(/_/g, " ");
     const img = await fileInfo(title);
     if (img) return { image: img, how: "Wikidata image (P18)" };
   }

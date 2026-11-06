@@ -16,7 +16,7 @@ export const EMAIL = /[\w.+-]+@[\w-]+\.[\w.-]+/;
 // German and international phone numbers (+49 89 123456, 089/123456, 0176-1234567); not postcodes or years.
 export const PHONE = /(\+\d{2}[\s/-]?\(?0?\)?\d{2,5}[\s/-]?\d{3,}[\s-]?\d*|\b0\d{2,5}[\s/-]\d{3,}[\s-]?\d*)/;
 
-const LEGAL_SUFFIX = /[\s,]+(GmbH\s*&\s*Co\.?\s*KG|gGmbH|GmbH|mbH|UG\s*\(haftungsbeschränkt\)|UG|GbR|OHG|KG|AG|SE|e\.\s?K\.|e\.\s?V\.|Sp\.\s?z\s?o\.\s?o\.(\s*&\s*Co\.?\s*KG)?|Ltd\.?|Inc\.?)\s*$/i;
+const LEGAL_SUFFIX = /[\s,](GmbH\s*&\s*Co\.?\s*KG|gGmbH|GmbH|mbH|UG\s*\(haftungsbeschränkt\)|UG|GbR|OHG|KG|AG|SE|e\.\s?K\.|e\.\s?V\.|Sp\.\s?z\s?o\.\s?o\.(\s*&\s*Co\.?\s*KG)?|Ltd\.?|Inc\.?)\s*$/i;
 
 /** The name on the sign: drop SEO tails ("Name | Premium Barista Service | …") and trailing legal forms ("Picnic On Monday Gmbh"). */
 /** "… Inh. Frau Dr. Jane Doe", "… Inhaber Max Muster": an owner's (natural person's) name inside a place name. */
@@ -33,7 +33,7 @@ export function cleanName(name: string): string {
 
 export const nameProblems = (name: string): string[] => [
   ...(LEGAL_SUFFIX.test(name) ? ["ends with a legal form"] : []),
-  ...(/\|/.test(name) || name.length > 60 ? ["looks like an SEO title"] : []),
+  ...(name.includes("|") || name.length > 60 ? ["looks like an SEO title"] : []),
   ...(/^[\wäöüß.-]+(str(\.|asse|aße)?|platz|weg|allee|ring|gasse)\.?$/i.test(name.trim()) ? ["is a street name"] : []),
   ...(EMAIL.test(name) || /https?:\/\//.test(name) ? ["contains contact data or a URL"] : []),
 ];
@@ -47,7 +47,7 @@ export function cleanStreet(s: string | undefined | null): string | null {
   if (!s) return null;
   const parts = s.replace(EMAIL, " ").replace(/https?:\/\/\S+/g, " ").split(/\s*[,;|]\s*|\s+\/\s+|\s+[–-]\s+/).map((p) => p.trim()).filter(Boolean);
   const shaped = parts.filter((p) => STREET_SHAPE.test(p));
-  return shaped.find((p) => STREET_WORD.test(p)) ?? shaped[0] ?? null;
+  return shaped.find((p) => STREET_WORD.test(p)) ?? shaped.at(0) ?? null;
 }
 
 export const streetProblems = (s: string): string[] => [

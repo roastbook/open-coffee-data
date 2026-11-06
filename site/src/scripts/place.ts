@@ -41,12 +41,22 @@ const optionalStrings = (value: Record<string, unknown>, keys: string[]) => {
 const optionalBooleans = (value: unknown) => value === undefined ||
   (isObject(value) && Object.values(value).every((v) => typeof v === "boolean"));
 
+function isAddress(value: unknown): boolean {
+  return value === undefined || (isObject(value) && optionalStrings(value, ["street_address", "postal_code", "locality"]));
+}
+
+function isOperator(value: unknown): boolean {
+  return value === undefined || (isObject(value) && typeof value.name === "string" && optionalStrings(value, ["legal_form", "register_id"]));
+}
+
+function isRoaster(value: unknown): boolean {
+  return isObject(value) && typeof value.name === "string" && optionalStrings(value, ["url"]) &&
+    (value.own === undefined || typeof value.own === "boolean");
+}
+
 function isSearchablePlace(value: Record<string, unknown>): boolean {
-  const { address, operator, roasters_served } = value;
-  return (address === undefined || (isObject(address) && optionalStrings(address, ["street_address", "postal_code", "locality"]))) &&
-    (operator === undefined || (isObject(operator) && typeof operator.name === "string" && optionalStrings(operator, ["legal_form", "register_id"]))) &&
-    (roasters_served === undefined || (Array.isArray(roasters_served) && roasters_served.every((r: unknown) =>
-      isObject(r) && typeof r.name === "string" && optionalStrings(r, ["url"]) && (r.own === undefined || typeof r.own === "boolean"))));
+  return isAddress(value.address) && isOperator(value.operator) &&
+    (value.roasters_served === undefined || (Array.isArray(value.roasters_served) && value.roasters_served.every(isRoaster)));
 }
 
 function isImage(value: unknown): boolean {

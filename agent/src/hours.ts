@@ -31,7 +31,7 @@ export function timesInQuote(value: string, quote: string): boolean {
   return times.every(([, hh, mm]) => {
     const h = +hh;
     const hs = [String(h), hh, ...(h === 24 ? ["0", "00"] : []), ...(h === 0 ? ["24"] : [])];
-    const alts = hs.flatMap((x) => [`${x}:${mm}`, `${x}.${mm}`, ...(mm === "00" ? [`${x}`] : [])]);
+    const alts = hs.flatMap((x) => [`${x}:${mm}`, `${x}.${mm}`, ...(mm === "00" ? [x] : [])]);
     if (h > 12 && h < 24) alts.push(`${h - 12}${mm === "00" ? "" : `:${mm}`} ?pm`);
     if (h === 12) alts.push(`12${mm === "00" ? "" : `:${mm}`} ?pm`);
     return alts.some((a) => new RegExp(`(^|[^\\d:.])${a.replace(/\./g, "\\.")}(?![\\d]|[:.]\\d)`).test(q));

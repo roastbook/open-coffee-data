@@ -280,7 +280,7 @@ details summary {
   white-space: nowrap;
 }
 
-button.sort {
+.sort {
   width: 100%;
   min-height: 44px;
   border: 0;
@@ -293,7 +293,7 @@ button.sort {
   padding: 0 0.75rem;
 }
 
-button.sort:hover {
+.sort:hover {
   color: var(--foreground);
 }
 
@@ -301,7 +301,7 @@ button.sort:hover {
   font-weight: 600;
 }
 
-.table-wrap tbody tr.is-selected {
+.table-wrap tbody .is-selected {
   background: var(--secondary);
 }
 
@@ -413,7 +413,7 @@ button.sort:hover {
   overflow-wrap: anywhere;
 }
 
-ul.plain {
+.plain {
   margin: 0;
   padding-left: 1.1rem;
 }

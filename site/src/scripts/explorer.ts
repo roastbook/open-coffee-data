@@ -86,7 +86,7 @@ function renderTable() {
     }
   }
   const rows = table.getRowModel().rows;
-  requiredElement(tableEl.tBodies[0] ?? null, "tbody").innerHTML = rows.length
+  requiredElement(tableEl.tBodies.item(0), "tbody").innerHTML = rows.length
     ? rows.map((row) => {
         const p = row.original;
         const href = `#${toHash({ ...state, place: p.id })}`;
@@ -211,7 +211,7 @@ function openPlace(id: string | null, { fromHash = false } = {}) {
   detail.hidden = false;
   root.classList.add("has-detail");
   detail.focus({ preventScroll: true });
-  for (const tr of requiredElement(tableEl.tBodies[0] ?? null, "tbody").rows) tr.classList.toggle("is-selected", tr.dataset.id === p.id);
+  for (const tr of requiredElement(tableEl.tBodies.item(0), "tbody").rows) tr.classList.toggle("is-selected", tr.dataset.id === p.id);
   if (state.view === "map") map?.focus(p);
 }
 

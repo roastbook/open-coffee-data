@@ -3,7 +3,7 @@
 /** Normalise for comparison: Unicode NFKC, lower case, unify dashes, quotes and whitespace, drop soft hyphens and zero-width chars. */
 export function norm(s: string): string {
   return s.normalize("NFKC").toLowerCase()
-    .replace(/[­​-‍⁠﻿]/g, "")
+    .replace(/[\u00ad\u200b-\u200d\u2060\ufeff]/g, "")
     .replace(/[‐-―−]/g, "-")
     .replace(/[‘’‚‛′`´]/g, "'")
     .replace(/[“-‟″«»]/g, '"')

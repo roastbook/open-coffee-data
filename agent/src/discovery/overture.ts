@@ -1,3 +1,4 @@
+import { payloadParser, stringValue, stringArray, optionalText } from "../payload";
 // Overture Maps places (latest configured release) read with DuckDB from the public S3 bucket.
 // Kept only when every source is permissively licensed and none is OpenStreetMap.
 import { existsSync, mkdirSync } from "node:fs";
@@ -8,11 +9,22 @@ import { CACHE, OVERTURE_RELEASE } from "../config";
 export const COFFEE_CATEGORIES = ["cafe", "coffee_shop", "coffee_roastery", "coffee_and_tea_supplies"];
 const OK_LICENCES = new Set(["CDLA-Permissive-2.0", "Apache-2.0", "CC0-1.0"]); // each is attributed in NOTICE
 
-export type OvertureRow = {
+export interface OvertureRow {
   id: string; name: string; brand: string | null; category: string | null; hierarchy: string[]; alternates: string[];
   websites: string[]; socials: string[]; street: string | null; postcode: string | null; locality: string | null; country: string | null;
   status: string | null; confidence: number; lat: number; lon: number; datasets: string[]; licences: string[];
-};
+}
+
+type Numeric = string | number;
+type RawOvertureRow = Omit<OvertureRow, "lat" | "lon" | "confidence"> & { lat: Numeric; lon: Numeric; confidence: Numeric };
+const numeric = { type: ["number", "string"] };
+const overtureRows = payloadParser<RawOvertureRow[]>({ type: "array", items: { type: "object",
+  required: ["id", "name", "brand", "category", "hierarchy", "alternates", "websites", "socials", "street", "postcode", "locality", "country", "status", "confidence", "lat", "lon", "datasets", "licences"],
+  properties: { id: stringValue, name: stringValue, brand: optionalText, category: optionalText, hierarchy: stringArray, alternates: stringArray, websites: stringArray, socials: stringArray, street: optionalText, postcode: optionalText, locality: optionalText, country: optionalText, status: optionalText, confidence: numeric, lat: numeric, lon: numeric, datasets: stringArray, licences: stringArray },
+} });
+interface AddressPoint { street: string; postcode: string | null; lat: number; lon: number; id: string }
+type RawAddressPoint = Omit<AddressPoint, "lat" | "lon"> & { lat: Numeric; lon: Numeric };
+const addressRows = payloadParser<RawAddressPoint[]>({ type: "array", items: { type: "object", required: ["street", "postcode", "lat", "lon", "id"], properties: { street: stringValue, postcode: optionalText, lat: numeric, lon: numeric, id: stringValue } } });
 
 export const licenceStats: Record<string, number> = {};
 
@@ -38,16 +50,19 @@ export async function overturePlaces(slug: string, bb: { xmin: number; ymin: num
     FROM '${file}'
     WHERE taxonomy.primary IS NULL OR list_has_any(taxonomy.hierarchy, ['food_and_drink', 'retail', 'shopping']) OR taxonomy.primary IN ('${COFFEE_CATEGORIES.join("','")}')
        OR list_has_any(taxonomy.alternates, ['${COFFEE_CATEGORIES.join("','")}'])`);
-  const rows = reader.getRowObjectsJson() as unknown as OvertureRow[];
+  const rows = overtureRows(reader.getRowObjectsJson()).map((r) => ({ ...r, lat: Number(r.lat), lon: Number(r.lon), confidence: Number(r.confidence) }));
+  return filterLicensedRows(rows);
+}
+
+function filterLicensedRows(rows: OvertureRow[]) {
   const kept: (OvertureRow & { coffee: boolean })[] = [];
   let dropped = 0;
   for (const r of rows) {
-    r.lat = Number(r.lat); r.lon = Number(r.lon); r.confidence = Number(r.confidence);
-    for (const l of new Set(r.licences)) licenceStats[l || "(none)"] = (licenceStats[l || "(none)"] ?? 0) + 1;
-    if (r.datasets.some((d) => /openstreetmap|^osm$/i.test(d)) || r.licences.some((l) => !OK_LICENCES.has(l))) { dropped++; continue; }
+    recordLicences(r.licences);
+    if (!permissiveSources(r)) { dropped++; continue; }
     r.websites = r.websites.filter(Boolean);
     // A coffee category as the main one, or as a side category of a food or drink place (not a bookshop with a café corner).
-    const coffee = COFFEE_CATEGORIES.includes(r.category ?? "") || (r.hierarchy.includes("food_and_drink") && r.alternates.some((a) => COFFEE_CATEGORIES.includes(a)));
+    const coffee = coffeeCategory(r);
     kept.push({ ...r, coffee });
   }
   return { rows: kept, dropped };
@@ -58,5 +73,22 @@ export async function overtureAddressPoints(slug: string): Promise<{ street: str
   const file = join(CACHE, "overture", OVERTURE_RELEASE, `${slug}.parquet`);
   const db = await (await DuckDBInstance.create(":memory:")).connect();
   const r = await db.runAndReadAll(`SELECT id, addresses[1].freeform AS street, addresses[1].postcode AS postcode, lat, lon FROM '${file}' WHERE addresses[1].freeform IS NOT NULL AND (operating_status IS NULL OR operating_status <> 'permanently_closed')`);
-  return (r.getRowObjectsJson() as any[]).map((x) => ({ ...x, lat: Number(x.lat), lon: Number(x.lon) }));
+  return addressRows(r.getRowObjectsJson()).map((x) => ({ ...x, lat: Number(x.lat), lon: Number(x.lon) }));
+}
+
+function recordLicences(licences: string[]) {
+  for (const licence of new Set(licences)) {
+    const key = licence || "(none)";
+    const previous = Object.hasOwn(licenceStats, key) ? licenceStats[key] : 0;
+    Object.defineProperty(licenceStats, key, { value: previous + 1, enumerable: true, writable: true, configurable: true });
+  }
+}
+
+function permissiveSources(row: OvertureRow): boolean {
+  return !row.datasets.some((d) => /openstreetmap|^osm$/i.test(d)) && row.licences.every((l) => OK_LICENCES.has(l));
+}
+
+function coffeeCategory(row: OvertureRow): boolean {
+  if (COFFEE_CATEGORIES.includes(row.category ?? "")) return true;
+  return row.hierarchy.includes("food_and_drink") && row.alternates.some((a) => COFFEE_CATEGORIES.includes(a));
 }

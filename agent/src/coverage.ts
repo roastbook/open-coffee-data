@@ -23,7 +23,7 @@ writeFileSync(join(CACHE, "coverage", `${ref}-${slug}-result.json`), JSON.string
 const closed = rows.filter((r) => r.status === "closed").length;
 const stillOpen = rows.length - closed;
 const found = rows.filter((r) => r.id && r.status !== "closed");
-const count = (f: (r: any) => boolean) => found.filter(f).length;
+const count = (f: (r: (typeof rows)[number]) => boolean) => found.filter(f).length;
 console.log(JSON.stringify({
   reference: rows.length, closed_per_our_data: closed, still_open: stillOpen, present: found.length,
   coverage: `${((100 * found.length) / Math.max(1, stillOpen)).toFixed(1)}%`,

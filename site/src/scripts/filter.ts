@@ -60,7 +60,7 @@ function matchesSelection(p: FilterPlace, f: Filters): boolean {
 }
 
 function offersAll(values: FilterPlace["serving"] | FilterPlace["amenities"], selected: string[]): boolean {
-  const offered = new Set(Object.entries(values ?? {}).filter(([, value]) => value === true).map(([key]) => key));
+  const offered = new Set(Object.entries(values ?? {}).filter(([, value]) => value).map(([key]) => key));
   return selected.every((key) => offered.has(key));
 }
 

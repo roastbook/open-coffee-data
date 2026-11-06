@@ -1,19 +1,23 @@
+import { payloadParser } from "./payload";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { CACHE, USER_AGENT } from "./config";
 import { bbox, inPolygons, type LatLon, type Polygon, toPolygons } from "./geo";
 
-export type City = {
+interface BoundaryPayload { type?: string; feature?: unknown; features?: { geometry?: unknown; properties?: Record<string, unknown> }[]; coordinates?: unknown; geometry?: unknown }
+const boundaryPayload = payloadParser<BoundaryPayload>({ type: "object", properties: { type: { type: "string" }, features: { type: "array", items: { type: "object", properties: { properties: { type: "object" } } } } } });
+
+export interface City {
   slug: string; name: string; country: string; wikidata?: string;
   boundary: { type: "bkg-vg250"; ags: string } | { type: "swisstopo"; bfs: number } | { type: "geojson"; url: string; property?: string; value?: string } | null;
-};
+}
 
 export const cities: City[] = JSON.parse(readFileSync(join(import.meta.dir, "../config/cities.json"), "utf8")).cities;
 export const city = (slug: string) => {
   const c = cities.find((x) => x.slug === slug);
   if (!c) throw new Error(`unknown city ${slug}; add it to agent/config/cities.json`);
   return c;
-};
+}
 
 function boundaryUrl(c: City): string {
   const b = c.boundary;
@@ -32,11 +36,15 @@ export async function boundary(c: City): Promise<Polygon[]> {
   if (!existsSync(file)) {
     const res = await fetch(boundaryUrl(c), { headers: { "user-agent": USER_AGENT } });
     if (!res.ok) throw new Error(`${c.slug}: boundary HTTP ${res.status}`);
-    let g: any = await res.json();
-    if (g.feature) g = g.feature; // swisstopo
-    const b = c.boundary!;
-    if (b.type === "bkg-vg250") g = { type: "FeatureCollection", features: g.features.filter((f: any) => f.properties?.gf === 4 || f.properties?.gf === undefined) };
-    if (b.type === "geojson" && b.property) g = { type: "FeatureCollection", features: g.features.filter((f: any) => String(f.properties?.[b.property!]) === b.value) };
+    let g = boundaryPayload(await res.json());
+    if (g.feature) g = boundaryPayload(g.feature); // swisstopo
+    const b = c.boundary;
+    if (!b) throw new Error(`${c.slug}: no boundary configured`);
+    if (b.type === "bkg-vg250") g = { type: "FeatureCollection", features: (g.features ?? []).filter((f) => f.properties?.gf === 4 || f.properties?.gf === undefined) };
+    if (b.type === "geojson" && b.property) {
+      const property = b.property;
+      g = { type: "FeatureCollection", features: (g.features ?? []).filter((f) => String(f.properties?.[property]) === b.value) };
+    }
     mkdirSync(join(CACHE, "boundaries"), { recursive: true });
     writeFileSync(file, JSON.stringify(g));
   }

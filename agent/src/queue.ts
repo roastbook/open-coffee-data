@@ -7,20 +7,20 @@ import { CACHE, FULL_REFRESH_DAYS, REFRESH_DAYS } from "./config";
 import { cities, type City } from "./cities";
 import { cityFile, readCity } from "./dataset";
 
-export type State = { enriched: Record<string, string>; conflicts: Record<string, string> };
+export interface State { enriched: Record<string, string>; conflicts: Record<string, string> }
 const stateFile = (slug: string) => join(process.env.SOURCING_STATE_DIR ?? join(CACHE, "state"), `${slug}.json`);
 export const loadState = (slug: string): State => (existsSync(stateFile(slug)) ? JSON.parse(readFileSync(stateFile(slug), "utf8")) : { enriched: {}, conflicts: {} });
 export function saveState(slug: string, s: State) { mkdirSync(join(stateFile(slug), ".."), { recursive: true }); writeFileSync(stateFile(slug), JSON.stringify(s, null, 1)); }
 
-export type Job = { id: string; reason: "never_enriched" | "conflict" | "refresh" | "full_refresh"; mode: "full" | "refresh" };
+export interface Job { id: string; reason: "never_enriched" | "conflict" | "refresh" | "full_refresh"; mode: "full" | "refresh" }
 const days = (iso: string | undefined, now: Date) => (iso ? (now.getTime() - Date.parse(iso)) / 86400000 : Infinity);
-const tierRank: Record<string, number> = { A: 0, B: 1, unknown: 2, none: 3 };
+const tierRank = new Map([["A", 0], ["B", 1], ["unknown", 2], ["none", 3]]);
 
-export function queueFor(places: any[], state: State, now = new Date()): Job[] {
+export function queueFor(places: { id: string; merged_into?: string; specialty_tier?: string; checked_at?: string; status?: string }[], state: State, now = new Date()): Job[] {
   const jobs: (Job & { rank: number; age: number })[] = [];
   for (const p of places) {
     if (p.merged_into) continue;
-    const t = tierRank[p.specialty_tier] ?? 2;
+    const t = tierRank.get(p.specialty_tier ?? "unknown") ?? 2;
     const verifiedAge = days(p.checked_at, now);
     if (!state.enriched[p.id]) jobs.push({ id: p.id, reason: "never_enriched", mode: "full", rank: 0 + t / 10, age: verifiedAge });
     else if (state.conflicts[p.id]) jobs.push({ id: p.id, reason: "conflict", mode: "full", rank: 1 + t / 10, age: verifiedAge });
