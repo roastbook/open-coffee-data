@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.3.0.json",
+  "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.4.0.json",
   "meta": {
     "licence": "MIT"
   },
@@ -32,7 +32,7 @@
           "max": 18,
           "typical": 16
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 88,
           "max": 96,
           "typical": 93
@@ -52,7 +52,7 @@
         "brew_water_g",
         "brew_ratio",
         "grind_setting",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "brew_time_seconds",

@@ -33,7 +33,7 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 | Not yet assessed | 270 |
 | Cities | 1 |
 | Brew methods | 21 |
-| Schema version | `0.3.0` |
+| Schema version | `brew-methods 0.4.0, coffee-places 0.3.0` |
 
 <!-- stats:end -->
 
@@ -86,17 +86,16 @@ agent/                                  Sourcing agent that proposes changes as 
 docs/                                   runbook, validation rules, pilot reports
 ```
 
-Run the checks and the build exactly as CI does ([Bun](https://bun.sh), version in `.bun-version`). The shared UI package comes from GitHub Packages, which needs a token with `read:packages` ([details](docs/runbook.md#shared-ui-package)):
+Run the checks and the build exactly as CI does ([Bun](https://bun.sh), version in `.bun-version`). The shared UI comes from [Roastbook/ui](https://github.com/Roastbook/ui) at a pinned commit, so no token is needed:
 
 ```sh
-export NPM_GITHUB_TOKEN="$(gh auth token)"
 bun install
 scripts/validate.sh          # schema, ids, deny-list, images, opening hours, README stats, unit tests
 scripts/build.sh             # dist/: Explorer, datasets, artifacts, CNAME
 scripts/link-check.sh        # links in data and docs (warnings; --full fails)
 ```
 
-Before schema v0.1.0 is tagged, point validation at a local checkout: `OPEN_COFFEE_SCHEMA_DIR=../open-coffee-schema/schemas scripts/validate.sh`. The rules are described in [docs/validation.md](docs/validation.md).
+To test unreleased schema changes, point validation at a local checkout: `OPEN_COFFEE_SCHEMA_DIR=../open-coffee-schema/schemas scripts/validate.sh`. The rules are described in [docs/validation.md](docs/validation.md).
 
 ## Versioning and stability
 

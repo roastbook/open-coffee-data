@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.3.0.json",
+  "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.4.0.json",
   "meta": {
     "licence": "CDLA-Permissive-2.0"
   },
@@ -34,7 +34,7 @@
           "max": 35,
           "typical": 28
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 88,
           "max": 96,
           "typical": 93
@@ -55,12 +55,13 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "preinfusion_time_seconds",
         "preinfusion_pressure_bar",
         "brew_pressure_bar",
         "flow_rate_ml_per_second",
         "tamp_force_kg",
+        "uses_puck_screen",
         "paper_filter_position",
         "distribution_method"
       ],
@@ -117,12 +118,13 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "preinfusion_time_seconds",
         "preinfusion_pressure_bar",
         "brew_pressure_bar",
         "flow_rate_ml_per_second",
         "tamp_force_kg",
+        "uses_puck_screen",
         "paper_filter_position",
         "distribution_method"
       ],
@@ -166,12 +168,13 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "preinfusion_time_seconds",
         "preinfusion_pressure_bar",
         "brew_pressure_bar",
         "flow_rate_ml_per_second",
         "tamp_force_kg",
+        "uses_puck_screen",
         "paper_filter_position",
         "distribution_method"
       ],
@@ -213,7 +216,7 @@
           "max": 240,
           "typical": 180
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -230,7 +233,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",
@@ -283,7 +286,7 @@
           "min": 150,
           "max": 210
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -299,7 +302,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",
@@ -343,7 +346,7 @@
           "min": 180,
           "max": 240
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -360,7 +363,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",
@@ -408,7 +411,7 @@
           "min": 210,
           "max": 300
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -425,7 +428,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",
@@ -464,7 +467,7 @@
           "max": 18,
           "typical": 16
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -480,7 +483,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",
@@ -512,7 +515,7 @@
           "max": 17,
           "typical": 16
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -528,7 +531,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",
@@ -569,7 +572,7 @@
           "min": 150,
           "max": 240
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -585,7 +588,7 @@
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "yield_g"
       ],
       "checked_at": "2026-11-05T18:00:00Z"
@@ -618,7 +621,7 @@
           "min": 240,
           "max": 360
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -633,7 +636,7 @@
         "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "yield_g"
       ],
       "checked_at": "2026-11-05T18:00:00Z"
@@ -668,7 +671,7 @@
           "max": 600,
           "typical": 240
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -685,7 +688,7 @@
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "yield_g"
       ],
       "xref": {
@@ -729,7 +732,7 @@
           "max": 180,
           "typical": 120
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 80,
           "max": 96
         },
@@ -746,7 +749,7 @@
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "yield_g",
         "paper_filter_position"
       ],
@@ -799,7 +802,7 @@
         "brew_ratio",
         "grind_setting",
         "brew_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "yield_g"
       ],
       "xref": {
@@ -839,7 +842,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",
@@ -881,7 +884,7 @@
           "min": 60,
           "max": 120
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 88,
           "max": 96
         },
@@ -897,7 +900,7 @@
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "yield_g"
       ],
       "xref": {
@@ -1020,7 +1023,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",
@@ -1063,7 +1066,7 @@
           "max": 86400,
           "typical": 57600
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 4,
           "max": 22
         },
@@ -1079,7 +1082,7 @@
         "grind_setting",
         "steep_time_seconds",
         "brew_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "yield_g"
       ],
       "typical_drinks": [
@@ -1119,7 +1122,7 @@
           "max": 17,
           "typical": 15
         },
-        "water_temperature_celsius": {
+        "brew_temperature_celsius": {
           "min": 90,
           "max": 96,
           "typical": 93
@@ -1135,7 +1138,7 @@
         "grind_setting",
         "brew_time_seconds",
         "target_time_seconds",
-        "water_temperature_celsius",
+        "brew_temperature_celsius",
         "bloom_time_seconds",
         "bloom_water_g",
         "pour_count",

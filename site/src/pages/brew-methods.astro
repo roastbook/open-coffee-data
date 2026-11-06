@@ -23,12 +23,12 @@ const params = (t: any = {}) => [
   ["dose_g", range(t.dose_g, " g")],
   ["brew_ratio", range(t.brew_ratio, "", (n) => `1:${n}`)],
   ["yield_ratio", range(t.yield_ratio, "", (n) => `1:${n}`)],
-  ["water_temperature_celsius", range(t.water_temperature_celsius, " °C")],
+  ["brew_temperature_celsius", range(t.brew_temperature_celsius, " °C")],
   ["brew_time_seconds", range(t.brew_time_seconds, " s")],
   ["brew_pressure_bar", range(t.brew_pressure_bar, " bar")],
   ["grind_size", t.grind_size?.map((g: string) => g.replaceAll("_", " ")).join(", ")],
 ].filter(([, v]) => v) as [string, string][];
-const LABEL: Record<string, string> = { dose_g: "Dose", brew_ratio: "Coffee to water", yield_ratio: "Coffee to drink", water_temperature_celsius: "Water", brew_time_seconds: "Time", brew_pressure_bar: "Pressure", grind_size: "Grind" };
+const LABEL: Record<string, string> = { dose_g: "Dose", brew_ratio: "Coffee to water", yield_ratio: "Coffee to drink", brew_temperature_celsius: "Brew temperature", brew_time_seconds: "Time", brew_pressure_bar: "Pressure", grind_size: "Grind" };
 ---
 <Layout title="Brew methods" site="data" version={version} buildDate={buildDate} description="Open list of coffee brew methods with categories, typical parameters and Wikidata links.">
   <Nav current="brew-methods" />
