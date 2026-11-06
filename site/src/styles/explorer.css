@@ -5,7 +5,7 @@
 
 .explorer {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
 }
@@ -19,8 +19,8 @@
 /* Filters */
 .filters {
   display: grid;
-  gap: 0.75rem;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 1.25rem;
 }
 
 @media (width >= 960px) {
@@ -29,6 +29,8 @@
     top: 1rem;
     max-height: calc(100dvh - 2rem);
     overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
   }
 }
 
@@ -69,6 +71,8 @@
   color: var(--link);
   text-decoration: underline;
   padding: 0 0.25rem;
+  box-shadow: none;
+  font-family: var(--font-sans);
 }
 
 .field {
@@ -78,7 +82,8 @@
   font-size: 0.9375rem;
 }
 
-.field input, .field select {
+.field input,
+.field select {
   width: 100%;
   font-weight: 400;
 }
@@ -110,8 +115,8 @@ details summary {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  min-height: 36px;
-  font-size: 0.9375rem;
+  min-height: 44px;
+  font-size: 0.875rem;
   cursor: pointer;
 }
 
@@ -123,7 +128,8 @@ details summary {
   flex: none;
 }
 
-.filters a, .kv dt a {
+.filters a,
+.kv dt a {
   color: inherit;
   text-decoration-color: var(--muted-foreground);
   text-decoration-style: dotted;
@@ -179,7 +185,7 @@ details summary {
   justify-content: space-between;
   gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .results-count {
@@ -204,7 +210,9 @@ details summary {
   }
 }
 
-.results, .panes, .pane {
+.results,
+.panes,
+.pane {
   min-width: 0;
 }
 
@@ -219,7 +227,8 @@ details summary {
 }
 
 @media (width <= 959px) {
-  .panes[data-active="map"] .pane-table, .panes[data-active="table"] .pane-map {
+  .panes[data-active="map"] .pane-table,
+  .panes[data-active="table"] .pane-map {
     display: none;
   }
 }
@@ -291,6 +300,7 @@ details summary {
   font-size: 0.875rem;
   color: var(--muted-foreground);
   padding: 0 0.75rem;
+  box-shadow: none;
 }
 
 .sort:hover {
@@ -420,4 +430,120 @@ details summary {
 
 .small {
   font-size: 0.8125rem;
+}
+
+.dataset-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 2rem;
+  list-style: none;
+  padding: 0 0 1rem;
+  margin: 0 0 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+.dataset-summary li {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+.dataset-summary strong {
+  color: var(--foreground);
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
+.dataset-summary a {
+  font-weight: 600;
+}
+.dataset-summary li:last-child {
+  margin-left: auto;
+}
+.dataset-summary li:last-child span {
+  font-size: 0.75rem;
+}
+.filters-head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+.filters-title {
+  font-size: 1.125rem;
+}
+.filters-body > fieldset,
+.filters-body > details {
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+.check {
+  border-radius: 0.375rem;
+}
+.check:has(input:checked) {
+  color: var(--link);
+  font-weight: 600;
+}
+.view-toggle {
+  padding: 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--card);
+}
+.view-toggle button {
+  box-shadow: none;
+  border-color: transparent;
+  min-width: 4.5rem;
+}
+.results-bar {
+  min-height: 44px;
+}
+.legend.card {
+  background: var(--card);
+  border-radius: 0.625rem;
+}
+.table-wrap th,
+.table-wrap td {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+.table-wrap thead {
+  background: var(--secondary);
+}
+.table-wrap tbody tr:hover {
+  background: var(--muted);
+}
+.table-wrap tbody th a {
+  text-decoration: none;
+}
+.table-wrap tbody th a:hover {
+  text-decoration: underline;
+}
+.detail-head {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+@media (width < 640px) {
+  .dataset-summary {
+    gap: 0.5rem 1.25rem;
+    padding-bottom: 1rem;
+  }
+  .dataset-summary li:last-child {
+    margin-left: 0;
+    width: 100%;
+  }
+  .page-intro h1 {
+    font-size: 2rem;
+  }
+  .filters {
+    padding: 1rem;
+  }
+}
+
+.page-intro {
+  margin-bottom: 1rem;
+}
+.filters[data-collapsed] .filters-head {
+  border-bottom: 0;
+  padding-bottom: 0;
 }

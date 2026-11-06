@@ -12,7 +12,7 @@
     "@tanstack/table-core": "9.3.1",
     "astro": "7.4.6",
     "maplibre-gl": "6.16.0",
-    "@roastbook/ui": "github:roastbook/ui#e4585814ac3e7f6966587839b71f83edee64de6c"
+    "@roastbook/ui": "github:roastbook/ui#6e4c57eaf76534b813c177cac542c503f9067627"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",

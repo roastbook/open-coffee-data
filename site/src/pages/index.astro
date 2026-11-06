@@ -9,8 +9,18 @@ import "../styles/explorer.css";
 ---
 <Layout title="Explorer" site="data" version={version} buildDate={buildDate} description="Map and table of open coffee place data: specialty cafés, every field linked to its definition." canonical="https://data.roastbook.coffee/">
   <Nav current="explorer" />
-  <h1>Coffee places</h1>
-  <p class="lead muted">{places.length} places, openly licensed under CDLA-Permissive-2.0. Every value links to its definition in the Schema Explorer.</p>
+  <header class="page-intro">
+    <div>
+      <h1>Coffee places</h1>
+      <p>Explore the map, inspect the details or use the data in your own project.</p>
+    </div>
+    <a class="button" href="/downloads/">Download the data</a>
+  </header>
+  <ul class="dataset-summary" aria-label="Dataset overview">
+    <li><strong>{places.length}</strong> coffee places</li>
+    <li><strong>{cities.length}</strong> {cities.length === 1 ? "city" : "cities"}</li>
+    <li><a href="/downloads/">Openly licensed</a><span>CDLA-Permissive-2.0</span></li>
+  </ul>
 
   <div class="explorer" data-explorer>
     <form class="filters card" data-filters aria-label="Filter places" onsubmit="return false">

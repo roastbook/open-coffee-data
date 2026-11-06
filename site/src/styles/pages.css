@@ -72,3 +72,20 @@ th a {
   font-size: 0.8125rem;
   font-weight: 400;
 }
+
+.table-scroll thead {
+  background: var(--secondary);
+}
+.table-scroll td,
+.table-scroll th {
+  padding: 1rem;
+}
+.table-scroll tbody tr:hover {
+  background: var(--muted);
+}
+.table-scroll tbody th a {
+  text-decoration: none;
+}
+.table-scroll tbody th a:hover {
+  text-decoration: underline;
+}
