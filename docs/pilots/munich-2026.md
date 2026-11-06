@@ -121,6 +121,21 @@ extract.coffee lists 41 Munich cafés. We read their pages one at a time, only t
 - 32 are in the dataset (78.0%), all confirmed open; 14 with complete core fields.
 - Of the 9 missing ones, one has closed for good, one has no website of its own (only a menu platform), and the others could not be confirmed on their own website or have no coordinates from any source.
 
+## Coverage against OpenStreetMap (measurement only)
+
+On 2026-11-06 the dataset was compared once with the cafés in OpenStreetMap (`amenity=cafe` inside the city boundary, one query to a public Overpass server). This was a measurement only: OpenStreetMap data is licensed under the ODbL, so no OpenStreetMap name, coordinate, address or other value went into the dataset, the agent or its leads, and the downloaded data was deleted after counting. Places were matched by distance and name similarity.
+
+| | Places |
+|---|---:|
+| Named cafés in OpenStreetMap | 826 |
+| also in the dataset | 188 (23%) |
+| not in the dataset | 638 |
+| of these, found by the agent but left out (not a walk-in café, closed, not confirmed on its own website, duplicate) | 177 |
+| of these, never found by the agent | 461 (177 with a website listed in OpenStreetMap) |
+| Places in the dataset that OpenStreetMap has as a café | 179 of 266 |
+
+OpenStreetMap's `amenity=cafe` is broader than this dataset (bakery cafés, ice-cream parlours, chain outlets, cafés without a website), so not every missing place belongs here, but the gap is large: discovery, not verification, limits coverage.
+
 ## Images
 
 No tier A place has an image. Only Wikimedia Commons files whose title contains the place's full name, or a place's Wikidata image, are accepted (a looser rule matched market stalls and church towers), and none qualified. Owners can suggest openly licensed photos through `CONTRIBUTING.md`.
