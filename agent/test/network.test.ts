@@ -76,7 +76,7 @@ test("HTML extraction keeps page facts and skips broken resource URLs", () => {
   expect(doc.images).toEqual([
     { href: "https://cafe.example/menu.jpg", text: "Drinks" },
   ]);
-  expect(doc.text).toContain("Äpfel & öl &#x110000;");
+  expect(doc.text).toContain("Äpfel & öl \uFFFD"); // an invalid code point becomes the replacement character
   expect(doc.text).toContain("Filter coffee");
   expect(doc.text).not.toContain("alert");
   expect(doc.text).not.toContain("ignored.example");

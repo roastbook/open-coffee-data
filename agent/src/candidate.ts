@@ -8,6 +8,7 @@ export interface Candidate {
   street?: string; postcode?: string;
   website?: string; instagram?: string;
   altWebsites?: string[]; socials?: string[];
+  recordName?: string; recordWebsite?: string; // the stored record's, when there is one
   geoUrl?: string; geoVia?: string;
   overtureIds: string[];
   overtureStatus?: string | null;

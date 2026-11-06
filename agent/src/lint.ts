@@ -49,6 +49,8 @@ export function duplicatePairs(places: CoffeeRecord[]): [CoffeeRecord, CoffeeRec
   for (let i = 0; i < live.length; i++) for (let j = i + 1; j < live.length; j++) {
     const a = live[i], b = live[j];
     const d = distanceM(a.location, b.location);
+    // One Overture place is one place, whatever names the two records carry.
+    if (a.xref?.overture && a.xref.overture === b.xref?.overture) { out.push([a, b, d]); continue; }
     if (d > 60) continue;
     if (duplicatesAtDistance(a, b, d)) out.push([a, b, d]);
   }

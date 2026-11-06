@@ -9,7 +9,7 @@ export interface RunOptions { city: City; limit: number; dryRun: boolean; stages
 export type Row = OvertureRow & { coffee: boolean };
 export interface Enriched {
   site?: Site; match?: string; facts: Verified[]; rejected: Rejected[]; multi: boolean;
-  websiteTried: string[]; websiteSearch?: string; error?: string; injectionLines: number;
+  websiteTried: string[]; websiteSearch?: string; error?: string; injectionLines: number; siteName?: string;
 }
 export interface Provenance { value: unknown; via: string; url?: string; quote?: string }
 export type ProvenanceMap = Map<string, Provenance>;
@@ -19,7 +19,7 @@ export interface Conflict { id: string; name: string; reason: string }
 export interface RunLog {
   id: string; name: string; reason: string; origins: Candidate["origins"];
   site: { start: string; ok: boolean; error?: string; pages: { url: string; fetchedAt: string; rendered: boolean }[] } | null;
-  match?: string; websiteSearch?: string; values: Record<string, Provenance>;
+  match?: string; error?: string; websiteSearch?: string; values: Record<string, Provenance>;
   rejected: Pick<Rejected, "field" | "value" | "reason">[]; conflict?: string; tierWhy: string;
   research?: Pick<Research, "queries" | "opened">;
 }

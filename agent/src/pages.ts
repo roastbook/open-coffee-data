@@ -279,7 +279,8 @@ const TRANSCRIBE = "You transcribe photos of café menus and notices. Copy the t
 async function imageAsHtml(buf: Uint8Array, type: string): Promise<string> {
   if (buf.length < 20_000 || buf.length > 5_000_000) return ""; // icons and logos; or too large for the model
   const text = await chat(TRANSCRIBE, "Transcribe this image.", { image: `data:${type};base64,${Buffer.from(buf).toString("base64")}`, maxTokens: 3000 });
-  if (/^\s*NONE\s*$/.test(text)) return "";
+  // "NONE", or a refusal instead of a transcript ("I can't reliably transcribe this").
+  if (/^\s*NONE\s*$/.test(text) || /^\s*(i can(no|')t|i'm (not )?(able|unable)|sorry|unfortunately|the image)/i.test(text)) return "";
   const esc = text.replace(/\*\*/g, "").slice(0, 20_000).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   return `<html><body><pre>${esc}</pre></body></html>`;
 }

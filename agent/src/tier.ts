@@ -39,7 +39,8 @@ function specialtyTier(t: TierInput, roastsSpecialty: boolean): TierResult {
 }
 function ordinaryTier(t: TierInput): TierResult {
   if (t.roasters.length && t.roasters.every((r) => isCommodity(r.name))) return { tier: "none", why: "serves a commodity brand" };
-  if (foodBusinesses.includes(t.business ?? "") && t.siteVerified) return { tier: "none", why: `site shows a ${t.business}` };
+  // A site that claims specialty coffee without naming a roaster is not "none": the evidence is incomplete, not negative.
+  if (foodBusinesses.includes(t.business ?? "") && t.siteVerified && !t.specialtyClaim) return { tier: "none", why: `site shows a ${t.business}` };
   if (nonCoffeeName(t.name)) return { tier: "none", why: "name shows a non-coffee business" };
   return { tier: "unknown", why: "no specialty evidence" };
 }

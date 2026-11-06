@@ -40,7 +40,7 @@ Errors (CI fails):
 - `person-name`: a place name contains an owner's name ("Inh. …"); people's names are personal data.
 - `seasonal`: a seasonal venue (Oktoberfest tent, fair, Christmas market); only places open all year are stored.
 - `contact-data`: an email address or phone number outside `links`.
-- `duplicate`: two records with nearly the same name within 40 m (or the same name within 60 m). Remove the extra record.
+- `duplicate`: two records with nearly the same name within 40 m (or the same name within 60 m), or two records of the same Overture place. Remove the extra record.
 - `unverified`: the dataset holds only confirmed places; an `unverified` record must be confirmed or removed. `type`: every place is `CafeOrCoffeeShop`.
 - `payment`, `serving`: contradictions (cash only and card payment both true, pour-over or batch brew true but filter false).
 - `operator`: not a legal entity; `price`: an implausible cappuccino price; `postcode`: wrong format for the country.

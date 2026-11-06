@@ -30,7 +30,8 @@ export async function enrichJob(job: Job, candidate: Candidate, ctx: EnrichmentC
   const { results, errors } = ctx;
   const c = candidate;
   // Filter: chains and clearly non-coffee businesses without a website are not fetched.
-  const urls = [c.website, ...c.altWebsites ?? []].filter((u): u is string => !!u && !isPlatformUrl(u)); // never a directory or platform page
+  // The stored record's website is tried too: Overture's may be dead while the place's own site works.
+  const urls = [...new Set([c.website, ...c.altWebsites ?? [], c.recordWebsite])].filter((u): u is string => !!u && !isPlatformUrl(u)); // never a directory or platform page
   if (!urls.length && (isChain(c.name, c.brand) || nonCoffeeName(c.name))) { results.set(job.id, { facts: [], rejected: [], multi: false, websiteTried: [], injectionLines: 0 }); return; }
   try {
     const tried: string[] = [];
@@ -80,7 +81,8 @@ async function tryKnownWebsites(c: Candidate, urls: string[], tried: string[], c
     tried.push(u);
     const r = siteCache.get(`${u}|${c.street ?? ""}`) ?? await enrichSite(c, u, cityNames, country);
     if (r.site?.ok && r.match) { e = r; break; }
-    e ??= r;
+    // A readable site that rejects the place outweighs a dead one (which would keep the old record).
+    if (!e || (!e.site?.ok && r.site?.ok)) e = r;
   }
   return e;
 }

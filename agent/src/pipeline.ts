@@ -7,7 +7,7 @@ import { CACHE, llm } from "./config";
 import { closeBrowser, pool } from "./pages";
 import { readCity, writeCity } from "./dataset";
 import { mergeInto, samePlace } from "./dedupe";
-import { keywordProposals, postcodesOnSite, propose, siteMatches, verify } from "./extract";
+import { identify, keywordProposals, postcodesOnSite, propose, siteMatches, verify } from "./extract";
 import { newId } from "./ids";
 import { findImage } from "./images";
 import { ownHost } from "./names";
@@ -90,6 +90,8 @@ export async function run(o: RunOptions) {
   await stage("enrich", async () => {
     await pool(jobs, 12, async (job) => {
       const c = candFor.get(job.id) ?? fromRecord(byId.get(job.id));
+      const rec = byId.get(job.id);
+      if (c && rec) { c.recordName = rec.name; c.recordWebsite = rec.links?.website; }
       if (c) await enrichJob(job, c, { o, cityNames, country, placeWords, timing, want, siteCache, researchLog, results, errors, enrichSite });
     });
   });
@@ -172,6 +174,11 @@ export async function run(o: RunOptions) {
   };
   safeguard();
 
+  // A new record for an Overture place whose old record left in this run (found again through another lead) keeps the old id.
+  for (const r of written) {
+    const gone = !doc.places.some((p) => p.id === r.id) && r.xref?.overture ? removed.find((p) => p.xref?.overture === r.xref?.overture && !byId.get(p.id)) : undefined;
+    if (gone && byId.get(r.id) === r) { byId.delete(r.id); r.id = gone.id; byId.set(r.id, r); removed.splice(removed.indexOf(gone), 1); }
+  }
   const places = [...byId.values()].filter((p): p is CoffeeRecord => p !== null);
   let file: string | null = null;
   if (!o.dryRun && written.length) { file = writeCity(o.city, { places }); saveState(o.city.slug, state); archiveRemoved(o.city.slug, removed); }
@@ -197,15 +204,19 @@ async function enrichSite(c: Candidate, url: string, _cityNames: string[], count
   for (const p of extraPages) if (site.ok && !site.pages.some((x) => x.url === p.url)) site.pages.push(p);
   if (!site.ok) return { site, facts: [], rejected: [], multi: false, websiteTried: [url], injectionLines: 0 };
   const host = new URL(site.pages[0].url).hostname.replace(/^www\./, "");
-  const m = siteMatches(site.pages, c, host, placeWords);
+  // The stored record's name counts too: a merged Overture record can bring a name made only of street words ("Cafe Amalien").
+  const m = [c.name, c.recordName].filter((n): n is string => !!n).map((name) => siteMatches(site.pages, { ...c, name }, host, placeWords)).find((x) => x.ok) ?? siteMatches(site.pages, c, host, placeWords);
   if (!m.ok) return { site, facts: [], rejected: [], multi: false, websiteTried: [url], error: m.reason, injectionLines: 0 };
-  const multi = postcodesOnSite(site.pages, country, cityPostcodes).size > 1;
   const address = [c.street, c.postcode].filter(Boolean).join(", ");
+  // Name and address on a page are not enough: a directory, a host venue's site or a restaurant names them too.
+  const id = await identify(c.name, address, site.pages, llm.escalationModel);
+  if (!id.ownSite || !id.publicCafe) return { site, facts: [], rejected: [], multi: false, websiteTried: [url], error: `${!id.ownSite ? "not the place's own site" : "not a café the public can walk into"}: ${id.reason}`, injectionLines: 0 };
+  const multi = postcodesOnSite(site.pages, country, cityPostcodes).size > 1;
   let p = await propose(c.name, address, site.pages);
   if (p.error) p = await propose(c.name, address, site.pages, llm.escalationModel); // hard case: escalate once
   // The model's proposals plus the keyword pass (verify drops failing quotes; conflicting values cancel each other).
   const v = verify([...p.facts, ...keywordProposals(site.pages)], site.pages, { street: c.street, postcode: c.postcode, country, ownName: c.name, multiLocation: multi, cityPostcodes });
-  return { site, match: m.reason, facts: v.kept, rejected: v.rejected, multi, websiteTried: [url], error: p.error ?? undefined, injectionLines: p.removed };
+  return { site, match: m.reason, facts: v.kept, rejected: v.rejected, multi, websiteTried: [url], error: p.error ?? undefined, injectionLines: p.removed, siteName: id.name ?? undefined };
 }
 
 /** Records that leave the dataset are kept locally (gitignored) so they can be worked on later; never committed. */
@@ -232,7 +243,7 @@ function labelRecordChanges(old: CoffeeRecord | null, r: CoffeeRecord, labels: S
 }
 
 function buildLog(job: Job, c: Candidate, e: Enriched, built: ReturnType<typeof buildRecord>, res?: Research): RunLog {
-  return { id: job.id, name: c.name, reason: job.reason, origins: c.origins, site: e.site ? { start: e.site.start, ok: e.site.ok, error: e.site.error, pages: e.site.pages.map((p) => ({ url: p.url, fetchedAt: p.fetchedAt, rendered: p.rendered })) } : null, match: e.match, websiteSearch: e.websiteSearch, values: Object.fromEntries(built.provenance), rejected: e.rejected.map((r) => ({ field: r.field, value: r.value, reason: r.reason })), conflict: built.conflict, tierWhy: built.tierWhy, research: res ? { queries: res.queries, opened: res.opened } : undefined };
+  return { id: job.id, name: c.name, reason: job.reason, origins: c.origins, site: e.site ? { start: e.site.start, ok: e.site.ok, error: e.site.error, pages: e.site.pages.map((p) => ({ url: p.url, fetchedAt: p.fetchedAt, rendered: p.rendered })) } : null, match: e.match, error: e.error, websiteSearch: e.websiteSearch, values: Object.fromEntries(built.provenance), rejected: e.rejected.map((r) => ({ field: r.field, value: r.value, reason: r.reason })), conflict: built.conflict, tierWhy: built.tierWhy, research: res ? { queries: res.queries, opened: res.opened } : undefined };
 }
 
 function existingRecord(c: Candidate, places: CoffeeRecord[], known: CoffeeRecord[]) {

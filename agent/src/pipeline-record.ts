@@ -2,13 +2,13 @@ import type { Candidate } from "./candidate";
 import { describe } from "./describe";
 import { type Verified } from "./extract";
 import { cleanName } from "./pipeline-location";
-import { nameSim, ownHost, sameStreet } from "./names";
+import { fold, nameSim, ownHost, sameStreet } from "./names";
 import { type Enriched, type ProvenanceMap, type Row, iso, overtureUrl, stringFact } from "./pipeline-model";
 import type { Job } from "./queue";
 import type { Address, CoffeeRecord, Roaster } from "./record";
 import { cleanName as signName, cleanStreet, SEASONAL } from "./rules";
 import type { SitePage } from "./site";
-import { tier } from "./tier";
+import { isChain, tier } from "./tier";
 
 interface BuildContext { now: Date; country: string; cityName: string; inside: Row[] }
 interface Built { record: CoffeeRecord | null; keep?: boolean; provenance: ProvenanceMap; conflict?: string; tierWhy: string }
@@ -29,7 +29,7 @@ function position(c: Candidate, e: Enriched, ctx: BuildContext, prov: Provenance
   return coordinates ? { ...coordinates, overtureId, street, postcode, conflict } : { missing: true, conflict };
 }
 function applyAddress(r: CoffeeRecord, c: Candidate, old: CoffeeRecord | null, e: Enriched, pos: Position, ctx: BuildContext, prov: ProvenanceMap) {
-  applyIdentity(r, c, old, pos, ctx, prov);
+  applyIdentity(r, c, old, e, pos, ctx, prov);
   const addr: Address = { country_code: ctx.country, locality: ctx.cityName };
   applyStreet(addr, e, pos, prov);
   applyPostcode(addr, e, pos, ctx, prov);
@@ -46,6 +46,8 @@ function applyStatus(r: CoffeeRecord, e: Enriched, old: CoffeeRecord | null, pro
     return unconfirmedResult(e, old, prov);
   }
   if (isSeasonal(r, temp)) return { record: null, keep: false, provenance: prov, tierWhy: "" };
+  // A site that never mentions coffee is not a coffee place's site (a cake business, a bakery-only shop).
+  if (e.site && !e.site.pages.some((pg) => COFFEE_WORD.test(`${new URL(pg.url).hostname}\n${pg.doc.title}\n${pg.doc.text}`))) return { record: null, keep: false, provenance: prov, tierWhy: "" };
   if (r.status !== "closed") delete r.closed_on;
   return null;
 }
@@ -116,10 +118,10 @@ function applyCommerce(r: CoffeeRecord, e: Enriched, ctx: BuildContext, prov: Pr
     prov.set("prices.cappuccino", source(price));
   }
 }
-function social(pages: SitePage[], re: RegExp, bad: RegExp): string | null {
+function social(pages: SitePage[], re: RegExp, bad: RegExp, name: string, site: string): string | null {
   const hits = new Set<string>();
   for (const p of pages) for (const l of p.doc.links) { const m = l.href.match(re); if (m && !bad.test(m[1])) hits.add(m[1].toLowerCase()); }
-  return hits.size === 1 ? [...hits][0] : null;
+  return hits.size === 1 && ownHandle([...hits][0], name, site) ? [...hits][0] : null;
 }
 function applyLinks(r: CoffeeRecord, c: Candidate, e: Enriched, prov: ProvenanceMap) {
   const pages = e.match && e.site?.ok ? e.site.pages : [], page = pages.at(0);
@@ -141,9 +143,9 @@ const FB_NON_PROFILE = /^(sharer|share|dialog|plugins|intent|tr|login|home|profi
 
 function applySiteSocials(r: CoffeeRecord, pages: SitePage[], page: SitePage, prov: ProvenanceMap) {
   r.links ??= {};
-  const ig = social(pages, IG_PROFILE, IG_NON_PROFILE);
+  const ig = social(pages, IG_PROFILE, IG_NON_PROFILE, r.name, page.url);
   if (ig) { r.links.instagram = `https://www.instagram.com/${ig}/`; prov.set("links.instagram", { value: r.links.instagram, via: "linked from the place's website", url: page.url }); }
-  const fb = social(pages, FB_PROFILE, FB_NON_PROFILE);
+  const fb = social(pages, FB_PROFILE, FB_NON_PROFILE, r.name, page.url);
   if (fb) { r.links.facebook = `https://www.facebook.com/${fb}/`; prov.set("links.facebook", { value: r.links.facebook, via: "linked from the place's website", url: page.url }); }
 }
 function notPublic(r: CoffeeRecord, business = ""): boolean {
@@ -211,9 +213,13 @@ function movedPosition(c: Candidate, siteStreet: string, sitePc: string | undefi
   return { lat: moved.lat, lon: moved.lon, overtureId: moved.id, street: siteStreet, postcode: sitePc ?? moved.postcode ?? undefined };
 }
 
-function applyIdentity(r: CoffeeRecord, c: Candidate, old: CoffeeRecord | null, pos: Position, ctx: BuildContext, prov: ProvenanceMap) {
+function applyIdentity(r: CoffeeRecord, c: Candidate, old: CoffeeRecord | null, e: Enriched, pos: Position, ctx: BuildContext, prov: ProvenanceMap) {
   const origin = c.origins.at(0);
-  r.name = signName(old?.name ?? cleanName(c.name, ctx.cityName));
+  // The name the place uses on its own site wins over a directory's (Overture's) name. A chain branch is named by its brand
+  // ("Tchibo", not "Tchibo Filiale mit Kaffee Bar") when the name already carries it.
+  const brand = isChain(c.name, c.brand) && c.brand && fold(c.name).includes(fold(c.brand)) ? c.brand : null;
+  const siteName = e.match && e.site?.ok && e.siteName ? brand ?? siteNameTidy(e.siteName, ctx.cityName) : null;
+  r.name = signName(siteName ?? old?.name ?? cleanName(c.name, ctx.cityName));
   prov.set("name", { value: r.name, via: c.overtureIds.length ? "overture" : origin?.via ?? "unknown", url: c.overtureIds[0] ? overtureUrl(c.overtureIds[0]) : origin?.url });
   r.location = { lat: Math.round(pos.lat * 1e6) / 1e6, lon: Math.round(pos.lon * 1e6) / 1e6 };
   if (!prov.has("location")) prov.set("location", locationSource(r, c, pos));
@@ -248,6 +254,28 @@ function unconfirmedResult(e: Enriched, old: CoffeeRecord | null, prov: Provenan
   return { record: null, keep: known, provenance: prov, conflict: known ? why : undefined, tierWhy: "" };
 }
 
+const COFFEE_WORD = /kaffee|coffee|caf[eéè]|caff[eè]|espresso|cappuccino|barista|röst/i;
+
+const CITY_TAIL = /[\s,–-]+(münchen|muenchen|munich)$/i;
+/** A name as a site writes it, minus styling: all-caps logos get normal capitals ("VOLLATHS" -> "Vollaths"; words without a vowel,
+ * like "BMW", stay) and a trailing city name goes ("Palmi Muenchen" -> "Palmi"). */
+export function siteNameTidy(name: string, cityName: string) {
+  let n = cleanName(name.replace(/`/g, "'"), cityName);
+  if (CITY_TAIL.test(n) && n.replace(CITY_TAIL, "").trim().length >= 3) n = n.replace(CITY_TAIL, "").trim();
+  if (/\p{Lu}{3}/u.test(n) && !/\p{Ll}/u.test(n)) n = n.replace(/\p{L}+/gu, (w) => (!/[AEIOUÄÖÜY]/.test(w) ? w : w[0] + w.slice(1).toLowerCase()));
+  return n;
+}
+
+const GENERIC_HANDLE_WORDS = new Set(["cafe", "caffe", "coffee", "kaffee", "munich", "muenchen", "munchen", "the", "und", "and", "bar", "official", "roasters", "rosterei", "roesterei"]);
+/** A social account linked from a site is the place's own only if its handle shares a word with the place's name or the
+ * site's domain: not a website builder's own account (wix), a host venue's, a photographer's or a feed widget's id. */
+export function ownHandle(handle: string, name: string, site?: string) {
+  const h = fold(handle).replace(/[^a-z0-9]/g, "");
+  const host = site ? fold(new URL(site.includes("//") ? site : `https://${site}`).hostname.replace(/^www\./, "").split(".").slice(0, -1).join(" ")) : "";
+  const words = `${fold(name)} ${host}`.split(/[^a-z0-9]+/).filter((w) => w.length >= 4 && !GENERIC_HANDLE_WORDS.has(w));
+  return words.some((w) => h.includes(w)) || (!!host && h.length >= 4 && host.replace(/[^a-z0-9]/g, "").includes(h));
+}
+
 function isSeasonal(r: CoffeeRecord, temp?: Verified) {
   return SEASONAL.test(r.name) || !!temp && /winter|saison|season/i.test(temp.quote);
 }
@@ -257,7 +285,7 @@ const possibleMove = (e: Enriched, street: string, previous?: string) => !e.mult
 function applyOvertureInstagram(r: CoffeeRecord, c: Candidate, prov: ProvenanceMap) {
   if (!r.links?.instagram) {
     const ig = (c.socials ?? []).flatMap((s) => { const match = s.match(/^https?:\/\/(?:www\.)?instagram\.com\/([A-Za-z0-9_.]+)\/?$/); return match ? [match[1]] : []; });
-    if (ig.length === 1) { r.links = { ...r.links, instagram: `https://www.instagram.com/${ig[0].toLowerCase()}/` }; prov.set("links.instagram", { value: r.links.instagram, via: "overture", url: overtureUrl(c.overtureIds[0]) }); }
+    if (ig.length === 1 && ownHandle(ig[0], r.name, r.links?.website)) { r.links = { ...r.links, instagram: `https://www.instagram.com/${ig[0].toLowerCase()}/` }; prov.set("links.instagram", { value: r.links.instagram, via: "overture", url: overtureUrl(c.overtureIds[0]) }); }
   }
 }
 

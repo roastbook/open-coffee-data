@@ -12,6 +12,10 @@ test("quotes match across whitespace, dashes and case, but not when altered", ()
   expect(findQuote(text, "Mo – Fr 8–19 Uhr")).toBe(-1);
   expect(findQuote(text, "ok")).toBe(-1); // too short to count
   expect(norm("A­B​C")).toBe("abc");
+  // Lines joined by the model still match, at the right position; altered text still does not.
+  const t2 = "Intro\nDas VILLAGE ist geöffnet.\nAuch Kaffee";
+  expect(findQuote(t2, "Das VILLAGE ist geöffnet.Auch Kaffee")).toBe(norm(t2).indexOf("das village"));
+  expect(findQuote(t2, "Das VILLAGE ist geschlossen.Auch Kaffee")).toBe(-1);
 });
 
 test("verify keeps only quoted, field-relevant values", () => {
@@ -151,4 +155,61 @@ test("menu photos: named menus first, then images on a menu page; logos and othe
     withImages("https://cafe.example/speisekarte", [{ href: "https://cafe.example/p1.jpg", text: "" }]),
   ]);
   expect(picked).toEqual(["https://static.wixstatic.com/media/a.jpg", "https://cafe.example/p1.jpg"]);
+});
+
+test("a name made only of district words does not match a site that merely mentions the district", () => {
+  const words = placeWordsFrom(["München", "Schwabing", "Belgradstraße 1"]);
+  const site = [{ url: "https://cafeneuhauser.de/", fetchedAt: "", rendered: false, doc: { title: "Café Neuhauser - Neuhausen, Schwabing & Gärtnerplatz", text: "Schwabing Belgradstraße 1 | 80796 München", links: [], jsonld: "" } }];
+  expect(siteMatches(site, { name: "Café Schwabing", street: "Belgradstraße 1" }, "cafeneuhauser.de", words).ok).toBe(false);
+});
+
+test("serving facts: not from shop or wiki pages, allergen keys, dishes or teas", () => {
+  const ctx = { country: "DE", ownName: "Café X", multiLocation: false };
+  const one = (field: Proposal["field"], quote: string, url = "https://cafe.example/karte") => verify([{ field, value: true, page: 1, quote }], [page(quote, url)], ctx).kept.length;
+  expect(one("serving.plant_milk", "Hafermilch +0,50")).toBe(1);
+  expect(one("serving.plant_milk", "Allergene: Gluten (Weizen, Hafer), Soja")).toBe(0);
+  expect(one("serving.plant_milk", "Thai-Curry mit Kokosmilch")).toBe(0);
+  expect(one("serving.plant_milk", "Unser Haferl Kaffee")).toBe(0);
+  expect(one("serving.decaf", "Koffeinfreier Kräutertee")).toBe(0);
+  expect(one("serving.decaf", "Kaffee auch entkoffeiniert, Tee")).toBe(1);
+  expect(one("serving.cold_brew", "Cold Brew", "https://chain.example/kaffeeakademie/wiki/cold-brew")).toBe(0);
+  expect(one("serving.espresso", "Espresso 250 g", "https://cafe.example/shop/espresso-blend")).toBe(0);
+});
+
+test("social links: only accounts whose handle matches the place or its site", async () => {
+  const { ownHandle } = await import("../src/pipeline-record");
+  expect(ownHandle("neuhauser_muenchen", "Neuhauser Schwabing", "neuhauser-schwabing.de")).toBe(true);
+  expect(ownHandle("cafe_lotti", "Cafe Lotti", "https://www.cafe-lotti.de/")).toBe(true);
+  expect(ownHandle("ksbbar", "Kaffee", "https://ksbbar.de/")).toBe(true);
+  expect(ownHandle("westinmunich", "Sheraton's Lobby", "https://www.marriott.com/")).toBe(false);
+  expect(ownHandle("wix", "Café Wunderbar", "https://cafewunderbar.de/")).toBe(false);
+  expect(ownHandle("17841405420195327", "Fortuna Cafébar", "https://fortuna-cafebar.de/")).toBe(false);
+  expect(ownHandle("elenakilb.official", "Vollaths", "https://vollaths.de/")).toBe(false);
+});
+
+test("closure notices count, closing times and closed weekdays do not", () => {
+  const ctx = { country: "DE", ownName: "Café X", multiLocation: false };
+  const closed = (quote: string) => verify([{ field: "closed_permanently", value: true, page: 1, quote }], [page(quote)], ctx).kept.length;
+  expect(closed("Das NähWerk hat zum 30. April 2025 seine Türen geschlossen.")).toBe(1);
+  expect(closed("15.4.2020 Wir schließen, Servus Giesing !!")).toBe(1);
+  expect(closed("in der KAFFEE, ESPRESSO & BARISTA gefunden, das ist leider Geschichte.")).toBe(1);
+  expect(closed("Das Tabula Rasa bleibt geschlossen, gerne könnt ihr uns eine Catering Anfrage stellen.")).toBe(1);
+  expect(closed("Wir schließen um 18 Uhr")).toBe(0);
+  expect(closed("Montag bleibt geschlossen")).toBe(0);
+});
+
+test("a name of place words still matches its own domain", () => {
+  const words = placeWordsFrom(["München", "Pasing", "Cotidiano 1"]);
+  const site = [{ url: "https://cotidiano.de/standorte/muenchen-pasing/", fetchedAt: "", rendered: false, doc: { title: "Cotidiano Pasing", text: "Cotidiano Pasing, Bodenseestraße 1, 81241 München", links: [], jsonld: "" } }];
+  expect(siteMatches(site, { name: "Cotidiano Pasing", street: "Bodenseestraße 1" }, "cotidiano.de", words).ok).toBe(true);
+});
+
+test("site names lose all-caps styling and a trailing city", async () => {
+  const { siteNameTidy } = await import("../src/pipeline-record");
+  expect(siteNameTidy("VOLLATHS", "München")).toBe("Vollaths");
+  expect(siteNameTidy("MAN VERSUS MACHINE COFFEE ROASTERS", "München")).toBe("Man Versus Machine Coffee Roasters");
+  expect(siteNameTidy("Palmi Muenchen", "München")).toBe("Palmi");
+  expect(siteNameTidy("Café Buur München", "München")).toBe("Café Buur");
+  expect(siteNameTidy("Seidl`s Cafe Waldtrudering", "München")).toBe("Seidl's Cafe Waldtrudering");
+  expect(siteNameTidy("sweet spot kaffee", "München")).toBe("sweet spot kaffee");
 });

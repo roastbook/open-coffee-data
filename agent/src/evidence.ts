@@ -15,7 +15,15 @@ export function norm(s: string): string {
 export function findQuote(pageText: string, quote: string): number {
   const q = norm(quote);
   if (q.length < 3) return -1;
-  return norm(pageText).indexOf(q);
+  const t = norm(pageText);
+  const at = t.indexOf(q);
+  if (at >= 0 || q.length < 12) return at;
+  // Models join lines ("geöffnet.Auch" for "geöffnet.\nAuch"): compare without any whitespace, map back to the position.
+  const pos: number[] = [];
+  let compact = "";
+  for (let i = 0; i < t.length; i++) if (t[i] !== " ") { compact += t[i]; pos.push(i); }
+  const c = compact.indexOf(q.replace(/ /g, ""));
+  return c < 0 ? -1 : pos[c];
 }
 
 export const quoteOccurs = (pageText: string, quote: string) => findQuote(pageText, quote) >= 0;

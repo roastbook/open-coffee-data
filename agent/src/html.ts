@@ -19,13 +19,6 @@ export function htmlToDoc(html: string, baseUrl: string): Doc {
   return { title: root.querySelector("title")?.textContent.trim() ?? "", text, links, jsonld, images, geo: htmlGeo(html) };
 }
 
-const UMLAUTS = new Map([["a", "ä"], ["o", "ö"], ["u", "ü"], ["A", "Ä"], ["O", "Ö"], ["U", "Ü"]]);
-function decode(s: string) {
-  return s.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
-    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&ndash;/g, "–").replace(/&mdash;/g, "—")
-    .replace(/&#(\d+);/g, (_, d) => codePoint(_, Number(d))).replace(/&#x([0-9a-f]+);/gi, (_, h) => codePoint(_, parseInt(h, 16)))
-    .replace(/&([a-z]+)uml;/gi, (_, c) => UMLAUTS.get(c) ?? _).replace(/&szlig;/g, "ß");
-}
 
 // Coordinates the site publishes itself: schema.org, geo meta tags, and the marker of an embedded Leaflet or OpenStreetMap
 // map. Google Maps embeds are skipped: those coordinates are Google's data.
@@ -86,7 +79,7 @@ function absoluteUrl(value: string | undefined, baseUrl: string): string | null 
 function visibleText(root: HTMLElement, dataText: string): string {
   const parts: string[] = [];
   const walk = (n: Node) => {
-    if (n.nodeType === 3) { parts.push(decode(n.rawText)); return; }
+    if (n.nodeType === 3) { parts.push(n.text); return; } // decoded entities
     const tag = n instanceof HTMLElement ? n.rawTagName ?? "" : "";
     const block = BLOCK.test(tag) && tag.toLowerCase() !== "span";
     if (block) parts.push("\n");
@@ -95,13 +88,11 @@ function visibleText(root: HTMLElement, dataText: string): string {
     else if (tag) parts.push(" ");
   };
   walk(root);
-  const text = (parts.join("") + (dataText ? `\n${dataText}` : "")).replace(/[ \t\u00a0]+/g, " ").replace(/ *\n[\s]*/g, "\n").trim();
+  // Zero-width characters and soft hyphens are dropped, so quotes match what a reader sees.
+  const text = (parts.join("") + (dataText ? `\n${dataText}` : "")).replace(/[\u200b-\u200d\u2060\ufeff\u00ad]/g, "").replace(/[ \t\u00a0]+/g, " ").replace(/ *\n[\s]*/g, "\n").trim();
   return text;
 }
 
-function codePoint(original: string, value: number): string {
-  return Number.isInteger(value) && value >= 0 && value <= 0x10ffff ? String.fromCodePoint(value) : original;
-}
 
 function readableJsonString(value: string): string | null {
   const text = value.replace(/<[^>]+>/g, " ").trim();
