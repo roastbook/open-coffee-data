@@ -204,12 +204,6 @@ details summary {
   border-color: var(--primary);
 }
 
-@media (width >= 960px) {
-  .view-toggle {
-    display: none;
-  }
-}
-
 .results,
 .panes,
 .pane {
@@ -226,11 +220,9 @@ details summary {
   min-width: 9rem;
 }
 
-@media (width <= 959px) {
-  .panes[data-active="map"] .pane-table,
-  .panes[data-active="table"] .pane-map {
-    display: none;
-  }
+.panes[data-active="map"] .pane-table,
+.panes[data-active="table"] .pane-map {
+  display: none;
 }
 
 .pane-map {
@@ -564,4 +556,30 @@ details summary {
 .filters[data-collapsed] .filters-head {
   border-bottom: 0;
   padding-bottom: 0;
+}
+
+.map-frame {
+  position: relative;
+}
+.map-status {
+  position: absolute;
+  inset: auto 1rem 1rem;
+  z-index: 2;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--card);
+  box-shadow: var(--coffee-shadow);
+}
+.map-status[hidden],
+.map-status button[hidden] {
+  display: none;
+}
+.map-status p {
+  margin: 0 0 0.75rem;
+}
+.map-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }

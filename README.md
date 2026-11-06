@@ -20,7 +20,7 @@ A list of places that serve coffee, starting with Munich: where they are, when t
 
 The data follows the [Open Coffee Schema](https://schema.roastbook.coffee/) and the data is licensed [CDLA-Permissive-2.0](LICENSE-DATA), so you can put it in an app, a map, a guide or a research project. We research it ourselves from open datasets and the places' own websites. Nothing comes from Google Maps, OpenStreetMap or closed café guides.
 
-Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a table with filters, and a page per place where every field links to its definition.
+Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a table with filters, and a page per place where every field links to its definition. Search stays visible on phones. Map and table views are available at every width, and the browser remembers your choice. If the map cannot load, you can retry or keep browsing the table.
 
 <!-- stats:start -->
 

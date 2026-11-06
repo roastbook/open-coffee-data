@@ -29,11 +29,11 @@ import "../styles/explorer.css";
         <button type="button" class="filters-toggle" data-filters-toggle aria-expanded="true" aria-controls="filters-body">Show filters</button>
         <button type="reset" class="link-button">Clear all</button>
       </div>
-      <div class="filters-body" id="filters-body">
       <label class="field">
         <span>Search</span>
-        <input type="search" name="q" placeholder="Name, street, roaster…" autocomplete="off" />
+        <input type="search" name="q" placeholder="Search names, streets, roasters…" autocomplete="off" />
       </label>
+      <div class="filters-body" id="filters-body">
       <label class="field">
         <span><a href={fieldUrl("address.locality")}>City</a></span>
         <select name="city">
@@ -91,7 +91,16 @@ import "../styles/explorer.css";
             <p class="muted">Select a café for details. Zoom in for names.</p>
             <button type="button" data-show-all disabled>Show all results</button>
           </div>
-          <div class="map" data-map role="region" aria-label="Map of the filtered places. The table lists the same places for keyboard and screen reader use."></div>
+          <div class="map-frame">
+            <div class="map" data-map role="region" aria-busy="true" aria-label="Map of the filtered places. The table lists the same places for keyboard and screen reader use."></div>
+            <div class="map-status" data-map-status>
+              <p role="status" data-map-message>Loading map…</p>
+              <div class="map-status-actions">
+                <button type="button" data-map-retry hidden>Retry map</button>
+                <button type="button" data-map-table>Use table instead</button>
+              </div>
+            </div>
+          </div>
           <ul class="legend card" aria-label="Map legend">
             <li><span class="tier-icon" data-tier="A" aria-hidden="true"></span> Tier A</li>
             <li><span class="tier-icon" data-tier="B" aria-hidden="true"></span> Tier B</li>

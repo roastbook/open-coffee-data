@@ -35,7 +35,10 @@ function icon(shape: "circle" | "diamond" | "square", size: number, fill: string
   return { width: size * ratio, height: size * ratio, data: new Uint8Array(g.getImageData(0, 0, size * ratio, size * ratio).data.buffer) };
 }
 
+export type MapStatus = "loading" | "ready" | "error";
+
 export interface PlaceMap {
+  retry(): void;
   setData(places: ExplorerPlace[]): void;
   focus(place: ExplorerPlace): void;
   select(id: string | null): void;
@@ -44,13 +47,28 @@ export interface PlaceMap {
   resize(): void;
 }
 
-export function createMap(el: HTMLElement, places: ExplorerPlace[], onSelect: (id: string) => void, onMove: () => void): PlaceMap {
+export function createMap(el: HTMLElement, places: ExplorerPlace[], onSelect: (id: string) => void, onMove: () => void, onStatus: (status: MapStatus) => void): PlaceMap {
   type PlaceFeatures = FeatureCollection<Point, { id: string; name: string; tier: string }>;
   let data: PlaceFeatures = { type: "FeatureCollection", features: [] };
   let selectedId: string | null = null;
   const duration = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 350;
   const selection = (): PlaceFeatures => ({ ...data, features: data.features.filter((f) => f.properties.id === selectedId) });
   const map = new maplibregl.Map({ container: el, style: STYLE[theme()], center: [11.575, 48.137], zoom: 11, attributionControl: { compact: true } });
+  let failed = false;
+  let loadTimeout: ReturnType<typeof setTimeout> | undefined;
+  const loading = () => {
+    clearTimeout(loadTimeout);
+    failed = false;
+    onStatus("loading");
+    loadTimeout = setTimeout(() => onStatus("error"), 15000);
+  };
+  const retry = () => {
+    loading();
+    map.setStyle(STYLE[theme()], { diff: false });
+  };
+  loading();
+  map.on("idle", () => { if (!failed) { clearTimeout(loadTimeout); onStatus("ready"); } });
+  map.on("error", () => { failed = true; clearTimeout(loadTimeout); onStatus("error"); });
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
   map.addControl(new maplibregl.FullscreenControl(), "top-right");
   if (places.length) {
@@ -132,9 +150,10 @@ export function createMap(el: HTMLElement, places: ExplorerPlace[], onSelect: (i
     map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
   }
   map.on("moveend", onMove);
-  new MutationObserver(() => map.setStyle(STYLE[theme()], { diff: false })).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  new MutationObserver(retry).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
   return {
+    retry,
     setData(list) {
       data = { type: "FeatureCollection", features: list.map((p) => ({ type: "Feature", geometry: { type: "Point", coordinates: [p.location.lon, p.location.lat] }, properties: { id: p.id, name: p.name, tier: p.specialty_tier } })) };
       const source = map.getSource("places");

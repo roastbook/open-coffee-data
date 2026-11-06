@@ -13,7 +13,7 @@ import { storeReactivityBindings } from "@tanstack/table-core/store-reactivity-b
 import { fieldUrl } from "@roastbook/ui/sites";
 import { activeCount, emptyFilters, matches, parseHash, toHash, type Filters, type HashState } from "./filter";
 import { STATUS_LABEL, TIER_LABEL } from "./fields";
-import { createMap, type PlaceMap } from "./map";
+import { createMap, type PlaceMap, type MapStatus } from "./map";
 import { esc, yesNo, detailRows, httpUrl } from "./detail";
 import { parsePlacesPayload, type ExplorerPlace } from "./place";
 
@@ -34,6 +34,11 @@ const detail = requiredElement(root.querySelector<HTMLElement>("[data-detail]"),
 const date = (s?: string) => (s ? s.slice(0, 10) : "");
 
 let state: HashState = parseHash(location.hash);
+if (!location.hash) {
+  try {
+    if (localStorage.getItem("coffee-data-view") === "table") state.view = "table";
+  } catch { /* Browsing remains available without storage. */ }
+}
 let places: ExplorerPlace[] = [];
 let byId = new Map<string, ExplorerPlace>();
 let map: PlaceMap | null = null;
@@ -148,6 +153,7 @@ function writeForm(f: Filters) {
 
 function setView(view: "map" | "table") {
   state.view = view;
+  try { localStorage.setItem("coffee-data-view", view); } catch { /* Optional preference. */ }
   panes.dataset.active = view;
   for (const b of root.querySelectorAll<HTMLButtonElement>("[data-view]")) b.setAttribute("aria-pressed", String(b.dataset.view === view));
   if (view === "map") map?.resize();
@@ -162,6 +168,7 @@ function apply({ keepPage = false, fromMove = false } = {}) {
   if (!keepPage) table.setPageIndex(0);
   renderTable();
   const n = activeCount(state.filters);
+  updateFilterToggle();
   countEl.textContent = `${list.length} of ${places.length} places${n ? ` · ${n} filter${n === 1 ? "" : "s"} active` : ""}`;
   const hash = toHash(state);
   history.replaceState(null, "", hash ? `#${hash}` : location.pathname + location.search);
@@ -181,10 +188,14 @@ for (const b of root.querySelectorAll<HTMLButtonElement>("[data-view]")) b.addEv
 
 // Phone: filters collapse behind a toggle so the map stays in view.
 const toggle = requiredElement(form.querySelector<HTMLButtonElement>("[data-filters-toggle]"), "[data-filters-toggle]");
+function updateFilterToggle() {
+  const count = activeCount({ ...state.filters, q: "" });
+  toggle.textContent = `${form.hasAttribute("data-collapsed") ? "Show" : "Hide"} filters${count ? ` (${count})` : ""}`;
+}
 const setFiltersOpen = (open: boolean) => {
   form.toggleAttribute("data-collapsed", !open);
   toggle.setAttribute("aria-expanded", String(open));
-  toggle.textContent = open ? "Hide filters" : `Show filters${activeCount(state.filters) ? ` (${activeCount(state.filters)})` : ""}`;
+  updateFilterToggle();
 };
 toggle.addEventListener("click", () => { setFiltersOpen(form.hasAttribute("data-collapsed")); });
 setFiltersOpen(!matchMedia("(max-width: 959px)").matches);
@@ -248,6 +259,37 @@ window.addEventListener("hashchange", () => {
   openPlace(state.place, { fromHash: true });
 });
 
+const mapElement = requiredElement(root.querySelector<HTMLElement>("[data-map]"), "[data-map]");
+const mapStatus = requiredElement(root.querySelector<HTMLElement>("[data-map-status]"), "[data-map-status]");
+const mapMessage = requiredElement(root.querySelector<HTMLElement>("[data-map-message]"), "[data-map-message]");
+const mapRetry = requiredElement(root.querySelector<HTMLButtonElement>("[data-map-retry]"), "[data-map-retry]");
+function showMapStatus(status: MapStatus) {
+  mapStatus.hidden = status === "ready";
+  mapRetry.hidden = status !== "error";
+  mapElement.setAttribute("aria-busy", String(status === "loading"));
+  mapMessage.textContent = status === "error"
+    ? "The map could not finish loading. You can still browse places in the table."
+    : "Loading map…";
+}
+function initializeMap() {
+  showMapStatus("loading");
+  try {
+    map = createMap(mapElement, places, (id) => { location.hash = toHash({ ...state, place: id }); }, () => { if (state.filters.inview) apply({ fromMove: true }); }, showMapStatus);
+  } catch {
+    showMapStatus("error");
+  }
+}
+mapRetry.addEventListener("click", () => {
+  if (map) map.retry(); else initializeMap();
+  apply({ keepPage: true });
+  map?.select(state.place);
+});
+requiredElement(root.querySelector<HTMLButtonElement>("[data-map-table]"), "[data-map-table]").addEventListener("click", () => {
+  setView("table");
+  apply({ keepPage: true });
+  root.querySelector<HTMLButtonElement>('[data-view="table"]')?.focus();
+});
+
 // ---- Start ----
 async function start() {
   try {
@@ -257,12 +299,14 @@ async function start() {
     places = parsePlacesPayload(payload);
     byId = new Map(places.map((p) => [p.id, p]));
   } catch (e) {
+    mapStatus.hidden = true;
+    mapElement.setAttribute("aria-busy", "false");
     countEl.textContent = `Could not load the places (${e instanceof Error ? e.message : String(e)}). Try the downloads page.`;
     return;
   }
   writeForm(state.filters);
   setView(state.view);
-  map = createMap(requiredElement(root.querySelector<HTMLElement>("[data-map]"), "[data-map]"), places, (id) => { location.hash = toHash({ ...state, place: id }); }, () => { if (state.filters.inview) apply({ fromMove: true }); });
+  initializeMap();
   apply();
   if (state.place) openPlace(state.place, { fromHash: true });
 }
