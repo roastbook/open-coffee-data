@@ -301,7 +301,7 @@ export async function pool<T, R>(items: T[], n: number, fn: (t: T, i: number) =>
   return out;
 }
 
-async function renderPage(url: string): Promise<Page> {
+const renderPage = async (url: string): Promise<Page> => {
   const { chromium } = await import("playwright-core");
   browser ??= chromium.launch({ headless: true }).catch((e: unknown) => { browser = null; throw e; });
   const ctx = await (await browser).newContext({ userAgent: USER_AGENT, locale: "de-DE" });
@@ -317,4 +317,4 @@ async function renderPage(url: string): Promise<Page> {
     const res = await p.goto(url, { waitUntil: "networkidle", timeout: 30000 }).catch(() => null);
     return { url, finalUrl: p.url(), status: res?.status() ?? 0, fetchedAt: new Date().toISOString(), html: await p.content(), rendered: true };
   } finally { await ctx.close(); }
-}
+};

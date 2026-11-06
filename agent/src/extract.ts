@@ -4,7 +4,7 @@ import { findQuote, norm } from "./evidence";
 import { fence, parseOutput } from "./guard";
 import { normaliseHours, timesInQuote } from "./hours";
 import { chat } from "./llm";
-import { fold, parseStreet, tokens } from "./names";
+import { fold, parseStreet } from "./names";
 import type { SitePage } from "./site";
 import { CASH_ONLY, LEGAL_FORM, NOT_LEGAL_ENTITY } from "./rules";
 
@@ -54,11 +54,17 @@ function negates(q: string, field: RegExp): boolean {
 const CAKE = /kuchen|cake|gebäck|pastr|torte|croissant|brownie|cookie|banana ?bread|zimtschnecke|cinnamon|tarte|backwaren|baked goods|muffin|scone|bagel|bread|brot/;
 
 const STRING_FIELDS = ["opening_hours", "street_address", "postal_code", "roaster", "operator", "register_id", "reusable_cup", "cappuccino_price", "food_focus", "primary_business"] as const;
-const FLAG_FIELDS = { closed_permanently: /dauerhaft geschlossen|abschied|farewell|wir sagen (tschüss|danke und auf wiedersehen|goodbye)|endgültig geschlossen|permanently closed|closed for good|für immer geschlossen|(haben|ist|sind) (wir )?(seit .{0,30})?(leider )?(endgültig |dauerhaft )?geschlossen|letzte[nr]? (öffnungs)?tag|aufgegeben|(café|cafe|laden|geschäft) (wurde|ist) geschlossen|we('ve| have) closed|schließen .{0,30}(für immer|endgültig)/,
+const FLAG_FIELDS = {
+  closed_permanently: /dauerhaft geschlossen|abschied|farewell|wir sagen (tschüss|danke und auf wiedersehen|goodbye)|endgültig geschlossen|permanently closed|closed for good|für immer geschlossen|(haben|ist|sind) (wir )?(seit .{0,30})?(leider )?(endgültig |dauerhaft )?geschlossen|letzte[nr]? (öffnungs)?tag|aufgegeben|(café|cafe|laden|geschäft) (wurde|ist) geschlossen|we('ve| have) closed|schließen .{0,30}(für immer|endgültig)/,
   temporarily_closed: /vorübergehend geschlossen|temporarily closed|wegen umbau geschlossen|bis auf weiteres geschlossen|currently closed|winterpause|saisonpause|winter break|in der pause bis/,
-  specialty: /specialty|speciality|spezialitäten ?kaffee|third wave|single origin|direct trade|direkt(handel|em handel| gehandelt)|direkte[nm]? kontakt mit (den |unseren )?(produzenten|farmern|bauern)|micro ?lots?|nano ?lots?|gesha|geisha|natural process|washed process|anaerob|q-?grader|cup ?tasters?|barista (champion|meister)|meisterschaft|sca\b|cupping score|\d{2}\+? (punkte|points)/ } as const;
+  specialty: /specialty|speciality|spezialitäten ?kaffee|third wave|single origin|direct trade|direkt(handel|em handel| gehandelt)|direkte[nm]? kontakt mit (den |unseren )?(produzenten|farmern|bauern)|micro ?lots?|nano ?lots?|gesha|geisha|natural process|washed process|anaerob|q-?grader|cup ?tasters?|barista (champion|meister)|meisterschaft|sca\b|cupping score|\d{2}\+? (punkte|points)/
+} as const;
 export type Field = keyof typeof BOOL_FIELDS | (typeof STRING_FIELDS)[number] | keyof typeof FLAG_FIELDS;
-export const FIELDS = [...Object.keys(BOOL_FIELDS), ...STRING_FIELDS, ...Object.keys(FLAG_FIELDS)] as Field[];
+export const FIELDS: Field[] = [
+  ...Object.keys(BOOL_FIELDS).filter((key): key is keyof typeof BOOL_FIELDS => Object.hasOwn(BOOL_FIELDS, key)),
+  ...STRING_FIELDS,
+  ...Object.keys(FLAG_FIELDS).filter((key): key is keyof typeof FLAG_FIELDS => Object.hasOwn(FLAG_FIELDS, key)),
+];
 
 const BUSINESS: Record<string, RegExp> = {
   cafe: /café|cafe|kaffee|coffee|espresso/, roastery: /röst|roast/, bakery: /bäcker|backstube|bakery|konditorei|patisserie|boulangerie/,
@@ -77,10 +83,14 @@ const FOCUS: Record<string, RegExp> = {
   food_led: /restaurant|küche|kitchen|brunch|frühstück|breakfast|speisen|gerichte|dishes|bistro|bäckerei|bakery|konditorei|patisserie|eis|gelato|bar\b|food|essen/,
   balanced: /kaffee|coffee/,
 };
+const BOOLEAN_CHECKS = new Map<string, RegExp>(Object.entries(BOOL_FIELDS));
+const FLAG_CHECKS = new Map<string, RegExp>(Object.entries(FLAG_FIELDS));
+const BUSINESS_CHECKS = new Map(Object.entries(BUSINESS));
+const FOCUS_CHECKS = new Map(Object.entries(FOCUS));
 const CUPS = ["recup", "vytal", "faircup", "relevo", "cup2go", "refill", "own_cup"];
 
-export type Proposal = { field: Field; value: string | number | boolean; page: number; quote: string };
-export type Verified = { field: Field; value: any; url: string; quote: string; fetchedAt: string };
+export interface Proposal { field: Field; value: string | number | boolean; page: number; quote: string }
+export interface Verified { field: Field; value: string | number | boolean; url: string; quote: string; fetchedAt: string }
 export type Rejected = Proposal & { reason: string };
 
 const SYSTEM = `You extract facts about ONE coffee place from its own website for an open dataset.
@@ -121,8 +131,14 @@ export function buildPrompt(name: string, address: string, pages: SitePage[]) {
 
 const OUTPUT_SCHEMA = {
   type: "object", required: ["facts"],
-  properties: { facts: { type: "array", maxItems: 80, items: { type: "object", required: ["field", "value", "page", "quote"],
-    properties: { field: { enum: FIELDS }, value: { type: ["string", "number", "boolean"] }, page: { type: "integer", minimum: 1 }, quote: { type: "string", maxLength: 600 } } } } },
+  properties: {
+    facts: {
+      type: "array", maxItems: 80, items: {
+        type: "object", required: ["field", "value", "page", "quote"],
+        properties: { field: { enum: FIELDS }, value: { type: ["string", "number", "boolean"] }, page: { type: "integer", minimum: 1 }, quote: { type: "string", maxLength: 600 } }
+      }
+    }
+  },
 };
 
 // Unambiguous words on a menu or page line; each becomes a proposal with that line as its quote and goes through verify().
@@ -156,11 +172,11 @@ export function keywordProposals(pages: SitePage[]): Proposal[] {
   return out;
 }
 
-export async function propose(name: string, address: string, pages: SitePage[], model?: string) {
+export async function propose(name: string, address: string, pages: SitePage[], model?: string): Promise<{ facts: Proposal[]; removed: number; error: string | null }> {
   const { user, removed } = buildPrompt(name, address, pages);
   const reply = await chat(SYSTEM, user, { model, maxTokens: 6000 });
-  try { return { facts: parseOutput<{ facts: Proposal[] }>(reply, OUTPUT_SCHEMA).facts, removed, error: null as string | null }; }
-  catch (e) { return { facts: [] as Proposal[], removed, error: String(e).slice(0, 200) }; }
+  try { return { facts: parseOutput<{ facts: Proposal[] }>(reply, OUTPUT_SCHEMA).facts, removed, error: null }; }
+  catch (e) { return { facts: [], removed, error: String(e).slice(0, 200) }; }
 }
 
 /** Pages' own text as the model saw it (title line + text), for the evidence check. */
@@ -170,90 +186,126 @@ const CHAIN_WIDE = /^(serving\.|sells_beans$|sells_equipment$|food\.(cakes_baked
 // Facts about the business as a whole; everything else describes one location.
 const BRAND_FIELDS = new Set(["roasts_own_beans", "roaster", "operator", "register_id", "specialty", "primary_business", "food_focus"]);
 
-export function verify(proposals: Proposal[], pages: SitePage[], ctx: { street?: string; postcode?: string; country: string; ownName: string; multiLocation: boolean; cityPostcodes?: Set<string> }) {
+interface VerifyContext { street?: string; postcode?: string; country: string; ownName: string; multiLocation: boolean; cityPostcodes?: Set<string> }
+type ValueCheck = { value: Verified["value"] } | { reason: string } | { skip: true };
+const ok = (value: Verified["value"]): ValueCheck => ({ value });
+function checkBoolean(p: Proposal, q: string, f: Field, booleanCheck: RegExp): ValueCheck {
+  if (typeof p.value !== "boolean") { return { reason: "not a boolean" }; }
+  if (!booleanCheck.test(q)) { return { reason: "quote does not mention the field" }; }
+  if (!p.value && !NEGATION.test(q)) { return { reason: "false without a negation in the quote" }; }
+  if (p.value && negates(q, booleanCheck)) { return { reason: "true but the quote is negated" }; }
+  const reason = booleanMeaningProblem(p, q, f);
+  if (reason) return { reason };
+  return ok(p.value);
+
+}
+function checkFlag(p: Proposal, q: string, flagCheck: RegExp): ValueCheck {
+  if (p.value !== true) return { skip: true };
+  if (!flagCheck.test(q)) { return { reason: "quote does not support the flag" }; }
+  return ok(true);
+
+}
+function checkOpeningHours(p: Proposal, ctx: VerifyContext): ValueCheck {
+  const v = normaliseHours(String(p.value), ctx.country.toLowerCase());
+  if (!v) { return { reason: "does not parse as opening_hours" }; }
+  if (!timesInQuote(v, p.quote)) { return { reason: "times not in quote" }; }
+  return ok(v);
+
+}
+function checkStreetAddress(p: Proposal, q: string): ValueCheck {
+  const v = String(p.value).trim();
+  if (!q.includes(norm(v)) || !/\d/.test(v) || !parseStreet(v)?.number) { return { reason: "street not in quote or no house number" }; }
+  return ok(v);
+
+}
+function checkPostalCode(p: Proposal, q: string, ctx: VerifyContext): ValueCheck {
+  const v = String(p.value).trim();
+  const re = ctx.country === "DE" ? /^\d{5}$/ : /^\d{4}$/;
+  if (!re.test(v) || !q.includes(v)) { return { reason: "postcode format or not in quote" }; }
+  return ok(v);
+
+}
+function checkRoaster(p: Proposal, q: string): ValueCheck {
+  const v = String(p.value).trim();
+  if (v.length < 2 || !q.includes(norm(v))) { return { reason: "roaster name not in quote" }; }
+  return ok(v);
+
+}
+function checkOperator(p: Proposal, q: string, page: SitePage, text: string): ValueCheck {
+  const v = String(p.value).trim();
+  if (!q.includes(norm(v))) { return { reason: "operator not in quote" }; }
+  if (!LEGAL_FORM.test(v) || NOT_LEGAL_ENTITY.test(v) || NOT_LEGAL_ENTITY.test(p.quote)) { return { reason: "not a legal entity" }; }
+  if (!/impressum|imprint|legal|rechtlich|anbieterkennzeichnung/i.test(page.url) && !/impressum|angaben gemäß|imprint|legal notice|registergericht|handelsregister|vertretungsberechtigt|ust-?id/i.test(text)) { return { reason: "operator not from a legal notice" }; }
+  if (/copyright|©|\(c\)/i.test(p.quote)) { return { reason: "a copyright line names the site owner, not the operator" }; }
+  return ok(v);
+
+}
+function checkRegisterId(p: Proposal, q: string): ValueCheck {
+  const m = String(p.value).match(/\b(HR[AB])\s?(\d{2,7})\b/);
+  if (!m || !q.replace(/\s/g, "").includes(`${m[1]}${m[2]}`.toLowerCase())) { return { reason: "register id not in quote" }; }
+  return ok(`${m[1]} ${m[2]}`);
+
+}
+function checkReusableCup(p: Proposal, q: string): ValueCheck {
+  const v = String(p.value).toLowerCase().trim();
+  const hit = v === "own_cup" ? /eigene[nmr]? (becher|tasse|cup)|own (cup|mug)|bring.{0,20}(becher|cup|tasse)/.test(q) : q.replace(/[^a-z0-9]/g, "").includes(v);
+  if (!CUPS.includes(v) || !hit) { return { reason: "cup system not in quote" }; }
+  return ok(v);
+
+}
+function checkCappuccinoPrice(p: Proposal, q: string): ValueCheck {
+  const n = typeof p.value === "number" ? p.value : Number(String(p.value).replace(",", "."));
+  const shown = [n.toFixed(2).replace(".", ","), n.toFixed(2), n.toFixed(1).replace(".", ","), n.toFixed(1), String(n)];
+  if (!(n >= 1.5 && n <= 9) || !q.includes("cappuccino") || !shown.some((s) => q.includes(s))) { return { reason: "price not in quote with cappuccino" }; }
+  return ok(Math.round(n * 100) / 100);
+
+}
+function checkFoodFocus(p: Proposal, q: string): ValueCheck {
+  const v = String(p.value);
+  if (!FOCUS_CHECKS.get(v)?.test(q)) { return { reason: "focus not supported by quote" }; }
+  return ok(v);
+
+}
+function checkPrimaryBusiness(p: Proposal, q: string): ValueCheck {
+  const v = String(p.value);
+  if (!BUSINESS_CHECKS.get(v)?.test(q)) { return { reason: "business type not supported by quote" }; }
+  return ok(v);
+
+}
+function checkValue(p: Proposal, page: SitePage, ctx: VerifyContext): ValueCheck {
+  const q = norm(p.quote), f = p.field;
+  const booleanCheck = BOOLEAN_CHECKS.get(f), flagCheck = FLAG_CHECKS.get(f);
+  if (booleanCheck) return checkBoolean(p, q, f, booleanCheck);
+  if (flagCheck) return checkFlag(p, q, flagCheck);
+  const text = pageText(page);
+  const check = stringChecks.get(f);
+  return check ? check(p, q, ctx, page, text) : { reason: "unknown field" };
+}
+function locationMatches(p: Proposal, page: SitePage, at: number, ctx: VerifyContext): boolean {
+  if (!ctx.multiLocation || BRAND_FIELDS.has(p.field)) return true;
+  const text = pageText(page);
+  const pcs = postcodesOnSite([page], ctx.country, ctx.cityPostcodes);
+  const ownPage = pcs.size === 1 && !!ctx.postcode && pcs.has(ctx.postcode) && !/sells_|prices|cappuccino/.test(p.field);
+  const chainWide = CHAIN_WIDE.test(p.field) && !nearOtherBranch(text, at, ctx.postcode);
+  return ownPage || chainWide || nearStreet(text, at, ctx.street);
+}
+export function verify(proposals: Proposal[], pages: SitePage[], ctx: VerifyContext) {
   const kept: Verified[] = [], rejected: Rejected[] = [];
-  const reject = (p: Proposal, reason: string) => rejected.push({ ...p, reason });
   for (const p of proposals) {
-    const page = pages[p.page - 1];
-    if (!page) { reject(p, "no such page"); continue; }
-    const text = pageText(page);
-    const at = findQuote(text, p.quote);
-    if (at < 0) { reject(p, "quote not on page"); continue; }
-    if (ctx.multiLocation && !BRAND_FIELDS.has(p.field)) {
-      // On a site with several locations, a location fact must come from a page about this location:
-      // near its street, or on a page whose only postcode is this one.
-      const pcs = postcodesOnSite([page], ctx.country, ctx.cityPostcodes);
-      const ownPage = pcs.size === 1 && !!ctx.postcode && pcs.has(ctx.postcode) && !/sells_|prices|cappuccino/.test(p.field);
-      // What the business serves and sells holds for every branch, unless the quote sits next to another branch's address
-      // (footers often list all branches). Hours, address, amenities and meals still have to sit next to this branch's address.
-      const chainWide = CHAIN_WIDE.test(p.field) && !nearOtherBranch(text, at, ctx.postcode);
-      if (!ownPage && !chainWide && !nearStreet(text, at, ctx.street)) { reject(p, "several locations and the fact is not tied to this one"); continue; }
+    const page = pages.at(p.page - 1);
+    let reason: string | undefined;
+    if (!Number.isInteger(p.page) || p.page < 1 || !page) reason = "no such page";
+    else {
+      const at = findQuote(pageText(page), p.quote);
+      if (at < 0) reason = "quote not on page";
+      else if (!locationMatches(p, page, at, ctx)) reason = "several locations and the fact is not tied to this one";
+      else {
+        const result = checkValue(p, page, ctx);
+        if ("value" in result) kept.push({ field: p.field, value: result.value, url: page.url, quote: p.quote, fetchedAt: page.fetchedAt });
+        else if ("reason" in result) reason = result.reason;
+      }
     }
-    const q = norm(p.quote);
-    const ok = (value: any) => kept.push({ field: p.field, value, url: page.url, quote: p.quote, fetchedAt: page.fetchedAt });
-    const f = p.field as string;
-    if (f in BOOL_FIELDS) {
-      if (typeof p.value !== "boolean") { reject(p, "not a boolean"); continue; }
-      if (!(BOOL_FIELDS as any)[f].test(q)) { reject(p, "quote does not mention the field"); continue; }
-      if (!p.value && !NEGATION.test(q)) { reject(p, "false without a negation in the quote"); continue; }
-      if (p.value && negates(q, (BOOL_FIELDS as any)[f])) { reject(p, "true but the quote is negated"); continue; }
-      if (p.value && f.startsWith("serving.") && HOME_BREWING.test(q)) { reject(p, "a home-brewing guide, not what the café serves"); continue; }
-      if (f === "food.cakes_baked_in_house" && !CAKE.test(q)) { reject(p, "quote does not mention cakes"); continue; }
-      if (f === "roasts_own_beans" && p.value && SUPPLIER.test(q) && !OWN_ROASTING.test(q)) { reject(p, "the quote names a roastery that supplies the place"); continue; }
-      if (f === "amenities.cash_only" && p.value === true && !CASH_ONLY.test(q)) { reject(p, "quote does not say cash is the only way to pay"); continue; }
-      ok(p.value);
-    } else if (f in FLAG_FIELDS) {
-      if (p.value !== true) continue;
-      if (!(FLAG_FIELDS as any)[f].test(q)) { reject(p, "quote does not support the flag"); continue; }
-      ok(true);
-    } else if (f === "opening_hours") {
-      const v = normaliseHours(String(p.value), ctx.country.toLowerCase());
-      if (!v) { reject(p, "does not parse as opening_hours"); continue; }
-      if (!timesInQuote(v, p.quote)) { reject(p, "times not in quote"); continue; }
-      ok(v);
-    } else if (f === "street_address") {
-      const v = String(p.value).trim();
-      if (!q.includes(norm(v)) || !/\d/.test(v) || !parseStreet(v)?.number) { reject(p, "street not in quote or no house number"); continue; }
-      ok(v);
-    } else if (f === "postal_code") {
-      const v = String(p.value).trim();
-      const re = ctx.country === "DE" ? /^\d{5}$/ : /^\d{4}$/;
-      if (!re.test(v) || !q.includes(v)) { reject(p, "postcode format or not in quote"); continue; }
-      ok(v);
-    } else if (f === "roaster") {
-      const v = String(p.value).trim();
-      if (v.length < 2 || !q.includes(norm(v))) { reject(p, "roaster name not in quote"); continue; }
-      ok(v);
-    } else if (f === "operator") {
-      const v = String(p.value).trim();
-      if (!q.includes(norm(v))) { reject(p, "operator not in quote"); continue; }
-      if (!LEGAL_FORM.test(v) || NOT_LEGAL_ENTITY.test(v) || NOT_LEGAL_ENTITY.test(p.quote)) { reject(p, "not a legal entity"); continue; }
-      if (!/impressum|imprint|legal|rechtlich|anbieterkennzeichnung/i.test(page.url) && !/impressum|angaben gemäß|imprint|legal notice|registergericht|handelsregister|vertretungsberechtigt|ust-?id/i.test(text)) { reject(p, "operator not from a legal notice"); continue; }
-      if (/copyright|©|\(c\)/i.test(p.quote)) { reject(p, "a copyright line names the site owner, not the operator"); continue; }
-      ok(v);
-    } else if (f === "register_id") {
-      const m = String(p.value).match(/\b(HR[AB])\s?(\d{2,7})\b/);
-      if (!m || !q.replace(/\s/g, "").includes(`${m[1]}${m[2]}`.toLowerCase())) { reject(p, "register id not in quote"); continue; }
-      ok(`${m[1]} ${m[2]}`);
-    } else if (f === "reusable_cup") {
-      const v = String(p.value).toLowerCase().trim();
-      const hit = v === "own_cup" ? /eigene[nmr]? (becher|tasse|cup)|own (cup|mug)|bring.{0,20}(becher|cup|tasse)/.test(q) : q.replace(/[^a-z0-9]/g, "").includes(v);
-      if (!CUPS.includes(v) || !hit) { reject(p, "cup system not in quote"); continue; }
-      ok(v);
-    } else if (f === "cappuccino_price") {
-      const n = typeof p.value === "number" ? p.value : Number(String(p.value).replace(",", "."));
-      const shown = [n.toFixed(2).replace(".", ","), n.toFixed(2), n.toFixed(1).replace(".", ","), n.toFixed(1), String(n)];
-      if (!(n >= 1.5 && n <= 9) || !/cappuccino/.test(q) || !shown.some((s) => q.includes(s))) { reject(p, "price not in quote with cappuccino"); continue; }
-      ok(Math.round(n * 100) / 100);
-    } else if (f === "food_focus") {
-      const v = String(p.value);
-      if (!FOCUS[v] || !FOCUS[v].test(q)) { reject(p, "focus not supported by quote"); continue; }
-      ok(v);
-    } else if (f === "primary_business") {
-      const v = String(p.value);
-      if (!BUSINESS[v] || !BUSINESS[v].test(q)) { reject(p, "business type not supported by quote"); continue; }
-      ok(v);
-    }
+    if (reason) rejected.push({ ...p, reason });
   }
   return { kept: resolveConflicts(kept, rejected), rejected };
 }
@@ -281,7 +333,7 @@ function resolveConflicts(kept: Verified[], rejected: Rejected[]): Verified[] {
 function nearOtherBranch(text: string, at: number, postcode?: string) {
   let best: { d: number; pc: string } | null = null;
   for (const m of text.matchAll(/\b\d{4,5}\b(?=\s+[A-ZÄÖÜ])/g)) {
-    const d = Math.abs(m.index! - at);
+    const d = Math.abs(m.index - at);
     if (d <= 300 && (!best || d < best.d)) best = { d, pc: m[0] };
   }
   return !!best && best.pc !== postcode;
@@ -290,9 +342,9 @@ function nearOtherBranch(text: string, at: number, postcode?: string) {
 /** The quote at `at` sits within 900 characters of this location's street name. */
 function nearStreet(text: string, at: number, street?: string) {
   const s = parseStreet(street);
-  if (!s) return false;
+  if (!s || !street) return false;
   const t = norm(text).replace(/strasse|str\./g, "straße");
-  const name = norm(street!.replace(/\s*\d.*$/, "")).replace(/strasse|str\./g, "straße");
+  const name = norm(street.replace(/\s*\d.*$/, "")).replace(/strasse|str\./g, "straße");
   let stem = name.replace(/straße$|platz$|weg$|allee$|ring$|gasse$/, "");
   // A short street name ("Tal 15") counts only together with its house number.
   if (stem.length < 4) { if (!s.number || stem.length < 2) return false; stem = `${name} ${s.number}`; }
@@ -332,13 +384,7 @@ export function siteMatches(pages: SitePage[], c: { name: string; street?: strin
   const tries = variants.map(tryName);
   const hit = tries.find((t) => t.phraseHit) ?? tries.find((t) => t.wordsHit);
   if (!hit) return { ok: false, reason: tries.some((t) => t.distinct.length) ? "name not on site" : "name has no distinctive word and is not on the site as a whole" };
-  const phraseHit = hit.phraseHit;
-  if (!c.street && !c.postcode) return { ok: true, reason: "name only" };
-  const st = parseStreet(c.street);
-  const stem = st?.street.replace(/strasse$|platz$|weg$|allee$|ring$|gasse$/, "").replace(/s$/, ""); // "Bahnhofsplatz" = "Bahnhofplatz"
-  const streetHit = !!stem && stem.length >= 4 && text.replace(/\s+/g, "").includes(stem);
-  const pcHit = !!c.postcode && all.includes(c.postcode);
-  return streetHit || pcHit ? { ok: true, reason: `${phraseHit ? "full name" : "distinctive name"} and ${streetHit ? "street" : "postcode"}` } : { ok: false, reason: "address not on site" };
+  return matchAddress(c, text, all, hit.phraseHit);
 }
 
 /** Words of district, street and city names that must not identify a place (see siteMatches). */
@@ -355,4 +401,36 @@ export function postcodesOnSite(pages: SitePage[], country: string, cityPostcode
   // Only postcodes of this city: an operator's or roaster's address elsewhere does not make a second branch.
   for (const p of pages) if (!/impressum|imprint|legal|datenschutz|privacy/i.test(p.url)) for (const m of p.doc.text.matchAll(re)) if (!cityPostcodes || cityPostcodes.has(m[1])) set.add(m[1]);
   return set;
+}
+
+function booleanMeaningProblem(p: Proposal, q: string, f: Field): string | undefined {
+  if (p.value && f.startsWith("serving.") && HOME_BREWING.test(q)) { return "a home-brewing guide, not what the café serves"; }
+  if (f === "food.cakes_baked_in_house" && !CAKE.test(q)) { return "quote does not mention cakes"; }
+  if (supplierRoasting(p, q, f)) { return "the quote names a roastery that supplies the place"; }
+  if (f === "amenities.cash_only" && p.value && !CASH_ONLY.test(q)) { return "quote does not say cash is the only way to pay"; }
+  return undefined;
+}
+
+const supplierRoasting = (p: Proposal, q: string, f: Field) => f === "roasts_own_beans" && p.value && SUPPLIER.test(q) && !OWN_ROASTING.test(q);
+
+const stringChecks = new Map<string, (p: Proposal, q: string, ctx: VerifyContext, page: SitePage, text: string) => ValueCheck>([
+  ["opening_hours", (p, _q, ctx) => checkOpeningHours(p, ctx)],
+  ["street_address", (p, q) => checkStreetAddress(p, q)],
+  ["postal_code", (p, q, ctx) => checkPostalCode(p, q, ctx)],
+  ["roaster", (p, q) => checkRoaster(p, q)],
+  ["operator", (p, q, _ctx, page, text) => checkOperator(p, q, page, text)],
+  ["register_id", (p, q) => checkRegisterId(p, q)],
+  ["reusable_cup", (p, q) => checkReusableCup(p, q)],
+  ["cappuccino_price", (p, q) => checkCappuccinoPrice(p, q)],
+  ["food_focus", (p, q) => checkFoodFocus(p, q)],
+  ["primary_business", (p, q) => checkPrimaryBusiness(p, q)],
+]);
+
+function matchAddress(c: { street?: string; postcode?: string }, text: string, all: string, phraseHit: boolean) {
+  if (!c.street && !c.postcode) return { ok: true, reason: "name only" };
+  const st = parseStreet(c.street);
+  const stem = st?.street.replace(/strasse$|platz$|weg$|allee$|ring$|gasse$/, "").replace(/s$/, ""); // "Bahnhofsplatz" = "Bahnhofplatz"
+  const streetHit = !!stem && stem.length >= 4 && text.replace(/\s+/g, "").includes(stem);
+  const pcHit = !!c.postcode && all.includes(c.postcode);
+  return streetHit || pcHit ? { ok: true, reason: `${phraseHit ? "full name" : "distinctive name"} and ${streetHit ? "street" : "postcode"}` } : { ok: false, reason: "address not on site" };
 }
