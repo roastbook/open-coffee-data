@@ -54,4 +54,4 @@ By signing off, you certify that you wrote the contribution or otherwise have th
 
 ## Code of conduct
 
-This project follows the [Contributor Covenant 2.1](CODE_OF_CONDUCT.md). Report problems to conduct@roastbook.coffee.
+This project follows the [Contributor Covenant 2.1](CODE_OF_CONDUCT.md). Report problems to hello@roastbook.coffee.
