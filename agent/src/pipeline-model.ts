@@ -19,7 +19,7 @@ export interface Conflict { id: string; name: string; reason: string }
 export interface RunLog {
   id: string; name: string; reason: string; origins: Candidate["origins"];
   site: { start: string; ok: boolean; error?: string; pages: { url: string; fetchedAt: string; rendered: boolean }[] } | null;
-  match?: string; websiteSearch?: string; values: { [field: string]: Provenance };
+  match?: string; websiteSearch?: string; values: Record<string, Provenance>;
   rejected: Pick<Rejected, "field" | "value" | "reason">[]; conflict?: string; tierWhy: string;
   research?: Pick<Research, "queries" | "opened">;
 }

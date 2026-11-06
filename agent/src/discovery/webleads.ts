@@ -59,6 +59,6 @@ export async function webLeads(city: { slug: string; name: string; wikidata?: st
 
 function appendLeads(seeds: Seed[], batch: { d: string; j: ReturnType<typeof placeLeads> }[]): void {
     for (const { d, j } of batch) for (const p of j.places ?? [])
-      if (typeof p?.name === "string" && p.name.length > 1 && !seeds.some((s) => s.name === p.name))
+      if (typeof p.name === "string" && p.name.length > 1 && !seeds.some((s) => s.name === p.name))
         seeds.push({ name: p.name.trim(), website: urlOk(p.website) ? clean(p.website) : null, found_via: `web leads: ${d}` });
 }

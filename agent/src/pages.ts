@@ -72,8 +72,7 @@ interface RuleGroup { agents: string[]; rules: AccessRule[] }
 /** Match robots wildcards as literal segments, without executing a site's text as a regular expression. */
 export function ruleMatches(pattern: string, path: string): boolean {
   const anchored = pattern.endsWith("$");
-  const segments = (anchored ? pattern.slice(0, -1) : pattern).split("*");
-  const first = segments.shift() ?? "";
+  const [first, ...segments] = (anchored ? pattern.slice(0, -1) : pattern).split("*");
   if (!path.startsWith(first)) return false;
   if (!segments.length) return !anchored || path === first;
   let at = first.length;
@@ -83,7 +82,7 @@ export function ruleMatches(pattern: string, path: string): boolean {
     if (next < 0) return false;
     at = next + segment.length;
   }
-  return last === null || (path.endsWith(last) && path.length - last.length >= at);
+  return trailingRuleMatches(last, path, at);
 }
 
 function ruleGroups(body: string): RuleGroup[] {
@@ -318,3 +317,7 @@ const renderPage = async (url: string): Promise<Page> => {
     return { url, finalUrl: p.url(), status: res?.status() ?? 0, fetchedAt: new Date().toISOString(), html: await p.content(), rendered: true };
   } finally { await ctx.close(); }
 };
+
+function trailingRuleMatches(last: string | null, path: string, at: number): boolean {
+  return last === null || (path.endsWith(last) && path.length - last.length >= at);
+}

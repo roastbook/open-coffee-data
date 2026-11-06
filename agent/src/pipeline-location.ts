@@ -8,7 +8,7 @@ import { nonCoffeeName } from "./tier";
 import { SEASONAL } from "./rules";
 
 const HTTP_URL = /^https?:\/\//;
-const STREET_HINT = /([A-ZÄÖÜ][\wäöüß.-]*(?:straße|strasse|str\.|platz|weg|allee|ring|gasse|markt))(?:\s+(\d+\s?[a-z]?))?\b/;
+const STREET_HINT = /([A-ZÄÖÜ][\wäöüß.-]{0,120}(?:straße|strasse|str\.|platz|weg|allee|ring|gasse|markt))(?:\s+(\d+\s?[a-z]?))?\b/;
 
 export function streetStemIn(street: string, foldedText: string) {
   const s = parseStreet(street)?.street.replace(/strasse$|platz$|weg$|allee$|ring$|gasse$/, "");
@@ -77,7 +77,7 @@ export function locate(m: Candidate, cands: Candidate[], inside: Row[], contains
       : nameSim(m.name, name) >= 0.85 && (!hint || sameStreet(hint, street));
   const inCands = cands.filter((c) => fits(c.name, c.street, c.website));
   if (inCands.length === 1) return { c: inCands[0], isNew: false };
-  if (inCands.length > 1) return m.street ? { c: inCands.sort((a, b) => nameSim(m.name, b.name) - nameSim(m.name, a.name))[0], isNew: false } : "ambiguous";
+  if (inCands.length > 1) return existingBranch(m, inCands);
   const rows = inside.filter((r) => eligibleRow(r) && fits(r.name, r.street, r.websites[0]) && contains(r)).sort((a, b) => b.confidence - a.confidence);
   if (!rows.length) return null;
   if (ambiguousRows(m, rows)) return "ambiguous";
@@ -91,3 +91,8 @@ export function locate(m: Candidate, cands: Candidate[], inside: Row[], contains
 const eligibleRow = (r: Row) => r.status !== "permanently_closed" && !nonCoffeeName(r.name) && !SEASONAL.test(r.name);
 
 const ambiguousRows = (m: Candidate, rows: Row[]) => !m.street && rows.length > 1;
+
+function existingBranch(m: Candidate, matches: Candidate[]): { c: Candidate; isNew: boolean } | "ambiguous" {
+  if (!m.street) return "ambiguous";
+  return { c: matches.sort((a, b) => nameSim(m.name, b.name) - nameSim(m.name, a.name))[0], isNew: false };
+}

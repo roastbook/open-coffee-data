@@ -46,7 +46,7 @@ export async function discover(ctx: DiscoveryContext) {
   await attachWikidata(ctx, cands, unlocated);
 
   // Web leads: places per district from a search-capable model (leads only, checked below).
-  const leads = want("research") ? await webLeads(o.city).catch((e: unknown) => { errors.push(`web leads: ${e}`); return { seeds: [], districts: 0 }; }) : { seeds: [], districts: 0 };
+  const leads = want("research") ? await webLeads(o.city).catch((e: unknown) => { errors.push(`web leads: ${String(e)}`); return { seeds: [], districts: 0 }; }) : { seeds: [], districts: 0 };
   counts.web_lead_districts = leads.districts; counts.web_lead_places = leads.seeds.length;
 
   // Web search results (seed file and/or the search provider).
@@ -133,7 +133,7 @@ function seedMatch(s: ReturnType<typeof seedFile>[number], cands: Candidate[]) {
 }
 
 async function attachCoordinates(sc: Candidate, e: Enriched, cands: Candidate[], ctx: DiscoveryContext, unlocated: Unlocated[]) {
-  const { o, area, counts, siteCache } = ctx;
+  const { area, counts, siteCache } = ctx;
   // Not in Overture: coordinates the place publishes on its own site, else the position of another Overture record
   // with exactly the confirmed street, house number and postcode (the same building).
   const geo = await seedCoordinates(sc, e, ctx);

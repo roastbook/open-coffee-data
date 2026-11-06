@@ -47,7 +47,7 @@ const NEGATED_AFTER = /^\W*(\w+\W+){0,3}(nicht|not)\s+(erlaubt|gestattet|möglic
 /** The negation applies to the field: a negation word just before the field word, or "nicht erlaubt" right after it. */
 function negates(q: string, field: RegExp): boolean {
   const m = q.match(field);
-  if (!m || m.index === undefined) return NEGATED.test(q);
+  if (m?.index === undefined) return NEGATED.test(q);
   const before = q.slice(Math.max(0, m.index - 30), m.index), after = q.slice(m.index + m[0].length);
   return NEGATED.test(before) || NEGATED_AFTER.test(after);
 }
@@ -362,7 +362,7 @@ const NOT_DISTINCTIVE = new Set(["cafe", "caffe", "kaffee", "coffee", "bar", "bi
  * (`placeWords`: the city's districts, street names and city names). Either the whole name appears as a phrase
  * (or is the domain), or every distinctive word appears, and a single distinctive word also in the domain or title.
  */
-export function siteMatches(pages: SitePage[], c: { name: string; street?: string; postcode?: string }, host: string, placeWords: Set<string> = new Set()) {
+export function siteMatches(pages: SitePage[], c: { name: string; street?: string; postcode?: string }, host: string, placeWords = new Set<string>()) {
   const all = norm(pages.map(pageText).join("\n"));
   const text = ` ${fold(all)} `;
   const words = new Set(text.split(" "));

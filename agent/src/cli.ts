@@ -28,7 +28,7 @@ const summary = [
   `- tiers: A ${m.tiers.A}, B ${m.tiers.B}, none ${m.tiers.none}, unknown ${m.tiers.unknown}; A/B with complete core fields: ${m.tier_ab_core_complete}`,
   `- LLM: ${m.llm.calls} calls, ${m.llm.inputTokens} in / ${m.llm.outputTokens} out tokens, $${m.llm.usd.toFixed(3)}`,
   `- pages: ${m.pages.requests} requests, ${m.pages.cacheHits} from the page cache, ${m.pages.disallowed} not fetched because of site rules, ${m.pages.rendered} rendered`,
-  `- errors: ${m.errors.length}; conflicts: ${m.conflicts}; time: ${Object.entries(m.timing_s).map(([k, v]) => `${k} ${(v as number).toFixed(0)} s`).join(", ")}; ${m.seconds_per_place ?? "–"} s per place`,
+  `- errors: ${m.errors.length}; conflicts: ${m.conflicts}; time: ${Object.entries(m.timing_s).map(([k, v]) => `${k} ${v.toFixed(0)} s`).join(", ")}; ${m.seconds_per_place ?? "–"} s per place`,
   `- run log: ${r.dir}`,
 ].filter(Boolean).join("\n");
 console.log(summary);

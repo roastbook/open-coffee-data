@@ -34,7 +34,7 @@ export interface Image { url: string; licence: string; author: string; source_ur
 
 async function fileInfo(title: string): Promise<Image | null> {
   const j = await api({ action: "query", titles: title, prop: "imageinfo", iiprop: "url|size|extmetadata|mime", iiurlwidth: "1600" });
-  const p = Object.values(j.query?.pages ?? {})[0];
+  const p = Object.values(j.query?.pages ?? {}).at(0);
   const ii = p?.imageinfo?.[0];
   if (!ii || !/^image\/(jpeg|png|webp)$/.test(ii.mime)) return null;
   const m = ii.extmetadata ?? {};

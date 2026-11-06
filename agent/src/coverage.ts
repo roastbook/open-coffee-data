@@ -16,7 +16,7 @@ const list: { name: string; street?: string }[] = JSON.parse(readFileSync(join(C
 const places = readCity(cityBySlug(slug)).places.filter((p) => !p.merged_into);
 const rows = list.map((x) => {
   const hits = places.filter((p) => (x.street && sameStreet(x.street, p.address?.street_address) && nameSim(x.name, p.name) >= 0.4) || nameSim(x.name, p.name) >= 0.85);
-  const p = hits.sort((a, b) => nameSim(x.name, b.name) - nameSim(x.name, a.name))[0];
+  const p = hits.sort((a, b) => nameSim(x.name, b.name) - nameSim(x.name, a.name)).at(0);
   return { name: x.name, street: x.street, id: p?.id, ours: p?.name, status: p?.status, tier: p?.specialty_tier, core: p ? coreComplete(p) : false };
 });
 writeFileSync(join(CACHE, "coverage", `${ref}-${slug}-result.json`), JSON.stringify(rows, null, 1));

@@ -96,7 +96,7 @@ function applyRoasters(r: CoffeeRecord, c: Candidate, e: Enriched, prov: Provena
     const own = r.roasts_own_beans === true && nameSim(f.value, c.name) >= 0.75;
     served.push({ name: f.value, ...(own ? { own: true } : {}), evidence: f });
   }
-  const first = served[0];
+  const first = served.at(0);
   if (!first) return;
   r.roasters_served = served.map((s) => ({ name: s.name, ...(s.own ? { own: true } : {}) }));
   prov.set("roasters_served", { value: served.map((s) => s.name), via: served.map((s) => `${s.name}: website`).join("; "), url: first.evidence.url, quote: first.evidence.quote });
@@ -122,7 +122,7 @@ function social(pages: SitePage[], re: RegExp, bad: RegExp): string | null {
   return hits.size === 1 ? [...hits][0] : null;
 }
 function applyLinks(r: CoffeeRecord, c: Candidate, e: Enriched, prov: ProvenanceMap) {
-  const pages = e.match && e.site?.ok ? e.site.pages : [], page = pages[0];
+  const pages = e.match && e.site?.ok ? e.site.pages : [], page = pages.at(0);
   if (page) {
     const u = new URL(page.url);
     r.links = { ...r.links, website: u.pathname.length <= 1 ? `${u.origin}/` : u.href };
@@ -212,7 +212,7 @@ function movedPosition(c: Candidate, siteStreet: string, sitePc: string | undefi
 }
 
 function applyIdentity(r: CoffeeRecord, c: Candidate, old: CoffeeRecord | null, pos: Position, ctx: BuildContext, prov: ProvenanceMap) {
-  const origin = c.origins[0];
+  const origin = c.origins.at(0);
   r.name = signName(old?.name ?? cleanName(c.name, ctx.cityName));
   prov.set("name", { value: r.name, via: c.overtureIds.length ? "overture" : origin?.via ?? "unknown", url: c.overtureIds[0] ? overtureUrl(c.overtureIds[0]) : origin?.url });
   r.location = { lat: Math.round(pos.lat * 1e6) / 1e6, lon: Math.round(pos.lon * 1e6) / 1e6 };
