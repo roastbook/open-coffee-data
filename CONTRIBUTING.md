@@ -51,7 +51,3 @@ Signed-off-by: Your Name <you@example.com>
 ```
 
 By signing off, you certify that you wrote the contribution or otherwise have the right to submit it under the licence of the files you change: [CDLA-Permissive-2.0](LICENSE-DATA) for data in `datasets/`, [MIT](LICENSE) for everything else.
-
-## Code of conduct
-
-This project follows the [Contributor Covenant 2.1](CODE_OF_CONDUCT.md). Report problems to hello@roastbook.coffee.
