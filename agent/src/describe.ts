@@ -1,3 +1,4 @@
+import { opensOnSunday } from "./hours";
 // Descriptions are generated from the stored record only (no page text, no LLM), so they can never say more than the data.
 const list = (xs: string[]) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`);
 
@@ -18,7 +19,7 @@ export function describe(r: any): string | undefined {
   if (r.food?.cakes_baked_in_house) s.push("Cakes are baked in house.");
   const extras = [r.sells_beans && "sells beans to take home", r.sells_equipment && "sells brewing equipment", r.offers_courses && "offers courses or cuppings"].filter(Boolean) as string[];
   if (extras.length) s.push(`It also ${list(extras)}.`);
-  if (r.open_sunday === true) s.push("It is open on Sundays.");
+  if (r.opening_hours && opensOnSunday(r.opening_hours)) s.push("It is open on Sundays.");
   let out = s.join(" ");
   while (out.length > 600 && s.length > 1) { s.pop(); out = s.join(" "); }
   return out.length >= 20 ? out : undefined;

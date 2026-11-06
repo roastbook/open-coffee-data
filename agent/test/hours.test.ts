@@ -20,7 +20,7 @@ test("every time in the value must appear in the quote", () => {
   expect(timesInQuote("Mo-Fr 08:00-18:00", "Mo–Fr 18 Uhr")).toBe(false);
 });
 
-test("open_sunday is derived from the hours", () => {
+test("Sunday opening is derived from the hours", () => {
   expect(opensOnSunday("Mo-Fr 08:00-18:00")).toBe(false);
   expect(opensOnSunday("Mo-Su 08:00-18:00")).toBe(true);
   expect(opensOnSunday("Sa,Su 10:00-16:00")).toBe(true);

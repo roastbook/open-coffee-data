@@ -15,7 +15,9 @@ async function gh(path: string, init: RequestInit = {}) {
   return body ? JSON.parse(body) : null;
 }
 
-const fmt = (v: any) => (v === undefined ? "–" : "`" + (typeof v === "string" ? v : JSON.stringify(v)).replace(/`/g, "'").slice(0, 120) + "`");
+/** Text from fetched pages is untrusted: no @mentions, images, links or HTML in the PR body. */
+export const esc = (s: string) => s.replace(/@/g, "@\u200b").replace(/!\[/g, "!\u200b[").replace(/\]\(/g, "]\u200b(").replace(/</g, "&lt;");
+const fmt = (v: any) => (v === undefined ? "–" : "`" + esc(typeof v === "string" ? v : JSON.stringify(v)).replace(/`/g, "'").slice(0, 120) + "`");
 
 export function prBody(city: string, changes: Change[], metrics: any, conflicts: { name: string; reason: string }[], labels: string[]) {
   const byField = new Map<string, Change[]>();
@@ -31,11 +33,11 @@ export function prBody(city: string, changes: Change[], metrics: any, conflicts:
     `| Pages fetched | ${metrics.pages.requests} requests, ${metrics.pages.disallowed} not fetched because of site rules |`,
     "",
   ];
-  if (conflicts.length) lines.push("### Conflicts (need a human)", "", ...conflicts.map((c) => `- ${c.name}: ${c.reason}`), "");
+  if (conflicts.length) lines.push("### Conflicts (need a human)", "", ...conflicts.map((c) => `- ${esc(c.name)}: ${esc(c.reason)}`), "");
   lines.push("### Changes by field", "");
   for (const [field, cs] of [...byField].sort((a, b) => a[0].localeCompare(b[0]))) {
     lines.push(`<details><summary><code>${field}</code> (${cs.length})</summary>`, "");
-    for (const c of cs.slice(0, 200)) lines.push(`- ${c.name} (\`${c.id}\`): ${fmt(c.old)} → ${fmt(c.new)}${c.url ? ` ([source](${c.url}))` : ""}${c.quote ? ` — “${String(c.quote).replace(/\s+/g, " ").slice(0, 100)}”` : ""}`);
+    for (const c of cs.slice(0, 200)) lines.push(`- ${esc(c.name)} (\`${c.id}\`): ${fmt(c.old)} → ${fmt(c.new)}${c.url && /^https?:\/\/[^\s()<>]+$/.test(c.url) ? ` ([page](${c.url}))` : ""}${c.quote ? ` — “${esc(String(c.quote).replace(/\s+/g, " ").slice(0, 100))}”` : ""}`);
     lines.push("", "</details>");
   }
   const body = lines.join("\n");
@@ -49,11 +51,17 @@ export async function openPr(city: string, files: string[], title: string, body:
   const main = await gh(`/repos/${REPOSITORY}/git/ref/heads/main`);
   const branch = `data-agent/${city}-${new Date().toISOString().slice(0, 10)}-${Date.now().toString(36)}`;
   await gh(`/repos/${REPOSITORY}/git/refs`, { method: "POST", body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: main.object.sha }) });
+  try {
   const mutation = "mutation($i:CreateCommitOnBranchInput!){createCommitOnBranch(input:$i){commit{oid}}}";
   const additions = paths.map((p, i) => ({ path: p, contents: Buffer.from(readFileSync(files[i])).toString("base64") }));
   const res = await gh("/graphql", { method: "POST", body: JSON.stringify({ query: mutation, variables: { i: { branch: { repositoryNameWithOwner: REPOSITORY, branchName: branch }, expectedHeadOid: main.object.sha, message: { headline: title }, fileChanges: { additions } } } }) });
   if (res.errors) throw new Error(JSON.stringify(res.errors));
   const pr = await gh(`/repos/${REPOSITORY}/pulls`, { method: "POST", body: JSON.stringify({ title, head: branch, base: "main", body }) });
-  await gh(`/repos/${REPOSITORY}/issues/${pr.number}/labels`, { method: "POST", body: JSON.stringify({ labels: ["data-agent", ...labels] }) });
+  await gh(`/repos/${REPOSITORY}/issues/${pr.number}/labels`, { method: "POST", body: JSON.stringify({ labels: ["data-agent", ...labels] }) }).catch(() => {}); // labels are a hint, the PR stands
   return pr.html_url as string;
+  } catch (e) {
+    // No PR: remove the branch so failed runs do not pile up branches.
+    await gh(`/repos/${REPOSITORY}/git/refs/heads/${branch}`, { method: "DELETE" }).catch(() => {});
+    throw e;
+  }
 }

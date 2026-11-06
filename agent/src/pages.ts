@@ -22,7 +22,32 @@ async function hostTurn(host: string, gapMs = 1100) {
   if (at > now) await Bun.sleep(at - now);
 }
 
+/** Never fetch our own network: loopback, private, link-local, carrier-grade NAT and unique-local addresses. */
+export function privateAddress(ip: string): boolean {
+  const v4 = ip.replace(/^::ffff:/, "").match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
+  if (v4) {
+    const [a, b] = [+v4[1], +v4[2]];
+    return a === 0 || a === 10 || a === 127 || (a === 169 && b === 254) || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168) || (a === 100 && b >= 64 && b <= 127) || a >= 224;
+  }
+  const v6 = ip.toLowerCase();
+  return v6 === "::" || v6 === "::1" || /^f[cd]/.test(v6) || /^fe[89ab]/.test(v6);
+}
+
+const publicHost = new Map<string, Promise<void>>();
+async function assertPublic(url: string) {
+  const { hostname, protocol } = new URL(url);
+  if (!/^https?:$/.test(protocol)) throw new Error(`refusing ${protocol} URL`);
+  const host = hostname.replace(/^\[|\]$/g, "");
+  if (!publicHost.has(host)) publicHost.set(host, (async () => {
+    const { lookup } = await import("node:dns/promises");
+    const addrs = /^[\d.]+$|:/.test(host) ? [{ address: host }] : await lookup(host, { all: true });
+    if (addrs.some((a) => privateAddress(a.address))) throw new Error(`refusing ${host}: resolves to a private address`);
+  })());
+  return publicHost.get(host)!;
+}
+
 async function rawGet(url: string, accept = "text/html,application/xhtml+xml,*/*;q=0.5") {
+  await assertPublic(url);
   await hostTurn(new URL(url).host);
   stats.requests++;
   return fetch(url, { headers: { "user-agent": USER_AGENT, accept, "accept-language": "de,en;q=0.8" }, redirect: "manual", signal: AbortSignal.timeout(20000) });
@@ -149,6 +174,7 @@ export async function render(url: string): Promise<Page> {
   const file = join(dir, `${key("render:" + url)}.json`);
   const hit = readCache(file);
   if (hit) { stats.cacheHits++; return hit; }
+  try { await assertPublic(url); } catch (e) { return { url, finalUrl: url, status: 0, fetchedAt: new Date().toISOString(), html: "", rendered: true, error: String(e) }; }
   if (!(await allowed(url))) return { url, finalUrl: url, status: 0, fetchedAt: new Date().toISOString(), html: "", error: "site rules disallow" };
   while (openPages >= 3) await Bun.sleep(200);
   openPages++;
@@ -157,7 +183,11 @@ export async function render(url: string): Promise<Page> {
     const { chromium } = await import("playwright-core");
     browser ??= chromium.launch({ headless: true }).catch((e) => { browser = null; throw e; });
     const ctx = await (await browser).newContext({ userAgent: USER_AGENT, locale: "de-DE" });
-    await ctx.route("**/*", (r) => (["image", "media", "font", "stylesheet"].includes(r.request().resourceType()) ? r.abort() : r.continue()));
+    await ctx.route("**/*", async (r) => {
+      if (["image", "media", "font", "stylesheet"].includes(r.request().resourceType())) return r.abort();
+      try { await assertPublic(r.request().url()); } catch { return r.abort(); } // page scripts may not reach our network either
+      return r.continue();
+    });
     const p = await ctx.newPage();
     await hostTurn(new URL(url).host);
     stats.requests++; stats.rendered++;

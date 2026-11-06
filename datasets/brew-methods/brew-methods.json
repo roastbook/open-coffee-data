@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.roastbook.coffee/brew-methods/brew-methods.schema.v0.3.0.json",
   "meta": {
-    "licence": "MIT"
+    "licence": "CDLA-Permissive-2.0"
   },
   "brew_methods": [
     {

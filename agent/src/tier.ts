@@ -12,22 +12,26 @@ export const nonCoffeeName = (name: string) => has(cfg.non_coffee_name, name);
 export type TierInput = {
   name: string; brand?: string | null; overtureCategory?: string | null;
   roastsOwn?: boolean; specialtyClaim?: boolean; filter?: boolean;
-  roasters: { name: string; fromPartnerPage: boolean }[];
+  /** Roasteries the place's own website names. */
+  roasters: { name: string }[];
   business?: string; focus?: string; siteVerified: boolean;
   /** Evidence the place serves visitors: opening hours, a serving fact, a café on a roaster's list, or the site says it is a café. */
   servesPublic: boolean;
+  /** status open: confirmed on the place's own site in this run. */
+  open: boolean;
 };
 
 export function tier(t: TierInput): { tier: "A" | "B" | "none" | "unknown"; why: string } {
   const own = fold(t.name);
   const named = t.roasters.filter((r) => !isCommodity(r.name) && (tokens(r.name).length === 0 || fold(r.name) !== own || t.roastsOwn));
-  // A roaster from a roaster's own partner page is specialty by curation; one named on the café's site needs a specialty claim too.
-  const specialtyRoaster = named.some((r) => r.fromPartnerPage) || (named.length > 0 && !!t.specialtyClaim);
+  // A roaster named on the place's own site counts with a specialty claim on that site.
+  const specialtyRoaster = named.length > 0 && !!t.specialtyClaim;
   const roastsSpecialty = !!t.roastsOwn && !!t.specialtyClaim;
   const specialty = specialtyRoaster || roastsSpecialty;
   const foodLeads = t.focus === "food_led" || t.focus === "balanced" || ["restaurant", "bakery", "bar", "hotel", "ice_cream", "shop"].includes(t.business ?? "");
   const coffeeCore = !foodLeads && (t.focus === "coffee_led" || t.business === "roastery" || t.business === "cafe" && (t.filter || t.roastsOwn) || ["coffee_shop", "coffee_roastery"].includes(t.overtureCategory ?? ""));
   if (isChain(t.name, t.brand)) return { tier: "none", why: "chain" };
+  if (specialty && !t.open) return { tier: "unknown", why: "specialty evidence, but not confirmed open in this run" };
   if (specialty && !t.servesPublic) return { tier: "unknown", why: "specialty roaster or supplier, but no evidence it serves visitors" };
   if (specialty && coffeeCore) return { tier: "A", why: roastsSpecialty ? "roasts own specialty coffee, coffee-led" : "serves a named specialty roaster, coffee-led" };
   if (specialty) return { tier: "B", why: roastsSpecialty ? "roasts specialty coffee, but coffee is not shown to lead" : "serves a named specialty roaster, but coffee is not shown to lead" };

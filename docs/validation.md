@@ -11,8 +11,8 @@
 ## Ids
 
 - Ids are unique within a family across all files.
-- Ids are never deleted: every id in the dataset files at `BASE_REF` (default `origin/main`; CI sets the pull request base) must still exist. When the ref does not exist (first commit, shallow clone) the check is skipped with a warning.
-- `merged_into` must point at an existing record of the same family, not at itself; pointing at a record that is itself merged gives a warning.
+- Ids are compared with the dataset files at `BASE_REF` (default `origin/main`; CI sets the pull request base). Brew method and equipment ids must never disappear. Coffee places may be removed, because the dataset holds only places confirmed on their own website: each removed place is listed as a warning so the reviewer can check it was unconfirmed or a duplicate. When the ref does not exist (first commit, shallow clone) the check is skipped with a warning.
+- `merged_into` (brew methods and equipment) must point at an existing record of the same family, not at itself; pointing at a record that is itself merged gives a warning. Coffee places do not use it: duplicates are removed.
 - Brew methods: `parent` must exist and parent chains must not loop. Equipment: `brew_methods` entries must be brew method ids. (`equipment_types` values are checked by the schema.)
 
 ## Deny-list
@@ -36,14 +36,17 @@ No URL anywhere in a record (links, image, prices, roasters, awards, references)
 Errors (CI fails):
 
 - `website-platform`: `links.website` is a directory, delivery, booking, review or social page (Gelbe Seiten, Lieferando, speisekartenweb, Facebook …), not the place's own site.
+- `share-link`: `links.facebook` or `links.instagram` is a share, dialog or intent link (`facebook.com/sharer.php` …), not a profile; `instagram`: not a valid profile URL.
+- `person-name`: a place name contains an owner's name ("Inh. …"); people's names are personal data.
+- `seasonal`: a seasonal venue (Oktoberfest tent, fair, Christmas market) with `status: open`; it is `temporarily_closed` outside its season.
 - `contact-data`: an email address or phone number outside `links`.
-- `duplicate`: two live records with nearly the same name within 40 m (or the same name within 60 m). Mark one with `merged_into`.
-- `status-open-unverified`: `status: open` without `last_verified_at`.
-- `open-sunday`, `payment`, `serving`: contradictions (`open_sunday` against `opening_hours`, cash only and card payment both true, pour-over true but filter false).
+- `duplicate`: two records with nearly the same name within 40 m (or the same name within 60 m). Remove the extra record.
+- `unverified`: the dataset holds only confirmed places; an `unverified` record must be confirmed or removed. `type`: every place is `CafeOrCoffeeShop`.
+- `payment`, `serving`: contradictions (cash only and card payment both true, pour-over or batch brew true but filter false).
 - `operator`: not a legal entity; `price`: an implausible cappuccino price; `postcode`: wrong format for the country.
 - `tier-evidence`: tier A or B without `roasts_own_beans` or `roasters_served`.
 
-Warnings: names with a legal form, SEO tails or a bare street name; street strings that are not "street number"; tier `unknown` for a name that looks like a non-coffee business; descriptions on places that are not tier A or B; open places not verified for half a year; more than 3 places sharing one website; images not from an open image repository.
+Warnings: names with a legal form, SEO tails or a bare street name; street strings that are not "street number"; tier `unknown` for a name that looks like a non-coffee business; descriptions on places that are not tier A or B; open places not verified for half a year; places of different names sharing one website host (a chain's locations page matched to a neighbouring shop looked like this); images not from an open image repository.
 
 `--fix` only removes doubtful values or derives values from stored fields; it never adds a fact. A platform page used as a website is removed together with every value read from it. Duplicates become tombstones (`merged_into`), so no id disappears.
 

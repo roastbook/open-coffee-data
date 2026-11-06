@@ -6,13 +6,12 @@ import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { describe } from "./describe";
 import { distanceM } from "./geo";
-import { opensOnSunday } from "./hours";
-import { nameSim } from "./names";
-import { cleanName, cleanStreet, EMAIL, OWNER_IN_NAME, isPlatformUrl, LEGAL_FORM, nameProblems, NOT_LEGAL_ENTITY, PHONE, POSTCODE, streetProblems } from "./rules";
+import { nameSim, ownHost, sameStreet } from "./names";
+import { cleanName, cleanStreet, EMAIL, isShareLink, OWNER_IN_NAME, SEASONAL, isPlatformUrl, LEGAL_FORM, nameProblems, NOT_LEGAL_ENTITY, PHONE, POSTCODE, streetProblems } from "./rules";
 
 export type Finding = { level: "error" | "warning"; rule: string; id: string; message: string };
 
-const NON_COFFEE = /heimservice|lieferservice|pizza|sushi|döner|kebab|burger|wok\b|curry|ems\b|fitness|training|\bgym\b|friseur|kiosk|tankstelle|spielhalle|wettbüro|shisha|asian goods|supermarkt|metzgerei/i;
+const NON_COFFEE = /heimservice|lieferservice|pizza|sushi|döner|kebab|burger|wok\b|curry|ems\b|fitness|training|\bgym\b|friseur|tankstelle|spielhalle|wettbüro|shisha|asian goods|supermarkt|metzgerei/i;
 const SKIP_PII = /^(links|image|xref|external_ratings|roasters_served\.\d+\.url|prices\.cappuccino\.source_url)/;
 
 function* strings(v: any, path = ""): Generator<[string, string]> {
@@ -26,9 +25,13 @@ export function lintPlace(p: any, country: string, now = new Date()): Finding[] 
   const out: Finding[] = [];
   const err = (rule: string, message: string) => out.push({ level: "error", rule, id: p.id, message });
   const warn = (rule: string, message: string) => out.push({ level: "warning", rule, id: p.id, message });
-  if (p.merged_into) return out;
+  if (p.merged_into) {
+    if (p.status === "open") err("merged-open", `merged into ${p.merged_into} but still status open`);
+    return out;
+  }
 
   // Websites must be the place's own.
+  for (const k of ["facebook", "instagram"]) if (isShareLink(p.links?.[k])) err("share-link", `links.${k} ${p.links[k]} is a share or dialog link, not the place's profile`);
   if (isPlatformUrl(p.links?.website)) err("website-platform", `links.website ${p.links.website} is a directory, platform or social site, not the place's own website`);
   if (p.prices?.cappuccino?.source_url && isPlatformUrl(p.prices.cappuccino.source_url)) err("price-platform", "price observed on a platform site");
 
@@ -40,6 +43,8 @@ export function lintPlace(p: any, country: string, now = new Date()): Finding[] 
   }
 
   for (const prob of nameProblems(p.name)) warn("name", `name "${p.name}" ${prob}`);
+  // "Christoph Jünger Gastronomie": a first and last name as the business name is likely a sole trader (a person).
+  if (PERSONLIKE.test(p.name)) warn("person-name", `name "${p.name}" may be a person's name; use the name on the sign`);
   if (OWNER_IN_NAME.test(p.name)) err("person-name", `name "${p.name}" names an owner; people's names are personal data`);
   const st = p.address?.street_address;
   if (st) for (const prob of streetProblems(st)) (/email|phone/.test(prob) ? err : warn)("street", `street_address "${st}" ${prob}`);
@@ -48,20 +53,17 @@ export function lintPlace(p: any, country: string, now = new Date()): Finding[] 
   if (pc && !st) warn("address", "postal_code without street_address");
 
   // Status and dates.
-  if (p.status === "open" && !p.last_verified_at) err("status-open-unverified", "status open needs last_verified_at");
-  if (p.last_verified_at && (now.getTime() - Date.parse(p.last_verified_at)) / 86400000 > 182 && p.status === "open")
-    warn("stale", `open but last verified ${p.last_verified_at.slice(0, 10)}`);
+  // Only places confirmed on their own website are in the dataset.
+  if (p.status === "unverified") err("unverified", "unconfirmed places are not stored; confirm the place or remove the record");
+  if ((now.getTime() - Date.parse(p.checked_at)) / 86400000 > 182 && p.status === "open") warn("stale", `open but last checked ${p.checked_at.slice(0, 10)}`);
+  if (p.type !== "CafeOrCoffeeShop") err("type", `type must be CafeOrCoffeeShop, got ${JSON.stringify(p.type)}`);
 
   // Contradictions.
-  if (p.opening_hours) {
-    try {
-      const sun = opensOnSunday(p.opening_hours);
-      if (p.open_sunday !== undefined && p.open_sunday !== sun) err("open-sunday", `open_sunday ${p.open_sunday} contradicts opening_hours`);
-    } catch { /* parse errors are reported by scripts/check.mjs */ }
-  }
   const a = p.amenities ?? {}, s = p.serving ?? {};
   if (a.cash_only === true && a.card_payment === true) err("payment", "cash_only and card_payment are both true");
   if ((s.pour_over === true || s.batch_brew === true) && s.filter === false) err("serving", "pour_over or batch_brew true but filter false");
+  const ig = p.links?.instagram?.match(/^https:\/\/www\.instagram\.com\/([^/]+)\/$/)?.[1];
+  if (p.links?.instagram && (!ig || !/^(?!\.)(?!.*\.\.)[A-Za-z0-9._]{1,30}(?<!\.)$/.test(ig))) err("instagram", `links.instagram ${p.links.instagram} is not a valid profile URL`);
   if (s.filter === false && s.pour_over === undefined && s.batch_brew === undefined) warn("serving", "filter false is a strong claim; check the quote");
   const price = p.prices?.cappuccino?.amount;
   if (price !== undefined && (price < 1.5 || price > 9)) err("price", `cappuccino price ${price} is implausible`);
@@ -73,6 +75,7 @@ export function lintPlace(p: any, country: string, now = new Date()): Finding[] 
   if ((p.specialty_tier === "A" || p.specialty_tier === "B") && p.roasts_own_beans !== true && !(p.roasters_served ?? []).length)
     err("tier-evidence", `tier ${p.specialty_tier} without roasts_own_beans or roasters_served`);
   if (p.description && p.specialty_tier !== "A" && p.specialty_tier !== "B") warn("description", "description on a place that is not tier A or B");
+  if (SEASONAL.test(p.name) && p.status === "open") err("seasonal", `"${p.name}" is a seasonal venue; it cannot be open all year (temporarily_closed outside its season)`);
   if (p.specialty_tier === "unknown" && NON_COFFEE.test(p.name)) warn("tier-none", `"${p.name}" looks like a non-coffee business; tier none?`);
   if (p.image && !/^https:\/\/upload\.wikimedia\.org\//.test(p.image.url) && !/^https:\/\/(images\.)?(mapillary|panoramax)/.test(p.image.url)) warn("image", `image.url ${p.image.url} is not from an open image repository`);
   return out;
@@ -87,7 +90,9 @@ export function duplicatePairs(places: any[]): [any, any, number][] {
     const d = distanceM(a.location, b.location);
     if (d > 60) continue;
     const sim = nameSim(a.name, b.name);
-    if ((sim >= 0.85 && d <= 40) || (sim >= 0.99 && d <= 60)) out.push([a, b, d]);
+    // Or one place under two names (e.g. the café and its operator): same street and number, same own website.
+    const sameSite = !!a.links?.website && ownHost(a.links.website) === ownHost(b.links?.website) && sameStreet(a.address?.street_address, b.address?.street_address);
+    if ((sim >= 0.85 && d <= 40) || (sim >= 0.99 && d <= 60) || (sameSite && d <= 60)) out.push([a, b, d]);
   }
   return out;
 }
@@ -98,14 +103,21 @@ export function lintCity(places: any[], country: string, now = new Date()): Find
   const out = live.flatMap((p) => lintPlace(p, country, now));
   for (const [a, b, d] of duplicatePairs(live))
     out.push({ level: "error", rule: "duplicate", id: b.id, message: `same place as ${a.id} "${a.name}" (${Math.round(d)} m); set merged_into` });
-  const byWeb = new Map<string, any[]>();
-  for (const p of live) if (p.links?.website) byWeb.set(p.links.website, [...(byWeb.get(p.links.website) ?? []), p]);
-  for (const [url, ps] of byWeb) if (ps.length > 3 && !ps.every((p) => p.specialty_tier === "none"))
-    out.push({ level: "warning", rule: "shared-website", id: ps[0].id, message: `${ps.length} places share ${url}; check each branch has its own facts` });
+  // One website for places with different names is how a district or street word once matched the wrong site.
+  const byHost = new Map<string, any[]>();
+  for (const p of live) if (p.links?.website) {
+    const u = new URL(p.links.website);
+    const h = u.hostname === "sites.google.com" ? `sites.google.com${u.pathname.split("/").slice(0, 3).join("/")}` : u.hostname.replace(/^www\./, ""); // each Google Site is its own
+    byHost.set(h, [...(byHost.get(h) ?? []), p]);
+  }
+  for (const [host, ps] of byHost) for (const p of ps) {
+    const others = ps.filter((q) => q !== p && nameSim(q.name, p.name) < 0.6);
+    if (others.length) out.push({ level: "warning", rule: "shared-website", id: p.id, message: `"${p.name}" shares ${host} with ${others.length} place(s) of another name (${others.slice(0, 3).map((q) => `"${q.name}"`).join(", ")}); check the site really is this place's` });
+  }
   return out;
 }
 
-const SITE_FIELDS = ["opening_hours", "open_sunday", "description", "roasts_own_beans", "roasters_served", "serving", "amenities", "food", "sells_beans", "sells_equipment", "offers_courses", "reusable_cup_systems", "prices", "operator", "last_verified_at"];
+const SITE_FIELDS = ["opening_hours", "description", "roasts_own_beans", "roasters_served", "serving", "amenities", "food", "sells_beans", "sells_equipment", "offers_courses", "reusable_cup_systems", "prices", "operator", "last_verified_at"];
 
 /**
  * Repairs that only remove doubtful values or derive values from other stored fields; they never add a fact.
@@ -113,16 +125,21 @@ const SITE_FIELDS = ["opening_hours", "open_sunday", "description", "roasts_own_
  */
 export function repair(p: any): string[] {
   const done: string[] = [];
-  if (p.merged_into) return done;
+  if (p.merged_into) {
+    if (p.status === "open") { p.status = "closed"; done.push("tombstone status open -> closed"); }
+    return done;
+  }
   if (isPlatformUrl(p.links?.website)) {
     // Everything read from that page is unsupported: back to the open-data basics.
     for (const k of SITE_FIELDS) delete p[k];
     delete p.links.website;
     if (!Object.keys(p.links).length) delete p.links;
-    if (p.status === "open") p.status = "unverified";
+    if (p.status === "open") { p.status = "unverified"; done.push("no longer confirmed: the page that confirmed it was a platform page (remove the record)"); }
     if (p.specialty_tier === "A" || p.specialty_tier === "B") p.specialty_tier = "unknown";
     done.push("removed a platform page used as website and every value read from it");
   }
+  for (const k of ["facebook", "instagram"]) if (isShareLink(p.links?.[k])) { done.push(`removed share link ${p.links[k]}`); delete p.links[k]; }
+  if (p.links && !Object.keys(p.links).length) delete p.links;
   const name = cleanName(p.name);
   if (name !== p.name) {
     done.push(`name "${p.name}" -> "${name}"`);
@@ -135,16 +152,21 @@ export function repair(p: any): string[] {
     if (c && c !== st) { p.address.street_address = c; done.push(`street "${st}" -> "${c}"`); }
     else if (!c || EMAIL.test(st) || PHONE.test(st)) { delete p.address.street_address; delete p.address.postal_code; done.push(`removed street "${st}"`); }
   }
-  if (p.opening_hours) {
-    try { const sun = opensOnSunday(p.opening_hours); if (p.open_sunday !== sun) { p.open_sunday = sun; done.push("open_sunday derived from opening_hours"); } } catch {}
-  } else if (p.open_sunday !== undefined) { delete p.open_sunday; done.push("removed open_sunday without opening_hours"); }
+  if (p.open_sunday !== undefined) { delete p.open_sunday; done.push("removed open_sunday (derived from opening_hours since schema v0.3.0)"); }
+  if (p.type !== "CafeOrCoffeeShop") { p.type = "CafeOrCoffeeShop"; done.push("type CafeOrCoffeeShop"); }
+  if (p.last_verified_at !== undefined) { delete p.last_verified_at; done.push("removed last_verified_at (records in the repository are confirmed)"); }
+  const igm = p.links?.instagram?.match(/^https?:\/\/(?:www\.)?instagram\.com\/([A-Za-z0-9_.]+)\/?(?:\?.*)?$/);
+  if (igm && p.links.instagram !== `https://www.instagram.com/${igm[1].toLowerCase()}/`) { p.links.instagram = `https://www.instagram.com/${igm[1].toLowerCase()}/`; done.push("instagram normalised"); }
   if (p.amenities?.cash_only === true && p.amenities.card_payment === true) { delete p.amenities.cash_only; delete p.amenities.card_payment; done.push("removed contradicting payment values"); }
   const s = p.serving;
   if (s && (s.pour_over === true || s.batch_brew === true) && s.filter === false) { delete s.filter; delete s.pour_over; delete s.batch_brew; done.push("removed contradicting filter values"); }
+  if (s && (s.pour_over === true || s.batch_brew === true) && s.filter === undefined) { s.filter = true; done.push("filter derived from pour_over or batch_brew"); }
+  const ig = p.links?.instagram?.match(/^https:\/\/www\.instagram\.com\/([^/]+)\/$/)?.[1];
+  if (p.links?.instagram && (!ig || !/^(?!\.)(?!.*\.\.)[A-Za-z0-9._]{1,30}(?<!\.)$/.test(ig))) { done.push(`removed invalid instagram ${p.links.instagram}`); delete p.links.instagram; }
   const price = p.prices?.cappuccino?.amount;
   if (price !== undefined && (price < 1.5 || price > 9)) { delete p.prices; done.push("removed implausible price"); }
   if (p.operator && (!LEGAL_FORM.test(p.operator.name) || NOT_LEGAL_ENTITY.test(p.operator.name))) { delete p.operator; done.push("removed operator that is not a legal entity"); }
-  if (p.status === "open" && !p.last_verified_at) { p.status = "unverified"; done.push("status open without verification -> unverified"); }
+  if (SEASONAL.test(p.name) && p.status === "open") { p.status = "temporarily_closed"; done.push("seasonal venue -> temporarily_closed"); }
   if ((p.specialty_tier === "A" || p.specialty_tier === "B") && p.roasts_own_beans !== true && !(p.roasters_served ?? []).length) { p.specialty_tier = "unknown"; done.push("tier without evidence -> unknown"); }
   if (p.description && p.specialty_tier !== "A" && p.specialty_tier !== "B") { delete p.description; done.push("removed description of a place that is not tier A or B"); }
   for (const k of ["amenities", "serving", "food", "links"]) if (p[k] && !Object.keys(p[k]).length) delete p[k];
@@ -153,7 +175,8 @@ export function repair(p: any): string[] {
 }
 
 /** Score for keeping one of two duplicates: confirmed, richer, older id. */
-const keepScore = (p: any) => (p.status === "open" ? 1000 : 0) + Object.keys(p).length * 10 + JSON.stringify(p).length / 1000;
+const PERSONLIKE = /^[A-ZÄÖÜ][a-zäöüß]+ [A-ZÄÖÜ][a-zäöüß-]+ (Gastronomie|Gastro|Catering)$/;
+const keepScore = (p: any) => (p.status === "open" ? 1000 : 0) - (PERSONLIKE.test(p.name) ? 500 : 0) + Object.keys(p).length * 10 + JSON.stringify(p).length / 1000;
 
 /** Turn duplicates into tombstones pointing at the record we keep. Ids are never deleted. */
 export function mergeDuplicates(places: any[]): string[] {
@@ -162,6 +185,7 @@ export function mergeDuplicates(places: any[]): string[] {
     if (a.merged_into || b.merged_into) continue;
     const [keep, drop] = keepScore(a) > keepScore(b) || (keepScore(a) === keepScore(b) && a.id < b.id) ? [a, b] : [b, a];
     drop.merged_into = keep.id;
+    if (drop.status === "open") drop.status = "closed"; // a tombstone is never open (schema v0.3.0); it is closed in favour of keep
     done.push(`${drop.id} "${drop.name}" merged into ${keep.id}`);
   }
   return done;

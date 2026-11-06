@@ -6,7 +6,7 @@ import { DuckDBInstance } from "@duckdb/node-api";
 import { CACHE, OVERTURE_RELEASE } from "../config";
 
 export const COFFEE_CATEGORIES = ["cafe", "coffee_shop", "coffee_roastery", "coffee_and_tea_supplies"];
-const OK_LICENCES = new Set(["CDLA-Permissive-2.0", "Apache-2.0", "CC0-1.0", "CC-BY-4.0"]);
+const OK_LICENCES = new Set(["CDLA-Permissive-2.0", "Apache-2.0", "CC0-1.0"]); // each is attributed in NOTICE
 
 export type OvertureRow = {
   id: string; name: string; brand: string | null; category: string | null; hierarchy: string[]; alternates: string[];
@@ -46,7 +46,8 @@ export async function overturePlaces(slug: string, bb: { xmin: number; ymin: num
     for (const l of new Set(r.licences)) licenceStats[l || "(none)"] = (licenceStats[l || "(none)"] ?? 0) + 1;
     if (r.datasets.some((d) => /openstreetmap|^osm$/i.test(d)) || r.licences.some((l) => !OK_LICENCES.has(l))) { dropped++; continue; }
     r.websites = r.websites.filter(Boolean);
-    const coffee = COFFEE_CATEGORIES.includes(r.category ?? "") || r.alternates.some((a) => COFFEE_CATEGORIES.includes(a));
+    // A coffee category as the main one, or as a side category of a food or drink place (not a bookshop with a café corner).
+    const coffee = COFFEE_CATEGORIES.includes(r.category ?? "") || (r.hierarchy.includes("food_and_drink") && r.alternates.some((a) => COFFEE_CATEGORIES.includes(a)));
     kept.push({ ...r, coffee });
   }
   return { rows: kept, dropped };

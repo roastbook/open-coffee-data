@@ -54,11 +54,12 @@ test("duplicate ids", { skip: !schemaDir }, () => {
   has(run({ cityDoc: c }), /duplicate id/);
 });
 
-test("ids never deleted against the base ref", { skip: !schemaDir }, () => {
+test("a removed coffee place is listed as a warning, not an error", { skip: !schemaDir }, () => {
   const before = city();
   before.places.push({ ...before.places[1], id: "cp-gone000001" });
   const r = run({ baseFiles: new Map([["coffee-places/de/example-city.json", JSON.stringify(before)]]) });
-  has(r, /cp-gone000001 exists on the base branch but was deleted/);
+  if (!r.warnings.some((w) => /cp-gone000001 .* was removed/.test(w))) throw new Error(`no removal warning: ${r.warnings.join("; ")}`);
+  if (r.errors.some((e) => /cp-gone000001/.test(e))) throw new Error("removal must not be an error");
 });
 
 test("merged_into target must exist", { skip: !schemaDir }, () => {

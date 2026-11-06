@@ -21,11 +21,11 @@ Owners may also suggest a photo: link the original file, published under an open
 
 ## Rules for data
 
-- **Check every fact on a primary source** (the place's own website, an open dataset, the roaster's partner page) and link it in your issue or pull request.
+- **Check every fact on a primary source** (the place's own website or an open dataset) and link it in your issue or pull request.
 - **Facts only.** Never copy sentences or photos from a website or Instagram. Descriptions are written in our own words from the stored facts.
 - **No Google Maps, no OpenStreetMap, no closed guides.** Do not use Google Maps or Places data (we may only store a `google_place_id` for verification), OpenStreetMap data (share-alike), or the lists of extract.coffee, European Coffee Trip, roasters.app, Caffe Atlas or review sites. Ratings from other services are stored only as links in `external_ratings`.
 - **Unknown stays absent.** `false` means “confirmed not offered”; if you do not know, leave the field out.
-- **Ids are permanent.** New places get `cp-` plus 10 random characters from `0123456789abcdefghjkmnpqrstvwxyz`. Never reuse, rename or delete an id. A duplicate keeps its record with `merged_into` pointing to the surviving id.
+- **Only confirmed places.** A place is in the dataset only when its own website confirms it. New places get `cp-` plus 10 random characters from `0123456789abcdefghjkmnpqrstvwxyz`; never reuse or rename an id. A place that closes keeps its record with `status: closed`; a duplicate or a place that can no longer be confirmed is removed.
 - **Images** need `licence`, `author` and `source_url`, and an open licence (CC0, CC BY, CC BY-SA). Link the original file; never add image files to the repository.
 - **No personal data.** Operators only when they are companies or other legal entities.
 - **No versions in data files.** `meta` holds only `licence`, `country_code`, `city` and `city_name`. The schema version is the `$schema` URL (changed only by the schema bump pull request); the dataset version is the release tag.
@@ -51,7 +51,7 @@ All contributions must be signed off under the [Developer Certificate of Origin 
 Signed-off-by: Your Name <you@example.com>
 ```
 
-By signing off, you certify that you wrote the contribution or otherwise have the right to submit it under the repository's [MIT licence](LICENSE).
+By signing off, you certify that you wrote the contribution or otherwise have the right to submit it under the licence of the files you change: [CDLA-Permissive-2.0](LICENSE-DATA) for data in `datasets/`, [MIT](LICENSE) for everything else.
 
 ## Code of conduct
 

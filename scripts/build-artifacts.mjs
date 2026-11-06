@@ -76,7 +76,7 @@ const index = {
   dataset_version: datasetVersion(root),
   schema_version: schemaVersions(files),
   built_at: new Date().toISOString(),
-  licence: "MIT",
+  licence: "CDLA-Permissive-2.0",
   datasets: files.map((f) => ({ path: `datasets/${f.rel}`, url: `${DATA}datasets/${f.rel}`, family: f.family, bytes: statSync(join(datasetsDir, f.rel)).size, records: f.records.length, ...(f.family === "coffee-places" ? { city: f.doc.meta.city, country_code: f.doc.meta.country_code } : {}) })),
   artifacts,
 };

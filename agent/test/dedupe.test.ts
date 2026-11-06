@@ -3,7 +3,7 @@ import type { Candidate } from "../src/candidate";
 import { dedupe, samePlace } from "../src/dedupe";
 import { nameSim, parseStreet, sameStreet } from "../src/names";
 
-const c = (name: string, extra: Partial<Candidate> = {}): Candidate => ({ key: name, name, overtureIds: [], roasters: [], origins: [], ...extra });
+const c = (name: string, extra: Partial<Candidate> = {}): Candidate => ({ key: name, name, overtureIds: [], origins: [], ...extra });
 
 test("name similarity ignores generic words", () => {
   expect(nameSim("Man Versus Machine Coffee Roasters", "Man Versus Machine")).toBe(1);
@@ -39,4 +39,12 @@ test("dedupe merges duplicates and keeps the first record's values", () => {
   expect(out[0].overtureIds).toEqual(["a", "b"]);
   expect(out[0].website).toBe("https://kosmos.example/");
   expect(out[0].instagram).toBe("https://www.instagram.com/kosmos/");
+});
+
+import { streetHint } from "../src/pipeline";
+test("street hints from roaster mentions keep branches apart", () => {
+  expect(streetHint("Suuapinga Café Herzogstraße")).toBe("Herzogstraße");
+  expect(streetHint("Besuche uns: Blutenburgstr. 93, 80636 München")).toBe("Blutenburgstr. 93");
+  expect(streetHint("Suuapinga Café")).toBeNull();
+  expect(sameStreet(streetHint("Suuapinga Café Herzogstraße")!, "Blutenburgstraße 93")).toBe(false);
 });

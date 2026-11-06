@@ -1,5 +1,5 @@
 // One data agent run for one city: discover, filter, enrich, find websites, images, write. See docs/agent.md.
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Candidate } from "./candidate";
 import { type City, cities, cityArea } from "./cities";
@@ -8,24 +8,23 @@ import { closeBrowser, pool, stats as fetchStats } from "./pages";
 import { readCity, writeCity } from "./dataset";
 import { dedupe, mergeInto, samePlace } from "./dedupe";
 import { describe } from "./describe";
-import { postcodesOnSite, propose, siteMatches, type Verified, verify } from "./extract";
+import { placeWordsFrom, postcodesOnSite, propose, siteMatches, type Verified, verify } from "./extract";
 import { distanceM } from "./geo";
-import { opensOnSunday } from "./hours";
 import { newId } from "./ids";
 import { findImage } from "./images";
-import { BudgetExceeded, usage } from "./llm";
+import { usage } from "./llm";
 import { llm } from "./config";
 import { fold, nameSim, ownHost, parseStreet, sameStreet } from "./names";
 import { loadState, type Job, queueFor, saveState } from "./queue";
 import { search, searchEnabled, searchLog, seedFile, websiteCandidates, websiteSeeds } from "./search";
 import { fetchSite, type Site, type SitePage } from "./site";
 import { type OvertureRow, licenceStats, overturePlaces } from "./discovery/overture";
-import { roasterIsSpecialty, roasterMentions, roasters } from "./discovery/roasters";
 import { wikidataCafes } from "./discovery/wikidata";
+import { districts, webLeads } from "./discovery/webleads";
 import { isChain, nonCoffeeName, tier } from "./tier";
 import { lintPlace, mergeDuplicates, repair } from "./lint";
 import { type Research, research } from "./research";
-import { cleanName as signName, cleanStreet, isPlatformUrl } from "./rules";
+import { cleanName as signName, cleanStreet, isPlatformUrl, SEASONAL } from "./rules";
 
 export type RunOptions = { city: City; limit: number; dryRun: boolean; stages?: string[] };
 type Row = OvertureRow & { coffee: boolean };
@@ -54,8 +53,16 @@ export async function run(o: RunOptions) {
     const { rows, dropped } = await overturePlaces(o.city.slug, area.bbox);
     const inside = rows.filter((r) => area.contains(r));
     counts.overture_rows_in_city = inside.length;
+    // District, street and city names never identify a place on a website (siteMatches).
+    const ds = o.city.wikidata ? await districts(o.city.wikidata).catch(() => [] as string[]) : [];
+    for (const w of placeWordsFrom([...cityNames, ...ds, ...inside.map((r) => r.street)])) placeWords.add(w);
+    counts.place_words = placeWords.size;
     counts.overture_dropped_licence = dropped;
-    const coffee = inside.filter((r) => r.coffee && r.status !== "permanently_closed").sort((a, b) => b.confidence - a.confidence);
+    // New places only from coffee categories, and never clearly non-coffee businesses or seasonal venues
+    // (published records of those stay, with ids kept: see "Non-coffee and seasonal places" in docs/agent.md).
+    const excluded = (r: Row) => nonCoffeeName(r.name) || SEASONAL.test(r.name);
+    const coffee = inside.filter((r) => r.coffee && r.status !== "permanently_closed" && !excluded(r)).sort((a, b) => b.confidence - a.confidence);
+    counts.excluded_non_coffee_or_seasonal = inside.filter((r) => r.coffee && r.status !== "permanently_closed" && excluded(r)).length;
     counts.overture_coffee = coffee.length;
     counts.overture_coffee_closed = inside.filter((r) => r.coffee && r.status === "permanently_closed").length;
     const cands = dedupe(coffee.map(fromOverture));
@@ -73,34 +80,18 @@ export async function run(o: RunOptions) {
       }
     } catch (e) { errors.push(`wikidata: ${e}`); }
 
-    // Roasters' partner and own-café pages.
-    counts.roaster_pages = 0; counts.roaster_mentions = 0; counts.roaster_matched = 0; counts.roaster_new = 0; counts.roaster_rejected = 0;
-    for (const r of roasters()) {
-      try {
-        const spec = await roasterIsSpecialty(r);
-        const { mentions, rejected, pagesOk } = await roasterMentions(r, cityNames);
-        counts.roaster_pages += pagesOk; counts.roaster_rejected += rejected;
-        for (const m of mentions) {
-          counts.roaster_mentions++;
-          const mc: Candidate = { key: `roaster:${r.name}:${m.name}`, name: m.name, street: m.street, postcode: m.postcode, website: m.website, overtureIds: [], roasters: [{ name: r.name, url: m.page, quote: m.quote, specialty: spec.specialty }], origins: [{ via: "roaster-page", url: m.page, quote: m.quote }] };
-          (mc as any).roasterOwn = m.own; (mc as any).roasterSpecialty = spec.specialty;
-          const placed = locate(mc, cands, inside, area.contains);
-          if (placed === "ambiguous" || !placed) { unlocated.push({ via: `roaster:${r.name}`, name: m.name, reason: placed ?? "no Overture place at this name/address" }); continue; }
-          if (placed.isNew) { cands.push(placed.c); counts.roaster_new++; } else counts.roaster_matched++;
-          const target = placed.c;
-          if (target !== mc) mergeRoaster(target, mc);
-        }
-      } catch (e) { if (e instanceof BudgetExceeded) throw e; errors.push(`roaster ${r.name}: ${e}`); }
-    }
+    // Web leads: places per district from a search-capable model (leads only, checked below).
+    const leads = want("research") ? await webLeads(o.city).catch((e) => { errors.push(`web leads: ${e}`); return { seeds: [], districts: 0 }; }) : { seeds: [], districts: 0 };
+    counts.web_lead_districts = leads.districts; counts.web_lead_places = leads.seeds.length;
 
     // Web search results (seed file and/or the search provider).
-    const seeds = seedFile(o.city.slug);
+    const seeds = [...seedFile(o.city.slug), ...leads.seeds];
     if (searchEnabled()) for (const q of [`specialty coffee ${o.city.name}`, `Kaffeerösterei Café ${o.city.name}`, `third wave coffee ${o.city.name}`, `Filterkaffee ${o.city.name}`])
       for (const r of await search(q)) seeds.push({ name: r.title.split(/[|–-]/)[0].trim(), website: new URL(r.url).origin + "/", found_via: q });
     counts.search_seeds = seeds.length; counts.search_matched = 0; counts.search_new = 0;
     const pending: Candidate[] = [];
     for (const s of seeds) {
-      const sc: Candidate = { key: `search:${s.name}`, name: s.name, website: s.website ?? undefined, overtureIds: [], roasters: [], origins: [{ via: "web-search", ref: s.found_via }] };
+      const sc: Candidate = { key: `search:${s.name}`, name: s.name, website: s.website ?? undefined, overtureIds: [], origins: [{ via: "web-search", ref: s.found_via }] };
       const host = ownHost(s.website);
       const byHost = host ? cands.filter((c) => ownHost(c.website) === host) : [];
       const byName = cands.filter((c) => nameSim(c.name, s.name) >= 0.85);
@@ -153,10 +144,17 @@ export async function run(o: RunOptions) {
   const state = loadState(o.city.slug);
   const taken = new Set(doc.places.map((p) => p.id));
   const byId = new Map(doc.places.map((p) => [p.id, p]));
+  const archivedFile = join(CACHE, "removed", `${o.city.slug}.json`);
+  const archived: any[] = existsSync(archivedFile) ? JSON.parse(readFileSync(archivedFile, "utf8")).places : [];
   const candFor = new Map<string, Candidate>();
   for (const c of cands) {
-    const rec = doc.places.find((p) => !p.merged_into && (c.overtureIds.includes(p.xref?.overture) || samePlace(c, { ...p.location, name: p.name, street: p.address?.street_address, website: p.links?.website, overtureIds: [], roasters: [], origins: [], key: "" })));
-    const id = rec?.id ?? newId(taken);
+    // A tombstone's Overture id still points at its place: follow merged_into, so a merged duplicate never comes back.
+    const tomb = doc.places.find((p) => p.merged_into && c.overtureIds.includes(p.xref?.overture));
+    const rec = (tomb && doc.places.find((p) => p.id === finalId(doc.places, tomb.merged_into))) ?? doc.places.find((p) => !p.merged_into && (c.overtureIds.includes(p.xref?.overture) || samePlace(c, { ...p.location, name: p.name, street: p.address?.street_address, website: p.links?.website, overtureIds: [], origins: [], key: "" })));
+    // A place taken out earlier and confirmed now gets its old id back (local archive, matched by Overture id).
+    const back = rec ? undefined : archived.find((p) => c.overtureIds.includes(p.xref?.overture) && !byId.has(p.id));
+    const id = rec?.id ?? back?.id ?? newId(taken);
+    taken.add(id);
     if (!rec) byId.set(id, null);
     if (!candFor.has(id)) candFor.set(id, c); else mergeInto(candFor.get(id)!, c);
   }
@@ -177,10 +175,8 @@ export async function run(o: RunOptions) {
 
   // ---------- 2-4. Filter, enrich, find websites ----------
   const results = new Map<string, Enriched>();
-  let budgetStop: string | null = null;
   await stage("enrich", async () => {
     await pool(jobs, 12, async (job) => {
-      if (budgetStop) return;
       const c = candFor.get(job.id) ?? fromRecord(byId.get(job.id));
       if (!c) return;
       // Filter: chains and clearly non-coffee businesses without a website are not fetched.
@@ -206,10 +202,10 @@ export async function run(o: RunOptions) {
           timing.websites = (timing.websites ?? 0) + (Date.now() - t0) / 1000;
           if (!e?.match) e = { ...(e ?? { facts: [], rejected: [], multi: false, injectionLines: 0 }), websiteSearch: "failed" } as Enriched;
         }
-        // Research: search the web for this place and follow leads to its own pages and to roasteries naming it.
+        // Research: search the web for this place and follow leads to its own website.
         if (want("research") && (searchEnabled() || !!llm.researchModel) && !isChain(c.name, c.brand) && !nonCoffeeName(c.name) && needsResearch(c, e)) {
           const t0 = Date.now();
-          const res = await research(c, { cityName: o.city.name, country, site: e?.match ? e.site : undefined });
+          const res = await research(c, { cityName: o.city.name, country, site: e?.match ? e.site : undefined, placeWords });
           researchLog.set(job.id, res);
           if (res.website && !e?.match) {
             tried.push(res.website);
@@ -217,12 +213,10 @@ export async function run(o: RunOptions) {
             if (r.site?.ok && r.match) e = { ...r, websiteSearch: "research" };
           }
           if (e?.match && res.extraPages.length) e = { ...(await enrichSite(c, e.site!.start, cityNames, country, res.extraPages)), websiteSearch: e.websiteSearch };
-          for (const rr of res.roasters) if (!c.roasters.some((x) => nameSim(x.name, rr.name) >= 0.85)) { c.roasters.push(rr); c.origins.push({ via: "research: roastery page", url: rr.url, quote: rr.quote }); }
           timing.research = (timing.research ?? 0) + (Date.now() - t0) / 1000;
         }
         results.set(job.id, { ...(e ?? { facts: [], rejected: [], multi: false, injectionLines: 0 }), websiteTried: tried });
       } catch (err) {
-        if (err instanceof BudgetExceeded) { budgetStop = err.message; return; }
         errors.push(`${c.name}: ${String(err).slice(0, 200)}`);
       }
     });
@@ -234,17 +228,22 @@ export async function run(o: RunOptions) {
   const conflicts: { id: string; name: string; reason: string }[] = [];
   const labels = new Set<string>();
   const written: any[] = [];
+  const removed: any[] = []; // records taken out of the dataset, kept only in .cache/removed/<city>.json
   await stage("build", async () => {
     for (const job of jobs) {
       const e = results.get(job.id);
-      if (!e) continue; // not processed (budget stop or error): stays queued
+      if (!e) continue; // not processed (error): stays queued
       const c = candFor.get(job.id) ?? fromRecord(byId.get(job.id))!;
       const old = byId.get(job.id) ?? null;
       const built = buildRecord(job, c, e, old, { now, country, cityName: o.city.name, inside });
       runLog.push({ id: job.id, name: c.name, reason: job.reason, origins: c.origins, site: e.site ? { start: e.site.start, ok: e.site.ok, error: e.site.error, pages: e.site.pages.map((p) => ({ url: p.url, fetchedAt: p.fetchedAt, rendered: p.rendered })) } : null, match: e.match, websiteSearch: e.websiteSearch, values: built.provenance, rejected: e.rejected.map((r: any) => ({ field: r.field, value: r.value, reason: r.reason })), conflict: built.conflict, tierWhy: built.tierWhy, research: researchLog.get(job.id) ? { queries: researchLog.get(job.id)!.queries, opened: researchLog.get(job.id)!.opened } : undefined });
       if (built.conflict) { conflicts.push({ id: job.id, name: c.name, reason: built.conflict }); state.conflicts[job.id] = built.conflict; labels.add("conflict"); }
       else delete state.conflicts[job.id];
-      if (!built.record) continue;
+      if (!built.record) {
+        // Never confirmed: not in the dataset (before the first data release this also removes old unconfirmed records).
+        if (!(built as any).keep && old) { byId.set(job.id, null); removed.push(old); }
+        continue;
+      }
       state.enriched[job.id] = iso(now);
       const r = built.record;
       for (const ch of diff(old, r, built.provenance)) changes.push({ id: r.id, name: r.name, ...ch });
@@ -274,9 +273,14 @@ export async function run(o: RunOptions) {
   // ---------- safeguards before writing ----------
   // Same rules as CI's linter: safe repairs, duplicates become tombstones, and a record that still fails is not written
   // (the previous version stays, or a new place waits for a human).
+  // Only confirmed places: drop any leftover unconfirmed record or tombstone from before this policy.
+  for (const [id, p] of byId) if (p?.status === "unverified") { byId.set(id, null); removed.push(p); }
+  counts.removed_unconfirmed = removed.length;
   const lintRejected: { id: string; name: string; reason: string }[] = [];
   for (const r of written) for (const n of repair(r)) changes.push({ id: r.id, name: r.name, field: "lint repair", old: undefined, new: n });
-  for (const n of mergeDuplicates([...byId.values()].filter(Boolean))) { changes.push({ id: n.slice(0, 13), name: "", field: "merged_into", old: undefined, new: n }); labels.add("duplicate"); }
+  // Duplicates are removed (kept locally in .cache/removed), not stored as tombstones.
+  for (const n of mergeDuplicates([...byId.values()].filter(Boolean))) { changes.push({ id: n.slice(0, 13), name: "", field: "removed duplicate", old: undefined, new: n }); labels.add("duplicate"); }
+  for (const [id, p] of byId) if (p?.merged_into) { byId.set(id, null); removed.push(p); }
   for (const r of written) {
     const errs = lintPlace(r, country, now).filter((f) => f.level === "error");
     if (!errs.length) continue;
@@ -285,14 +289,16 @@ export async function run(o: RunOptions) {
     lintRejected.push({ id: r.id, name: r.name, reason: errs.map((f) => `${f.rule}: ${f.message}`).join("; ") });
     labels.add("lint");
   }
+  // Every record, not only the ones written in this run, gets the safe repairs; anything unconfirmed leaves the dataset.
+  for (const [id, p] of byId) if (p) { repair(p); if (p.status === "unverified") { byId.set(id, null); removed.push(p); } }
   for (const x of lintRejected) conflicts.push({ id: x.id, name: x.name, reason: `not written, lint: ${x.reason}` });
   counts.lint_rejected = lintRejected.length;
 
   const places = [...byId.values()].filter(Boolean);
   let file: string | null = null;
-  if (!o.dryRun && written.length) { file = writeCity(o.city, { places }); saveState(o.city.slug, state); }
+  if (!o.dryRun && written.length) { file = writeCity(o.city, { places }); saveState(o.city.slug, state); archiveRemoved(o.city.slug, removed); }
 
-  const metrics = computeMetrics({ places, written, jobs, results, changes, errors, timing, counts, conflicts, unlocated, budgetStop, runId });
+  const metrics = computeMetrics({ places, written, jobs, results, changes, errors, timing, counts, conflicts, unlocated, runId });
   const dir = join(CACHE, "runs", runId);
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, `${o.city.slug}.log.json`), JSON.stringify({ metrics, runLog, unlocated, conflicts, searchLog }, null, 1));
@@ -308,9 +314,10 @@ const researchLog = new Map<string, Research>();
 function needsResearch(c: Candidate, e: Enriched | null) {
   if (!e?.match) return true;
   const has = (f: string) => e.facts.some((x) => x.field === f);
-  return !has("opening_hours") || !has("serving.espresso") || !has("serving.filter") || (!has("roasts_own_beans") && !has("roaster") && !c.roasters.length);
+  return !has("opening_hours") || !has("serving.espresso") || !has("serving.filter") || (!has("roasts_own_beans") && !has("roaster"));
 }
 
+const placeWords = new Set<string>();
 const siteCache = new Map<string, Enriched>(); // key: url|street, because facts are verified for one location
 
 function streetStemIn(street: string, foldedText: string) {
@@ -339,7 +346,7 @@ async function enrichSite(c: Candidate, url: string, _cityNames: string[], count
   for (const p of extraPages) if (site.ok && !site.pages.some((x) => x.url === p.url)) site.pages.push(p);
   if (!site.ok) return { site, facts: [], rejected: [], multi: false, websiteTried: [url], injectionLines: 0 };
   const host = new URL(site.pages[0].url).hostname.replace(/^www\./, "");
-  const m = siteMatches(site.pages, c, host);
+  const m = siteMatches(site.pages, c, host, placeWords);
   if (!m.ok) return { site, facts: [], rejected: [], multi: false, websiteTried: [url], error: m.reason, injectionLines: 0 };
   const multi = postcodesOnSite(site.pages, country).size > 1;
   const address = [c.street, c.postcode].filter(Boolean).join(", ");
@@ -351,7 +358,7 @@ async function enrichSite(c: Candidate, url: string, _cityNames: string[], count
 
 function fromOverture(r: Row): Candidate {
   const webs = r.websites.filter((w) => /^https?:\/\//.test(w));
-  const c: Candidate = { key: `ov:${r.id}`, name: r.name, lat: r.lat, lon: r.lon, street: r.street ?? undefined, postcode: r.postcode ?? undefined, website: webs[0], overtureIds: [r.id], overtureStatus: r.status, overtureCoffee: r.coffee, category: r.category, brand: r.brand, roasters: [], origins: [{ via: "overture", ref: r.id }] };
+  const c: Candidate = { key: `ov:${r.id}`, name: r.name, lat: r.lat, lon: r.lon, street: r.street ?? undefined, postcode: r.postcode ?? undefined, website: webs[0], overtureIds: [r.id], overtureStatus: r.status, overtureCoffee: r.coffee, category: r.category, brand: r.brand, origins: [{ via: "overture", ref: r.id }] };
   (c as any).altWebsites = webs.slice(1);
   (c as any).socials = r.socials;
   return c;
@@ -359,30 +366,53 @@ function fromOverture(r: Row): Candidate {
 
 function fromRecord(p: any): Candidate | null {
   if (!p) return null;
-  return { key: p.id, name: p.name, lat: p.location.lat, lon: p.location.lon, street: p.address?.street_address, postcode: p.address?.postal_code, website: p.links?.website, overtureIds: p.xref?.overture ? [p.xref.overture] : [], roasters: [], origins: [{ via: "dataset", ref: p.id }] };
+  return { key: p.id, name: p.name, lat: p.location.lat, lon: p.location.lon, street: p.address?.street_address, postcode: p.address?.postal_code, website: p.links?.website, overtureIds: p.xref?.overture ? [p.xref.overture] : [], origins: [{ via: "dataset", ref: p.id }] };
 }
 
-function mergeRoaster(target: Candidate, m: Candidate) {
-  for (const r of m.roasters) if (!target.roasters.some((x) => x.name === r.name)) target.roasters.push(r);
-  if ((m as any).roasterOwn) (target as any).roasterOwn = { name: m.roasters[0].name, url: m.roasters[0].url, quote: m.roasters[0].quote };
-  (target as any).roasterSpecialty ||= (m as any).roasterSpecialty;
+function mergeMention(target: Candidate, m: Candidate) {
   target.website ??= m.website;
   target.origins.push(...m.origins);
 }
 
 /** Find the place a mention (no coordinates) refers to: an existing candidate, or an Overture place in the city at that address. */
+/** A street name in free text ("… Herzogstraße 9, 80803 München" -> "Herzogstraße 9"), or null. */
+export function streetHint(text: string): string | null {
+  const m = text.match(/([A-ZÄÖÜ][\wäöüß.-]*(?:straße|strasse|str\.|platz|weg|allee|ring|gasse|markt))(?:\s+(\d+\s?[a-z]?))?\b/);
+  return m ? `${m[1]}${m[2] ? ` ${m[2]}` : ""}` : null;
+}
+
+/** Records that leave the dataset are kept locally (gitignored) so they can be worked on later; never committed. */
+function archiveRemoved(slug: string, records: any[]) {
+  if (!records.length) return;
+  const file = join(CACHE, "removed", `${slug}.json`);
+  const prev = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")).places as any[] : [];
+  const byId = new Map(prev.map((p) => [p.id, p]));
+  for (const r of records) byId.set(r.id, r);
+  mkdirSync(join(CACHE, "removed"), { recursive: true });
+  writeFileSync(file, JSON.stringify({ note: "Places taken out of the dataset (not confirmed, or duplicates); local only, never committed.", places: [...byId.values()] }, null, 1));
+}
+
+/** Follow merged_into to the record that survives. */
+function finalId(places: any[], id: string): string {
+  for (let i = 0; i < 20; i++) { const p = places.find((x) => x.id === id); if (!p?.merged_into) return id; id = p.merged_into; }
+  return id;
+}
+
 function locate(m: Candidate, cands: Candidate[], inside: Row[], contains: (p: any) => boolean): { c: Candidate; isNew: boolean } | "ambiguous" | null {
   const host = ownHost(m.website);
+  // A mention without a parsed street may still name one ("Suuapinga Café Herzogstraße"): then a branch elsewhere is not it.
+  const hint = m.street ? null : streetHint(`${m.name} ${m.origins.map((o) => o.quote ?? "").join(" ")}`);
   const fits = (name: string, street?: string | null, website?: string | null) =>
-    m.street ? sameStreet(m.street, street) && (nameSim(m.name, name) >= 0.4 || (!!host && host === ownHost(website))) : nameSim(m.name, name) >= 0.85;
+    m.street ? sameStreet(m.street, street) && (nameSim(m.name, name) >= 0.4 || (!!host && host === ownHost(website)))
+      : nameSim(m.name, name) >= 0.85 && (!hint || sameStreet(hint, street));
   const inCands = cands.filter((c) => fits(c.name, c.street, c.website));
   if (inCands.length === 1) return { c: inCands[0], isNew: false };
   if (inCands.length > 1) return m.street ? { c: inCands.sort((a, b) => nameSim(m.name, b.name) - nameSim(m.name, a.name))[0], isNew: false } : "ambiguous";
-  const rows = inside.filter((r) => r.status !== "permanently_closed" && fits(r.name, r.street, r.websites[0]) && contains(r)).sort((a, b) => b.confidence - a.confidence);
+  const rows = inside.filter((r) => r.status !== "permanently_closed" && !nonCoffeeName(r.name) && !SEASONAL.test(r.name) && fits(r.name, r.street, r.websites[0]) && contains(r)).sort((a, b) => b.confidence - a.confidence);
   if (!rows.length) return null;
   if (!m.street && rows.length > 1) return "ambiguous";
   const c = fromOverture(rows[0]);
-  mergeRoaster(c, m);
+  mergeMention(c, m);
   for (const k of ["street", "postcode"] as const) if (m[k]) c[k] ??= m[k];
   return { c, isNew: true };
 }
@@ -433,21 +463,29 @@ function buildRecord(job: Job, c: Candidate, e: Enriched, old: any, ctx: { now: 
   const closed = fact("closed_permanently"), temp = fact("temporarily_closed");
   if (closed) { r.status = "closed"; prov.status = { value: "closed", via: "website", url: closed.url, quote: closed.quote }; }
   else if (temp) { r.status = "temporarily_closed"; prov.status = { value: "temporarily_closed", via: "website", url: temp.url, quote: temp.quote }; }
-  else if (siteOk) { r.status = "open"; r.last_verified_at = iso(new Date(page0!.fetchedAt)); prov.status = { value: "open", via: "website names the place and its address", url: page0!.url, quote: e.match }; }
-  else if (old?.status === "open" && e.site && !e.site.ok && e.site.dead) { r.status = "unverified"; conflict ??= `website dead: ${e.site.error}`; prov.status = { value: "unverified", via: "website unreachable", url: e.site.start }; }
-  else r.status = old?.status ?? "unverified";
+  else if (siteOk) { r.status = "open"; prov.status = { value: "open", via: "website names the place and its address", url: page0!.url, quote: e.match }; }
+  else {
+    // Only confirmed places are in the dataset. A place confirmed before whose website cannot be read this time keeps its
+    // last record unchanged and goes to a human; anything else not confirmed now is not written.
+    // Keep the last record only while the site cannot be read (down, blocked); a readable site that no longer names the
+    // place and its address does not confirm it, so the place leaves the dataset.
+    const known = old && old.status !== "unverified" && !old.merged_into && !!e.site && !e.site.ok;
+    const why = e.site?.dead ? `website dead: ${e.site.error}` : e.site && !e.site.ok ? `website not readable: ${e.site.error}` : "not confirmed on its own website in this run";
+    return { record: null, keep: !!known, provenance: prov, conflict: known ? why : undefined, tierWhy: "" };
+  }
+  if (SEASONAL.test(r.name) && r.status === "open") { r.status = "temporarily_closed"; prov.status = { value: r.status, via: "seasonal venue (fair or festival tent), closed outside its season" }; }
   if (r.status !== "closed") delete r.closed_on;
   r.checked_at = iso(ctx.now);
   if (job.mode === "refresh") {
     // Quarterly refresh: only hours and status.
     const oh = fact("opening_hours");
-    if (oh) { r.opening_hours = oh.value; r.open_sunday = opensOnSunday(oh.value); prov.opening_hours = { value: oh.value, via: "website", url: oh.url, quote: oh.quote }; }
+    if (oh) { r.opening_hours = oh.value; prov.opening_hours = { value: oh.value, via: "website", url: oh.url, quote: oh.quote }; }
     return { record: r, provenance: prov, conflict, tierWhy: "refresh only" };
   }
 
   // Facts from the site.
   const oh = fact("opening_hours");
-  if (oh) { r.opening_hours = oh.value; r.open_sunday = opensOnSunday(oh.value); prov.opening_hours = { value: oh.value, via: "website", url: oh.url, quote: oh.quote }; prov.open_sunday = { value: r.open_sunday, via: "derived from opening_hours" }; }
+  if (oh) { r.opening_hours = oh.value; prov.opening_hours = { value: oh.value, via: "website", url: oh.url, quote: oh.quote }; }
   for (const f of facts.values()) {
     if (/^(serving|amenities|food)\.(?!focus)/.test(f.field) || ["roasts_own_beans", "sells_beans", "sells_equipment", "offers_courses"].includes(f.field)) {
       set(r, f.field, f.value); prov[f.field] = { value: f.value, via: "website", url: f.url, quote: f.quote };
@@ -456,12 +494,9 @@ function buildRecord(job: Job, c: Candidate, e: Enriched, old: any, ctx: { now: 
   if (r.amenities?.cash_only === true && r.amenities.card_payment === true) { delete r.amenities.cash_only; delete r.amenities.card_payment; }
   const focus = fact("food_focus");
   if (focus) { set(r, "food.focus", focus.value); prov["food.focus"] = { value: focus.value, via: "website", url: focus.url, quote: focus.quote }; }
-  const own = (c as any).roasterOwn;
-  if (own && r.roasts_own_beans === undefined) { r.roasts_own_beans = true; prov.roasts_own_beans = { value: true, via: "roaster page lists it as the roaster's own café", url: own.url, quote: own.quote }; }
 
-  // Roasters served: named on the site, or listed on a roaster's page.
+  // Roasters served: as named on the place's own website.
   const served: any[] = [];
-  for (const rr of c.roasters) served.push({ name: rr.name, url: rr.url, ...(own && own.name === rr.name ? { own: true } : {}), _src: { via: "roaster page", url: rr.url, quote: rr.quote } });
   for (const f of e.facts.filter((x) => x.field === "roaster")) {
     if (served.some((s) => nameSim(s.name, f.value) >= 0.85)) continue;
     const isOwn = r.roasts_own_beans === true && nameSim(f.value, c.name) >= 0.75;
@@ -490,9 +525,9 @@ function buildRecord(job: Job, c: Candidate, e: Enriched, old: any, ctx: { now: 
       for (const p of e.site!.pages) for (const l of p.doc.links) { const m = l.href.match(re); if (m && !bad.test(m[1])) hits.add(m[1].toLowerCase()); }
       return hits.size === 1 ? [...hits][0] : null;
     };
-    const ig = social(/^https?:\/\/(?:www\.)?instagram\.com\/([A-Za-z0-9_.]+)\/?(?:\?.*)?$/, /^(p|reel|reels|explore|stories|accounts|tv)$/);
+    const ig = social(/^https?:\/\/(?:www\.)?instagram\.com\/([A-Za-z0-9_.]+)\/?(?:\?.*)?$/, /^(p|reel|reels|explore|stories|accounts|tv|share)$/);
     if (ig) { r.links.instagram = `https://www.instagram.com/${ig}/`; prov["links.instagram"] = { value: r.links.instagram, via: "linked from the place's website", url: page0!.url }; }
-    const fb = social(/^https?:\/\/(?:www\.|m\.)?facebook\.com\/([A-Za-z0-9_.-]{3,})\/?(?:\?.*)?$/, /^(sharer|share|dialog|plugins|tr|profile\.php|events|groups|pages)$/i);
+    const fb = social(/^https?:\/\/(?:www\.|m\.)?facebook\.com\/([A-Za-z0-9_.-]{3,})\/?(?:\?.*)?$/, /^(sharer|share|dialog|plugins|intent|tr|login|home|profile|events|groups|pages)(\.php)?$/i); // share buttons are not profiles
     if (fb) { r.links.facebook = `https://www.facebook.com/${fb}/`; prov["links.facebook"] = { value: r.links.facebook, via: "linked from the place's website", url: page0!.url }; }
   }
   if (!r.links?.instagram) {
@@ -507,10 +542,11 @@ function buildRecord(job: Job, c: Candidate, e: Enriched, old: any, ctx: { now: 
   // Tier.
   const t = tier({
     name: r.name, brand: c.brand, overtureCategory: c.category, roastsOwn: r.roasts_own_beans, filter: r.serving?.filter || r.serving?.pour_over,
-    specialtyClaim: !!fact("specialty") || !!(c as any).roasterSpecialty && !!own,
-    roasters: [...c.roasters.map((x) => ({ name: x.name, fromPartnerPage: x.specialty ?? !!(c as any).roasterSpecialty })), ...e.facts.filter((x) => x.field === "roaster").map((x) => ({ name: x.value, fromPartnerPage: false }))],
+    specialtyClaim: !!fact("specialty"),
+    roasters: e.facts.filter((x) => x.field === "roaster").map((x) => ({ name: x.value })),
     business: fact("primary_business")?.value, focus: focus?.value, siteVerified: siteOk,
-    servesPublic: !!r.opening_hours || !!(r.serving?.espresso || r.serving?.filter || r.serving?.pour_over) || c.roasters.length > 0 || ["cafe", "restaurant", "bakery", "bar", "hotel"].includes(fact("primary_business")?.value),
+    open: r.status === "open",
+    servesPublic: !!r.opening_hours || !!(r.serving?.espresso || r.serving?.filter || r.serving?.pour_over) || ["cafe", "restaurant", "bakery", "bar", "hotel"].includes(fact("primary_business")?.value),
   });
   r.specialty_tier = t.tier;
   prov.specialty_tier = { value: t.tier, via: `rule: ${t.why}`, url: fact("specialty")?.url, quote: fact("specialty")?.quote };
@@ -532,7 +568,7 @@ function diff(old: any, r: any, prov: Record<string, any>) {
   const a = flatten(old ?? {}), b = flatten(r);
   const out: Omit<Change, "id" | "name">[] = [];
   for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) {
-    if (["checked_at", "last_verified_at", "id"].includes(k)) continue;
+    if (["checked_at", "id"].includes(k)) continue;
     if (JSON.stringify(a[k]) === JSON.stringify(b[k])) continue;
     const pv = prov[k] ?? prov[k.split(".").slice(0, 2).join(".")] ?? prov[k.split(".")[0]];
     out.push({ field: k, old: a[k], new: b[k], url: pv?.url, quote: pv?.quote ?? pv?.via });
@@ -541,7 +577,7 @@ function diff(old: any, r: any, prov: Record<string, any>) {
 }
 
 export const CORE = ["name", "address.street_address", "address.postal_code", "location", "status", "opening_hours", "specialty_tier", "links.website|links.instagram", "serving.espresso", "serving.filter"];
-const FILL_FIELDS = ["address.street_address", "address.postal_code", "status=open", "opening_hours", "open_sunday", "description", "roasts_own_beans", "roasters_served", "serving.espresso", "serving.filter", "serving.pour_over", "serving.batch_brew", "serving.cold_brew", "serving.decaf", "serving.plant_milk", "amenities.wifi", "amenities.laptop_friendly", "amenities.kids_friendly", "amenities.vegan_options", "amenities.dogs_allowed", "amenities.outdoor_seating", "amenities.card_payment", "amenities.cash_only", "amenities.wheelchair_accessible", "food.focus", "food.breakfast", "food.lunch", "food.cakes_baked_in_house", "sells_beans", "sells_equipment", "offers_courses", "reusable_cup_systems", "prices.cappuccino", "operator", "links.website", "links.instagram", "links.facebook", "image", "xref.overture", "xref.wikidata"];
+const FILL_FIELDS = ["address.street_address", "address.postal_code", "status=open", "opening_hours", "description", "roasts_own_beans", "roasters_served", "serving.espresso", "serving.filter", "serving.pour_over", "serving.batch_brew", "serving.cold_brew", "serving.decaf", "serving.plant_milk", "amenities.wifi", "amenities.laptop_friendly", "amenities.kids_friendly", "amenities.vegan_options", "amenities.dogs_allowed", "amenities.outdoor_seating", "amenities.card_payment", "amenities.cash_only", "amenities.wheelchair_accessible", "food.focus", "food.breakfast", "food.lunch", "food.cakes_baked_in_house", "sells_beans", "sells_equipment", "offers_courses", "reusable_cup_systems", "prices.cappuccino", "operator", "links.website", "links.instagram", "links.facebook", "image", "xref.overture", "xref.wikidata"];
 const get = (r: any, p: string) => p.split(".").reduce((o, k) => o?.[k], r);
 const filled = (r: any, f: string) => f.includes("=") ? get(r, f.split("=")[0]) === f.split("=")[1] : f.includes("|") ? f.split("|").some((x) => get(r, x) !== undefined) : get(r, f) !== undefined;
 export const coreComplete = (r: any) => CORE.every((f) => filled(r, f)) && r.specialty_tier !== "unknown";
@@ -561,12 +597,12 @@ function computeMetrics(x: any) {
   for (const c of x.changes) perField[c.field] = (perField[c.field] ?? 0) + 1;
   const sites = [...x.results.values()];
   return {
-    run_id: x.runId, budget_stop: x.budgetStop,
+    run_id: x.runId,
     places_touched: x.written.length, places_in_file: live.length, queue: x.jobs.length,
     fields_changed: x.changes.length, fields_changed_by_field: perField,
     tiers, tier_ab_core_complete: ab.filter(coreComplete).length,
     sites: { tried: sites.filter((s: any) => s.websiteTried?.length).length, matched: sites.filter((s: any) => s.match).length, rendered_pages: fetchStats.rendered, search_found: sites.filter((s: any) => s.websiteSearch === "found").length, search_failed: sites.filter((s: any) => s.websiteSearch === "failed").length, injection_lines_removed: sites.reduce((n: number, s: any) => n + (s.injectionLines ?? 0), 0) },
-    research: { places: researchLog.size, new_websites: [...researchLog.values()].filter((r) => r.website).length, pages_added: [...researchLog.values()].reduce((n, r) => n + r.extraPages.length, 0), roaster_pages: [...researchLog.values()].reduce((n, r) => n + r.roasters.length, 0), searches: searchLog.length, search_errors: searchLog.filter((q) => q.error).length },
+    research: { places: researchLog.size, new_websites: [...researchLog.values()].filter((r) => r.website).length, pages_added: [...researchLog.values()].reduce((n, r) => n + r.extraPages.length, 0), searches: searchLog.length, search_errors: searchLog.filter((q) => q.error).length },
     pages: fetchStats, llm: usage, discovery: x.counts, overture_licences: licenceStats,
     conflicts: x.conflicts.length, unlocated: x.unlocated.length,
     errors: x.errors, timing_s: x.timing,

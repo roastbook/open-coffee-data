@@ -6,7 +6,7 @@ abstract: "Open dataset of coffee places and specialty cafés, validated against
 authors:
   - name: "Roastbook Open Coffee contributors"
     website: "https://roastbook.coffee/"
-license: MIT
+license: CDLA-Permissive-2.0
 repository-code: "https://github.com/Roastbook/open-coffee-data"
 url: "https://data.roastbook.coffee/"
 keywords:

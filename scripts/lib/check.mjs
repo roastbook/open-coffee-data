@@ -159,15 +159,18 @@ export function check({ datasetsDir, schemaDir, denylist, baseFiles = null }) {
     }
   }
 
-  // Ids never deleted.
+  // Ids never deleted, except coffee places: the dataset holds only places confirmed on their own website, so a place that
+  // can no longer be confirmed, or a duplicate, is removed. Each removal is listed as a warning for the reviewer.
   if (baseFiles) {
     for (const [rel, text] of baseFiles) {
       let doc;
       try { doc = JSON.parse(text); } catch { continue; }
       const family = parseSchemaUrl(doc.$schema)?.family ?? rel.split("/")[0];
       for (const r of doc[recordsKey(doc)] ?? []) {
-        if (r?.id && !ids.get(family)?.has(r.id))
-          err(`datasets/${rel}`, `id ${r.id} exists on the base branch but was deleted; ids are permanent, keep a tombstone (status closed or merged_into) instead`);
+        if (r?.id && !ids.get(family)?.has(r.id)) {
+          if (family === "coffee-places") warn(`datasets/${rel}`, `id ${r.id} (${r.name}) was removed; check that it was unconfirmed or a duplicate`);
+          else err(`datasets/${rel}`, `id ${r.id} exists on the base branch but was deleted; ids are permanent, keep a tombstone (merged_into) instead`);
+        }
       }
     }
   }

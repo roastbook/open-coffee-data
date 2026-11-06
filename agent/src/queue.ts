@@ -21,7 +21,7 @@ export function queueFor(places: any[], state: State, now = new Date()): Job[] {
   for (const p of places) {
     if (p.merged_into) continue;
     const t = tierRank[p.specialty_tier] ?? 2;
-    const verifiedAge = days(p.last_verified_at ?? p.checked_at, now);
+    const verifiedAge = days(p.checked_at, now);
     if (!state.enriched[p.id]) jobs.push({ id: p.id, reason: "never_enriched", mode: "full", rank: 0 + t / 10, age: verifiedAge });
     else if (state.conflicts[p.id]) jobs.push({ id: p.id, reason: "conflict", mode: "full", rank: 1 + t / 10, age: verifiedAge });
     else if (days(p.checked_at, now) > FULL_REFRESH_DAYS) jobs.push({ id: p.id, reason: "full_refresh", mode: "full", rank: 2 + t / 10, age: verifiedAge });

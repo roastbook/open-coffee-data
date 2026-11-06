@@ -20,20 +20,25 @@ export const BOOL_FIELDS = {
   "amenities.laptop_friendly": /laptop|steckdose|socket|co-?working|arbeiten|remote work/,
   "amenities.kids_friendly": /kind|kids|child|baby|hochstuhl|high ?chair|kinderwagen|stroller|pram|famil/,
   "amenities.vegan_options": /vegan/,
-  "amenities.dogs_allowed": /hund|dog/,
+  "amenities.dogs_allowed": /\b(hund|hunde|hunden|hundefreundlich|vierbeiner|dogs?|dog-?friendly)\b/, // not "Hotdog"
   "amenities.outdoor_seating": /terrasse|terrace|garten|garden|draußen|outside|outdoor|freisitz|außen|freien|schanigarten|sonnenplätze|patio/,
-  "amenities.card_payment": /karte|card|visa|mastercard|apple ?pay|google ?pay|kontaktlos|contactless|girocard|bargeldlos|cashless|\bec\b/,
+  "amenities.card_payment": /\b(karte|karten|kartenzahlung|ec-?karte|kreditkarten?|bankkarte|cards?|credit|debit)\b|visa|mastercard|maestro|american express|amex|apple ?pay|google ?pay|kontaktlos|contactless|girocard|bargeldlos|cashless|\bec\b/, // not "Speisekarte"
   "amenities.cash_only": /bar ?zahl|nur bar|cash|bargeld/,
   "amenities.wheelchair_accessible": /rollstuhl|wheelchair|barrierefrei|stufenlos|step-?free|barrierearm/,
   "food.breakfast": /frühstück|fruehstueck|breakfast/,
   "food.lunch": /mittag|lunch|tagesgericht|tageskarte/,
   "food.cakes_baked_in_house": /selbst ?gebacken|hausgemacht|hausgebacken|homemade|home-?made|backen wir|wir backen|baked? (in-?house|by us)|we bake|in-?house|eigene[nrm]? (backstube|konditorei|bäckerei|patisserie)|aus eigener (backstube|herstellung|produktion)/,
+  // Roasting is mentioned; a supplier mention ("Kaffee von der Rösterei X") is rejected in verify().
   roasts_own_beans: /röst|roast/,
-  sells_beans: /bohnen|beans|\d+ ?g\b|\bkg\b|ganze bohne|whole bean|gemahlen|ground coffee|kaffee kaufen|buy coffee|coffee to take home/,
+  sells_beans: /bohnen|beans|ganze bohne|whole bean|gemahlen|ground coffee|kaffee kaufen|buy coffee|coffee to take home|(kaffee|coffee|espresso)\D{0,30}\b\d+ ?(g|kg)\b|\b\d+ ?(g|kg)\b\D{0,30}(kaffee|coffee|espresso)/, // not a bare "250 g"
   sells_equipment: /grinder|mühle|v60|chemex|kalita|aeropress|dripper|kessel|kettle|zubehör|equipment|siebträger|filterpapier|filter paper|waage|scale|espressomaschine/,
   offers_courses: /kurs|course|workshop|seminar|schulung|cupping|training|class|barista/,
 } as const;
+// "Kaffee von der Rösterei X", "we serve beans from X Roasters": somebody else roasts.
+const SUPPLIER = /\b(von|vom|from|by|bezogen|beziehen|bezieht|liefert|geliefert|lieferant\w*|partner\w*|supplied|servieren|serviert|serve[sd]?|ausgeschenkt)\b[^.]{0,40}(röst|roast)/;
 const NEGATION = /\b(kein|keine|keinen|nicht|no|not|ohne|leider|sorry|ausschließlich bar)\b/;
+// A quote that says the thing is not there can never support true ("Kein WLAN", "no dogs", "ohne Terrasse").
+const NEGATED = /\b(kein|keine|keinen|keiner|keinem|nicht|no|not|ohne)\b/;
 const CAKE = /kuchen|cake|gebäck|pastr|torte|croissant|brownie|cookie|banana ?bread|zimtschnecke|cinnamon|tarte|backwaren|baked goods|muffin|scone|bagel|bread|brot/;
 
 const STRING_FIELDS = ["opening_hours", "street_address", "postal_code", "roaster", "operator", "register_id", "reusable_cup", "cappuccino_price", "food_focus", "primary_business"] as const;
@@ -138,7 +143,9 @@ export function verify(proposals: Proposal[], pages: SitePage[], ctx: { street?:
       if (typeof p.value !== "boolean") { reject(p, "not a boolean"); continue; }
       if (!(BOOL_FIELDS as any)[f].test(q)) { reject(p, "quote does not mention the field"); continue; }
       if (!p.value && !NEGATION.test(q)) { reject(p, "false without a negation in the quote"); continue; }
+      if (p.value && NEGATED.test(q)) { reject(p, "true but the quote is negated"); continue; }
       if (f === "food.cakes_baked_in_house" && !CAKE.test(q)) { reject(p, "quote does not mention cakes"); continue; }
+      if (f === "roasts_own_beans" && p.value && SUPPLIER.test(q)) { reject(p, "the quote names a roastery that supplies the place"); continue; }
       if (f === "amenities.cash_only" && p.value === true && !CASH_ONLY.test(q)) { reject(p, "quote does not say cash is the only way to pay"); continue; }
       ok(p.value);
     } else if (f in FLAG_FIELDS) {
@@ -229,19 +236,40 @@ function nearStreet(text: string, at: number, street?: string) {
   return false;
 }
 
-/** The site belongs to the place: a distinctive name token appears, and the street or postcode does (when known). */
-export function siteMatches(pages: SitePage[], c: { name: string; street?: string; postcode?: string }, host: string) {
+// Words that never identify a place on their own: what a shop is, and filler.
+const NOT_DISTINCTIVE = new Set(["cafe", "caffe", "kaffee", "coffee", "bar", "bistro", "kiosk", "service", "shop", "store", "restaurant", "bakery", "backerei", "konditorei", "eis", "eiscafe", "deli", "food", "kitchen", "kuche", "tagesbar", "lounge", "club", "haus", "house", "stube", "ecke", "markt", "laden", "the", "der", "die", "das", "und", "and", "am", "im", "an", "bei", "zum", "zur", "von", "in", "munchen", "muenchen", "munich"]);
+
+/**
+ * The site belongs to the place: its name is on the site, and its street or postcode too (when known).
+ * The name counts only through words that identify it: never a district, street, city or generic word
+ * (`placeWords`: the city's districts, street names and city names). Either the whole name appears as a phrase
+ * (or is the domain), or every distinctive word appears, and a single distinctive word also in the domain or title.
+ */
+export function siteMatches(pages: SitePage[], c: { name: string; street?: string; postcode?: string }, host: string, placeWords: Set<string> = new Set()) {
   const all = norm(pages.map(pageText).join("\n"));
-  const allFold = fold(all);
-  const toks = tokens(c.name).filter((t) => t.length >= 3);
-  const nameHit = !toks.length ? allFold.includes(fold(c.name)) : toks.some((t) => allFold.includes(t) || host.replace(/[^a-z0-9]/g, "").includes(t));
-  if (!nameHit) return { ok: false, reason: "name not on site" };
+  const text = ` ${fold(all)} `;
+  const words = new Set(text.split(" "));
+  const hostWord = host.replace(/^www\./, "").split(".").slice(0, -1).join("").replace(/[^a-z0-9]/g, "");
+  const title = new Set(fold(pages.map((p) => p.doc.title).join(" ")).split(" "));
+  const phrase = fold(c.name);
+  const streetWords = new Set(fold(c.street ?? "").split(" "));
+  const distinct = [...new Set(phrase.split(" "))].filter((t) => t.length >= 3 && !/^\d+$/.test(t) && !NOT_DISTINCTIVE.has(t) && !placeWords.has(t) && !streetWords.has(t));
+  const phraseHit = phrase.length >= 6 && (text.includes(` ${phrase} `) || hostWord === phrase.replace(/ /g, ""));
+  const wordsHit = distinct.length > 0 && distinct.every((t) => words.has(t) || hostWord.includes(t)) && (distinct.length >= 2 || hostWord.includes(distinct[0]) || title.has(distinct[0]));
+  if (!phraseHit && !wordsHit) return { ok: false, reason: distinct.length ? "name not on site" : "name has no distinctive word and is not on the site as a whole" };
   if (!c.street && !c.postcode) return { ok: true, reason: "name only" };
   const st = parseStreet(c.street);
   const stem = st?.street.replace(/strasse$|platz$|weg$|allee$|ring$|gasse$/, "");
-  const streetHit = !!stem && stem.length >= 4 && allFold.replace(/\s+/g, "").includes(stem);
+  const streetHit = !!stem && stem.length >= 4 && text.replace(/\s+/g, "").includes(stem);
   const pcHit = !!c.postcode && all.includes(c.postcode);
-  return streetHit || pcHit ? { ok: true, reason: streetHit ? "name and street" : "name and postcode" } : { ok: false, reason: "address not on site" };
+  return streetHit || pcHit ? { ok: true, reason: `${phraseHit ? "full name" : "distinctive name"} and ${streetHit ? "street" : "postcode"}` } : { ok: false, reason: "address not on site" };
+}
+
+/** Words of district, street and city names that must not identify a place (see siteMatches). */
+export function placeWordsFrom(names: (string | null | undefined)[]): Set<string> {
+  const out = new Set<string>();
+  for (const n of names) if (n) for (const w of fold(n.replace(/\s*\d.*$/, "")).split(" ")) if (w.length >= 3) out.add(w);
+  return out;
 }
 
 /** Distinct postcodes on non-legal pages: more than one means the site covers several locations. */

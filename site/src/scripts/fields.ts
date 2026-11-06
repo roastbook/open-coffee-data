@@ -12,7 +12,7 @@ export const LABELS: Record<string, string> = {
   id: "Id", type: "Type", name: "Name", status: "Status", merged_into: "Merged into", opened_on: "Opened", closed_on: "Closed",
   last_verified_at: "Last verified", checked_at: "Checked", address: "Address", "address.street_address": "Street",
   "address.postal_code": "Postal code", "address.locality": "City", "address.region": "Region", "address.country_code": "Country",
-  location: "Coordinates", opening_hours: "Opening hours", open_sunday: "Open on Sundays", description: "Description",
+  location: "Coordinates", opening_hours: "Opening hours", description: "Description",
   specialty_tier: "Specialty tier", roasts_own_beans: "Roasts own beans",
   roasters_served: "Roasters served", serving: "Serving", amenities: "Amenities", food: "Food", "food.focus": "Food focus",
   "food.breakfast": "Breakfast", "food.lunch": "Lunch", "food.cakes_baked_in_house": "Cakes baked in house",

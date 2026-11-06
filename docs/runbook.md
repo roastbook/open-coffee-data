@@ -3,7 +3,7 @@
 ## Adding a city
 
 1. Make sure the city is next in the Sourcing queue (Berlin, Hamburg, Munich, Cologne, Frankfurt, Düsseldorf, Leipzig, Stuttgart, then all German cities over 100,000 inhabitants, then Austria and Switzerland), or that a contributor is preparing it.
-2. Create `datasets/coffee-places/<country>/<city>.json`: `<country>` is the lower-case ISO code (`de`), `<city>` a lower-case ASCII slug (`koeln`, `frankfurt-am-main`). Set `$schema` to the coffee-places schema URL the other files use, and fill `meta`: `licence: MIT`, `country_code` (upper case), `city` (the slug), `city_name` (local name). There is no version field; the schema version is the `$schema` URL and the dataset version is the release tag.
+2. Create `datasets/coffee-places/<country>/<city>.json`: `<country>` is the lower-case ISO code (`de`), `<city>` a lower-case ASCII slug (`koeln`, `frankfurt-am-main`). Set `$schema` to the coffee-places schema URL the other files use, and fill `meta`: `licence: CDLA-Permissive-2.0`, `country_code` (upper case), `city` (the slug), `city_name` (local name). There is no version field; the schema version is the `$schema` URL and the dataset version is the release tag.
 3. Add places through the Sourcing agent (`data-agent.yml`, `workflow_dispatch` with the city) or by hand. Check every fact on a primary source.
 4. Run `scripts/validate.sh`, then `bun scripts/readme-stats.mjs` to refresh the README numbers, and `scripts/build.sh` to check the Explorer (the city appears in the city filter automatically; artifacts are generated per city).
 5. Open a pull request. Add the city to `docs/pilots/` if it gets a report, and to the repository topics if it is a major city (`scripts/repo-metadata.sh` in Roastbook/workflows).

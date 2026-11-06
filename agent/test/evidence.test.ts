@@ -53,3 +53,40 @@ test("on multi-location sites, hours must sit near this location's street", () =
   expect(verify(prop, p, { street: "Leopoldstraße 10", country: "DE", ownName: "x", multiLocation: true }).kept).toHaveLength(1);
   expect(verify(prop, p, { street: "Türkenstraße 5", country: "DE", ownName: "x", multiLocation: true }).kept).toHaveLength(0);
 });
+
+import { placeWordsFrom, siteMatches } from "../src/extract";
+
+test("siteMatches: districts, streets, cities and generic words never identify a place", () => {
+  const pg = (text: string, title = "") => [{ url: "https://mvsm.coffee/pages/locations", fetchedAt: "", rendered: false, doc: { title, text, links: [], jsonld: "" } }];
+  const words = placeWordsFrom(["München", "Schwabing-West", "Maxvorstadt", "Gärtnerplatz 6", "Reichenbachstraße 5", "Schellingstr. 133"]);
+  const locations = pg("Our cafés: Schwabing, Schellingstr. 133, 80799 München. Gärtnerplatz, Reichenbachstraße 5, 80469 München. Geöffnet ab Mai.");
+  // Wrong matches seen in Munich: a district, a square, a month.
+  expect(siteMatches(locations, { name: "Naturkosmetik Schwabing", street: "Schellingstr. 133" }, "mvsm.coffee", words).ok).toBe(false);
+  expect(siteMatches(locations, { name: "Mai Asia In München-schwabing", street: "Schellingstr. 133" }, "mvsm.coffee", words).ok).toBe(false);
+  expect(siteMatches(locations, { name: "Cafe Kiosk Am Gärtnerplatz", street: "Reichenbachstraße 25" }, "sweetspotkaffee.de", words).ok).toBe(false);
+  expect(siteMatches(pg("Aroma ist uns wichtig. Pestalozzistr. 24"), { name: "Aroma Kaffeebar", street: "Pestalozzistr. 24" }, "luffy-pancake.com", words).ok).toBe(false);
+  expect(siteMatches(pg("Kaffee Service für Büros, Feldmochinger Straße 384"), { name: "S & S Kaffee Service", street: "Feldmochinger Straße 384" }, "coffee-feeling.com", words).ok).toBe(false);
+  // Right matches: a distinctive word in the domain, the whole name, or two distinctive words.
+  expect(siteMatches(pg("Willkommen! Schellingstr. 133"), { name: "Man Versus Machine", street: "Schellingstr. 133" }, "mvsm.coffee", words).ok).toBe(false);
+  expect(siteMatches(pg("Man versus Machine Coffee Roasters, Schellingstr. 133"), { name: "Man Versus Machine", street: "Schellingstr. 133" }, "mvsm.coffee", words).ok).toBe(true);
+  expect(siteMatches(pg("Kaffee und Kuchen, Lilienstraße 34", "Café Blá"), { name: "Café Blá", street: "Lilienstraße 34" }, "cafebla.de", words).ok).toBe(true);
+  expect(siteMatches(pg("Aroma Kaffeebar – Pestalozzistr. 24"), { name: "Aroma Kaffeebar", street: "Pestalozzistr. 24" }, "aroma-kaffeebar.de", words).ok).toBe(true);
+});
+
+test("evidence regexes: negations, Speisekarte, Hotdog, supplier roasters, bare weights", () => {
+  const one = (field: any, value: any, quote: string) => verify([{ field, value, page: 1, quote }], [page(quote)], { country: "DE", ownName: "x", multiLocation: false }).kept.length;
+  expect(one("amenities.wifi", true, "Kein WLAN vorhanden")).toBe(0);
+  expect(one("amenities.dogs_allowed", true, "Hunde sind nicht erlaubt")).toBe(0);
+  expect(one("amenities.outdoor_seating", true, "Leider ohne Terrasse")).toBe(0);
+  expect(one("amenities.wifi", false, "Kein WLAN vorhanden")).toBe(1);
+  expect(one("amenities.card_payment", true, "Unsere Speisekarte als PDF")).toBe(0);
+  expect(one("amenities.card_payment", true, "Wir akzeptieren EC-Karte und Kreditkarte")).toBe(1);
+  expect(one("amenities.dogs_allowed", true, "Hotdog mit Röstzwiebeln")).toBe(0);
+  expect(one("amenities.dogs_allowed", true, "Hunde sind willkommen")).toBe(1);
+  expect(one("roasts_own_beans", true, "Wir servieren Kaffee von der Rösterei Vits")).toBe(0);
+  expect(one("roasts_own_beans", true, "Unseren Kaffee rösten wir selbst in Giesing")).toBe(1);
+  expect(one("roasts_own_beans", true, "We use a LORING roaster and build individual profiles")).toBe(1);
+  expect(one("sells_beans", true, "Bowl mit Lachs 250 g")).toBe(0);
+  expect(one("sells_beans", true, "Espresso Blend 250 g zum Mitnehmen")).toBe(1);
+  expect(one("sells_beans", true, "Ganze Bohnen für zu Hause")).toBe(1);
+});

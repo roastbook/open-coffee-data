@@ -23,7 +23,6 @@ export function mergeInto(a: Candidate, b: Candidate): Candidate {
   a.overtureIds = [...new Set([...a.overtureIds, ...b.overtureIds])];
   a.overtureCoffee ||= b.overtureCoffee;
   if (a.overtureStatus == null) a.overtureStatus = b.overtureStatus;
-  for (const r of b.roasters) if (!a.roasters.some((x) => x.name === r.name)) a.roasters.push(r);
   a.origins.push(...b.origins);
   return a;
 }

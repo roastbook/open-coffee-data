@@ -63,3 +63,10 @@ export const CASH_ONLY = /\bnur\b.{0,20}bar|ausschließlich.{0,20}bar|nur cash|c
 
 export const LEGAL_FORM = /\b(GmbH & Co\.? KG|gGmbH|GmbH|UG \(haftungsbeschränkt\)|UG|AG|KG|OHG|SE|eG|e\.\s?V\.|Ltd\.?|S\.?r\.?l\.?|SARL|Sàrl)(?![\w])/;
 export const NOT_LEGAL_ENTITY = /\be\.\s?K(fm|fr)?\.|\beK\b|\bGbR\b|\bInh(\.|aber)|\bInhaberin\b|\beingetragene[rn]? Kauf/;
+
+/** Share, dialog and intent endpoints are buttons on a page, never the place's own profile. */
+export const SHARE_PATH = /^\/?(sharer|share|dialog|plugins|intent|tr|login|home|events|groups|reel|reels|explore|stories|accounts|tv)(\.php)?(\/|\?|$)/i;
+export const isShareLink = (url: string | undefined | null) => { if (!url) return false; try { return SHARE_PATH.test(new URL(url).pathname); } catch { return true; } };
+
+/** Seasonal venues (beer tents, fairs, Christmas markets) are not permanent places. */
+export const SEASONAL = /\b(wiesn|oktoberfest\w*|festzelt|bierzelt|volksfest|auer dult|weihnachtsmarkt|christkindl\w*|tollwood|frühlingsfest|fruehlingsfest|winterzauber)\b/i;

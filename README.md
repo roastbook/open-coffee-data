@@ -9,7 +9,8 @@
 <p align="center">
   <a href="https://github.com/Roastbook/open-coffee-data/actions/workflows/ci.yml"><img src="https://github.com/Roastbook/open-coffee-data/actions/workflows/ci.yml/badge.svg" alt="CI (validation)" /></a>
   <a href="https://github.com/Roastbook/open-coffee-data/tags"><img src="https://img.shields.io/github/v/tag/Roastbook/open-coffee-data?label=dataset" alt="Dataset version" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue" alt="Licence: MIT" /></a>
+  <a href="LICENSE-DATA"><img src="https://img.shields.io/badge/data-CDLA--Permissive--2.0-blue" alt="Data licence: CDLA-Permissive-2.0" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue" alt="Code licence: MIT" /></a>
   <a href="https://data.roastbook.coffee/"><img src="https://img.shields.io/badge/explorer-data.roastbook.coffee-aa612f" alt="Data Explorer on GitHub Pages" /></a>
 </p>
 
@@ -17,7 +18,7 @@
 
 A list of places that serve coffee, starting with Munich: where they are, when they open, whether they serve filter coffee or roast their own beans, whether you can bring a laptop, and so on. Every record says when it was checked.
 
-The data follows the [Open Coffee Schema](https://schema.roastbook.coffee/) and is licensed MIT, so you can put it in an app, a map, a guide or a research project. We research it ourselves from open datasets and the places' own websites. Nothing comes from Google Maps, OpenStreetMap or closed café guides.
+The data follows the [Open Coffee Schema](https://schema.roastbook.coffee/) and the data is licensed [CDLA-Permissive-2.0](LICENSE-DATA), so you can put it in an app, a map, a guide or a research project. We research it ourselves from open datasets and the places' own websites. Nothing comes from Google Maps, OpenStreetMap or closed café guides.
 
 Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a table with filters, and a page per place where every field links to its definition.
 
@@ -25,14 +26,14 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 
 | | |
 |---|---:|
-| Coffee places | 1070 |
-| Tier A (specialty-focused) | 21 |
-| Tier B (serves specialty) | 17 |
-| Not specialty | 237 |
-| Not yet assessed | 795 |
+| Coffee places | 390 |
+| Tier A (specialty-focused) | 15 |
+| Tier B (serves specialty) | 19 |
+| Not specialty | 86 |
+| Not yet assessed | 270 |
 | Cities | 1 |
 | Brew methods | 21 |
-| Schema version | `brew-methods 0.3.0, coffee-places 0.1.0` |
+| Schema version | `0.3.0` |
 
 <!-- stats:end -->
 
@@ -44,10 +45,10 @@ Download a city and validate it against the schema it names in `$schema`:
 
 ```sh
 curl -sO https://data.roastbook.coffee/datasets/coffee-places/de/munich.json
-curl -sO https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.1.0.json
-curl -sO https://schema.roastbook.coffee/common/common.schema.v0.1.0.json
+curl -sO https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.2.0.json
+curl -sO https://schema.roastbook.coffee/common/common.schema.v0.2.0.json
 bunx -p ajv-cli@5 -p ajv-formats@3 ajv validate --spec=draft2020 --strict=true -c ajv-formats \
-  -s coffee-places.schema.v0.1.0.json -r common.schema.v0.1.0.json -d munich.json
+  -s coffee-places.schema.v0.2.0.json -r common.schema.v0.2.0.json -d munich.json
 ```
 
 Other formats (NDJSON and GeoJSON per city, one GeoParquet and one CSV for all places) are on the [downloads page](https://data.roastbook.coffee/downloads/), listed in [`/artifacts/index.json`](https://data.roastbook.coffee/artifacts/index.json). Explore the CSV in your browser with [Datasette Lite](https://lite.datasette.io/?csv=https%3A%2F%2Fdata.roastbook.coffee%2Fartifacts%2Fcoffee-places.csv).
@@ -100,8 +101,8 @@ Before schema v0.1.0 is tagged, point validation at a local checkout: `OPEN_COFF
 ## Versioning and stability
 
 - The dataset version is the release tag `YYYY.MM.DD.N`, for example `2026.11.05.1`, created by the Release workflow. Each tag is a GitHub Release and a Pages deploy. The version is not written into the dataset files; the build stamps it into `/artifacts/index.json` (`dataset_version`) and the Data Explorer footer.
-- The schema version is the `$schema` URL of each file, for example `…/coffee-places.schema.v0.1.0.json`; `meta` holds no version. All files of a family use the same version, and validation fetches the schemas of that version. A schema release opens a “bump schema” pull request here that rewrites the `$schema` URLs; the data moves to a new schema only through that PR. `/artifacts/index.json` lists the version per family in `schema_version`.
-- Ids (`cp-` plus 10 random characters) are permanent. Records are never deleted: closed places keep `status: closed`, duplicates become tombstones with `merged_into`. CI fails if an id disappears.
+- The schema version is the `$schema` URL of each file, for example `…/coffee-places.schema.v0.2.0.json`; `meta` holds no version. All files of a family use the same version, and validation fetches the schemas of that version. A schema release opens a “bump schema” pull request here that rewrites the `$schema` URLs; the data moves to a new schema only through that PR. `/artifacts/index.json` lists the version per family in `schema_version`.
+- Every place in the dataset was confirmed on its own website; `checked_at` says when it was last checked. Ids (`cp-` plus 10 random characters) are never reused or renamed. Closed places keep their record with `status: closed`; duplicates and places that can no longer be confirmed are removed, and CI lists every removed id for the reviewer.
 - URLs under `https://data.roastbook.coffee/datasets/` and `/artifacts/` are stable.
 
 ## Contributing
@@ -114,7 +115,9 @@ The Sourcing agent opens pull requests for `datasets/coffee-places/**` only; sch
 
 ## Licensing
 
-- Everything in this repository (data, code, site and docs) is [MIT](LICENSE).
+- **Data** (`datasets/**` and the generated artifacts) is licensed under the [Community Data License Agreement – Permissive 2.0](LICENSE-DATA) (CDLA-Permissive-2.0): use, change and share it freely; when you share the data, include the licence text or a link to it.
+- **Code, site and docs** are [MIT](LICENSE).
+- Third-party notices that come with the data are in [`NOTICE`](NOTICE).
 - Images are not stored here. A record's `image` links to the original file and names its licence, author and original page; the image keeps its own licence.
 - **No Google Maps data and no OpenStreetMap data are used.** Google Places may only confirm that a known place still exists, and we store nothing but its place id. OpenStreetMap is share-alike and is not used. Closed guides and review sites are never scraped or imported; ratings appear only as links.
 

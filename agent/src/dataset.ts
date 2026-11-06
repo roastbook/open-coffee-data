@@ -12,7 +12,7 @@ export function readCity(c: City): { $schema: string; meta: any; places: any[] }
 }
 
 // Stable key order inside a record, so diffs stay small.
-const ORDER = ["id", "name", "status", "merged_into", "opened_on", "closed_on", "last_verified_at", "checked_at", "address", "location", "opening_hours", "open_sunday", "description", "specialty_tier", "roasts_own_beans", "roasters_served", "serving", "amenities", "food", "sells_beans", "sells_equipment", "offers_courses", "reusable_cup_systems", "good_for", "awards", "prices", "operator", "links", "image", "xref", "external_ratings"];
+const ORDER = ["id", "type", "name", "status", "merged_into", "opened_on", "closed_on", "checked_at", "address", "location", "opening_hours", "open_sunday", "description", "specialty_tier", "roasts_own_beans", "roasters_served", "serving", "amenities", "food", "sells_beans", "sells_equipment", "offers_courses", "reusable_cup_systems", "good_for", "awards", "prices", "operator", "links", "image", "xref", "external_ratings"];
 export function orderRecord(r: any) {
   const out: any = {};
   for (const k of ORDER) if (r[k] !== undefined) out[k] = r[k];
@@ -24,8 +24,9 @@ export function orderRecord(r: any) {
 export function writeCity(c: City, doc: { places: any[] }) {
   const f = cityFile(c);
   mkdirSync(join(f, ".."), { recursive: true });
-  const meta = { licence: "MIT", country_code: c.country, city: c.slug, city_name: c.name };
-  const places = [...doc.places].sort((a, b) => (a.id < b.id ? -1 : 1)).map(orderRecord);
+  const meta = { licence: "CDLA-Permissive-2.0", country_code: c.country, city: c.slug, city_name: c.name };
+  // Every place is a schema.org CafeOrCoffeeShop (schema v0.3.0); last_verified_at and open_sunday are not written.
+  const places = [...doc.places].sort((a, b) => (a.id < b.id ? -1 : 1)).map(({ last_verified_at, open_sunday, ...p }) => orderRecord({ ...p, type: "CafeOrCoffeeShop" }));
   writeFileSync(f, JSON.stringify({ $schema: SCHEMA_URL, meta, places }, null, 2) + "\n");
   return f;
 }

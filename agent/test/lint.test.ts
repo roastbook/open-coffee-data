@@ -3,7 +3,7 @@ import { lintCity, lintPlace, mergeDuplicates, repair } from "../src/lint";
 import { cleanName, cleanStreet, isPlatformUrl } from "../src/rules";
 
 const place = (x: any = {}) => ({
-  id: "cp-0000000001", name: "Kaffee Beispiel", status: "open", last_verified_at: "2026-11-05T10:00:00Z", checked_at: "2026-11-05T10:00:00Z",
+  id: "cp-0000000001", type: "CafeOrCoffeeShop", name: "Kaffee Beispiel", status: "open", checked_at: "2026-11-05T10:00:00Z",
   address: { street_address: "Türkenstraße 52", postal_code: "80799", locality: "München", country_code: "DE" },
   location: { lat: 48.15, lon: 11.57 }, specialty_tier: "unknown", ...x,
 });
@@ -38,9 +38,9 @@ test("errors: platform website, contact data, contradictions, unsupported tier, 
   expect(rules(place({ description: "Call us on 089 123456 for a table at our café." , specialty_tier: "A", roasts_own_beans: true }))).toContain("error contact-data");
   expect(rules(place({ amenities: { cash_only: true, card_payment: true } }))).toContain("error payment");
   expect(rules(place({ serving: { pour_over: true, filter: false } }))).toContain("error serving");
-  expect(rules(place({ opening_hours: "Mo-Fr 08:00-18:00", open_sunday: true }))).toContain("error open-sunday");
   expect(rules(place({ specialty_tier: "A" }))).toContain("error tier-evidence");
-  expect(rules(place({ last_verified_at: undefined }))).toContain("error status-open-unverified");
+  expect(rules(place({ status: "unverified" }))).toContain("error unverified");
+  expect(rules(place({ type: undefined }))).toContain("error type");
   expect(rules(place({ operator: { name: "Max Muster e.K." } }))).toContain("error operator");
   expect(rules(place({ name: "Pizza Company Inh. Max Muster" }))).toContain("error person-name");
   expect(rules(place({ prices: { cappuccino: { amount: 39, currency: "EUR", observed_on: "2026-11-05" } } }))).toContain("error price");
@@ -55,7 +55,7 @@ test("warnings: names and street strings that need a look", () => {
 
 test("duplicates are found and merged into the richer record, ids kept", () => {
   const a = place({ id: "cp-000000000a", name: "Starbucks", status: "unverified" });
-  const b = place({ id: "cp-000000000b", name: "Starbucks", opening_hours: "Mo-Fr 08:00-18:00", open_sunday: false });
+  const b = place({ id: "cp-000000000b", name: "Starbucks", opening_hours: "Mo-Fr 08:00-18:00" });
   const other = place({ id: "cp-000000000c", name: "Café Kosmos", location: { lat: 48.16, lon: 11.57 } });
   expect(lintCity([a, b, other], "DE").filter((f) => f.rule === "duplicate")).toHaveLength(1);
   mergeDuplicates([a, b, other]);
@@ -65,14 +65,44 @@ test("duplicates are found and merged into the richer record, ids kept", () => {
 });
 
 test("repair removes what a platform page supported and never adds facts", () => {
-  const p = place({ name: "Cabo Cafe GmbH", specialty_tier: "B", roasters_served: [{ name: "X" }], opening_hours: "Mo-Fr 06:00-18:30", open_sunday: false, links: { website: "https://www.gelbeseiten.de/gsbiz/1" } });
+  const p = place({ name: "Cabo Cafe GmbH", specialty_tier: "B", roasters_served: [{ name: "X" }], opening_hours: "Mo-Fr 06:00-18:30", links: { website: "https://www.gelbeseiten.de/gsbiz/1" } });
   const notes = repair(p);
   expect(notes.length).toBeGreaterThan(0);
   expect(p).toMatchObject({ name: "Cabo Cafe", status: "unverified", specialty_tier: "unknown" });
   expect(p.opening_hours).toBeUndefined();
   expect(p.links).toBeUndefined();
-  expect(rules(p).filter((r) => r.startsWith("error"))).toEqual([]);
+  expect(rules(p).filter((r) => r.startsWith("error"))).toEqual(["error unverified"]); // nothing left that confirms it: remove the record
   const q = place({ address: { ...place().address, street_address: "casa@gmx.de, Ehrengutstraße 4" } });
   repair(q);
   expect(q.address.street_address).toBe("Ehrengutstraße 4");
+});
+
+test("share, dialog and intent links are not profiles", () => {
+  expect(rules(place({ links: { facebook: "https://www.facebook.com/sharer.php/" } }))).toContain("error share-link");
+  expect(rules(place({ links: { facebook: "https://www.facebook.com/dialog/share?app_id=1" } }))).toContain("error share-link");
+  expect(rules(place({ links: { facebook: "https://www.facebook.com/coffeetwins1/" } }))).not.toContain("error share-link");
+  const p = place({ links: { facebook: "https://www.facebook.com/sharer.php/", website: "https://cafe.example/" } });
+  repair(p);
+  expect(p.links).toEqual({ website: "https://cafe.example/" });
+});
+
+test("v0.3.0 repairs: open_sunday and last_verified_at go, type and instagram are normalised, tombstones are not open", () => {
+  const p = place({ open_sunday: true, last_verified_at: "2026-11-05T10:00:00Z", type: undefined, links: { instagram: "https://instagram.com/Kaffee.Beispiel?igsh=x" } });
+  repair(p);
+  expect(p.open_sunday).toBeUndefined();
+  expect(p.last_verified_at).toBeUndefined();
+  expect(p.type).toBe("CafeOrCoffeeShop");
+  expect(p.links.instagram).toBe("https://www.instagram.com/kaffee.beispiel/");
+  const a = place({ id: "cp-00000000a1", name: "Starbucks" }), b = place({ id: "cp-00000000b1", name: "Starbucks", opening_hours: "Mo-Fr 08:00-18:00" });
+  mergeDuplicates([a, b]);
+  expect(a.merged_into).toBe("cp-00000000b1");
+  expect(a.status).toBe("closed");
+});
+
+test("one place under two names (café and operator) at the same address and website is a duplicate", () => {
+  const a = place({ id: "cp-0000000c1a", name: "cafe Clara", links: { website: "https://cafe-clara.example/" } });
+  const b = place({ id: "cp-0000000c1b", name: "Christoph Jünger Gastronomie", links: { website: "https://cafe-clara.example/" }, location: { lat: 48.15003, lon: 11.57008 } });
+  mergeDuplicates([a, b]);
+  expect(b.merged_into).toBe("cp-0000000c1a"); // the person-like name is the one dropped
+  expect(a.merged_into).toBeUndefined();
 });
