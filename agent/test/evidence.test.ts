@@ -116,3 +116,14 @@ test("a confirmed address takes the building position from another Overture reco
   expect(addressPoint(pts, "Türkenstraße", "80799")).toBeNull(); // no house number
   expect(addressPoint([...pts, { id: "d", street: "Türkenstraße 52", postcode: "80799", lat: 48.16, lon: 11.58 }], "Türkenstraße 52", "80799")).toBeNull(); // records disagree
 });
+
+test("multi-branch sites: what a neutral menu page serves holds for every branch; hours still need the branch address", () => {
+  const pages = [page("Wir servieren Filterkaffee aus der V60 und Espresso."), page(`Sendlinger Str. 1, 80331 München. Mo–Fr 8–18 Uhr. ${"x ".repeat(800)} Reichenbachstr. 38, 80469 München. Mo–Fr 9–17 Uhr.`)];
+  const props: Proposal[] = [
+    { field: "serving.filter", value: true, page: 1, quote: "Filterkaffee aus der V60" },
+    { field: "amenities.wifi", value: true, page: 1, quote: "Filterkaffee aus der V60" },
+    { field: "opening_hours", value: "Mo-Fr 08:00-18:00", page: 2, quote: "Mo–Fr 8–18 Uhr" },
+  ];
+  const kept = verify(props, pages, { street: "Reichenbachstr. 38", postcode: "80469", country: "DE", ownName: "x", multiLocation: true }).kept.map((k) => k.field);
+  expect(kept).toEqual(["serving.filter"]); // wifi quote does not mention it; the 8-18 hours belong to the other branch
+});

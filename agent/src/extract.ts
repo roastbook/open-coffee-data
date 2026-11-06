@@ -117,6 +117,7 @@ export async function propose(name: string, address: string, pages: SitePage[], 
 /** Pages' own text as the model saw it (title line + text), for the evidence check. */
 const pageText = (p: SitePage) => (p.doc.title ? `Title: ${p.doc.title}\n` : "") + p.doc.text;
 
+const CHAIN_WIDE = /^(serving\.|sells_beans$|sells_equipment$|food\.cakes_baked_in_house$|reusable_cup$)/; // courses happen at one place
 // Facts about the business as a whole; everything else describes one location.
 const BRAND_FIELDS = new Set(["roasts_own_beans", "roaster", "operator", "register_id", "specialty", "primary_business", "food_focus"]);
 
@@ -134,7 +135,10 @@ export function verify(proposals: Proposal[], pages: SitePage[], ctx: { street?:
       // near its street, or on a page whose only postcode is this one.
       const pcs = postcodesOnSite([page], ctx.country);
       const ownPage = pcs.size === 1 && !!ctx.postcode && pcs.has(ctx.postcode) && !/sells_|prices|cappuccino/.test(p.field);
-      if (!ownPage && !nearStreet(text, at, ctx.street)) { reject(p, "several locations and the fact is not tied to this one"); continue; }
+      // What the business serves and sells holds for every branch, unless the quote sits next to another branch's address
+      // (footers often list all branches). Hours, address, amenities and meals still have to sit next to this branch's address.
+      const chainWide = CHAIN_WIDE.test(p.field) && !nearOtherBranch(text, at, ctx.postcode);
+      if (!ownPage && !chainWide && !nearStreet(text, at, ctx.street)) { reject(p, "several locations and the fact is not tied to this one"); continue; }
     }
     const q = norm(p.quote);
     const ok = (value: any) => kept.push({ field: p.field, value, url: page.url, quote: p.quote, fetchedAt: page.fetchedAt });
@@ -223,6 +227,16 @@ function resolveConflicts(kept: Verified[], rejected: Rejected[]): Verified[] {
   return out;
 }
 
+/** The nearest postcode within 300 characters of the quote is another branch's. */
+function nearOtherBranch(text: string, at: number, postcode?: string) {
+  let best: { d: number; pc: string } | null = null;
+  for (const m of text.matchAll(/\b\d{4,5}\b(?=\s+[A-ZÄÖÜ])/g)) {
+    const d = Math.abs(m.index! - at);
+    if (d <= 300 && (!best || d < best.d)) best = { d, pc: m[0] };
+  }
+  return !!best && best.pc !== postcode;
+}
+
 /** The quote at `at` sits within 900 characters of this location's street name. */
 function nearStreet(text: string, at: number, street?: string) {
   const s = parseStreet(street);
@@ -237,7 +251,7 @@ function nearStreet(text: string, at: number, street?: string) {
 }
 
 // Words that never identify a place on their own: what a shop is, and filler.
-const NOT_DISTINCTIVE = new Set(["cafe", "caffe", "kaffee", "coffee", "bar", "bistro", "kiosk", "service", "shop", "store", "restaurant", "bakery", "backerei", "konditorei", "eis", "eiscafe", "deli", "food", "kitchen", "kuche", "tagesbar", "lounge", "club", "haus", "house", "stube", "ecke", "markt", "laden", "the", "der", "die", "das", "und", "and", "am", "im", "an", "bei", "zum", "zur", "von", "in", "munchen", "muenchen", "munich"]);
+const NOT_DISTINCTIVE = new Set(["cafe", "caffe", "kaffee", "coffee", "bar", "bistro", "kiosk", "service", "shop", "store", "restaurant", "bakery", "backerei", "konditorei", "eis", "eiscafe", "deli", "food", "kitchen", "kuche", "tagesbar", "lounge", "club", "haus", "house", "stube", "ecke", "markt", "laden", "the", "der", "die", "das", "und", "and", "am", "im", "an", "bei", "zum", "zur", "von", "in", "munchen", "muenchen", "munich", "two", "zwei", "three", "drei", "four", "vier", "ii", "iii", "iv"]); // branch numbers
 
 /**
  * The site belongs to the place: its name is on the site, and its street or postcode too (when known).

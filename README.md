@@ -26,11 +26,11 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 
 | | |
 |---|---:|
-| Coffee places | 390 |
+| Coffee places | 392 |
 | Tier A (specialty-focused) | 15 |
 | Tier B (serves specialty) | 19 |
 | Not specialty | 86 |
-| Not yet assessed | 270 |
+| Not yet assessed | 272 |
 | Cities | 1 |
 | Brew methods | 21 |
 | Schema version | `brew-methods 0.4.0, coffee-places 0.3.0` |
