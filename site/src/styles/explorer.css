@@ -160,8 +160,8 @@ details summary {
 }
 
 .tier-icon[data-tier="other"] {
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 0.8rem;
+  height: 0.8rem;
   background: var(--tier-other);
   margin: 0 0.2rem;
 }
@@ -235,6 +235,24 @@ details summary {
 
 .pane-map {
   position: relative;
+}
+
+.map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.map-toolbar p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.map-toolbar button {
+  min-height: 44px;
 }
 
 .map {

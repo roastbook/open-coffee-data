@@ -25,6 +25,7 @@ function requiredElement<T extends Element>(element: T | null, selector: string)
 const root = requiredElement(document.querySelector<HTMLElement>("[data-explorer]"), "[data-explorer]");
 const form = requiredElement(root.querySelector<HTMLFormElement>("[data-filters]"), "[data-filters]");
 const countEl = requiredElement(root.querySelector<HTMLElement>("[data-count]"), "[data-count]");
+const showAll = requiredElement(root.querySelector<HTMLButtonElement>("[data-show-all]"), "[data-show-all]");
 const panes = requiredElement(root.querySelector<HTMLElement>("[data-panes]"), "[data-panes]");
 const tableEl = requiredElement(root.querySelector<HTMLTableElement>("[data-table]"), "[data-table]");
 const pager = requiredElement(root.querySelector<HTMLElement>("[data-pager]"), "[data-pager]");
@@ -154,6 +155,7 @@ function setView(view: "map" | "table") {
 
 function apply({ keepPage = false, fromMove = false } = {}) {
   const base = places.filter((p) => matches(p, state.filters, null));
+  showAll.disabled = base.length === 0;
   const bounds = state.filters.inview ? map?.bounds() ?? null : null;
   const list = bounds ? base.filter((p) => matches(p, state.filters, bounds)) : base;
   table.setOptions((prev) => ({ ...prev, data: list }));
@@ -165,6 +167,13 @@ function apply({ keepPage = false, fromMove = false } = {}) {
   history.replaceState(null, "", hash ? `#${hash}` : location.pathname + location.search);
   if (!fromMove) map?.setData(base); // the map keeps showing places outside the view
 }
+
+showAll.addEventListener("click", () => {
+  state.filters.inview = false;
+  writeForm(state.filters);
+  apply();
+  map?.fitResults();
+});
 
 form.addEventListener("input", () => { state.filters = readForm(); apply(); });
 form.addEventListener("reset", () => setTimeout(() => { state.filters = emptyFilters(); writeForm(state.filters); apply(); }));
@@ -202,7 +211,9 @@ function renderDetail(p: ExplorerPlace) {
 
 function openPlace(id: string | null, { fromHash = false } = {}) {
   const p = id ? byId.get(id) : null;
+  map?.select(p?.id ?? null);
   if (!p) {
+    for (const tr of requiredElement(tableEl.tBodies.item(0), "tbody").rows) tr.classList.remove("is-selected");
     if (!detail.hidden) { detail.hidden = true; root.classList.remove("has-detail"); lastOpener?.focus(); }
     return;
   }

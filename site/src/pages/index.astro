@@ -87,6 +87,10 @@ import "../styles/explorer.css";
       </div>
       <div class="panes" data-panes data-active="map">
         <div class="pane pane-map">
+          <div class="map-toolbar">
+            <p class="muted">Select a café for details. Zoom in for names.</p>
+            <button type="button" data-show-all disabled>Show all results</button>
+          </div>
           <div class="map" data-map role="region" aria-label="Map of the filtered places. The table lists the same places for keyboard and screen reader use."></div>
           <ul class="legend card" aria-label="Map legend">
             <li><span class="tier-icon" data-tier="A" aria-hidden="true"></span> Tier A</li>
