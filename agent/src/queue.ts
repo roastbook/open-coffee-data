@@ -20,7 +20,7 @@ export function queueFor(places: { id: string; merged_into?: string; specialty_t
   const jobs: (Job & { rank: number; age: number })[] = [];
   for (const p of places) {
     if (p.merged_into) continue;
-    const t = tierRank.get(p.specialty_tier ?? "unknown") ?? 2;
+    const t = priorityTier(p.specialty_tier);
     const verifiedAge = days(p.checked_at, now);
     if (!state.enriched[p.id]) jobs.push({ id: p.id, reason: "never_enriched", mode: "full", rank: 0 + t / 10, age: verifiedAge });
     else if (state.conflicts[p.id]) jobs.push({ id: p.id, reason: "conflict", mode: "full", rank: 1 + t / 10, age: verifiedAge });
@@ -34,4 +34,8 @@ export function queueFor(places: { id: string; merged_into?: string; specialty_t
 export function nextCity(now = new Date()): City | null {
   for (const c of cities) if (existsSync(cityFile(c)) && queueFor(readCity(c).places, loadState(c.slug), now).length) return c;
   return cities.find((c) => !existsSync(cityFile(c)) && c.boundary) ?? null;
+}
+
+function priorityTier(tier?: string): number {
+  return tierRank.get(tier ?? "unknown") ?? 2;
 }
