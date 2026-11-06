@@ -15,7 +15,6 @@ export function streetStemIn(street: string, foldedText: string) {
   return !!s && s.length >= 4 && foldedText.includes(s);
 }
 
-/** schema.org GeoCoordinates published in the site's own JSON-LD. */
 /** Position of the building at a confirmed address: every Overture record there must agree within 30 m. */
 export function addressPoint(points: { street: string; postcode: string | null; lat: number; lon: number; id: string }[], street: string, postcode?: string) {
   const s = parseStreet(street);
@@ -58,9 +57,10 @@ export function fromRecord(p: CoffeeRecord | null | undefined): Candidate | null
 function mergeMention(target: Candidate, m: Candidate) {
   target.website ??= m.website;
   target.origins.push(...m.origins);
+  target.street ??= m.street;
+  target.postcode ??= m.postcode;
 }
 
-/** Find the place a mention (no coordinates) refers to: an existing candidate, or an Overture place in the city at that address. */
 /** A street name in free text ("… Herzogstraße 9, 80803 München" -> "Herzogstraße 9"), or null. */
 
 export function streetHint(text: string): string | null {
@@ -68,10 +68,11 @@ export function streetHint(text: string): string | null {
   return m ? `${m[1]}${m[2] ? ` ${m[2]}` : ""}` : null;
 }
 
+/** Match a mention to an existing candidate or an Overture place in the city. */
 export function locate(m: Candidate, cands: Candidate[], inside: Row[], contains: (point: LatLon) => boolean): { c: Candidate; isNew: boolean } | "ambiguous" | null {
   const host = ownHost(m.website);
   // A mention without a parsed street may still name one ("Suuapinga Café Herzogstraße"): then a branch elsewhere is not it.
-  const hint = m.street ? null : streetHint(`${m.name} ${m.origins.map((o) => o.quote ?? "").join(" ")}`);
+  const hint = mentionStreetHint(m);
   const fits = (name: string, street?: string | null, website?: string | null) =>
     m.street ? sameStreet(m.street, street) && (nameSim(m.name, name) >= 0.4 || (!!host && host === ownHost(website)))
       : nameSim(m.name, name) >= 0.85 && (!hint || sameStreet(hint, street));
@@ -83,8 +84,6 @@ export function locate(m: Candidate, cands: Candidate[], inside: Row[], contains
   if (ambiguousRows(m, rows)) return "ambiguous";
   const c = fromOverture(rows[0]);
   mergeMention(c, m);
-  c.street ??= m.street;
-  c.postcode ??= m.postcode;
   return { c, isNew: true };
 }
 
@@ -95,4 +94,8 @@ const ambiguousRows = (m: Candidate, rows: Row[]) => !m.street && rows.length > 
 function existingBranch(m: Candidate, matches: Candidate[]): { c: Candidate; isNew: boolean } | "ambiguous" {
   if (!m.street) return "ambiguous";
   return { c: matches.sort((a, b) => nameSim(m.name, b.name) - nameSim(m.name, a.name))[0], isNew: false };
+}
+
+function mentionStreetHint(m: Candidate) {
+  return m.street ? null : streetHint(`${m.name} ${m.origins.map((o) => o.quote ?? "").join(" ")}`);
 }

@@ -16,3 +16,9 @@ export const stringValue = { type: "string" };
 export const numberValue = { type: "number" };
 export const stringArray = { type: "array", items: stringValue };
 export const optionalText = { type: ["string", "null"] };
+
+/** Validate list entries independently so a malformed sibling cannot discard valid results. */
+export function payloadItems<T>(schema: object) {
+  const validate: ValidateFunction<T> = ajv.compile<T>(schema);
+  return (values: unknown[]): T[] => values.filter((value): value is T => validate(value));
+}

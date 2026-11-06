@@ -40,7 +40,7 @@ async function leadsFromSearchingModel(c: Candidate, city: string, siteHost: str
   try { text = await searchingModel(LEAD_PROMPT(c, city, siteHost)); } catch { return []; }
   let j: ReturnType<typeof ownSites>;
   try { j = ownSites(JSON.parse(text.match(/\{[\s\S]*\}/)?.[0] ?? "{}")); } catch { return []; }
-  return (j.own_site ?? []).filter((u) => typeof u === "string" && /^https?:\/\//.test(u)).map((u: string) => u.replace(/[?&]utm_source=openai$/, "")).slice(0, 6);
+  return j.own_site.filter((u) => typeof u === "string" && /^https?:\/\//.test(u)).map((u: string) => u.replace(/[?&]utm_source=openai$/, "")).slice(0, 6);
 }
 
 async function leadsFromSearch(c: Candidate, city: string, siteHost: string | null, out: Research): Promise<string[]> {

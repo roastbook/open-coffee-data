@@ -132,7 +132,6 @@ function lintLinks(p: CoffeeRecord, err: Report) {
   for (const k of ["facebook", "instagram"] as const) if (isShareLink(p.links?.[k])) err("share-link", `links.${k} ${p.links?.[k]} is a share or dialog link, not the place's profile`);
   if (isPlatformUrl(p.links?.website)) err("website-platform", `links.website ${p.links?.website} is a directory, platform or social site, not the place's own website`);
   if (p.prices?.cappuccino?.source_url && isPlatformUrl(p.prices.cappuccino.source_url)) err("price-platform", "price observed on a platform site");
-
 }
 
 function lintContactData(p: CoffeeRecord, err: Report) {
@@ -142,7 +141,6 @@ function lintContactData(p: CoffeeRecord, err: Report) {
     if (EMAIL.test(s)) err("contact-data", `${path} contains an email address`);
     else if (PHONE.test(s) && path !== "opening_hours" && !path.includes("register_id")) err("contact-data", `${path} contains a phone number`);
   }
-
 }
 
 function lintIdentity(p: CoffeeRecord, country: string, err: Report, warn: Report) {
@@ -151,7 +149,6 @@ function lintIdentity(p: CoffeeRecord, country: string, err: Report, warn: Repor
   if (PERSONLIKE.test(p.name)) warn("person-name", `name "${p.name}" may be a person's name; use the name on the sign`);
   if (OWNER_IN_NAME.test(p.name)) err("person-name", `name "${p.name}" names an owner; people's names are personal data`);
   lintAddress(p, country, err, warn);
-
 }
 
 function lintStatus(p: CoffeeRecord, now: Date, err: Report, warn: Report) {
@@ -160,7 +157,6 @@ function lintStatus(p: CoffeeRecord, now: Date, err: Report, warn: Report) {
   if (p.status === "unverified") err("unverified", "unconfirmed places are not stored; confirm the place or remove the record");
   if ((now.getTime() - Date.parse(p.checked_at)) / 86400000 > 182 && p.status === "open") warn("stale", `open but last checked ${p.checked_at.slice(0, 10)}`);
   if (p.type !== "CafeOrCoffeeShop") err("type", `type must be CafeOrCoffeeShop, got ${JSON.stringify(p.type)}`);
-
 }
 
 function lintContradictions(p: CoffeeRecord, err: Report, warn: Report) {
@@ -169,13 +165,11 @@ function lintContradictions(p: CoffeeRecord, err: Report, warn: Report) {
   if (a.cash_only === true && a.card_payment === true) err("payment", "cash_only and card_payment are both true");
   if (hasFilterMethod(s) && s.filter === false) err("serving", "pour_over or batch_brew true but filter false");
   lintProfileAndPrice(p, err, warn);
-
 }
 
 function lintOperator(p: CoffeeRecord, err: Report) {
   // Operator must be a legal entity.
   if (p.operator && (!LEGAL_FORM.test(p.operator.name) || NOT_LEGAL_ENTITY.test(p.operator.name))) err("operator", `operator "${p.operator.name}" is not a legal entity`);
-
 }
 
 function lintTier(p: CoffeeRecord, err: Report, warn: Report) {
@@ -184,7 +178,6 @@ function lintTier(p: CoffeeRecord, err: Report, warn: Report) {
     err("tier-evidence", `tier ${p.specialty_tier} without roasts_own_beans or roasters_served`);
   if (p.description && !hasSpecialtyTier(p)) warn("description", "description on a place that is not tier A or B");
   lintVenue(p, err, warn);
-
 }
 
 function repairLinks(p: CoffeeRecord, done: string[]) {
@@ -197,7 +190,6 @@ function repairLinks(p: CoffeeRecord, done: string[]) {
     done.push("removed a platform page used as website and every value read from it");
   }
   repairShareLinks(p, done);
-
 }
 
 function repairIdentity(p: CoffeeRecord, done: string[]) {
@@ -208,7 +200,6 @@ function repairIdentity(p: CoffeeRecord, done: string[]) {
     if (p.description) p.description = describe(p); // generated from the fields, so it follows the name
   }
   repairStreet(p, done);
-
 }
 
 function repairLegacy(p: CoffeeRecord, done: string[]) {
@@ -217,7 +208,6 @@ function repairLegacy(p: CoffeeRecord, done: string[]) {
   if (p.last_verified_at !== undefined) { delete p.last_verified_at; done.push("removed last_verified_at (records in the repository are confirmed)"); }
   const igm = p.links?.instagram?.match(/^https?:\/\/(?:www\.)?instagram\.com\/([A-Za-z0-9_.]+)\/?(?:\?.*)?$/);
   if (igm && p.links && p.links.instagram !== `https://www.instagram.com/${igm[1].toLowerCase()}/`) { p.links.instagram = `https://www.instagram.com/${igm[1].toLowerCase()}/`; done.push("instagram normalised"); }
-
 }
 
 function repairContradictions(p: CoffeeRecord, done: string[]) {
@@ -226,7 +216,6 @@ function repairContradictions(p: CoffeeRecord, done: string[]) {
   if (s && hasFilterMethod(s) && s.filter === false) { delete s.filter; delete s.pour_over; delete s.batch_brew; done.push("removed contradicting filter values"); }
   if (s && hasFilterMethod(s) && s.filter === undefined) { s.filter = true; done.push("filter derived from pour_over or batch_brew"); }
   repairInstagram(p, done);
-
 }
 
 function repairEvidence(p: CoffeeRecord, done: string[]) {
@@ -234,7 +223,6 @@ function repairEvidence(p: CoffeeRecord, done: string[]) {
   if (price !== undefined && (price < 1.5 || price > 9)) { delete p.prices; done.push("removed implausible price"); }
   if (p.operator && (!LEGAL_FORM.test(p.operator.name) || NOT_LEGAL_ENTITY.test(p.operator.name))) { delete p.operator; done.push("removed operator that is not a legal entity"); }
   repairTierEvidence(p, done);
-
 }
 
 function removeSiteFacts(p: CoffeeRecord) {
@@ -261,14 +249,12 @@ function repairShareLinks(p: CoffeeRecord, done: string[]) {
     if (isShareLink(links.instagram)) { done.push(`removed share link ${links.instagram}`); delete links.instagram; }
   }
   if (p.links && !Object.keys(p.links).length) delete p.links;
-
 }
 
 function repairTierEvidence(p: CoffeeRecord, done: string[]) {
   if (hasSpecialtyTier(p) && p.roasts_own_beans !== true && !(p.roasters_served ?? []).length) { p.specialty_tier = "unknown"; done.push("tier without evidence -> unknown"); }
   if (p.description && !hasSpecialtyTier(p)) { delete p.description; done.push("removed description of a place that is not tier A or B"); }
   removeEmptyGroups(p);
-
 }
 
 function removeEmptyGroups(p: CoffeeRecord) {
@@ -276,7 +262,6 @@ function removeEmptyGroups(p: CoffeeRecord) {
   if (p.serving && !Object.keys(p.serving).length) delete p.serving;
   if (p.food && !Object.keys(p.food).length) delete p.food;
   if (p.links && !Object.keys(p.links).length) delete p.links;
-
 }
 
 function repairStreet(p: CoffeeRecord, done: string[]) {
@@ -286,13 +271,11 @@ function repairStreet(p: CoffeeRecord, done: string[]) {
     if (c && c !== st) { p.address.street_address = c; done.push(`street "${st}" -> "${c}"`); }
     else if (!c || EMAIL.test(st) || PHONE.test(st)) { delete p.address.street_address; delete p.address.postal_code; done.push(`removed street "${st}"`); }
   }
-
 }
 
 function repairInstagram(p: CoffeeRecord, done: string[]) {
   const ig = p.links?.instagram?.match(/^https:\/\/www\.instagram\.com\/([^/]+)\/$/)?.[1];
   if (p.links?.instagram && (!ig || !/^(?!\.)(?!.*\.\.)[A-Za-z0-9._]{1,30}(?<!\.)$/.test(ig))) { done.push(`removed invalid instagram ${p.links.instagram}`); delete p.links.instagram; }
-
 }
 
 function lintProfileAndPrice(p: CoffeeRecord, err: Report, warn: Report) {
@@ -315,7 +298,6 @@ function lintAddress(p: CoffeeRecord, country: string, err: Report, warn: Report
   const pc = p.address?.postal_code;
   if (pc && postcodePattern(country)?.test(pc) === false) err("postcode", `postal_code ${pc} is not a ${country} postcode`);
   if (pc && !st) warn("address", "postal_code without street_address");
-
 }
 
 const hasSpecialtyTier = (p: CoffeeRecord) => p.specialty_tier === "A" || p.specialty_tier === "B";
@@ -351,5 +333,4 @@ if (import.meta.main) {
 function lintPrice(p: CoffeeRecord, err: Report) {
   const price = p.prices?.cappuccino?.amount;
   if (price !== undefined && (price < 1.5 || price > 9)) err("price", `cappuccino price ${price} is implausible`);
-
 }

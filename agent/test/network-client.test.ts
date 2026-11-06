@@ -59,3 +59,36 @@ test("client errors are not retried and missing configuration makes no request",
     Object.assign(llm, original);
   }
 });
+
+test("discovery retains valid siblings and retries failed district replies without caching failures", async () => {
+  const provider = await import("../src/llm");
+  const { webLeads } = await import("../src/discovery/webleads");
+  const original = llm.researchModel;
+  const city = { slug: `network-test-${randomUUID()}`, name: "Test City", wikidata: "Q1" };
+  const file = join(CACHE, "discovery", `${city.slug}-webleads.json`);
+  const fetcher = spyOn(globalThis, "fetch");
+  const searcher = spyOn(provider, "searchingModel");
+  const errors = spyOn(console, "error").mockImplementation(() => {});
+  const bindings = Array.from({ length: 20 }, (_, i) => ({ d: { value: `https://www.wikidata.org/entity/Q${i + 2}` }, dLabel: { value: `District ${i}` } }));
+  try {
+    llm.researchModel = "test-model";
+    fetcher.mockResolvedValueOnce(Response.json({ results: { bindings } }));
+    fetcher.mockResolvedValueOnce(Response.json({ results: { bindings } }));
+    searcher.mockResolvedValue('{"places":[null,{"name":["bad"]},{"name":"Valid Coffee","website":"https://valid.example"}]}');
+    searcher.mockRejectedValueOnce(new Error("provider unavailable"));
+    const partial = await webLeads(city);
+    expect(partial.seeds.map((seed) => seed.name)).toContain("Valid Coffee");
+    expect(existsSync(file)).toBe(false);
+    expect(errors).toHaveBeenCalled();
+    const complete = await webLeads(city);
+    expect(complete.seeds.map((seed) => seed.name)).toContain("Valid Coffee");
+    expect(existsSync(file)).toBe(true);
+    expect(searcher).toHaveBeenCalledTimes(40);
+    await webLeads(city);
+    expect(searcher).toHaveBeenCalledTimes(40);
+  } finally {
+    llm.researchModel = original;
+    fetcher.mockRestore(); searcher.mockRestore(); errors.mockRestore();
+    if (existsSync(file)) unlinkSync(file);
+  }
+});

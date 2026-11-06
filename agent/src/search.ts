@@ -49,13 +49,13 @@ async function searchNow(query: string): Promise<Result[]> {
     if (process.env.BRAVE_SEARCH_API_KEY) {
       const res = await fetch(`https://api.search.brave.com/res/v1/web/search?count=10&q=${encodeURIComponent(query)}`, { headers: { "x-subscription-token": process.env.BRAVE_SEARCH_API_KEY, accept: "application/json" }, signal: AbortSignal.timeout(20000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      raw = (searchReply(await res.json()).web?.results ?? []).map((r) => ({ url: r.url, title: r.title ?? "", snippet: r.description ?? "" }));
+      raw = searchReply(await res.json()).web.results.map((r) => ({ url: r.url, title: r.title ?? "", snippet: r.description ?? "" }));
     } else {
       const baseUrl = process.env.SEARXNG_URL;
       if (!baseUrl) return [];
       const res = await fetch(`${baseUrl.replace(/\/$/, "")}/search?format=json&language=de&q=${encodeURIComponent(query)}`, { signal: AbortSignal.timeout(30000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      raw = (searchReply(await res.json()).results ?? []).map((r) => ({ url: r.url, title: r.title ?? "", snippet: r.content ?? "" }));
+      raw = searchReply(await res.json()).results.map((r) => ({ url: r.url, title: r.title ?? "", snippet: r.content ?? "" }));
     }
     const out = raw.filter((r) => { try { return !BLOCKED_RESULT.test(new URL(r.url).hostname); } catch { return false; } }).slice(0, 12);
     searchLog.push({ query, results: out.length });

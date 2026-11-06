@@ -28,7 +28,7 @@ export async function districts(qid: string): Promise<string[]> {
   return [...new Set(out)];
 }
 
-const json = (text: string) => { try { return placeLeads(JSON.parse(text.match(/\{[\s\S]*\}/)?.[0] ?? "{}")); } catch { return { places: [] }; } };
+const json = (text: string) => placeLeads(JSON.parse(text.match(/\{[\s\S]*\}/)?.[0] ?? "{}"));
 const urlOk = (u: string | null | undefined): u is string => typeof u === "string" && /^https?:\/\//.test(u) && !isPlatformUrl(u);
 const clean = (u: string) => u.replace(/[?&]utm_source=openai$/, "");
 
@@ -44,21 +44,24 @@ export async function webLeads(city: { slug: string; name: string; wikidata?: st
   if (!llm.researchModel || !city.wikidata) return { seeds: [], districts: 0 };
   const ds = await districts(city.wikidata);
   const seeds: Seed[] = [];
+  let complete = true;
   // A few districts at a time; each call runs its own searches at the provider.
   for (let i = 0; i < ds.length; i += 4) {
     const batch = await Promise.all(ds.slice(i, i + 4).map(async (d) => {
-      try { return { d, j: json(await searchingModel(PLACES_PROMPT(city.name, d))) }; } catch { return { d, j: { places: [] } }; }
+      try { return { d, j: json(await searchingModel(PLACES_PROMPT(city.name, d))) }; } catch (error) { complete = false; console.error(`web leads ${d}: ${String(error)}`); return { d, j: { places: [] } }; }
     }));
     appendLeads(seeds, batch);
   }
   const out = { seeds, districts: ds.length };
-  mkdirSync(join(CACHE, "discovery"), { recursive: true });
-  writeFileSync(file, JSON.stringify(out, null, 1));
+  if (complete) {
+    mkdirSync(join(CACHE, "discovery"), { recursive: true });
+    writeFileSync(file, JSON.stringify(out, null, 1));
+  }
   return out;
 }
 
 function appendLeads(seeds: Seed[], batch: { d: string; j: ReturnType<typeof placeLeads> }[]): void {
-    for (const { d, j } of batch) for (const p of j.places ?? [])
+    for (const { d, j } of batch) for (const p of j.places)
       if (typeof p.name === "string" && p.name.length > 1 && !seeds.some((s) => s.name === p.name))
         seeds.push({ name: p.name.trim(), website: urlOk(p.website) ? clean(p.website) : null, found_via: `web leads: ${d}` });
 }

@@ -197,39 +197,33 @@ function checkBoolean(p: Proposal, q: string, f: Field, booleanCheck: RegExp): V
   const reason = booleanMeaningProblem(p, q, f);
   if (reason) return { reason };
   return ok(p.value);
-
 }
 function checkFlag(p: Proposal, q: string, flagCheck: RegExp): ValueCheck {
   if (p.value !== true) return { skip: true };
   if (!flagCheck.test(q)) { return { reason: "quote does not support the flag" }; }
   return ok(true);
-
 }
 function checkOpeningHours(p: Proposal, ctx: VerifyContext): ValueCheck {
   const v = normaliseHours(String(p.value), ctx.country.toLowerCase());
   if (!v) { return { reason: "does not parse as opening_hours" }; }
   if (!timesInQuote(v, p.quote)) { return { reason: "times not in quote" }; }
   return ok(v);
-
 }
 function checkStreetAddress(p: Proposal, q: string): ValueCheck {
   const v = String(p.value).trim();
   if (!q.includes(norm(v)) || !/\d/.test(v) || !parseStreet(v)?.number) { return { reason: "street not in quote or no house number" }; }
   return ok(v);
-
 }
 function checkPostalCode(p: Proposal, q: string, ctx: VerifyContext): ValueCheck {
   const v = String(p.value).trim();
   const re = ctx.country === "DE" ? /^\d{5}$/ : /^\d{4}$/;
   if (!re.test(v) || !q.includes(v)) { return { reason: "postcode format or not in quote" }; }
   return ok(v);
-
 }
 function checkRoaster(p: Proposal, q: string): ValueCheck {
   const v = String(p.value).trim();
   if (v.length < 2 || !q.includes(norm(v))) { return { reason: "roaster name not in quote" }; }
   return ok(v);
-
 }
 function checkOperator(p: Proposal, q: string, page: SitePage, text: string): ValueCheck {
   const v = String(p.value).trim();
@@ -238,39 +232,33 @@ function checkOperator(p: Proposal, q: string, page: SitePage, text: string): Va
   if (!/impressum|imprint|legal|rechtlich|anbieterkennzeichnung/i.test(page.url) && !/impressum|angaben gemäß|imprint|legal notice|registergericht|handelsregister|vertretungsberechtigt|ust-?id/i.test(text)) { return { reason: "operator not from a legal notice" }; }
   if (/copyright|©|\(c\)/i.test(p.quote)) { return { reason: "a copyright line names the site owner, not the operator" }; }
   return ok(v);
-
 }
 function checkRegisterId(p: Proposal, q: string): ValueCheck {
   const m = String(p.value).match(/\b(HR[AB])\s?(\d{2,7})\b/);
   if (!m || !q.replace(/\s/g, "").includes(`${m[1]}${m[2]}`.toLowerCase())) { return { reason: "register id not in quote" }; }
   return ok(`${m[1]} ${m[2]}`);
-
 }
 function checkReusableCup(p: Proposal, q: string): ValueCheck {
   const v = String(p.value).toLowerCase().trim();
   const hit = v === "own_cup" ? /eigene[nmr]? (becher|tasse|cup)|own (cup|mug)|bring.{0,20}(becher|cup|tasse)/.test(q) : q.replace(/[^a-z0-9]/g, "").includes(v);
   if (!CUPS.includes(v) || !hit) { return { reason: "cup system not in quote" }; }
   return ok(v);
-
 }
 function checkCappuccinoPrice(p: Proposal, q: string): ValueCheck {
   const n = typeof p.value === "number" ? p.value : Number(String(p.value).replace(",", "."));
   const shown = [n.toFixed(2).replace(".", ","), n.toFixed(2), n.toFixed(1).replace(".", ","), n.toFixed(1), String(n)];
   if (!(n >= 1.5 && n <= 9) || !q.includes("cappuccino") || !shown.some((s) => q.includes(s))) { return { reason: "price not in quote with cappuccino" }; }
   return ok(Math.round(n * 100) / 100);
-
 }
 function checkFoodFocus(p: Proposal, q: string): ValueCheck {
   const v = String(p.value);
   if (!FOCUS_CHECKS.get(v)?.test(q)) { return { reason: "focus not supported by quote" }; }
   return ok(v);
-
 }
 function checkPrimaryBusiness(p: Proposal, q: string): ValueCheck {
   const v = String(p.value);
   if (!BUSINESS_CHECKS.get(v)?.test(q)) { return { reason: "business type not supported by quote" }; }
   return ok(v);
-
 }
 function checkValue(p: Proposal, page: SitePage, ctx: VerifyContext): ValueCheck {
   const q = norm(p.quote), f = p.field;

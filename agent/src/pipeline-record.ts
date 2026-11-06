@@ -140,11 +140,11 @@ const FB_PROFILE = /^https?:\/\/(?:www\.|m\.)?facebook\.com\/([A-Za-z0-9_.-]{3,}
 const FB_NON_PROFILE = /^(sharer|share|dialog|plugins|intent|tr|login|home|profile|events|groups|pages)(\.php)?$/i;
 
 function applySiteSocials(r: CoffeeRecord, pages: SitePage[], page: SitePage, prov: ProvenanceMap) {
-    r.links ??= {};
+  r.links ??= {};
   const ig = social(pages, IG_PROFILE, IG_NON_PROFILE);
-    if (ig) { r.links.instagram = `https://www.instagram.com/${ig}/`; prov.set("links.instagram", { value: r.links.instagram, via: "linked from the place's website", url: page.url }); }
+  if (ig) { r.links.instagram = `https://www.instagram.com/${ig}/`; prov.set("links.instagram", { value: r.links.instagram, via: "linked from the place's website", url: page.url }); }
   const fb = social(pages, FB_PROFILE, FB_NON_PROFILE);
-    if (fb) { r.links.facebook = `https://www.facebook.com/${fb}/`; prov.set("links.facebook", { value: r.links.facebook, via: "linked from the place's website", url: page.url }); }
+  if (fb) { r.links.facebook = `https://www.facebook.com/${fb}/`; prov.set("links.facebook", { value: r.links.facebook, via: "linked from the place's website", url: page.url }); }
 }
 function notPublic(r: CoffeeRecord, business = ""): boolean {
   const cafeService = !!(r.serving?.espresso || r.serving?.filter) && !!r.opening_hours;

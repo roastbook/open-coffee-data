@@ -34,14 +34,15 @@ test("provider payloads reject malformed fields while allowing unknown API metad
   expect(() =>
     modelReply({ choices: [{ message: { content: { html: "bad" } } }] }),
   ).toThrow();
-  expect(() => searchReply({ results: [{ title: "missing URL" }] })).toThrow();
+  expect(searchReply({ results: [null, { title: "missing URL" }, { url: "https://valid.example" }] }).results).toEqual([{ url: "https://valid.example" }]);
   expect(
     searchReply({
       web: { results: [{ url: "https://cafe.example", description: "café" }] },
     }).web?.results?.[0].description,
   ).toBe("café");
-  expect(() => ownSites({ own_site: [42] })).toThrow();
-  expect(() => placeLeads({ places: [{ name: ["bad"] }] })).toThrow();
+  expect(ownSites({ own_site: [42, "https://valid.example"] }).own_site).toEqual(["https://valid.example"]);
+  expect(placeLeads({ places: [null, { name: ["bad"] }, { name: "Valid", website: "https://valid.example" }] }).places).toEqual([{ name: "Valid", website: "https://valid.example" }]);
+  expect(() => placeLeads({ error: "not a leads reply" })).toThrow();
 });
 
 test("Wikidata bindings validate required values and optional source fields", () => {
