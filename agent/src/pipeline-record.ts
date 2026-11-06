@@ -159,16 +159,13 @@ function applyTier(r: CoffeeRecord, c: Candidate, e: Enriched, prov: ProvenanceM
     name: r.name, brand: c.brand, overtureCategory: c.category, roastsOwn: r.roasts_own_beans, filter: r.serving?.filter || r.serving?.pour_over,
     specialtyClaim: !!specialty || /specialty|speciality|spezialitäten/i.test(r.name),
     roasters: e.facts.flatMap((f) => f.field === "roaster" && typeof f.value === "string" ? [{ name: f.value }] : []),
-    business, focus, siteVerified: !!(e.site?.ok && e.match), open: r.status === "open", servesPublic: servesPublic(r, business),
+    business, focus, siteVerified: !!(e.site?.ok && e.match),
   });
   r.specialty_tier = t.tier;
   prov.set("specialty_tier", { value: t.tier, via: `rule: ${t.why}`, url: specialty?.url, quote: specialty?.quote });
   const description = describe(r);
   if (description) { r.description = description; prov.set("description", { value: description, via: "generated from the stored fields" }); } else delete r.description;
   return t.why;
-}
-function servesPublic(r: CoffeeRecord, business = ""): boolean {
-  return !!r.opening_hours || !!(r.serving?.espresso || r.serving?.filter || r.serving?.pour_over) || ["cafe", "restaurant", "bakery", "bar", "hotel"].includes(business);
 }
 export function buildRecord(job: Job, c: Candidate, e: Enriched, old: CoffeeRecord | null, ctx: BuildContext): Built {
   const prov: ProvenanceMap = new Map();
@@ -207,7 +204,8 @@ function applyCrossReferences(r: CoffeeRecord, c: Candidate, pos: Position) {
 }
 
 function movedPosition(c: Candidate, siteStreet: string, sitePc: string | undefined, ctx: BuildContext, prov: ProvenanceMap): Position | null {
-  const moved = ctx.inside.find((x) => x.status !== "permanently_closed" && sameStreet(x.street, siteStreet) && (nameSim(x.name, c.name) >= 0.5 || ownHost(x.websites[0]) === ownHost(c.website)));
+  // The record must carry a house number: "Marsstrasse" alone matched a brewery office 370 m from the café.
+  const moved = ctx.inside.find((x) => x.status !== "permanently_closed" && /\d/.test(x.street ?? "") && sameStreet(x.street, siteStreet) && (nameSim(x.name, c.name) >= 0.5 || ownHost(x.websites[0]) === ownHost(c.website)));
   if (!moved) return null;
   prov.set("location", { value: [moved.lat, moved.lon], via: "overture (record at the address on the website)", url: overtureUrl(moved.id) });
   return { lat: moved.lat, lon: moved.lon, overtureId: moved.id, street: siteStreet, postcode: sitePc ?? moved.postcode ?? undefined };

@@ -43,7 +43,7 @@ function get(r: CoffeeRecord, path: string): unknown {
   return value;
 }
 const filled = (r: CoffeeRecord, f: string) => f.includes("=") ? get(r, f.split("=")[0]) === f.split("=")[1] : f.includes("|") ? f.split("|").some((x) => get(r, x) !== undefined) : get(r, f) !== undefined;
-export const coreComplete = (r: CoffeeRecord) => CORE.every((f) => filled(r, f)) && r.specialty_tier !== "unknown";
+export const coreComplete = (r: CoffeeRecord) => CORE.every((f) => filled(r, f));
 
 export function fillRates(places: CoffeeRecord[]) {
   const out: Record<string, string> = {};
@@ -53,8 +53,8 @@ export function fillRates(places: CoffeeRecord[]) {
 
 export function computeMetrics(x: MetricsInput) {
   const live = x.places.filter((p) => !p.merged_into);
-  const tiers: Record<string, number> = { A: 0, B: 0, none: 0, unknown: 0 };
-  for (const p of live) { const key = p.specialty_tier ?? "unknown"; tiers[key]++; }
+  const tiers: Record<string, number> = { A: 0, B: 0, none: 0 };
+  for (const p of live) if (p.specialty_tier) tiers[p.specialty_tier]++;
   const ab = live.filter((p) => p.specialty_tier === "A" || p.specialty_tier === "B");
   const perField: Record<string, number> = {};
   for (const c of x.changes) perField[c.field] = (perField[c.field] ?? 0) + 1;

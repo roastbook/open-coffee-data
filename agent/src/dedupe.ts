@@ -11,7 +11,8 @@ export function samePlace(a: Candidate, b: Candidate): boolean {
   // One website can cover several branches, so a shared host also needs the same address or position.
   if (ha && ha === hb) return sharedHostBranch(a, b, d);
   if (sameStreet(a.street, b.street) && sim >= 0.5) return true;
-  if (hasPos) return nearbyName(sim, d);
+  // Different house numbers on known streets are different places unless the names are the same (Cafe Amalien at No. 87 is not Dinatale at No. 71; Overture's "Mackgorilla" at No. 12 is the MackGorilla at No. 13).
+  if (hasPos) return nearbyName(sim, d) && (sim >= 0.9 || compatibleStreet(a, b));
   return sim >= 0.9 && compatibleStreet(a, b);
 }
 

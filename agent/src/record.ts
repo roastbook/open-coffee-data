@@ -23,7 +23,7 @@ export interface CoffeeRecord {
   id: string; name: string; location: LatLon; status: string; checked_at: string;
   type?: string; merged_into?: string; opened_on?: string; closed_on?: string;
   address?: Address; opening_hours?: string; open_sunday?: boolean; last_verified_at?: string;
-  description?: string; specialty_tier?: "A" | "B" | "none" | "unknown";
+  description?: string; specialty_tier?: "A" | "B" | "none";
   roasts_own_beans?: boolean; roasters_served?: Roaster[]; serving?: Serving; amenities?: Amenities; food?: Food;
   sells_beans?: boolean; sells_equipment?: boolean; offers_courses?: boolean;
   reusable_cup_systems?: string[]; good_for?: string[];
@@ -51,7 +51,7 @@ const recordSchema = object({
   ...strings(["id", "name", "status", "checked_at", "type", "merged_into", "opened_on", "closed_on", "opening_hours", "last_verified_at", "description"]),
   location: object({ lat: { type: "number" }, lon: { type: "number" } }, ["lat", "lon"]),
   address: object(strings(["country_code", "locality", "street_address", "postal_code"])),
-  specialty_tier: { enum: ["A", "B", "none", "unknown"] },
+  specialty_tier: { enum: ["A", "B", "none"] },
   ...Object.fromEntries(["roasts_own_beans", "sells_beans", "sells_equipment", "offers_courses", "open_sunday"].map((name) => [name, bool])),
   serving: flags(["espresso", "filter", "pour_over", "batch_brew", "cold_brew", "decaf", "plant_milk"]),
   amenities: flags(["wifi", "laptop_friendly", "kids_friendly", "vegan_options", "dogs_allowed", "outdoor_seating", "card_payment", "cash_only", "wheelchair_accessible"]),
@@ -72,6 +72,9 @@ const validate = new Ajv({ strict: false }).compile<ParsedDocument>(object({
 }, ["places"]));
 export function parseCityDocument(text: string): CityDocument {
   const value: unknown = JSON.parse(text);
+  // Files written before schema v0.5.0 may carry "unknown" (not yet assessed): drop it so the next run assesses the place.
+  const places = (value as ParsedDocument | null)?.places;
+  if (Array.isArray(places)) for (const p of places) if ((p?.specialty_tier as string) === "unknown") delete p.specialty_tier;
   if (!validate(value)) throw new Error(`Invalid coffee dataset: ${JSON.stringify(validate.errors)}`);
   return { ...value, $schema: value.$schema ?? "", meta: value.meta ?? {} };
 }

@@ -14,7 +14,7 @@ export function saveState(slug: string, s: State) { mkdirSync(join(stateFile(slu
 
 export interface Job { id: string; reason: "never_enriched" | "conflict" | "refresh" | "full_refresh"; mode: "full" | "refresh" }
 const days = (iso: string | undefined, now: Date) => (iso ? (now.getTime() - Date.parse(iso)) / 86400000 : Infinity);
-const tierRank = new Map([["A", 0], ["B", 1], ["unknown", 2], ["none", 3]]);
+const tierRank = new Map([["A", 0], ["B", 1], ["none", 3]]);
 
 export function queueFor(places: { id: string; merged_into?: string; specialty_tier?: string; checked_at?: string; status?: string }[], state: State, now = new Date()): Job[] {
   const jobs: (Job & { rank: number; age: number })[] = [];
@@ -37,5 +37,5 @@ export function nextCity(now = new Date()): City | null {
 }
 
 function priorityTier(tier?: string): number {
-  return tierRank.get(tier ?? "unknown") ?? 2;
+  return tierRank.get(tier ?? "") ?? 2;
 }

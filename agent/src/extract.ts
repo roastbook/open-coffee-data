@@ -51,7 +51,7 @@ const COFFEE_IN_QUOTE = /kaffee|coffee|espresso|cappuccino|latte|flat ?white|ame
 const ALLERGEN_LINE = /allergen|kann spuren|zusatzstoff|glutenhaltig|enthält:/;
 
 // "Kaffee von der Rösterei X", "we serve beans from X Roasters": somebody else roasts.
-const SUPPLIER = /\b(von|vom|from|by|with|mit|bezogen|beziehen|bezieht|liefert|geliefert|lieferant\w*|partner\w*|supplied|servieren|serviert|serve[sd]?|ausgeschenkt|zusammen\w*)\b[^.]{0,40}(röst|roast)|wer (sie|ihn|den kaffee) röstet/;
+const SUPPLIER = /\b(von|vom|from|by|with|mit|bezogen|beziehen|bezieht|liefert|geliefert|lieferant\w*|partner\w*|supplied|servieren|serviert|serve[sd]?|ausgeschenkt|zusammen\w*)\b[^.]{0,40}(röst|roast)|wer (sie|ihn|den kaffee) röstet|\b(geröstet|roasted) (von|by) (?!uns\b|us\b)/;
 // "In unserer Kaffeerösterei", "wir rösten": the place roasts itself, even if a supplier word appears nearby.
 const OWN_ROASTING = /\b(unsere[nmrs]?|our|eigene[nmrs]?|hauseigene[nmrs]?)\s+(\w+\s+)?(kaffee)?(rösterei|roastery|röstung|roasting)|\bwir\s+rösten|rösten\s+wir|we\s+roast|roasted\s+(by us|in-?house)/;
 // A home-brewing guide is not what the café serves.
@@ -464,11 +464,17 @@ function booleanMeaningProblem(p: Proposal, q: string, f: Field, page: SitePage)
   if (p.value && NOT_COFFEE_CONTEXT[f]?.test(q) && !coffeeToo) { return "the quote is about something other than coffee"; }
   if (f === "food.cakes_baked_in_house" && !CAKE.test(q)) { return "quote does not mention cakes"; }
   if (supplierRoasting(p, q, f)) { return "the quote names a roastery that supplies the place"; }
+  if (f === "roasts_own_beans" && p.value && DEVELOPED_BLEND.test(q)) { return "a house blend, not roasting"; }
+  if (f === "roasts_own_beans" && p.value && MENU_DOCUMENT.test(new URL(page.url).pathname) && !OWN_ROASTING.test(q)) { return "roasting text on a menu, without saying the place roasts"; }
   if (f === "amenities.cash_only" && p.value && !CASH_ONLY.test(q)) { return "quote does not say cash is the only way to pay"; }
   return undefined;
 }
 
 const supplierRoasting = (p: Proposal, q: string, f: Field) => f === "roasts_own_beans" && p.value && SUPPLIER.test(q) && !OWN_ROASTING.test(q);
+// "Unsere eigene Röstung entwickelt": a house blend someone else roasts.
+const DEVELOPED_BLEND = /(röstung|blend|mischung)\b[^.]{0,30}\b(entwickelt|kreiert|komponiert|developed|created)/;
+// Menus often print the supplier's own text ("Wir sind eine Gourmet Kaffeerösterei"); there only "wir rösten" wording counts.
+const MENU_DOCUMENT = /\.(pdf|jpe?g|png|gif|webp)$/i;
 
 const stringChecks = new Map<string, (p: Proposal, q: string, ctx: VerifyContext, page: SitePage, text: string) => ValueCheck>([
   ["opening_hours", (p, _q, ctx) => checkOpeningHours(p, ctx)],

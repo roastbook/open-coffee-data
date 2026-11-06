@@ -1,11 +1,12 @@
 import { expect, test } from "bun:test";
 import { lintCity, lintPlace, mergeDuplicates, repair } from "../src/lint";
 import { cleanName, cleanStreet, isPlatformUrl } from "../src/rules";
+import { parseCityDocument } from "../src/record";
 
 const place = (x: any = {}) => ({
   id: "cp-0000000001", type: "CafeOrCoffeeShop", name: "Kaffee Beispiel", status: "open", checked_at: "2026-11-05T10:00:00Z",
   address: { street_address: "Türkenstraße 52", postal_code: "80799", locality: "München", country_code: "DE" },
-  location: { lat: 48.15, lon: 11.57 }, specialty_tier: "unknown", ...x,
+  location: { lat: 48.15, lon: 11.57 }, specialty_tier: "none", ...x,
 });
 const rules = (p: any) => lintPlace(p, "DE", new Date("2026-11-06")).map((f) => `${f.level} ${f.rule}`);
 
@@ -50,7 +51,6 @@ test("warnings: names and street strings that need a look", () => {
   expect(rules(place({ name: "Kürnbergstr" }))).toContain("warning name");
   expect(rules(place({ name: "Cabo Cafe GmbH" }))).toContain("warning name");
   expect(rules(place({ address: { ...place().address, street_address: "Pep Einkaufszentrum, Thomas-Dehler-Straße 8" } }))).toContain("warning street");
-  expect(rules(place({ name: "Stromboli Heimservice" }))).toContain("warning tier-none");
 });
 
 test("duplicates are found and merged into the richer record, ids kept", () => {
@@ -68,10 +68,11 @@ test("repair removes what a platform page supported and never adds facts", () =>
   const p = place({ name: "Cabo Cafe GmbH", specialty_tier: "B", roasters_served: [{ name: "X" }], opening_hours: "Mo-Fr 06:00-18:30", links: { website: "https://www.gelbeseiten.de/gsbiz/1" } });
   const notes = repair(p);
   expect(notes.length).toBeGreaterThan(0);
-  expect(p).toMatchObject({ name: "Cabo Cafe", status: "unverified", specialty_tier: "unknown" });
+  expect(p).toMatchObject({ name: "Cabo Cafe", status: "unverified" });
+  expect(p.specialty_tier).toBeUndefined();
   expect(p.opening_hours).toBeUndefined();
   expect(p.links).toBeUndefined();
-  expect(rules(p).filter((r) => r.startsWith("error"))).toEqual(["error unverified"]); // nothing left that confirms it: remove the record
+  expect(rules(p).filter((r) => r.startsWith("error"))).toEqual(["error tier", "error unverified"]); // nothing left that confirms it: remove the record
   const q = place({ address: { ...place().address, street_address: "casa@gmx.de, Ehrengutstraße 4" } });
   repair(q);
   expect(q.address.street_address).toBe("Ehrengutstraße 4");
@@ -105,4 +106,17 @@ test("one place under two names (café and operator) at the same address and web
   mergeDuplicates([a, b]);
   expect(b.merged_into).toBe("cp-0000000c1a"); // the person-like name is the one dropped
   expect(a.merged_into).toBeUndefined();
+});
+
+test("a legacy unknown tier is dropped on read and the place fails lint until it is assessed", () => {
+  const doc = parseCityDocument(JSON.stringify({ places: [place({ specialty_tier: "unknown" })] }));
+  expect(doc.places[0].specialty_tier).toBeUndefined();
+  expect(rules(doc.places[0])).toContain("error tier");
+});
+
+test("one website and one street address are one place, however far apart the coordinates", () => {
+  const a = place({ id: "cp-000000000a", name: "MackGorilla", address: { ...place().address, street_address: "Marsstraße 13" }, links: { website: "https://mackgorilla.com/" } });
+  const b = place({ id: "cp-000000000b", name: "MackGorilla Coffee & More", location: { lat: 48.1430, lon: 11.5586 }, address: { ...place().address, street_address: "Marsstraße 13" }, links: { website: "https://mackgorilla.com/" } });
+  expect(lintCity([a, b], "DE").filter((f) => f.rule === "duplicate")).toHaveLength(1);
+  expect(lintCity([a, { ...b, address: { ...b.address, street_address: "Marsstraße 40" } }], "DE").filter((f) => f.rule === "duplicate")).toHaveLength(0);
 });

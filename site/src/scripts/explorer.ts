@@ -54,7 +54,7 @@ const features = tableFeatures({
   paginatedRowModel: createPaginatedRowModel(),
 });
 const col = createColumnHelper<typeof features, ExplorerPlace>();
-const tierRank: Partial<Record<string, number>> = { A: 0, B: 1, none: 2, unknown: 3 };
+const tierRank: Partial<Record<string, number>> = { A: 0, B: 1, none: 2 };
 const columns = col.columns([
   col.accessor("name", { header: "Name", meta: { path: "name" } }),
   col.accessor((p) => p._city_name, { id: "city", header: "City", meta: { path: "address.locality" } }),

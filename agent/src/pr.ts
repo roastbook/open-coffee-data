@@ -32,7 +32,7 @@ export function prBody(city: string, changes: Change[], metrics: { run_id: strin
     "", "Every value below was confirmed on the linked page in this run (quoted snippets are checked in code to occur in the fetched text). Please review before merging; this PR is never merged automatically.",
     "", `Review flags: ${labels.length ? labels.map((l) => `\`${l}\``).join(", ") : "none"}.`, "",
     "| Metric | Value |", "|---|---|",
-    `| Tiers (city) | A ${metrics.tiers.A}, B ${metrics.tiers.B}, none ${metrics.tiers.none}, unknown ${metrics.tiers.unknown} |`,
+    `| Tiers (city) | A ${metrics.tiers.A}, B ${metrics.tiers.B}, none ${metrics.tiers.none} |`,
     `| Tier A/B with complete core fields | ${metrics.tier_ab_core_complete} |`,
     `| LLM | ${metrics.llm.calls} calls, ${metrics.llm.inputTokens + metrics.llm.outputTokens} tokens, $${metrics.llm.usd.toFixed(3)} |`,
     `| Pages fetched | ${metrics.pages.requests} requests, ${metrics.pages.disallowed} not fetched because of site rules |`,

@@ -25,5 +25,5 @@ export const LABELS: Partial<Record<string, string>> = {
   ...Object.fromEntries(SERVING.map(([k, l]) => [`serving.${k}`, l])),
   ...Object.fromEntries(AMENITIES.map(([k, l]) => [`amenities.${k}`, l])),
 };
-export const TIER_LABEL: Partial<Record<string, string>> = { A: "A · specialty-focused", B: "B · serves specialty", none: "Not specialty", unknown: "Not yet assessed" };
+export const TIER_LABEL: Partial<Record<string, string>> = { A: "A · specialty-focused", B: "B · serves specialty", none: "Not specialty" };
 export const STATUS_LABEL: Partial<Record<string, string>> = { open: "Open", temporarily_closed: "Temporarily closed", closed: "Closed", unverified: "Unverified" };

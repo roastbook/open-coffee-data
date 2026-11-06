@@ -12,7 +12,6 @@ import { cleanName, cleanStreet, EMAIL, isShareLink, OWNER_IN_NAME, SEASONAL, is
 
 export interface Finding { level: "error" | "warning"; rule: string; id: string; message: string }
 
-const NON_COFFEE = /heimservice|lieferservice|pizza|sushi|döner|kebab|burger|wok\b|curry|ems\b|fitness|training|\bgym\b|friseur|tankstelle|spielhalle|wettbüro|shisha|asian goods|supermarkt|metzgerei/i;
 const SKIP_PII = /^(?:(?:links|image|xref|external_ratings)(?:\.|$)|roasters_served\.\d+\.url$|prices\.cappuccino\.source_url$)/;
 
 function* strings(v: unknown, path = ""): Generator<[string, string]> {
@@ -51,6 +50,8 @@ export function duplicatePairs(places: CoffeeRecord[]): [CoffeeRecord, CoffeeRec
     const d = distanceM(a.location, b.location);
     // One Overture place is one place, whatever names the two records carry.
     if (a.xref?.overture && a.xref.overture === b.xref?.overture) { out.push([a, b, d]); continue; }
+    // One own website and one street address with a house number are one place, even when the two records' coordinates disagree.
+    if (sameSiteAndAddress(a, b) && /\d/.test(a.address?.street_address ?? "") && /\d/.test(b.address?.street_address ?? "")) { out.push([a, b, d]); continue; }
     if (d > 60) continue;
     if (duplicatesAtDistance(a, b, d)) out.push([a, b, d]);
   }
@@ -120,9 +121,9 @@ function files(dir: string): string[] {
 function duplicatesAtDistance(a: CoffeeRecord, b: CoffeeRecord, d: number): boolean {
   const sim = nameSim(a.name, b.name);
   // Or one place under two names (e.g. the café and its operator): same street and number, same own website.
-  const sameSite = !!a.links?.website && ownHost(a.links.website) === ownHost(b.links?.website) && sameStreet(a.address?.street_address, b.address?.street_address);
-  return (sim >= 0.85 && d <= 40) || sim >= 0.99 || sameSite;
+  return (sim >= 0.85 && d <= 40) || sim >= 0.99 || sameSiteAndAddress(a, b);
 }
+const sameSiteAndAddress = (a: CoffeeRecord, b: CoffeeRecord) => !!a.links?.website && ownHost(a.links.website) === ownHost(b.links?.website) && sameStreet(a.address?.street_address, b.address?.street_address);
 
 const postcodePatterns = new Map(Object.entries(POSTCODE));
 const postcodePattern = (country: string) => postcodePatterns.get(country);
@@ -156,6 +157,7 @@ function lintIdentity(p: CoffeeRecord, country: string, err: Report, warn: Repor
 function lintStatus(p: CoffeeRecord, now: Date, err: Report, warn: Report) {
   // Status and dates.
   // Only places confirmed on their own website are in the dataset.
+  if (!p.merged_into && !p.specialty_tier) err("tier", "every place needs an assessed specialty tier (A, B or none)");
   if (p.status === "unverified") err("unverified", "unconfirmed places are not stored; confirm the place or remove the record");
   if ((now.getTime() - Date.parse(p.checked_at)) / 86400000 > 182 && p.status === "open") warn("stale", `open but last checked ${p.checked_at.slice(0, 10)}`);
   if (p.type !== "CafeOrCoffeeShop") err("type", `type must be CafeOrCoffeeShop, got ${JSON.stringify(p.type)}`);
@@ -188,7 +190,7 @@ function repairLinks(p: CoffeeRecord, done: string[]) {
     removeSiteFacts(p);
     if (p.links) { delete p.links.website; if (!Object.keys(p.links).length) delete p.links; }
     if (p.status === "open") { p.status = "unverified"; done.push("no longer confirmed: the page that confirmed it was a platform page (remove the record)"); }
-    if (hasSpecialtyTier(p)) p.specialty_tier = "unknown";
+    delete p.specialty_tier;
     done.push("removed a platform page used as website and every value read from it");
   }
   repairShareLinks(p, done);
@@ -254,7 +256,7 @@ function repairShareLinks(p: CoffeeRecord, done: string[]) {
 }
 
 function repairTierEvidence(p: CoffeeRecord, done: string[]) {
-  if (hasSpecialtyTier(p) && p.roasts_own_beans !== true && !(p.roasters_served ?? []).length) { p.specialty_tier = "unknown"; done.push("tier without evidence -> unknown"); }
+  if (hasSpecialtyTier(p) && p.roasts_own_beans !== true && !(p.roasters_served ?? []).length) { p.specialty_tier = "none"; done.push("tier without evidence -> none"); }
   if (p.description && !hasSpecialtyTier(p)) { delete p.description; done.push("removed description of a place that is not tier A or B"); }
   removeEmptyGroups(p);
 }
@@ -290,7 +292,6 @@ function lintProfileAndPrice(p: CoffeeRecord, err: Report, warn: Report) {
 
 function lintVenue(p: CoffeeRecord, err: Report, warn: Report) {
   if (SEASONAL.test(p.name)) err("seasonal", `"${p.name}" is a seasonal venue (fair, festival tent, Christmas market); only places open all year are stored`);
-  if (p.specialty_tier === "unknown" && NON_COFFEE.test(p.name)) warn("tier-none", `"${p.name}" looks like a non-coffee business; tier none?`);
   if (p.image && !p.image.url.startsWith("https://upload.wikimedia.org/") && !/^https:\/\/(images\.)?(mapillary|panoramax)/.test(p.image.url)) warn("image", `image.url ${p.image.url} is not from an open image repository`);
 }
 

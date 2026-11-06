@@ -48,3 +48,11 @@ test("street hints from roaster mentions keep branches apart", () => {
   expect(streetHint("Suuapinga Café")).toBeNull();
   expect(sameStreet(streetHint("Suuapinga Café Herzogstraße")!, "Blutenburgstraße 93")).toBe(false);
 });
+
+test("near, similar names at different house numbers are different places", () => {
+  const a = { key: "a", name: "Cafe Amalien", lat: 48.1525, lon: 11.5795, street: "Amalienstraße 87", overtureIds: ["1"], origins: [] };
+  const b = { key: "b", name: "Dinatale Café Amalienstrasse", lat: 48.1515, lon: 11.5790, street: "Amalienstraße 71", overtureIds: ["2"], origins: [] };
+  expect(samePlace(a, b)).toBe(false);
+  expect(samePlace(a, { ...b, street: "Amalienstraße 87" })).toBe(true);
+  expect(samePlace({ ...a, name: "Mackgorilla", street: "12 Marsstraße" }, { ...b, name: "MackGorilla", street: "Marsstraße 13" })).toBe(true);
+});

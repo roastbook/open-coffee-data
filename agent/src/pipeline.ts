@@ -237,7 +237,7 @@ function finalId(places: CoffeeRecord[], id: string): string {
 }
 
 function labelRecordChanges(old: CoffeeRecord | null, r: CoffeeRecord, labels: Set<string>) {
-  if (old && old.specialty_tier !== r.specialty_tier && old.specialty_tier !== "unknown") labels.add("tier-change");
+  if (old && old.specialty_tier !== r.specialty_tier) labels.add("tier-change");
   if (r.status === "closed" && old?.status !== "closed") labels.add("closure");
   labelWebsiteChange(old, r, labels);
 }

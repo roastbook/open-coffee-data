@@ -90,6 +90,8 @@ test("evidence regexes: negations, Speisekarte, Hotdog, supplier roasters, bare 
   expect(one("roasts_own_beans", true, "Wir servieren Kaffee von der Rösterei Vits")).toBe(0);
   expect(one("roasts_own_beans", true, "Unseren Kaffee rösten wir selbst in Giesing")).toBe(1);
   expect(one("roasts_own_beans", true, "We use a LORING roaster and build individual profiles")).toBe(1);
+  expect(one("roasts_own_beans", true, "Erstklassiger Kaffee, geröstet von Johannes Bayer")).toBe(0);
+  expect(one("roasts_own_beans", true, "Wir haben unsere eigene „Espresso Feel Good“-Röstung entwickelt")).toBe(0);
   expect(one("sells_beans", true, "Bowl mit Lachs 250 g")).toBe(0);
   expect(one("sells_beans", true, "Espresso Blend 250 g zum Mitnehmen")).toBe(1);
   expect(one("sells_beans", true, "Ganze Bohnen für zu Hause")).toBe(1);
@@ -167,6 +169,8 @@ test("serving facts: not from shop or wiki pages, allergen keys, dishes or teas"
   const ctx = { country: "DE", ownName: "Café X", multiLocation: false };
   const one = (field: Proposal["field"], quote: string, url = "https://cafe.example/karte") => verify([{ field, value: true, page: 1, quote }], [page(quote, url)], ctx).kept.length;
   expect(one("serving.plant_milk", "Hafermilch +0,50")).toBe(1);
+  expect(one("roasts_own_beans", "Wir sind eine Gourmet Kaffeerösterei", "https://cafe.example/karte.pdf")).toBe(0);
+  expect(one("roasts_own_beans", "Unseren Kaffee rösten wir selbst", "https://cafe.example/karte.pdf")).toBe(1);
   expect(one("serving.plant_milk", "Allergene: Gluten (Weizen, Hafer), Soja")).toBe(0);
   expect(one("serving.plant_milk", "Thai-Curry mit Kokosmilch")).toBe(0);
   expect(one("serving.plant_milk", "Unser Haferl Kaffee")).toBe(0);

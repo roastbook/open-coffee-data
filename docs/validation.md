@@ -44,9 +44,10 @@ Errors (CI fails):
 - `unverified`: the dataset holds only confirmed places; an `unverified` record must be confirmed or removed. `type`: every place is `CafeOrCoffeeShop`.
 - `payment`, `serving`: contradictions (cash only and card payment both true, pour-over or batch brew true but filter false).
 - `operator`: not a legal entity; `price`: an implausible cappuccino price; `postcode`: wrong format for the country.
+- `tier`: a place without a specialty tier; every place is assessed (A, B or none).
 - `tier-evidence`: tier A or B without `roasts_own_beans` or `roasters_served`.
 
-Warnings: names with a legal form, SEO tails or a bare street name; street strings that are not "street number"; tier `unknown` for a name that looks like a non-coffee business; descriptions on places that are not tier A or B; open places not verified for half a year; places of different names sharing one website host (a chain's locations page matched to a neighbouring shop looked like this); images not from an open image repository.
+Warnings: names with a legal form, SEO tails or a bare street name; street strings that are not "street number"; descriptions on places that are not tier A or B; open places not verified for half a year; places of different names sharing one website host (a chain's locations page matched to a neighbouring shop looked like this); images not from an open image repository.
 
 `--fix` only removes doubtful values or derives values from stored fields; it never adds a fact. A platform page used as a website is removed together with every value read from it. Duplicates become tombstones (`merged_into`); the data agent then moves them out of the repository into its local archive, which keeps their ids for later runs.
 

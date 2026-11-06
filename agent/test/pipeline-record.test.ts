@@ -78,3 +78,12 @@ test("contact data cannot hide behind a name that starts like an exempt URL grou
   const p = Object.assign(record(), { links_note: "Contact Jane at jane@example.com" });
   expect(lintPlace(p, "DE", context.now).some((finding) => finding.rule === "contact-data")).toBe(true);
 });
+
+test("a moved address is only taken from an Overture record with a house number", () => {
+  const moved = { ...candidate, street: "Türkenstraße 50" };
+  const facts = [fact("street_address", "Türkenstraße 52")];
+  const noNumber = { ...row, id: "far", name: "Example Coffee", street: "Türkenstrasse", lat: 48.16, lon: 11.56 };
+  const withNumber = { ...row, id: "near", street: "Türkenstraße 52", lat: 48.151, lon: 11.571 };
+  const at = (inside: Row[]) => buildRecord(job, moved, enriched(facts), null, { ...context, inside }).record?.location;
+  expect(at([noNumber, withNumber])).toEqual({ lat: 48.151, lon: 11.571 });
+});

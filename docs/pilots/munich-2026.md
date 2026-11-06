@@ -8,23 +8,22 @@ Only places confirmed on their own website are in the dataset. Each record's val
 
 | | Places |
 |---|---:|
-| Tier A (specialty-focused) | 16 |
-| Tier B (serves specialty) | 15 |
-| none (not specialty: chains, bakeries, bars …) | 68 |
-| unknown (confirmed, but no specialty evidence on its own site) | 167 |
+| Tier A (specialty-focused) | 23 |
+| Tier B (serves specialty) | 23 |
+| none (no specialty evidence: chains, bakeries, bars, and cafés whose own site neither shows own roasting nor names a specialty roaster) | 220 |
 | **Total** | **266**, all open |
 
-Every place is a café, coffee bar or similar that anyone can walk into, confirmed on its own website (that is also how it got its name). 98% have a street and postcode, and 71% have opening hours (90% of tier A/B).
+Every place is a café, coffee bar or similar that anyone can walk into, confirmed on its own website (that is also how it got its name). 98% have a street and postcode, and 71% have opening hours (87% of tier A/B). Every place has an assessed tier; there is no "not yet assessed" state.
 
 ## Result against the acceptance criteria
 
 | Criterion | Target | Result | Met |
 |---|---|---|---|
 | Coverage of extract.coffee's still-open Munich cafés | ≥ 90% | 32 of 41 (78.0%) | no |
-| Tier A/B places with complete core fields | ≥ 60 | 17 (11 A, 6 B) | no |
+| Tier A/B places with complete core fields | ≥ 60 | 21 (14 A, 7 B) | no |
 | Validation passes, nothing non-redistributable committed | yes | `scripts/validate.sh` against the released v0.3.0 schema: 0 errors; data lint: 0 errors | yes |
 
-Both data targets are missed, and the coverage is lower than in the first version of this report (87.8%) on purpose: places that could not be confirmed on their own website are no longer in the file. The core field that is most often missing for tier A/B places is filter coffee (12 of 31 unknown); espresso is unknown for 6 of 31.
+Both data targets are missed, and the coverage is lower than in the first version of this report (87.8%) on purpose: places that could not be confirmed on their own website are no longer in the file. The core field that is most often missing for tier A/B places is filter coffee (23 of 46 unknown); espresso is unknown for 8 of 46.
 
 The SPEC's candidates CSV and its 59-place ground truth list were never provided, so there is no comparison against them.
 
@@ -34,7 +33,8 @@ The first published file (1,076 records) had defects that an independent review 
 
 - **Wrong websites.** The site check accepted any name word, including district, street and month names, so a coffee chain's locations page became the website of neighbouring shops (for example a locations page matched "Mai Asia", "Naturkosmetik Schwabing" and three shops on Gärtnerplatz). The check now ignores district, street, city and generic words, and needs the whole name or every distinctive word. Records whose re-read website does not name them left the dataset.
 - **Platform pages as websites** (Gelbe Seiten, Lieferando, speisekartenweb, gastroguide, Facebook) and every value read from them were removed; platform pages are never used.
-- **Wrong tiers.** Places on a roaster's reference or stockist list (a bike shop, a beer hall, a restaurant) were tier B. Roaster lists are no longer used at all; a roaster counts only when the place's own website names it with a specialty claim, and tier A/B needs status open.
+- **Wrong tiers.** Places on a roaster's reference or stockist list (a bike shop, a beer hall, a restaurant) were tier B. Roaster lists are no longer used at all; a roaster counts only when the place's own website names it.
+- **Every place assessed.** 167 places were "not yet assessed". The tier is now always A, B or none (schema v0.5.0 drops the unknown value): own roasting or a named specialty roaster gives A or B, anything else is none. A named roaster counts as specialty when the café claims specialty coffee or when the roaster's own website presents its coffee as specialty (Supremo, Kultbohne, Optimist Coffee and man vs. machine; 21 roasters named by Munich cafés were checked, the others make no such claim or only for part of a traditional range). Four own-roasting values at three businesses were wrong and were removed: a roaster's text printed on a café's drinks menu, a café whose coffee is "roasted by" a named roaster, and a chain's house blend.
 - **Evidence rules.** A quote that negates a value ("kein WLAN") no longer supports `true`; "Speisekarte" no longer counts as card payment, "Hotdog" not as dogs allowed, a supplier mention not as own roasting, a bare "250 g" not as selling beans, and "Barzahlung" not as cash only.
 - **Branches of one business.** Facts about what a business serves and sells (espresso, filter, beans, equipment) now count for every branch unless the quote sits next to another branch's address; hours, amenities, meals and courses still have to be tied to the branch. Branch numbers ("Two", "II") no longer block matching a branch to its website.
 - **Other fixes:** Facebook share links, owners' names inside place names, an email address in a street, seasonal venues (Oktoberfest tents are not stored at all; only places open all year are), non-coffee businesses at discovery (75 excluded), 3 confirmed duplicates (Hochlandkaffee into Pachamama, Maxim Kaffee into Groove Coffee Club, and the operator name "Christoph Jünger Gastronomie" into cafe Clara).
@@ -71,46 +71,46 @@ Overture licences seen inside the bounding box: CDLA-Permissive-2.0, Apache-2.0 
 
 `status=open` counts records whose status is `open`.
 
-| Field | All places (266) | Tier A/B (31) |
+| Field | All places (266) | Tier A/B (46) |
 |---|---:|---:|
-| `address.street_address` | 261 (98%) | 31 (100%) |
-| `address.postal_code` | 260 (98%) | 31 (100%) |
-| `status=open` | 266 (100%) | 31 (100%) |
-| `opening_hours` | 188 (71%) | 28 (90%) |
-| `description` | 31 (12%) | 31 (100%) |
-| `roasts_own_beans` | 31 (12%) | 16 (52%) |
-| `roasters_served` | 58 (22%) | 17 (55%) |
-| `serving.espresso` | 165 (62%) | 25 (81%) |
-| `serving.filter` | 54 (20%) | 19 (61%) |
-| `serving.pour_over` | 18 (7%) | 14 (45%) |
-| `serving.batch_brew` | 5 (2%) | 4 (13%) |
-| `serving.cold_brew` | 14 (5%) | 8 (26%) |
-| `serving.decaf` | 56 (21%) | 15 (48%) |
-| `serving.plant_milk` | 61 (23%) | 7 (23%) |
-| `amenities.wifi` | 15 (6%) | 5 (16%) |
-| `amenities.laptop_friendly` | 2 (1%) | 1 (3%) |
+| `address.street_address` | 261 (98%) | 45 (98%) |
+| `address.postal_code` | 260 (98%) | 45 (98%) |
+| `status=open` | 266 (100%) | 46 (100%) |
+| `opening_hours` | 188 (71%) | 40 (87%) |
+| `description` | 46 (17%) | 46 (100%) |
+| `roasts_own_beans` | 27 (10%) | 25 (54%) |
+| `roasters_served` | 58 (22%) | 23 (50%) |
+| `serving.espresso` | 165 (62%) | 38 (83%) |
+| `serving.filter` | 54 (20%) | 23 (50%) |
+| `serving.pour_over` | 18 (7%) | 15 (33%) |
+| `serving.batch_brew` | 5 (2%) | 4 (9%) |
+| `serving.cold_brew` | 14 (5%) | 8 (17%) |
+| `serving.decaf` | 56 (21%) | 22 (48%) |
+| `serving.plant_milk` | 61 (23%) | 10 (22%) |
+| `amenities.wifi` | 15 (6%) | 6 (13%) |
+| `amenities.laptop_friendly` | 2 (1%) | 1 (2%) |
 | `amenities.kids_friendly` | 14 (5%) | 0 (0%) |
-| `amenities.vegan_options` | 93 (35%) | 8 (26%) |
-| `amenities.dogs_allowed` | 6 (2%) | 1 (3%) |
-| `amenities.outdoor_seating` | 71 (27%) | 5 (16%) |
-| `amenities.card_payment` | 27 (10%) | 3 (10%) |
+| `amenities.vegan_options` | 93 (35%) | 12 (26%) |
+| `amenities.dogs_allowed` | 6 (2%) | 1 (2%) |
+| `amenities.outdoor_seating` | 71 (27%) | 8 (17%) |
+| `amenities.card_payment` | 27 (10%) | 4 (9%) |
 | `amenities.cash_only` | 1 (0%) | 0 (0%) |
-| `amenities.wheelchair_accessible` | 7 (3%) | 1 (3%) |
-| `food.focus` | 57 (21%) | 15 (48%) |
-| `food.breakfast` | 130 (49%) | 11 (35%) |
-| `food.lunch` | 95 (36%) | 6 (19%) |
-| `food.cakes_baked_in_house` | 54 (20%) | 3 (10%) |
-| `sells_beans` | 28 (11%) | 14 (45%) |
-| `sells_equipment` | 15 (6%) | 10 (32%) |
-| `offers_courses` | 10 (4%) | 4 (13%) |
-| `reusable_cup_systems` | 5 (2%) | 0 (0%) |
-| `prices.cappuccino` | 43 (16%) | 5 (16%) |
-| `operator` | 127 (48%) | 16 (52%) |
-| `links.website` | 266 (100%) | 31 (100%) |
-| `links.instagram` | 161 (61%) | 26 (84%) |
-| `links.facebook` | 108 (41%) | 14 (45%) |
+| `amenities.wheelchair_accessible` | 7 (3%) | 1 (2%) |
+| `food.focus` | 57 (21%) | 20 (43%) |
+| `food.breakfast` | 130 (49%) | 18 (39%) |
+| `food.lunch` | 95 (36%) | 10 (22%) |
+| `food.cakes_baked_in_house` | 54 (20%) | 6 (13%) |
+| `sells_beans` | 28 (11%) | 18 (39%) |
+| `sells_equipment` | 15 (6%) | 12 (26%) |
+| `offers_courses` | 10 (4%) | 5 (11%) |
+| `reusable_cup_systems` | 5 (2%) | 1 (2%) |
+| `prices.cappuccino` | 43 (16%) | 9 (20%) |
+| `operator` | 127 (48%) | 23 (50%) |
+| `links.website` | 266 (100%) | 46 (100%) |
+| `links.instagram` | 161 (61%) | 34 (74%) |
+| `links.facebook` | 108 (41%) | 21 (46%) |
 | `image` | 0 (0%) | 0 (0%) |
-| `xref.overture` | 262 (98%) | 30 (97%) |
+| `xref.overture` | 262 (98%) | 45 (98%) |
 | `xref.wikidata` | 2 (1%) | 0 (0%) |
 
 ## Coverage against extract.coffee
@@ -118,7 +118,7 @@ Overture licences seen inside the bounding box: CDLA-Permissive-2.0, Apache-2.0 
 extract.coffee lists 41 Munich cafés. We read their pages one at a time, only to measure coverage; the names are kept in an uncommitted local file and were not used to find places.
 
 - None is closed according to our data, so all 41 count as still open.
-- 32 are in the dataset (78.0%), all confirmed open; 14 with complete core fields.
+- 32 are in the dataset (78.0%), all confirmed open (12 tier A, 8 B, 12 none); 20 with complete core fields.
 - Of the 9 missing ones, one has closed for good, one has no website of its own (only a menu platform), and the others could not be confirmed on their own website or have no coordinates from any source.
 
 ## Coverage against OpenStreetMap (measurement only)

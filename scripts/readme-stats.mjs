@@ -12,7 +12,7 @@ const END = "<!-- stats:end -->";
 
 export function statsBlock(files) {
   const places = coffeePlaces(files).filter((p) => !p.merged_into);
-  const tiers = { A: 0, B: 0, none: 0, unknown: 0 };
+  const tiers = { A: 0, B: 0, none: 0 };
   for (const p of places) tiers[p.specialty_tier] = (tiers[p.specialty_tier] ?? 0) + 1;
   const cities = [...new Set(places.map((p) => `${p._country_code}/${p._city}`))];
   const brew = files.filter((f) => f.family === "brew-methods").reduce((n, f) => n + f.records.length, 0);
@@ -21,7 +21,6 @@ export function statsBlock(files) {
     ["Tier A (specialty-focused)", tiers.A],
     ["Tier B (serves specialty)", tiers.B],
     ["Not specialty", tiers.none],
-    ["Not yet assessed", tiers.unknown],
     ["Cities", cities.length],
     ...(brew ? [["Brew methods", brew]] : []),
     // No dataset version here: it is the release tag and would make this block stale after every release.

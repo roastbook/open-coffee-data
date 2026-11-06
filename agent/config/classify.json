@@ -1,5 +1,5 @@
 {
-  "description": "Deterministic tier hints. chains: brands whose branches are not specialty places (tier none). commodity_roasters: coffee brands that do not make a place specialty. non_coffee_name: name words that mark a non-coffee business when no specialty evidence exists. Reviewed by maintainers.",
+  "description": "Deterministic tier hints. chains: brands whose branches are not specialty places (tier none). commodity_roasters: coffee brands that do not make a place specialty. specialty_roasters: roasters whose own website presents their coffee as specialty coffee; a café naming one counts as serving specialty even if its own site does not say so. non_coffee_name: name words that mark a non-coffee business when no specialty evidence exists. Reviewed by maintainers.",
   "chains": [
     "starbucks",
     "coffee fellows",
@@ -79,7 +79,15 @@
     "caffe borbone",
     "molinari",
     "zicaffe",
-    "musetti"
+    "musetti",
+    "alfredo",
+    "burkhof"
+  ],
+  "specialty_roasters": [
+    "kultbohne",
+    "man vs machine",
+    "optimist coffee",
+    "supremo"
   ],
   "non_coffee_name": [
     "pizza",

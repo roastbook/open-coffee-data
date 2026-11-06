@@ -27,6 +27,6 @@ const count = (f: (r: (typeof rows)[number]) => boolean) => found.filter(f).leng
 console.log(JSON.stringify({
   reference: rows.length, closed_per_our_data: closed, still_open: stillOpen, present: found.length,
   coverage: `${((100 * found.length) / Math.max(1, stillOpen)).toFixed(1)}%`,
-  present_by_tier: { A: count((r) => r.tier === "A"), B: count((r) => r.tier === "B"), none: count((r) => r.tier === "none"), unknown: count((r) => r.tier === "unknown") },
+  present_by_tier: { A: count((r) => r.tier === "A"), B: count((r) => r.tier === "B"), none: count((r) => r.tier === "none") },
   present_status_open: count((r) => r.status === "open"), present_core_complete: count((r) => r.core),
 }, null, 1));
