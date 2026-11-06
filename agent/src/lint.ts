@@ -75,7 +75,7 @@ export function lintPlace(p: any, country: string, now = new Date()): Finding[] 
   if ((p.specialty_tier === "A" || p.specialty_tier === "B") && p.roasts_own_beans !== true && !(p.roasters_served ?? []).length)
     err("tier-evidence", `tier ${p.specialty_tier} without roasts_own_beans or roasters_served`);
   if (p.description && p.specialty_tier !== "A" && p.specialty_tier !== "B") warn("description", "description on a place that is not tier A or B");
-  if (SEASONAL.test(p.name) && p.status === "open") err("seasonal", `"${p.name}" is a seasonal venue; it cannot be open all year (temporarily_closed outside its season)`);
+  if (SEASONAL.test(p.name)) err("seasonal", `"${p.name}" is a seasonal venue (fair, festival tent, Christmas market); only places open all year are stored`);
   if (p.specialty_tier === "unknown" && NON_COFFEE.test(p.name)) warn("tier-none", `"${p.name}" looks like a non-coffee business; tier none?`);
   if (p.image && !/^https:\/\/upload\.wikimedia\.org\//.test(p.image.url) && !/^https:\/\/(images\.)?(mapillary|panoramax)/.test(p.image.url)) warn("image", `image.url ${p.image.url} is not from an open image repository`);
   return out;
@@ -166,7 +166,6 @@ export function repair(p: any): string[] {
   const price = p.prices?.cappuccino?.amount;
   if (price !== undefined && (price < 1.5 || price > 9)) { delete p.prices; done.push("removed implausible price"); }
   if (p.operator && (!LEGAL_FORM.test(p.operator.name) || NOT_LEGAL_ENTITY.test(p.operator.name))) { delete p.operator; done.push("removed operator that is not a legal entity"); }
-  if (SEASONAL.test(p.name) && p.status === "open") { p.status = "temporarily_closed"; done.push("seasonal venue -> temporarily_closed"); }
   if ((p.specialty_tier === "A" || p.specialty_tier === "B") && p.roasts_own_beans !== true && !(p.roasters_served ?? []).length) { p.specialty_tier = "unknown"; done.push("tier without evidence -> unknown"); }
   if (p.description && p.specialty_tier !== "A" && p.specialty_tier !== "B") { delete p.description; done.push("removed description of a place that is not tier A or B"); }
   for (const k of ["amenities", "serving", "food", "links"]) if (p[k] && !Object.keys(p[k]).length) delete p[k];

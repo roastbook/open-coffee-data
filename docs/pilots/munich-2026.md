@@ -12,7 +12,7 @@ Only places confirmed on their own website are in the dataset. Each record's val
 | Tier B (serves specialty) | 19 |
 | none (not specialty: chains, restaurants, bakeries …) | 86 |
 | unknown (confirmed, but no specialty evidence on its own site) | 270 |
-| **Total** | **390** (388 open, 2 seasonal venues temporarily closed) |
+| **Total** | **390**, all open |
 
 Every place has a website (that is how it was confirmed), 96% have a street and postcode, and 60% have opening hours (82% of tier A/B).
 
@@ -20,7 +20,7 @@ Every place has a website (that is how it was confirmed), 96% have a street and 
 
 | Criterion | Target | Result | Met |
 |---|---|---|---|
-| Coverage of extract.coffee's still-open Munich cafés | ≥ 90% | 33 of 41 (80.5%) | no |
+| Coverage of extract.coffee's still-open Munich cafés | ≥ 90% | 34 of 41 (82.9%) | no |
 | Tier A/B places with complete core fields | ≥ 60 | 7 (5 A, 2 B) | no |
 | Validation passes, nothing non-redistributable committed | yes | `scripts/validate.sh` against the released v0.3.0 schema: 0 errors; data lint: 0 errors | yes |
 
@@ -36,7 +36,7 @@ The first published file (1,076 records) had defects that an independent review 
 - **Platform pages as websites** (Gelbe Seiten, Lieferando, speisekartenweb, gastroguide, Facebook) and every value read from them were removed; platform pages are never used.
 - **Wrong tiers.** Places on a roaster's reference or stockist list (a bike shop, a beer hall, a restaurant) were tier B. Roaster lists are no longer used at all; a roaster counts only when the place's own website names it with a specialty claim, and tier A/B needs status open.
 - **Evidence rules.** A quote that negates a value ("kein WLAN") no longer supports `true`; "Speisekarte" no longer counts as card payment, "Hotdog" not as dogs allowed, a supplier mention not as own roasting, a bare "250 g" not as selling beans, and "Barzahlung" not as cash only.
-- **Other fixes:** Facebook share links, owners' names inside place names, an email address in a street, seasonal Oktoberfest venues (now `temporarily_closed`), non-coffee businesses at discovery (75 excluded), 3 confirmed duplicates (Hochlandkaffee into Pachamama, Maxim Kaffee into Groove Coffee Club, and the operator name "Christoph Jünger Gastronomie" into cafe Clara).
+- **Other fixes:** Facebook share links, owners' names inside place names, an email address in a street, seasonal venues (Oktoberfest tents are not stored at all; only places open all year are), non-coffee businesses at discovery (75 excluded), 3 confirmed duplicates (Hochlandkaffee into Pachamama, Maxim Kaffee into Groove Coffee Club, and the operator name "Christoph Jünger Gastronomie" into cafe Clara).
 - **Only confirmed places.** 697 of the 1,076 published records left the repository: 656 that had never been confirmed, 6 duplicate tombstones, and 35 whose website, read again, no longer confirms them (or that turned out to be duplicates). No dataset release had been tagged, so no released id was lost; the agent keeps them in an uncommitted local archive.
 
 In numbers: 1,076 records before, 390 after: 379 kept (276 of them changed, 857 values in total), 11 new, 697 removed.
@@ -52,7 +52,9 @@ In numbers: 1,076 records before, 390 after: 379 kept (276 of them changed, 857 
 | Wikidata cafés | 5 | 2 matched (ids attached) |
 | Foursquare Open Source Places | 0 | gated, see blockers |
 
-Overture licences seen inside the bounding box: CDLA-Permissive-2.0, Apache-2.0 (Foursquare contributions) and CC0-1.0 (AllThePlaces); no record had an OpenStreetMap source. The city boundary is the official municipality polygon from BKG VG250, used only to filter points. 52 mentions could not be placed because Overture has no place at that name or address.
+Overture is one source, not the reference. A place found elsewhere (web leads, research, seed files) that its own website confirms is added too. Coordinates then come from the website itself (schema.org data, map markers; never Google Maps embeds) or from another Overture record at exactly the confirmed street, number and postcode, which is the same building. This added places Overture does not list, such as Stray Coffee Roasters, Cafe Mona and Tante Chylla.
+
+Overture licences seen inside the bounding box: CDLA-Permissive-2.0, Apache-2.0 (Foursquare contributions) and CC0-1.0 (AllThePlaces); no record had an OpenStreetMap source. The city boundary is the official municipality polygon from BKG VG250, used only to filter points. 47 mentions could not be placed: 18 have no website (often Instagram-only), 10 have a name shared by several places, 7 have no coordinates from any source, and 6 have a website that does not name them.
 
 ## Research and enrichment
 
@@ -66,14 +68,14 @@ Overture licences seen inside the bounding box: CDLA-Permissive-2.0, Apache-2.0 
 
 | Field | All places (390) | Tier A/B (34) |
 |---|---:|---:|
-| `address.street_address` | 374 (96%) | 33 (97%) |
-| `address.postal_code` | 374 (96%) | 33 (97%) |
-| `status=open` | 388 (99%) | 34 (100%) |
-| `opening_hours` | 235 (60%) | 28 (82%) |
+| `address.street_address` | 376 (96%) | 33 (97%) |
+| `address.postal_code` | 376 (96%) | 33 (97%) |
+| `status=open` | 390 (100%) | 34 (100%) |
+| `opening_hours` | 237 (61%) | 28 (82%) |
 | `description` | 34 (9%) | 34 (100%) |
-| `roasts_own_beans` | 35 (9%) | 19 (56%) |
-| `roasters_served` | 51 (13%) | 15 (44%) |
-| `serving.espresso` | 97 (25%) | 15 (44%) |
+| `roasts_own_beans` | 36 (9%) | 19 (56%) |
+| `roasters_served` | 52 (13%) | 15 (44%) |
+| `serving.espresso` | 98 (25%) | 15 (44%) |
 | `serving.filter` | 21 (5%) | 10 (29%) |
 | `serving.pour_over` | 9 (2%) | 5 (15%) |
 | `serving.batch_brew` | 0 (0%) | 0 (0%) |
@@ -82,28 +84,28 @@ Overture licences seen inside the bounding box: CDLA-Permissive-2.0, Apache-2.0 
 | `serving.plant_milk` | 51 (13%) | 10 (29%) |
 | `amenities.wifi` | 11 (3%) | 2 (6%) |
 | `amenities.laptop_friendly` | 5 (1%) | 1 (3%) |
-| `amenities.kids_friendly` | 12 (3%) | 0 (0%) |
-| `amenities.vegan_options` | 64 (16%) | 7 (21%) |
+| `amenities.kids_friendly` | 10 (3%) | 0 (0%) |
+| `amenities.vegan_options` | 63 (16%) | 7 (21%) |
 | `amenities.dogs_allowed` | 7 (2%) | 1 (3%) |
 | `amenities.outdoor_seating` | 69 (18%) | 4 (12%) |
 | `amenities.card_payment` | 26 (7%) | 1 (3%) |
 | `amenities.cash_only` | 1 (0%) | 0 (0%) |
 | `amenities.wheelchair_accessible` | 12 (3%) | 1 (3%) |
 | `food.focus` | 68 (17%) | 12 (35%) |
-| `food.breakfast` | 100 (26%) | 10 (29%) |
-| `food.lunch` | 81 (21%) | 7 (21%) |
+| `food.breakfast` | 99 (25%) | 10 (29%) |
+| `food.lunch` | 80 (21%) | 7 (21%) |
 | `food.cakes_baked_in_house` | 47 (12%) | 3 (9%) |
-| `sells_beans` | 14 (4%) | 3 (9%) |
+| `sells_beans` | 16 (4%) | 3 (9%) |
 | `sells_equipment` | 11 (3%) | 2 (6%) |
 | `offers_courses` | 18 (5%) | 3 (9%) |
 | `reusable_cup_systems` | 3 (1%) | 0 (0%) |
 | `prices.cappuccino` | 47 (12%) | 7 (21%) |
-| `operator` | 156 (40%) | 19 (56%) |
+| `operator` | 155 (40%) | 19 (56%) |
 | `links.website` | 390 (100%) | 34 (100%) |
 | `links.instagram` | 234 (60%) | 23 (68%) |
-| `links.facebook` | 147 (38%) | 13 (38%) |
+| `links.facebook` | 145 (37%) | 13 (38%) |
 | `image` | 0 (0%) | 0 (0%) |
-| `xref.overture` | 389 (100%) | 34 (100%) |
+| `xref.overture` | 387 (99%) | 34 (100%) |
 | `xref.wikidata` | 2 (1%) | 0 (0%) |
 
 ## Coverage against extract.coffee
@@ -111,8 +113,8 @@ Overture licences seen inside the bounding box: CDLA-Permissive-2.0, Apache-2.0 
 extract.coffee lists 41 Munich cafés. We read their pages one at a time, only to measure coverage; the names are kept in an uncommitted local file and were not used to find places.
 
 - None is closed according to our data, so all 41 count as still open.
-- 33 are in the dataset (80.5%): 12 tier A, 9 tier B, 3 none, 9 unknown; all 33 confirmed open; 4 with complete core fields.
-- The 8 missing ones are either not in Overture's places (no open source of coordinates) or not confirmed on their own website in this run.
+- 34 are in the dataset (82.9%), all confirmed open; 4 with complete core fields.
+- The 7 missing ones could not be confirmed on their own website in this run, or have no coordinates from any of the sources below.
 
 ## Images
 

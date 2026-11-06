@@ -90,3 +90,29 @@ test("evidence regexes: negations, Speisekarte, Hotdog, supplier roasters, bare 
   expect(one("sells_beans", true, "Espresso Blend 250 g zum Mitnehmen")).toBe(1);
   expect(one("sells_beans", true, "Ganze Bohnen für zu Hause")).toBe(1);
 });
+
+import { htmlGeo } from "../src/html";
+import { siteGeo } from "../src/pipeline";
+test("coordinates a site publishes itself, never Google's", () => {
+  expect(htmlGeo(`<script type="application/ld+json">{"geo":{"latitude":48.13512,"longitude":11.58198}}</script>`)).toEqual([{ lat: 48.13512, lon: 11.58198 }]);
+  expect(htmlGeo(`<meta name="geo.position" content="48.1351; 11.5820">`)).toEqual([{ lat: 48.1351, lon: 11.582 }]);
+  expect(htmlGeo(`<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=11.5,48.1,11.6,48.2&marker=48.13512%2C11.58198">`)).toEqual([{ lat: 48.13512, lon: 11.58198 }]);
+  expect(htmlGeo(`L.marker([48.13512, 11.58198]).addTo(map)`)).toEqual([{ lat: 48.13512, lon: 11.58198 }]);
+  expect(htmlGeo(`<iframe src="https://www.google.com/maps/embed?pb=!1m18!3d48.13512!2d11.58198">`)).toEqual([]);
+  const page = (geo: any[]) => ({ url: "https://x.example/", doc: { geo } });
+  expect(siteGeo([page([{ lat: 48.13512, lon: 11.58198 }]), page([{ lat: 48.13513, lon: 11.58199 }])])).toMatchObject({ lat: 48.13512 });
+  expect(siteGeo([page([{ lat: 48.13512, lon: 11.58198 }, { lat: 48.16, lon: 11.6 }])])).toBeNull(); // several locations
+});
+
+import { addressPoint } from "../src/pipeline";
+test("a confirmed address takes the building position from another Overture record there", () => {
+  const pts = [
+    { id: "a", street: "Türkenstraße 52", postcode: "80799", lat: 48.1500, lon: 11.5800 },
+    { id: "b", street: "Türkenstr. 52", postcode: "80799", lat: 48.15005, lon: 11.58003 },
+    { id: "c", street: "Türkenstraße 54", postcode: "80799", lat: 48.1510, lon: 11.5800 },
+  ];
+  expect(addressPoint(pts, "Türkenstraße 52", "80799")).toMatchObject({ lat: 48.15 });
+  expect(addressPoint(pts, "Türkenstraße 52", "80333")).toBeNull(); // other postcode
+  expect(addressPoint(pts, "Türkenstraße", "80799")).toBeNull(); // no house number
+  expect(addressPoint([...pts, { id: "d", street: "Türkenstraße 52", postcode: "80799", lat: 48.16, lon: 11.58 }], "Türkenstraße 52", "80799")).toBeNull(); // records disagree
+});

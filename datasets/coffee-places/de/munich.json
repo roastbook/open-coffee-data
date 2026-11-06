@@ -12,7 +12,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Eisenrieder",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -37,7 +37,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kleine Sportgeister Turncafé",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -61,7 +61,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Bar Cockpit",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -92,7 +92,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ONE Nation Munich",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -135,7 +135,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "schokoAlm",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -173,7 +173,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Plaisir",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -202,7 +202,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "cafegudrun3",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -230,7 +230,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Bar Mellow",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -273,7 +273,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Palmi Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -302,7 +302,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "BalanDeli",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -332,7 +332,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Bar Sailor's",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -358,7 +358,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Man Versus Machine Coffee Roasters",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -391,7 +391,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café im NähWerk",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -421,7 +421,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ORANGE BOX",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -463,7 +463,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kyso Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -496,7 +496,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Hungriges Herz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -549,7 +549,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Violin",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -601,7 +601,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Münchner Kaffeerösterei",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -628,7 +628,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Amadeus",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -657,7 +657,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -688,7 +688,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ChiaChia's Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -724,7 +724,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ALRIGHTY Roastery & Coffee Shop",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -761,7 +761,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mokaffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -798,7 +798,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Casablanca Bar und Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -823,7 +823,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Daily Coffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -869,7 +869,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Glanz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -913,7 +913,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Neismanufaktur",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -952,7 +952,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Beerencafé Feldmoching",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -979,7 +979,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Vits der Kaffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1033,7 +1033,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Sheraton's Lobby (Munchen)",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1064,7 +1064,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1090,7 +1090,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kidstown Munich",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1127,7 +1127,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "HausSchmaus",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1152,7 +1152,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Alpha Bikes",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1179,7 +1179,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nuvola CafÉ MÜNchen",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1211,7 +1211,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1237,7 +1237,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café am Max-Weber-Platz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1258,39 +1258,11 @@
       }
     },
     {
-      "id": "cp-32ahbkp7j5",
-      "type": "CafeOrCoffeeShop",
-      "name": "Noah's Ark",
-      "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
-      "address": {
-        "country_code": "DE",
-        "locality": "München",
-        "street_address": "Truderinger Straße 86C",
-        "postal_code": "81673"
-      },
-      "location": {
-        "lat": 48.1268,
-        "lon": 11.6672
-      },
-      "opening_hours": "Mo off; Tu-Th 10:00-12:00,14:00-18:00; Fr-Su 10:00-18:00",
-      "specialty_tier": "unknown",
-      "serving": {
-        "espresso": true
-      },
-      "amenities": {
-        "kids_friendly": true
-      },
-      "links": {
-        "website": "https://noahsark-indoorspielplatz.de/"
-      }
-    },
-    {
       "id": "cp-339wqvvgtj",
       "type": "CafeOrCoffeeShop",
       "name": "Caffe Era",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1315,7 +1287,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Calima Specialty Coffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1353,7 +1325,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Not Guilty Pleasure",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1399,7 +1371,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cole & Porter Tagesbar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1425,7 +1397,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café am Beethovenplatz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1452,7 +1424,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Like-Sushi",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1476,7 +1448,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Stenz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1506,7 +1478,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1537,7 +1509,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café-Bar Azzurro",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1561,7 +1533,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Maex41",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1607,7 +1579,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Bar Tribu",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1645,7 +1617,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mokka",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1677,7 +1649,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Yellow's Coffee & More",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1705,7 +1677,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Gusto - die Suppenbar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1736,7 +1708,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Espressothek",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1761,7 +1733,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Keep Bañana",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1789,7 +1761,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Dinatale Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1825,7 +1797,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Deli Star Bagel & Coffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1865,7 +1837,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Seidls Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1890,7 +1862,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café im Museum Villa Stuck",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1916,7 +1888,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Queerkafe - München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1949,7 +1921,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Segafredo Zanetti Deutschland",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1982,7 +1954,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "The Base Munich",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2011,40 +1983,11 @@
       }
     },
     {
-      "id": "cp-5206nvp8qh",
-      "type": "CafeOrCoffeeShop",
-      "name": "Café Kaiserschmarrn Oktoberfestzelt",
-      "status": "temporarily_closed",
-      "checked_at": "2026-11-06T00:01:32Z",
-      "address": {
-        "country_code": "DE",
-        "locality": "München"
-      },
-      "location": {
-        "lat": 48.13059,
-        "lon": 11.550648
-      },
-      "specialty_tier": "unknown",
-      "operator": {
-        "name": "Max Rischart's Backhaus KG",
-        "legal_form": "KG",
-        "register_id": "HRA 48109"
-      },
-      "links": {
-        "website": "https://www.rischart.de/",
-        "instagram": "https://www.instagram.com/rischart_munich/",
-        "facebook": "https://www.facebook.com/rischart/"
-      },
-      "xref": {
-        "overture": "557a6df4-dccf-4c8b-9999-a2a17d669e3f"
-      }
-    },
-    {
       "id": "cp-52gq9d0nk4",
       "type": "CafeOrCoffeeShop",
       "name": "Trachtenvogl",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2113,7 +2056,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Sonnenback",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2158,7 +2101,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Oh happy Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2195,7 +2138,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2226,7 +2169,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2257,7 +2200,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Poppi Farmer",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2290,7 +2233,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ALEX München Pasing Arcaden",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2331,7 +2274,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Inge",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2357,7 +2300,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Studio Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2394,7 +2337,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Sallis Kitchen",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2420,11 +2363,36 @@
       }
     },
     {
+      "id": "cp-5t1brjk8fg",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Mona - Specialty Coffee",
+      "status": "open",
+      "checked_at": "2026-11-06T07:13:45Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "München",
+        "street_address": "Willi-Brandt-Platz 5",
+        "postal_code": "81829"
+      },
+      "location": {
+        "lat": 48.132089,
+        "lon": 11.6913
+      },
+      "opening_hours": "Mo-Sa 10:00-20:00",
+      "specialty_tier": "unknown",
+      "serving": {
+        "espresso": true
+      },
+      "links": {
+        "website": "https://www.cafemona.de/"
+      }
+    },
+    {
       "id": "cp-5vam7p6ctc",
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Lozzi",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2470,7 +2438,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tante Emma",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2501,7 +2469,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Goldene Rakete",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2545,7 +2513,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Josefina",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2592,7 +2560,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2623,7 +2591,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "India King",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2650,7 +2618,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kiosk 1917",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2695,7 +2663,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Bäckerei Konditorei Paul Isaak",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2729,7 +2697,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "New Era Coffee & Bar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2771,7 +2739,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Matcha Rina Bar München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2805,7 +2773,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Colombo",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2837,7 +2805,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Konditorei Café Kreutzkamm",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2875,7 +2843,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Das Vierundsiebzig",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2899,7 +2867,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Barista Sistar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2949,7 +2917,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Buur",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2982,7 +2950,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Backsteinchen",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3023,7 +2991,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Neosociety Munich",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3054,7 +3022,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "OM NOM NOM CAFÉ",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -3091,7 +3059,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe am Memminger Platz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -3114,7 +3082,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Manufactum Brot & Butter",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3154,7 +3122,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Luffy Pancake Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3197,7 +3165,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Conditorei Mische",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3231,7 +3199,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe CADE",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3258,7 +3226,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Münchner Freiheit",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3283,7 +3251,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nini Café Borstei",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3309,7 +3277,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Roca Junior",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3340,7 +3308,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Primo Espresso",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3370,7 +3338,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tantris",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3409,7 +3377,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "diversity Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3440,7 +3408,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffeeteam München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3470,7 +3438,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "le petit p.",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3496,7 +3464,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "3Mills Cycling & Coffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3533,7 +3501,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kaffeerösterei Rehm",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3562,7 +3530,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3593,7 +3561,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Latteartcity",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3623,7 +3591,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nu Lounge",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3654,7 +3622,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nes Coffee München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3685,7 +3653,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Delikat",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3715,7 +3683,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "StaBi Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3740,7 +3708,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Starbucks",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -3765,7 +3733,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "AmRest Coffee Deutschland",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3789,7 +3757,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffeemamas Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3819,7 +3787,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Bar Loco",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3848,7 +3816,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Feeling",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3873,7 +3841,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Götterspeise Chocolaterie und Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3904,7 +3872,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Story Café München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3940,7 +3908,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Ruffini",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3975,7 +3943,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Velo Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3999,7 +3967,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Schmalznudel",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4025,7 +3993,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Schneid-Kaffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4058,7 +4026,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Piccola Pizza München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4083,7 +4051,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafebar007",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4115,7 +4083,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Boymer Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4148,7 +4116,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4179,7 +4147,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Hochlandkaffee Aus Peru",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4210,7 +4178,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4241,7 +4209,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "IDEE Office Coffee Service",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4278,7 +4246,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Vinaiolo München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4307,7 +4275,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Ludwig",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4338,7 +4306,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Billy's Café und Kiosk",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4376,7 +4344,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Dinatale Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4408,7 +4376,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Eiscafé Sarcletti",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4441,7 +4409,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Red´is Bar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4469,7 +4437,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Böcklin Coffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4501,7 +4469,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffeenewstom",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -4523,7 +4491,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Die Kuchenmeisterei",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4551,7 +4519,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Caffè Pol",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4585,7 +4553,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mini Moment Kids Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4625,7 +4593,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Sportivo Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4650,7 +4618,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Arzmiller",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4674,7 +4642,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Antons",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4715,7 +4683,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tapparo Tagesbar & Focacceria",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4764,7 +4732,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Gumbel",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4790,7 +4758,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Robetti Cafe, Snacks Und Bäckerei",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4818,7 +4786,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Man versus Machine Coffee Roasters",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4851,7 +4819,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "MiRA Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4877,7 +4845,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Gimbab Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4907,7 +4875,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café & Restaurant Museum",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4961,7 +4929,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Blue",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4993,7 +4961,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "LoRossi Caffè House & Lounge",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5033,7 +5001,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Maratonga",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5058,7 +5026,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Palmenhaus Schloss Nymphenburg",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5107,7 +5075,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Le Petit Jardin",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5136,7 +5104,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Münchner Freiheit",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5161,7 +5129,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Dankl",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5209,7 +5177,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café im Kustermann",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5251,7 +5219,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "PATIALA GASTRO",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5286,7 +5254,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Nymphenburg Sekt",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5314,7 +5282,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Espressoworld Espressomaschinen München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5357,7 +5325,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Dompierre Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5388,7 +5356,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Al Teatro",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5412,7 +5380,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Konditorei Tullio",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5446,7 +5414,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "SOLÂ",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5485,7 +5453,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Woerner's",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5516,7 +5484,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Jugendcafe Hochaecker",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -5544,7 +5512,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Espressitto Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5578,7 +5546,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Meandros",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5606,7 +5574,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ChocoLab",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5663,7 +5631,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Haidhausen",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5714,7 +5682,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Humpback Whale Specialty Coffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5744,7 +5712,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nupsy.",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -5767,7 +5735,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tonino & Luigi Tegernseer Landstr. München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5792,7 +5760,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Der Schlingel Am Isartor",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5824,7 +5792,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Westend",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5861,7 +5829,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nine Fine Roastery",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5910,7 +5878,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "The Tribeca Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5944,7 +5912,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Weyerer",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5982,7 +5950,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café CaVa",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6021,7 +5989,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Pachamama",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6051,7 +6019,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Schön Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6077,7 +6045,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Sallis Kaffeerosterei und Espressobar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6112,7 +6080,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Arkadi - München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6143,7 +6111,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cooper's",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6168,7 +6136,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Davide Costanza",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6203,7 +6171,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Grass",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6233,7 +6201,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Hugendubel",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6260,7 +6228,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Haidcafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6286,7 +6254,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Terrazza",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6318,7 +6286,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Zimtschneckenfabrik",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6348,7 +6316,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Lukumades MUC",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6377,7 +6345,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "cantina diakonia",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6403,7 +6371,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Burger Buben München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6428,7 +6396,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Wonder Waffel München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6454,7 +6422,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Postcafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6482,7 +6450,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Ella Restaurant & Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6521,7 +6489,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Bean Batter",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6559,7 +6527,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nebenan Brunch & Bar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6599,7 +6567,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kaffeekontor Bayern",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6635,7 +6603,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Toto Matcha",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -6662,7 +6630,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Patolli",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6710,7 +6678,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6741,7 +6709,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tanpopo Konditorei Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6772,7 +6740,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Flower",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6819,7 +6787,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "A Little Lost",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6859,7 +6827,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Lollo Rosso",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6887,7 +6855,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Woerner´s Marienplatz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6921,7 +6889,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Suuapinga Bakery",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6955,7 +6923,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Höflinger",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -6990,7 +6958,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Soon Coffee House",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7019,7 +6987,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Stanizl Hofladen & Marktcafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7060,7 +7028,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7092,7 +7060,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Niu Asian Café München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7125,7 +7093,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Camatti Bar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7161,7 +7129,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kaffee Espresso & Barista",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7191,7 +7159,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "bacibaci Café & Tagesbar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7220,7 +7188,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Marais",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7245,7 +7213,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Hayalisa",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7279,7 +7247,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Groove Coffee Club Munich",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7329,7 +7297,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "A - Die Tagesbar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7367,7 +7335,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Bella Vista Freimann",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7405,7 +7373,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "S/o Yellow",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7430,7 +7398,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "THE BARN Coffee Roasters",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7462,7 +7430,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7493,7 +7461,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "m-presso",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7518,7 +7486,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Twins",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7557,7 +7525,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Konditorei Café Kreutzkamm",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7592,7 +7560,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Schirmcafé",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7616,7 +7584,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Rosalie's Deli Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7666,7 +7634,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Fausto Kaffeerösterei",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7698,7 +7666,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Konditorei Erbshäuser",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7723,7 +7691,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Zimt",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7762,7 +7730,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Man Vs Machine Coffee Roaster",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7795,7 +7763,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Stadtteilcafe Treffpunkt",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7829,7 +7797,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Daddee Blu",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7859,7 +7827,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "sehrwohl - Café & Bar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7897,7 +7865,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Saphir",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7931,7 +7899,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Savos French Tacos",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7974,7 +7942,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Galerie-Café Käthe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7999,7 +7967,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Dupont",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8033,7 +8001,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Speisecafe Rigoletto",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8068,7 +8036,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "PALMZ Acai, Coffee & More",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8113,7 +8081,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Bricelta",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8160,7 +8128,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Crème",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8188,7 +8156,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Schau ma moi",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8216,7 +8184,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Reichshof",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8263,7 +8231,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8294,7 +8262,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kaffeerösterei Viktualienmarkt",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -8327,7 +8295,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Gans Woanders",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8365,7 +8333,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Fortuna Cafébar, München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8400,7 +8368,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Teegalerie Munich Rotkreuzplatz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8426,7 +8394,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "AURUM Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -8450,7 +8418,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "PAPER & TEA",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8476,7 +8444,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "stilös",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8501,7 +8469,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Eiscafé Venezia",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8526,7 +8494,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Messer & Gabel",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8560,7 +8528,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Standl 20",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8593,7 +8561,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Vollaths",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8629,7 +8597,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Jasmin",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8679,7 +8647,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Aubinger Herzl",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8714,7 +8682,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "im Dazwischen",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8744,7 +8712,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8775,7 +8743,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Gangundgäbe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8807,7 +8775,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Mühle",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8833,7 +8801,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Der Pavillon",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8864,7 +8832,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Indisch Curry Service München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8889,7 +8857,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Sonya's Cafe Backshop",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8916,7 +8884,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Wildwuchs im Werkhaus",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8944,11 +8912,44 @@
       }
     },
     {
+      "id": "cp-pm0jf01a0g",
+      "type": "CafeOrCoffeeShop",
+      "name": "Stierkopf - office food",
+      "status": "open",
+      "checked_at": "2026-11-06T07:13:45Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "München",
+        "street_address": "Pelkovenstraße 145",
+        "postal_code": "80992"
+      },
+      "location": {
+        "lat": 48.182226,
+        "lon": 11.530983
+      },
+      "specialty_tier": "unknown",
+      "amenities": {
+        "card_payment": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://www.stierkopf.net/"
+      },
+      "xref": {
+        "overture": "3d185371-264f-4731-a828-4137ca3134e0"
+      }
+    },
+    {
       "id": "cp-pr9vbffsqn",
       "type": "CafeOrCoffeeShop",
       "name": "The Cocoa Shop",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -8972,7 +8973,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Ciao Amore",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9030,7 +9031,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "chicco di caffè",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9059,7 +9060,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Karlsbar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9087,7 +9088,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Clemens kaffee haus",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9130,7 +9131,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Daddy Longlegs",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9176,7 +9177,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "TCM Royal International",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9200,7 +9201,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Segafredo Espresso Bar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9236,7 +9237,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Sweet Spot Kaffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9268,7 +9269,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Restaurant Bambusgarten",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9294,7 +9295,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kafrika - africa's finest coffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9321,7 +9322,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Rischart Café Rialto",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9353,7 +9354,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Wiener Platz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9395,7 +9396,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mary's Coffee Club",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9428,7 +9429,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Munich Rose Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9454,7 +9455,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Zimt & Zucker",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9486,7 +9487,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mama's Kindercafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9522,7 +9523,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Barista School By Höflinger Müller",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9548,44 +9549,11 @@
       }
     },
     {
-      "id": "cp-qy2paq9qs7",
-      "type": "CafeOrCoffeeShop",
-      "name": "Stierkopf - office food",
-      "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
-      "address": {
-        "country_code": "DE",
-        "locality": "München",
-        "street_address": "Pelkovenstraße 145",
-        "postal_code": "80992"
-      },
-      "location": {
-        "lat": 48.182226,
-        "lon": 11.530983
-      },
-      "specialty_tier": "unknown",
-      "amenities": {
-        "card_payment": true
-      },
-      "food": {
-        "breakfast": true,
-        "lunch": true,
-        "cakes_baked_in_house": true,
-        "focus": "food_led"
-      },
-      "links": {
-        "website": "https://www.stierkopf.net/"
-      },
-      "xref": {
-        "overture": "3d185371-264f-4731-a828-4137ca3134e0"
-      }
-    },
-    {
       "id": "cp-qy8zp52c88",
       "type": "CafeOrCoffeeShop",
       "name": "The Brother Mill Café and Bakery",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9633,7 +9601,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Scheidplatz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9676,7 +9644,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Filmwirtschaft",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9702,7 +9670,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Zenergy - Bio Matcha Tee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9726,7 +9694,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "MoCCafé",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9756,7 +9724,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nonna’s",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9797,7 +9765,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Gans am Wasser",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9827,7 +9795,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Fizzy Bubele München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9859,7 +9827,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Bohne & Malz am Stachus",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9913,7 +9881,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Pizza Mondo München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9938,7 +9906,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coucou Food Market - Jüdisches Museum München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9974,7 +9942,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Balan",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9999,7 +9967,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mr. Baker's Coffee House",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10032,7 +10000,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cadu",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10078,7 +10046,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Luitpold",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10117,7 +10085,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Lotti",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10165,7 +10133,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Turm Kaffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10197,7 +10165,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Lieblingscafé",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10229,7 +10197,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10260,7 +10228,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Woerner's Confiserie & Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10295,7 +10263,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mackgorilla",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10337,7 +10305,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Crêperie Carré",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10382,7 +10350,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Walsers Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10410,7 +10378,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tea & More",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10435,7 +10403,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Zottl",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10460,7 +10428,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Ese Espresso",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10502,7 +10470,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Bazaar Noir",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10541,7 +10509,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tropical Coffee and Sweets",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10566,7 +10534,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Concelia Coffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10597,7 +10565,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Che Follia Espressobar und Delikatessen",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10640,7 +10608,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Voila",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10678,7 +10646,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Leone Caffè",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10704,7 +10672,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "IDEAL BAR",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10747,7 +10715,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Wunderbar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10779,7 +10747,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10810,7 +10778,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Gartensalon",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10849,7 +10817,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Puck",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10883,7 +10851,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Stuzzicadenti",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10917,11 +10885,43 @@
       }
     },
     {
+      "id": "cp-tmq3n6byxp",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tante Chylla",
+      "status": "open",
+      "checked_at": "2026-11-06T07:13:45Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "München",
+        "street_address": "Rüttenauerplatz 3",
+        "postal_code": "81245"
+      },
+      "location": {
+        "lat": 48.163169,
+        "lon": 11.448576
+      },
+      "opening_hours": "Mo-Th 07:30-16:00; Fr-Sa 07:00-16:30",
+      "specialty_tier": "unknown",
+      "roasters_served": [
+        {
+          "name": "GoodBeans"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://www.tante-chylla.com/",
+        "instagram": "https://www.instagram.com/tantechylla/"
+      }
+    },
+    {
       "id": "cp-tpcz9zqnaw",
       "type": "CafeOrCoffeeShop",
       "name": "Cafe am Josephsplatz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10951,7 +10951,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "cafe Clara",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -10993,7 +10993,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe und Bäckerei Mauerer",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11033,7 +11033,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Erika",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11085,7 +11085,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Pour. Coffee & More",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11111,7 +11111,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Hofreiter BeerenCafé",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -11138,7 +11138,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "wohnwerk münchen",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11185,7 +11185,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "VILLAGE Tagesbar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11237,7 +11237,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cupital N°3",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11272,7 +11272,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kuchentratsch",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11312,7 +11312,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Orno Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11343,7 +11343,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "WINKELGASSE Café & Pub",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11378,7 +11378,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Jasmin am Hohenschwangauplatz",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11408,7 +11408,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Olympia Parkcafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11433,7 +11433,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nova Natura",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11462,7 +11462,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Chance",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11489,7 +11489,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "VogelMaier Kaffeerösterei",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11524,7 +11524,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kapo Theke",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11557,7 +11557,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Schelling-Salon",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11602,7 +11602,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Regenbogen",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11626,7 +11626,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Topic M Café",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11661,7 +11661,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kanso Coffee Lab",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11700,7 +11700,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Lisa",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11743,7 +11743,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Hüller - München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11786,7 +11786,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11813,11 +11813,36 @@
       }
     },
     {
+      "id": "cp-wqk30tn6h5",
+      "type": "CafeOrCoffeeShop",
+      "name": "Stray Coffee Roasters",
+      "status": "open",
+      "checked_at": "2026-11-06T07:13:45Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "München",
+        "street_address": "Gollierstraße 30",
+        "postal_code": "80339"
+      },
+      "location": {
+        "lat": 48.135819,
+        "lon": 11.54179
+      },
+      "opening_hours": "Mo-Fr 08:00-16:00; Sa,Su 10:00-16:00",
+      "specialty_tier": "unknown",
+      "roasts_own_beans": true,
+      "sells_beans": true,
+      "links": {
+        "website": "https://stray.coffee/pages/cafe",
+        "instagram": "https://www.instagram.com/the.straycoffee/"
+      }
+    },
+    {
       "id": "cp-wswgnjr914",
       "type": "CafeOrCoffeeShop",
       "name": "Joma - Begegnung In Der Au",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11842,7 +11867,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Audimax StuCafé",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11867,7 +11892,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Zeitgeist",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11898,7 +11923,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Randale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11922,7 +11947,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Edeltee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11948,7 +11973,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "StuCafé Lothstraße",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -11973,7 +11998,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Blá",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12017,7 +12042,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Das neue Kubitscheck",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12048,7 +12073,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Petit Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12072,7 +12097,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Momento Pizza München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12096,7 +12121,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mazaaq Coffee and more",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12121,7 +12146,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Bianco e blue in der Altstadt",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -12150,7 +12175,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café In Der Klinik",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12175,7 +12200,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafédotkom",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12209,7 +12234,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kaiser Otto",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12241,7 +12266,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Paulaner am Nockherberg",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12273,7 +12298,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Pacandé",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12300,7 +12325,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Fräulein",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12328,7 +12353,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Fräulein Grüneis",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12372,7 +12397,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café la Maison",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12404,7 +12429,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Lost Weekend Munich",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12454,7 +12479,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café In Der Pinakothek Der Moderne",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12479,7 +12504,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Windfall",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12511,7 +12536,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Maxim Kaffee",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12542,7 +12567,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Dinatale Cafe",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12574,43 +12599,11 @@
       }
     },
     {
-      "id": "cp-ytgw340d91",
-      "type": "CafeOrCoffeeShop",
-      "name": "Wiesn Guglhupf Café-Dreh-Bar",
-      "status": "temporarily_closed",
-      "checked_at": "2026-11-06T00:01:32Z",
-      "address": {
-        "country_code": "DE",
-        "locality": "München"
-      },
-      "location": {
-        "lat": 48.134429,
-        "lon": 11.552174
-      },
-      "specialty_tier": "unknown",
-      "amenities": {
-        "vegan_options": true,
-        "kids_friendly": true
-      },
-      "food": {
-        "breakfast": true,
-        "lunch": true
-      },
-      "links": {
-        "website": "https://www.wiesn-guglhupf.de/",
-        "instagram": "https://www.instagram.com/wiesn_guglhupf/",
-        "facebook": "https://www.facebook.com/wiesnguglhupf/"
-      },
-      "xref": {
-        "overture": "13207f8c-ab3d-4942-801e-ca784f4f8fa3"
-      }
-    },
-    {
       "id": "cp-yv11jpxrfc",
       "type": "CafeOrCoffeeShop",
       "name": "Ooh Baby I like it raw / München",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12660,7 +12653,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Beans and Books",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12691,7 +12684,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "München72",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12717,7 +12710,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Tabula Rasa",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12752,7 +12745,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Starbucks",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12779,7 +12772,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "THE BARN Coffee Roasters",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12812,7 +12805,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12843,7 +12836,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Helma - Café & Tagesbar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12891,7 +12884,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Primo Cafebar",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12921,7 +12914,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12953,7 +12946,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Kosmos",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -12978,7 +12971,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Netzwerk",
       "status": "open",
-      "checked_at": "2026-11-06T00:01:32Z",
+      "checked_at": "2026-11-06T07:13:45Z",
       "address": {
         "country_code": "DE",
         "locality": "München",

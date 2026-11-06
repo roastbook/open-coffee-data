@@ -38,7 +38,7 @@ Errors (CI fails):
 - `website-platform`: `links.website` is a directory, delivery, booking, review or social page (Gelbe Seiten, Lieferando, speisekartenweb, Facebook …), not the place's own site.
 - `share-link`: `links.facebook` or `links.instagram` is a share, dialog or intent link (`facebook.com/sharer.php` …), not a profile; `instagram`: not a valid profile URL.
 - `person-name`: a place name contains an owner's name ("Inh. …"); people's names are personal data.
-- `seasonal`: a seasonal venue (Oktoberfest tent, fair, Christmas market) with `status: open`; it is `temporarily_closed` outside its season.
+- `seasonal`: a seasonal venue (Oktoberfest tent, fair, Christmas market); only places open all year are stored.
 - `contact-data`: an email address or phone number outside `links`.
 - `duplicate`: two records with nearly the same name within 40 m (or the same name within 60 m). Remove the extra record.
 - `unverified`: the dataset holds only confirmed places; an `unverified` record must be confirmed or removed. `type`: every place is `CafeOrCoffeeShop`.

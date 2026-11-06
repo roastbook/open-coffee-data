@@ -52,3 +52,11 @@ export async function overturePlaces(slug: string, bb: { xmin: number; ymin: num
   }
   return { rows: kept, dropped };
 }
+
+/** Every Overture address in the city's extract (any category): building positions for places Overture does not list. */
+export async function overtureAddressPoints(slug: string): Promise<{ street: string; postcode: string | null; lat: number; lon: number; id: string }[]> {
+  const file = join(CACHE, "overture", OVERTURE_RELEASE, `${slug}.parquet`);
+  const db = await (await DuckDBInstance.create(":memory:")).connect();
+  const r = await db.runAndReadAll(`SELECT id, addresses[1].freeform AS street, addresses[1].postcode AS postcode, lat, lon FROM '${file}' WHERE addresses[1].freeform IS NOT NULL AND (operating_status IS NULL OR operating_status <> 'permanently_closed')`);
+  return (r.getRowObjectsJson() as any[]).map((x) => ({ ...x, lat: Number(x.lat), lon: Number(x.lon) }));
+}

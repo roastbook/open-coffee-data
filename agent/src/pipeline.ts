@@ -18,7 +18,7 @@ import { fold, nameSim, ownHost, parseStreet, sameStreet } from "./names";
 import { loadState, type Job, queueFor, saveState } from "./queue";
 import { search, searchEnabled, searchLog, seedFile, websiteCandidates, websiteSeeds } from "./search";
 import { fetchSite, type Site, type SitePage } from "./site";
-import { type OvertureRow, licenceStats, overturePlaces } from "./discovery/overture";
+import { type OvertureRow, licenceStats, overtureAddressPoints, overturePlaces } from "./discovery/overture";
 import { wikidataCafes } from "./discovery/wikidata";
 import { districts, webLeads } from "./discovery/webleads";
 import { isChain, nonCoffeeName, tier } from "./tier";
@@ -58,8 +58,7 @@ export async function run(o: RunOptions) {
     for (const w of placeWordsFrom([...cityNames, ...ds, ...inside.map((r) => r.street)])) placeWords.add(w);
     counts.place_words = placeWords.size;
     counts.overture_dropped_licence = dropped;
-    // New places only from coffee categories, and never clearly non-coffee businesses or seasonal venues
-    // (published records of those stay, with ids kept: see "Non-coffee and seasonal places" in docs/agent.md).
+    // New places only from coffee categories, never clearly non-coffee businesses or seasonal venues.
     const excluded = (r: Row) => nonCoffeeName(r.name) || SEASONAL.test(r.name);
     const coffee = inside.filter((r) => r.coffee && r.status !== "permanently_closed" && !excluded(r)).sort((a, b) => b.confidence - a.confidence);
     counts.excluded_non_coffee_or_seasonal = inside.filter((r) => r.coffee && r.status !== "permanently_closed" && excluded(r)).length;
@@ -97,9 +96,11 @@ export async function run(o: RunOptions) {
       const byName = cands.filter((c) => nameSim(c.name, s.name) >= 0.85);
       const hit = byHost.length === 1 ? byHost[0] : byHost.length === 0 && byName.length === 1 ? byName[0] : null;
       if (hit) { if (!hit.website && s.website) hit.website = s.website; hit.origins.push(...sc.origins); counts.search_matched++; continue; }
+      if (nonCoffeeName(s.name) || SEASONAL.test(s.name)) { unlocated.push({ via: "web-search", name: s.name, reason: "not a coffee place (name)" }); continue; }
       if (s.website) pending.push(sc);
       else unlocated.push({ via: "web-search", name: s.name, reason: byName.length > 1 ? "ambiguous name" : "no website and no Overture match" });
     }
+    let points: Awaited<ReturnType<typeof overtureAddressPoints>> | undefined;
     // Seeds that match nothing: read their site for the address, then find the Overture place at that address.
     await pool(pending, 8, async (sc) => {
       const e = await enrichSite(sc, sc.website!, cityNames, country);
@@ -124,10 +125,11 @@ export async function run(o: RunOptions) {
       const placed = locate(sc, cands, inside, area.contains);
       if (placed === "ambiguous") { unlocated.push({ via: "web-search", name: sc.name, reason: "ambiguous" }); return; }
       if (!placed) {
-        // Not in Overture: coordinates published by the place itself (schema.org geo on its own site) still count.
-        const geo = siteGeo(e.site.pages);
+        // Not in Overture: coordinates the place publishes on its own site, else the position of another Overture record
+        // with exactly the confirmed street, house number and postcode (the same building).
+        const geo = siteGeo(e.site.pages) ?? addressPoint(points ??= await overtureAddressPoints(o.city.slug), sc.street!, sc.postcode);
         if (geo && area.contains(geo)) {
-          Object.assign(sc, geo); (sc as any).geoUrl = geo.url; sc.origins.push({ via: "website JSON-LD geo", url: geo.url });
+          Object.assign(sc, geo); (sc as any).geoUrl = geo.url; (sc as any).geoVia = /overturemaps/.test(geo.url) ? "Overture record at the same street, number and postcode" : "coordinates published on the place's own website"; sc.origins.push({ via: "website JSON-LD geo", url: geo.url });
           siteCache.set(`${sc.website}|${sc.street}`, e); cands.push(sc); counts.search_new++; counts.search_geo_from_site = (counts.search_geo_from_site ?? 0) + 1;
         } else unlocated.push({ via: "web-search", name: sc.name, reason: "no Overture place at the site's address and no coordinates on the site" });
         return;
@@ -290,7 +292,7 @@ export async function run(o: RunOptions) {
     labels.add("lint");
   }
   // Every record, not only the ones written in this run, gets the safe repairs; anything unconfirmed leaves the dataset.
-  for (const [id, p] of byId) if (p) { repair(p); if (p.status === "unverified") { byId.set(id, null); removed.push(p); } }
+  for (const [id, p] of byId) if (p) { repair(p); if (p.status === "unverified" || SEASONAL.test(p.name)) { byId.set(id, null); removed.push(p); } }
   for (const x of lintRejected) conflicts.push({ id: x.id, name: x.name, reason: `not written, lint: ${x.reason}` });
   counts.lint_rejected = lintRejected.length;
 
@@ -326,12 +328,20 @@ function streetStemIn(street: string, foldedText: string) {
 }
 
 /** schema.org GeoCoordinates published in the site's own JSON-LD. */
-function siteGeo(pages: { url: string; doc: { jsonld: string } }[]) {
-  for (const p of pages) {
-    const m = p.doc.jsonld.match(/"latitude"\s*:\s*"?(-?\d{1,2}\.\d{3,})"?[\s\S]{0,80}?"longitude"\s*:\s*"?(-?\d{1,3}\.\d{3,})"?/);
-    if (m) return { lat: +m[1], lon: +m[2], url: p.url };
-  }
-  return null;
+/** Position of the building at a confirmed address: every Overture record there must agree within 30 m. */
+export function addressPoint(points: { street: string; postcode: string | null; lat: number; lon: number; id: string }[], street: string, postcode?: string) {
+  const s = parseStreet(street);
+  if (!s?.number || !postcode) return null;
+  const hits = points.filter((p) => p.postcode === postcode && sameStreet(p.street, street));
+  if (!hits.length || hits.some((h) => distanceM(h, hits[0]) > 30)) return null;
+  return { lat: hits[0].lat, lon: hits[0].lon, url: `https://explore.overturemaps.org/#id=${hits[0].id}` };
+}
+
+/** The one location a site publishes for itself (see htmlGeo); none when it shows several places further than 50 m apart. */
+export function siteGeo(pages: { url: string; doc: { geo?: { lat: number; lon: number }[] } }[]) {
+  const pts = pages.flatMap((p) => (p.doc.geo ?? []).map((g) => ({ ...g, url: p.url })));
+  if (!pts.length || pts.some((g) => distanceM(g, pts[0]) > 50)) return null;
+  return pts[0];
 }
 
 // "THE BARN Coffee Roasters Berlin" in Munich: a trailing name of another configured city is not part of this branch's name.
@@ -452,7 +462,7 @@ function buildRecord(job: Job, c: Candidate, e: Enriched, old: any, ctx: { now: 
   const pcOk = (pc?: string) => !!pc && (ctx.country === "DE" ? /^\d{5}$/ : /^\d{4}$/).test(pc) && ctx.inside.some((x) => x.postcode === pc);
   r.name = signName(old?.name ?? cleanName(c.name, ctx.cityName)); prov.name ??= { value: r.name, via: c.overtureIds.length ? "overture" : c.origins[0].via, url: c.overtureIds[0] ? ovUrl(c.overtureIds[0]) : c.origins[0].url };
   r.location = { lat: Math.round(lat * 1e6) / 1e6, lon: Math.round(lon * 1e6) / 1e6 };
-  prov.location ??= (c as any).geoUrl && !overtureId ? { value: [r.location.lat, r.location.lon], via: "schema.org geo on the place's own website", url: (c as any).geoUrl } : { value: [r.location.lat, r.location.lon], via: "overture", url: overtureId ? ovUrl(overtureId) : undefined };
+  prov.location ??= (c as any).geoUrl && !overtureId ? { value: [r.location.lat, r.location.lon], via: (c as any).geoVia, url: (c as any).geoUrl } : { value: [r.location.lat, r.location.lon], via: "overture", url: overtureId ? ovUrl(overtureId) : undefined };
   const addr: any = { country_code: ctx.country, locality: ctx.cityName };
   if (street && /\d/.test(street) && !conflict) { addr.street_address = street; prov["address.street_address"] = siteStreet === street ? { value: street, via: "website", url: fact("street_address")!.url, quote: fact("street_address")!.quote } : { value: street, via: "overture", url: ovUrl(overtureId!) }; }
   if (pcOk(postcode) && addr.street_address) { addr.postal_code = postcode; prov["address.postal_code"] = sitePc === postcode ? { value: postcode, via: "website", url: fact("postal_code")!.url, quote: fact("postal_code")!.quote } : { value: postcode, via: "overture", url: ovUrl(overtureId!) }; }
@@ -473,7 +483,8 @@ function buildRecord(job: Job, c: Candidate, e: Enriched, old: any, ctx: { now: 
     const why = e.site?.dead ? `website dead: ${e.site.error}` : e.site && !e.site.ok ? `website not readable: ${e.site.error}` : "not confirmed on its own website in this run";
     return { record: null, keep: !!known, provenance: prov, conflict: known ? why : undefined, tierWhy: "" };
   }
-  if (SEASONAL.test(r.name) && r.status === "open") { r.status = "temporarily_closed"; prov.status = { value: r.status, via: "seasonal venue (fair or festival tent), closed outside its season" }; }
+  // Seasonal venues (Oktoberfest tents, fairs, Christmas markets) are not coffee places you can visit all year.
+  if (SEASONAL.test(r.name)) return { record: null, keep: false, provenance: prov, conflict: undefined, tierWhy: "" };
   if (r.status !== "closed") delete r.closed_on;
   r.checked_at = iso(ctx.now);
   if (job.mode === "refresh") {
