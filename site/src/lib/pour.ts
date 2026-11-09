@@ -89,4 +89,8 @@ export function pathPoints(seg: PathSegment): Pt[] {
 export const svgPath = (pts: Pt[], sx = (x: number) => x, sy = (y: number) => y) =>
   pts.map(([x, y], i) => `${i ? "L" : "M"}${sx(x).toFixed(1)} ${sy(y).toFixed(1)}`).join(" ");
 
+/** Short display name of a phase: "Wait" and "Drawdown" by type, pours from their id (pour-2 → Pour 2). */
+export const phaseLabel = (p: Phase) =>
+  p.type === "hold" ? "Wait" : p.type === "drawdown" ? "Drawdown" : (p.id.charAt(0).toUpperCase() + p.id.slice(1)).replaceAll("-", " ");
+
 export const clock = (s: number) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}`;

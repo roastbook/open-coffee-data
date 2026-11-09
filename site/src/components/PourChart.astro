@@ -1,11 +1,11 @@
 ---
 // Pour curve: flow from the kettle (area, left axis) and water poured so far (line, right axis) over time.
-import { clock, pouredCurve, svgPath, timeline, type Phase } from "../lib/pour";
+import { clock, phaseLabel, pouredCurve, svgPath, timeline, type Phase } from "../lib/pour";
 
 export interface Props { phases: Phase[]; water: number; label: string; width?: number }
 const { phases, water, label, width = 640 } = Astro.props;
 
-const W = width, H = 230, L = 40, R = 48, T = 40, B = 30;
+const W = width, H = 230, L = 40, R = 48, T = 40, B = 50;
 const segs = timeline(phases, water);
 const total = segs.at(-1)?.end ?? 1;
 const maxFlow = Math.max(1, ...segs.flatMap((s) => s.flow.map(([, r]) => r))) * 1.15;
@@ -20,10 +20,11 @@ const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentl
 const summary = `${label}: ${segs.filter((s) => s.phase.type === "pour").length} pours over ${clock(total)}, ${Math.round(maxWater)} g of water.`;
 ---
 <svg class="pour-chart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={summary}>
-  {segs.filter((s) => s.phase.type !== "pour").map((s) => (
-    <rect x={x(s.start)} y={T} width={x(s.end) - x(s.start)} height={H - T - B} class={s.phase.type === "hold" ? "band-hold" : "band-drawdown"} />
+  {segs.slice(1).map((s) => <line x1={x(s.start)} x2={x(s.start)} y1={T} y2={H - B + 22} class="phase-edge" />)}
+  {segs.filter((s) => x(s.end) - x(s.start) >= phaseLabel(s.phase).length * 6 + 6).map((s) => (
+    <text x={(x(s.start) + x(s.end)) / 2} y={H - B + 15} class={`phase-label phase-${s.phase.type}`} text-anchor="middle">{phaseLabel(s.phase)}</text>
   ))}
-  {ticks.map((t) => <g><line x1={x(t)} x2={x(t)} y1={T} y2={H - B} class="grid" /><text x={x(t)} y={H - B + 16} class="tick" text-anchor="middle">{clock(t)}</text></g>)}
+  {ticks.map((t) => <g><line x1={x(t)} x2={x(t)} y1={T} y2={H - B} class="grid" /><text x={x(t)} y={H - B + 38} class="tick" text-anchor="middle">{clock(t)}</text></g>)}
   {flowTicks.map((r) => <text x={L - 6} y={yf(r) + 4} class="tick flow-tick" text-anchor="end">{r}</text>)}
   {[0, maxWater / 2, maxWater].map((g) => <text x={W - R + 6} y={yw(g) + 4} class="tick water-tick">{Math.round(g)}</text>)}
   <text x={L - 6} y={T - 24} class="axis-label flow-tick" text-anchor="end">g/s</text>

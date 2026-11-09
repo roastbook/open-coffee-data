@@ -1,7 +1,7 @@
 // Unit tests for the pour-pattern geometry in site/src/lib/pour.ts.
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { pathPoints, pouredCurve, timeline } from "../../site/src/lib/pour.ts";
+import { pathPoints, phaseLabel, pouredCurve, timeline } from "../../site/src/lib/pour.ts";
 
 const phases = [
   { id: "bloom", type: "pour", duration_seconds: 10, water_fraction: 0.2, flow: "constant" },
@@ -31,4 +31,9 @@ test("kettle paths stay inside the bed", () => {
     assert.ok(pts.length >= 1);
     assert.ok(pts.every(([x, y]) => Math.hypot(x, y) <= 1), shape);
   }
+});
+
+test("phase labels name waits and drawdowns by type and pours by id", () => {
+  assert.deepEqual(phases.map(phaseLabel), ["Bloom", "Wait", "Main", "Drawdown"]);
+  assert.equal(phaseLabel({ id: "pour-2", type: "pour" }), "Pour 2");
 });

@@ -5,7 +5,7 @@ import KettlePath from "../components/KettlePath.astro";
 import Nav from "../components/Nav.astro";
 import PourChart from "../components/PourChart.astro";
 import { brewMethods, buildDate, pourPatterns, version } from "../lib/data";
-import { clock, timeline } from "../lib/pour";
+import { clock, phaseLabel, timeline } from "../lib/pour";
 import "../styles/pages.css";
 import "../styles/pour.css";
 
@@ -16,7 +16,6 @@ const flows = of("flow"), movements = of("movement"), recipes = of("recipe");
 const methodName = (id: string) => brewMethods.find((m) => m.id === id)?.name ?? id;
 const total = (p: any) => p.phases.reduce((s: number, x: any) => s + x.duration_seconds, 0);
 const movesOf = (p: any) => [...new Set<string>(p.phases.map((x: any) => x.movement).filter(Boolean))].map((id) => byId.get(id)).filter(Boolean);
-const TYPE: Record<string, string> = { pour: "Pour", hold: "Wait", drawdown: "Drawdown" };
 const FLOW: Record<string, string> = { constant: "constant", ramp_up: "speeding up", ramp_down: "slowing down", custom: "custom curve" };
 const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentle swirl", stir: "stir", spin: "spin" };
 ---
@@ -30,8 +29,6 @@ const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentl
       <div class="pour-legend" aria-hidden="true">
         <span><i class="key key-flow"></i>Flow from the kettle (g/s)</span>
         <span><i class="key key-poured"></i>Water poured (g)</span>
-        <span><i class="key key-hold"></i>Wait</span>
-        <span><i class="key key-drawdown"></i>Drawdown</span>
         <span><i class="key key-agitation"></i>Agitation</span>
       </div>
 
@@ -79,7 +76,7 @@ const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentl
                         {segs.map((s) => (
                           <tr>
                             <td>{clock(s.start)}–{clock(s.end)}</td>
-                            <th scope="row">{TYPE[s.phase.type]}</th>
+                            <th scope="row">{phaseLabel(s.phase)}</th>
                             <td>{s.phase.type === "pour" ? `+${Math.round(s.waterEnd - s.waterStart)} g → ${Math.round(s.waterEnd)} g` : "—"}</td>
                             <td>{[s.phase.flow && FLOW[s.phase.flow], s.phase.movement && byId.get(s.phase.movement)?.name.toLowerCase(), ...(s.phase.agitation ?? []).map((a: string) => AGITATION[a]), s.phase.note].filter(Boolean).join("; ") || "—"}</td>
                           </tr>
