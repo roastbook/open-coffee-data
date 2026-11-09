@@ -21,3 +21,4 @@ export const cities: { slug: string; name: string; country: string }[] = files
   .map((f) => ({ slug: f.doc.meta.city, name: f.doc.meta.city_name ?? f.doc.meta.city, country: f.doc.meta.country_code }));
 
 export const formatBytes = (n: number) => (n < 1024 ? `${n} B` : n < 1024 ** 2 ? `${(n / 1024).toFixed(1)} KB` : `${(n / 1024 ** 2).toFixed(1)} MB`);
+export const pourPatterns: any[] = files.filter((f) => f.family === "pour-patterns").flatMap((f) => f.records);

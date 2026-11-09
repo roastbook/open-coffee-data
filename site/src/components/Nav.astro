@@ -1,10 +1,11 @@
 ---
-export interface Props { current: "explorer" | "downloads" | "brew-methods" }
+export interface Props { current: "explorer" | "downloads" | "brew-methods" | "pour-patterns" }
 const { current } = Astro.props;
 const items = [
   ["explorer", "/", "Explorer"],
   ["downloads", "/downloads/", "Downloads"],
   ["brew-methods", "/brew-methods/", "Brew methods"],
+  ["pour-patterns", "/pour-patterns/", "Pour patterns"],
 ] as const;
 ---
 <nav class="subnav" aria-label="Data Explorer">

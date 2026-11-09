@@ -32,7 +32,8 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 | Not specialty | 220 |
 | Cities | 1 |
 | Brew methods | 21 |
-| Schema version | `brew-methods 0.4.0, coffee-places 0.3.0` |
+| Pour recipes | 9 |
+| Schema version | `brew-methods 0.4.0, coffee-places 0.3.0, pour-patterns 0.5.0` |
 
 <!-- stats:end -->
 
@@ -79,6 +80,7 @@ One record, shortened:
 datasets/
   coffee-places/<country>/<city>.json   one file per city: $schema, meta, places[]
   brew-methods/brew-methods.json        brew methods (global)
+  pour-patterns/pour-patterns.json      pour-over flow patterns, kettle movements and recipes
 scripts/                                validate.sh, build.sh, link-check.sh and their helpers
 site/                                   Data Explorer (Astro, MapLibre GL, TanStack Table)
 agent/                                  Sourcing agent that proposes changes as pull requests

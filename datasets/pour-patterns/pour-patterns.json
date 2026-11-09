@@ -1,0 +1,1400 @@
+{
+  "$schema": "https://schema.roastbook.coffee/pour-patterns/pour-patterns.schema.v0.5.0.json",
+  "meta": {
+    "licence": "CDLA-Permissive-2.0"
+  },
+  "pour_patterns": [
+    {
+      "id": "hoffmann-better-1-cup",
+      "name": "Better 1 Cup",
+      "kind": "recipe",
+      "creator": "James Hoffmann",
+      "url": "https://www.youtube.com/watch?v=1oB1oDrDkHM",
+      "brew_methods": [
+        "v60"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "pulse",
+        "constant"
+      ],
+      "description": "A single cup in five equal pours: a 50 g bloom, then four 50 g pulses every 20 seconds, each a slow circular pour of about 5 g/s with the spout low. A gentle swirl after the bloom and after the last pour.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250,
+        "brew_temperature_celsius": 100,
+        "grind_size": "medium_fine"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "circular"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 35,
+          "agitation": [
+            "gentle_swirl"
+          ]
+        },
+        {
+          "id": "pour-2",
+          "type": "pour",
+          "duration_seconds": 15,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "circular"
+        },
+        {
+          "id": "wait-2",
+          "type": "hold",
+          "duration_seconds": 10
+        },
+        {
+          "id": "pour-3",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "circular"
+        },
+        {
+          "id": "wait-3",
+          "type": "hold",
+          "duration_seconds": 10
+        },
+        {
+          "id": "pour-4",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "circular"
+        },
+        {
+          "id": "wait-4",
+          "type": "hold",
+          "duration_seconds": 10
+        },
+        {
+          "id": "pour-5",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "circular"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60,
+          "agitation": [
+            "gentle_swirl"
+          ]
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "hoffmann-ultimate-v60",
+      "name": "Ultimate V60 Technique",
+      "kind": "recipe",
+      "creator": "James Hoffmann",
+      "published_year": 2019,
+      "url": "https://www.youtube.com/watch?v=AI4ynXzkSQo",
+      "brew_methods": [
+        "v60"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "stepped"
+      ],
+      "description": "A bloom of twice the coffee's weight, swirled until evenly wet, then two continuous pours: to 60% of the water by 1:15, a little agitated, and to 100% by 1:45, slower and gentler. A stir each way and a final swirl flatten the bed.",
+      "defaults": {
+        "dose_g": 30,
+        "brew_water_g": 500,
+        "brew_temperature_celsius": 100,
+        "grind_size": "medium_fine"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.12,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 35,
+          "agitation": [
+            "swirl"
+          ]
+        },
+        {
+          "id": "pour-2",
+          "type": "pour",
+          "duration_seconds": 30,
+          "water_fraction": 0.48,
+          "flow": "constant",
+          "note": "with a little agitation"
+        },
+        {
+          "id": "pour-3",
+          "type": "pour",
+          "duration_seconds": 30,
+          "water_fraction": 0.4,
+          "flow": "constant",
+          "note": "slower and gentler, keep the cone topped up"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 105,
+          "agitation": [
+            "stir",
+            "swirl"
+          ],
+          "note": "stir once each way, drain a little, then swirl once; the video gives no target time"
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "kasuya-4-6",
+      "name": "4:6 Method",
+      "kind": "recipe",
+      "creator": "Tetsu Kasuya",
+      "published_year": 2016,
+      "url": "https://www.hario-europe.com/blogs/hario-community/v60-ambassadors-tetsu-kasuya",
+      "brew_methods": [
+        "v60"
+      ],
+      "flow_patterns": [
+        "pulse"
+      ],
+      "description": "Five pours of coarse coffee. The first 40% of the water, split in two, sets the balance of sweetness and acidity; the last 60%, split in three, sets the strength. The dripper comes off at 3:30.",
+      "defaults": {
+        "dose_g": 20,
+        "brew_water_g": 300,
+        "brew_temperature_celsius": 92,
+        "grind_size": "coarse"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.1667,
+          "flow": "constant",
+          "note": "first 40%: a smaller first pour gives a sweeter cup"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "pour-2",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2333,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-2",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "pour-3",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "note": "last 60%: more pours give a stronger cup"
+        },
+        {
+          "id": "wait-3",
+          "type": "hold",
+          "duration_seconds": 30
+        },
+        {
+          "id": "pour-4",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-4",
+          "type": "hold",
+          "duration_seconds": 20
+        },
+        {
+          "id": "pour-5",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 40,
+          "note": "remove the dripper at 3:30"
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "hedrick-one-and-done",
+      "name": "One & Done",
+      "kind": "recipe",
+      "creator": "Lance Hedrick",
+      "url": "https://www.youtube.com/watch?v=PNFVCmxBjQQ",
+      "brew_methods": [
+        "v60"
+      ],
+      "flow_patterns": [
+        "double-bloom",
+        "continuous"
+      ],
+      "description": "Two short wetting pours of 45 g each, then the rest of the water in one fast pour of about 10 g/s in small coin-sized circles in the centre. Grind so the brew finishes between 2:00 and 2:30.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 225,
+        "brew_temperature_celsius": 93
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 7,
+          "water_fraction": 0.2,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 23
+        },
+        {
+          "id": "second-bloom",
+          "type": "pour",
+          "duration_seconds": 7,
+          "water_fraction": 0.2,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-2",
+          "type": "hold",
+          "duration_seconds": 23
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 13,
+          "water_fraction": 0.6,
+          "flow": "constant",
+          "movement": "circular",
+          "note": "fast, about 10 g/s"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 77,
+          "note": "an optional small swirl adds 10 to 15 seconds if the grind is too coarse"
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "hedrick-easy-effective",
+      "name": "Easy & Effective V60",
+      "kind": "recipe",
+      "creator": "Lance Hedrick",
+      "published_year": 2021,
+      "url": "https://www.youtube.com/watch?v=Ji4lZTtRAoo",
+      "brew_methods": [
+        "v60"
+      ],
+      "flow_patterns": [
+        "double-bloom",
+        "pulse"
+      ],
+      "description": "A pour every 30 seconds: two small blooms to 50 g and 100 g, each followed by a spin of the brewer, then two fast pours aimed just behind the centre to 220 g and 340 g, each followed by a swirl to level the bed.",
+      "defaults": {
+        "dose_g": 20,
+        "brew_water_g": 340,
+        "brew_temperature_celsius": 100,
+        "grind_size": "medium"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 8,
+          "water_fraction": 0.1471,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 22,
+          "agitation": [
+            "swirl"
+          ]
+        },
+        {
+          "id": "second-bloom",
+          "type": "pour",
+          "duration_seconds": 8,
+          "water_fraction": 0.1471,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-2",
+          "type": "hold",
+          "duration_seconds": 22,
+          "agitation": [
+            "swirl"
+          ]
+        },
+        {
+          "id": "pour-3",
+          "type": "pour",
+          "duration_seconds": 15,
+          "water_fraction": 0.3529,
+          "flow": "constant",
+          "movement": "fixed-point",
+          "note": "fast, just behind the centre"
+        },
+        {
+          "id": "wait-3",
+          "type": "hold",
+          "duration_seconds": 15,
+          "agitation": [
+            "swirl"
+          ]
+        },
+        {
+          "id": "pour-4",
+          "type": "pour",
+          "duration_seconds": 15,
+          "water_fraction": 0.3529,
+          "flow": "constant",
+          "movement": "fixed-point",
+          "note": "fast, just behind the centre"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 88,
+          "agitation": [
+            "swirl"
+          ]
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "hedrick-1-2-1",
+      "name": "1:2:1 Method",
+      "kind": "recipe",
+      "creator": "Lance Hedrick",
+      "published_year": 2022,
+      "url": "https://www.youtube.com/watch?v=rAdgJNK0csc",
+      "brew_methods": [
+        "v60"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "continuous",
+        "ramp-down"
+      ],
+      "description": "A long bloom of three times the coffee's weight, poured from high and from the outside in, then swirled hard. At 2:00 one main pour, heavy and high until the cone is half full, then lower and slower in small circles to the top. A shallow stir and small swirls keep the bed flat.",
+      "defaults": {
+        "dose_g": 18,
+        "brew_water_g": 306,
+        "brew_temperature_celsius": 100,
+        "grind_size": "medium_fine"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.1765,
+          "flow": "constant",
+          "movement": "spiral",
+          "note": "from high, outside inwards"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 110,
+          "agitation": [
+            "swirl"
+          ]
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 40,
+          "water_fraction": 0.8235,
+          "flow": "ramp_down",
+          "movement": "circular",
+          "note": "heavy and high first, then lower and slower"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 70,
+          "agitation": [
+            "stir",
+            "swirl"
+          ]
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "rao-spin",
+      "name": "Rao Spin Method",
+      "kind": "recipe",
+      "creator": "Scott Rao",
+      "published_year": 2017,
+      "url": "https://www.youtube.com/watch?v=c0Qe_ASxfNM",
+      "brew_methods": [
+        "v60"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "continuous"
+      ],
+      "description": "A pre-wet of three times the coffee's weight, stirred so every ground is wet within about ten seconds, then one continuous pour at a steady height over the whole slurry. A single gentle stir and a spin of the brewer, the Rao spin, flatten the bed for an even drawdown.",
+      "defaults": {
+        "dose_g": 22,
+        "brew_water_g": 360,
+        "brew_temperature_celsius": 100
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.1833,
+          "flow": "constant",
+          "note": "stir dry spots with a spoon"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 35,
+          "agitation": [
+            "stir"
+          ]
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 55,
+          "water_fraction": 0.8167,
+          "flow": "constant",
+          "movement": "spiral",
+          "note": "one continuous pour at one height"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 80,
+          "agitation": [
+            "stir",
+            "spin"
+          ],
+          "note": "one gentle stir, then spin the brewer two to four turns"
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "april-brewing-method",
+      "name": "April Brewing Method",
+      "kind": "recipe",
+      "creator": "April Coffee Roasters",
+      "published_year": 2020,
+      "url": "https://www.youtube.com/watch?v=X-fXQKqkYxI",
+      "brew_methods": [
+        "pour-over"
+      ],
+      "flow_patterns": [
+        "pulse",
+        "stepped"
+      ],
+      "description": "Two 100 g pours without a separate bloom, each starting with 30 g in a circle and finishing with 70 g in the centre, at about 10 g/s. Written for the flat-bottomed April Brewer.",
+      "defaults": {
+        "dose_g": 13,
+        "brew_water_g": 200,
+        "brew_temperature_celsius": 94,
+        "grind_size": "medium"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour-1",
+          "type": "pour",
+          "duration_seconds": 3,
+          "water_fraction": 0.15,
+          "flow": "constant",
+          "movement": "circular"
+        },
+        {
+          "id": "pour-2",
+          "type": "pour",
+          "duration_seconds": 7,
+          "water_fraction": 0.35,
+          "flow": "constant",
+          "movement": "center"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 25
+        },
+        {
+          "id": "pour-3",
+          "type": "pour",
+          "duration_seconds": 3,
+          "water_fraction": 0.15,
+          "flow": "constant",
+          "movement": "circular"
+        },
+        {
+          "id": "pour-4",
+          "type": "pour",
+          "duration_seconds": 7,
+          "water_fraction": 0.35,
+          "flow": "constant",
+          "movement": "center"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 125
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "kasuya-neo",
+      "name": "Neo Method",
+      "kind": "recipe",
+      "creator": "Tetsu Kasuya",
+      "published_year": 2026,
+      "url": "https://www.youtube.com/watch?v=k0nsShguOsU",
+      "brew_methods": [
+        "v60"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "pulse"
+      ],
+      "description": "Published as The Neo Brew for the HARIO NEO dripper; a V60 also works. Extremely coarse coffee and ten 30 g pours: a bloom, then a pour every 15 seconds. Water should flow straight through rather than pool.",
+      "defaults": {
+        "dose_g": 20,
+        "brew_water_g": 300,
+        "brew_temperature_celsius": 96,
+        "grind_size": "extra_coarse"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 24
+        },
+        {
+          "id": "pour-2",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-2",
+          "type": "hold",
+          "duration_seconds": 9
+        },
+        {
+          "id": "pour-3",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-3",
+          "type": "hold",
+          "duration_seconds": 9
+        },
+        {
+          "id": "pour-4",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-4",
+          "type": "hold",
+          "duration_seconds": 9
+        },
+        {
+          "id": "pour-5",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-5",
+          "type": "hold",
+          "duration_seconds": 9
+        },
+        {
+          "id": "pour-6",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-6",
+          "type": "hold",
+          "duration_seconds": 9
+        },
+        {
+          "id": "pour-7",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-7",
+          "type": "hold",
+          "duration_seconds": 9
+        },
+        {
+          "id": "pour-8",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-8",
+          "type": "hold",
+          "duration_seconds": 9
+        },
+        {
+          "id": "pour-9",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-9",
+          "type": "hold",
+          "duration_seconds": 9
+        },
+        {
+          "id": "pour-10",
+          "type": "pour",
+          "duration_seconds": 6,
+          "water_fraction": 0.1,
+          "flow": "constant"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 54
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "bloom",
+      "name": "Bloom",
+      "kind": "flow",
+      "description": "A small first pour, about two to three times the coffee's weight, wets all the grounds; a rest of 30 to 45 seconds lets carbon dioxide escape before the main pours.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.18,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 40,
+          "water_fraction": 0.82,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "continuous",
+      "name": "Continuous pour",
+      "kind": "flow",
+      "description": "After the bloom, all remaining water goes on in one uninterrupted pour, keeping the slurry level steady until the kettle is empty.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.18,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 60,
+          "water_fraction": 0.82,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "pulse",
+      "name": "Pulse pouring",
+      "kind": "flow",
+      "description": "The water goes on in several separate pours with pauses between them, so the slurry level rises and falls and each pour agitates the bed again.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "pour-2",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "pause-2",
+          "type": "hold",
+          "duration_seconds": 10
+        },
+        {
+          "id": "pour-3",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "pause-3",
+          "type": "hold",
+          "duration_seconds": 10
+        },
+        {
+          "id": "pour-4",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "pause-4",
+          "type": "hold",
+          "duration_seconds": 10
+        },
+        {
+          "id": "pour-5",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.2,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "stepped",
+      "name": "Stepped flow",
+      "kind": "flow",
+      "description": "One continuous pour whose rate changes in distinct steps, for example fast to raise the slurry and then slow to hold its level.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.18,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "fast",
+          "type": "pour",
+          "duration_seconds": 15,
+          "water_fraction": 0.36,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "slow",
+          "type": "pour",
+          "duration_seconds": 40,
+          "water_fraction": 0.46,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "constant",
+      "name": "Constant flow",
+      "kind": "flow",
+      "description": "The kettle keeps one fixed flow rate, for example 5 grams per second, for the whole pour, which makes the brew easy to repeat.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 8,
+          "water_fraction": 0.16,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 37
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 42,
+          "water_fraction": 0.84,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "ramp-up",
+      "name": "Ramp-up flow",
+      "kind": "flow",
+      "description": "The pour starts gently and gets faster, so the bed is wetted calmly before agitation and slurry height increase.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.18,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 50,
+          "water_fraction": 0.82,
+          "flow": "ramp_up",
+          "movement": "spiral"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "ramp-down",
+      "name": "Ramp-down flow",
+      "kind": "flow",
+      "description": "The pour starts fast to lift and mix the bed and slows down towards the end, so the bed settles flat before the drawdown.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.18,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 50,
+          "water_fraction": 0.82,
+          "flow": "ramp_down",
+          "movement": "spiral"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "variable",
+      "name": "Variable flow",
+      "kind": "flow",
+      "description": "The flow rate changes freely over the pour, faster and slower as the brewer chooses, rather than following one simple shape.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.18,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 55,
+          "water_fraction": 0.82,
+          "flow": "custom",
+          "movement": "spiral",
+          "flow_curve": [
+            {
+              "at_seconds": 0,
+              "grams_per_second": 5
+            },
+            {
+              "at_seconds": 12,
+              "grams_per_second": 6
+            },
+            {
+              "at_seconds": 22,
+              "grams_per_second": 2.5
+            },
+            {
+              "at_seconds": 34,
+              "grams_per_second": 4.5
+            },
+            {
+              "at_seconds": 46,
+              "grams_per_second": 3
+            },
+            {
+              "at_seconds": 55,
+              "grams_per_second": 2
+            }
+          ]
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "freeform",
+      "name": "Freeform reference replay",
+      "kind": "flow",
+      "description": "A previously recorded pour, for example from a smart scale, is followed as a target curve so another brewer or another day can reproduce it.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "reference",
+          "type": "pour",
+          "duration_seconds": 95,
+          "water_fraction": 1.0,
+          "flow": "custom",
+          "movement": "spiral",
+          "flow_curve": [
+            {
+              "at_seconds": 0,
+              "grams_per_second": 4
+            },
+            {
+              "at_seconds": 10,
+              "grams_per_second": 4
+            },
+            {
+              "at_seconds": 12,
+              "grams_per_second": 0
+            },
+            {
+              "at_seconds": 45,
+              "grams_per_second": 0
+            },
+            {
+              "at_seconds": 48,
+              "grams_per_second": 5.5
+            },
+            {
+              "at_seconds": 70,
+              "grams_per_second": 4.5
+            },
+            {
+              "at_seconds": 80,
+              "grams_per_second": 3.5
+            },
+            {
+              "at_seconds": 95,
+              "grams_per_second": 3
+            }
+          ]
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "osmotic",
+      "name": "Osmotic flow",
+      "kind": "flow",
+      "description": "A slow, gentle pour, usually in the centre, that lets water spread through the bed with little agitation instead of churning it.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.16,
+          "flow": "constant",
+          "movement": "center"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 90,
+          "water_fraction": 0.84,
+          "flow": "constant",
+          "movement": "center"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 50
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "double-bloom",
+      "name": "Double bloom",
+      "kind": "flow",
+      "description": "Two separate wetting pours with rests before the main pours, to degas very fresh coffee or reach every dry pocket of the bed.",
+      "defaults": {
+        "dose_g": 15,
+        "brew_water_g": 250
+      },
+      "phases": [
+        {
+          "id": "bloom-1",
+          "type": "pour",
+          "duration_seconds": 8,
+          "water_fraction": 0.12,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "rest-1",
+          "type": "hold",
+          "duration_seconds": 25
+        },
+        {
+          "id": "bloom-2",
+          "type": "pour",
+          "duration_seconds": 8,
+          "water_fraction": 0.12,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "rest-2",
+          "type": "hold",
+          "duration_seconds": 25
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 45,
+          "water_fraction": 0.76,
+          "flow": "constant",
+          "movement": "spiral"
+        },
+        {
+          "id": "drawdown",
+          "type": "drawdown",
+          "duration_seconds": 60
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "center",
+      "name": "Center pour",
+      "kind": "movement",
+      "description": "The stream stays in the middle of the bed, which keeps agitation low and the bed shape steady.",
+      "path": [
+        {
+          "shape": "point",
+          "radius": 0
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "circular",
+      "name": "Circular pour",
+      "kind": "movement",
+      "description": "The kettle moves in small circles around the middle, wetting more of the bed than a centre pour without reaching the paper.",
+      "path": [
+        {
+          "shape": "circle",
+          "radius": 0.35,
+          "turns": 3
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "spiral",
+      "name": "Spiral pour",
+      "kind": "movement",
+      "description": "The stream moves progressively outward from the centre and back in, wetting the whole bed evenly.",
+      "path": [
+        {
+          "shape": "spiral",
+          "radius": 0.7,
+          "turns": 3
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "back-and-forth",
+      "name": "Back-and-forth pour",
+      "kind": "movement",
+      "description": "The stream sweeps across the bed from side to side, turning over the grounds along its line.",
+      "path": [
+        {
+          "shape": "line",
+          "radius": 0.7,
+          "turns": 4,
+          "angle_degrees": 90
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "hybrid",
+      "name": "Hybrid movement",
+      "kind": "movement",
+      "description": "The kettle switches between movements within one brew, for example small circles first and then a centre pour.",
+      "path": [
+        {
+          "shape": "circle",
+          "radius": 0.45,
+          "turns": 2
+        },
+        {
+          "shape": "point",
+          "radius": 0
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "fixed-point",
+      "name": "Fixed-point pour",
+      "kind": "movement",
+      "description": "The stream is held at one chosen position off the centre, for example to push the slurry in one direction or rinse one side of the paper.",
+      "path": [
+        {
+          "shape": "point",
+          "radius": 0.45,
+          "angle_degrees": 45
+        }
+      ],
+      "checked_at": "2026-11-09T12:00:00Z"
+    }
+  ]
+}

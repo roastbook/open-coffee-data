@@ -157,6 +157,26 @@ function checkEquipment(record, ids, where, err) {
   for (const method of record.brew_methods ?? []) if (!methods.has(method)) err(where, `brew_methods: ${method} is not a brew method id`);
 }
 
+function checkPourPattern(record, ids, where, err) {
+  const own = ids.get("pour-patterns");
+  const kindOf = (id) => own.get(id)?.record.kind;
+  const methods = ids.get("brew-methods") ?? new Map();
+  for (const m of record.brew_methods ?? []) if (!methods.has(m)) err(where, `brew_methods: ${m} is not a brew method id`);
+  for (const p of record.flow_patterns ?? []) if (kindOf(p) !== "flow") err(where, `flow_patterns: ${p} is not a flow pattern id`);
+  if (!record.phases) return;
+  const phaseIds = new Set();
+  let water = 0;
+  for (const phase of record.phases) {
+    if (phaseIds.has(phase.id)) err(where, `phases: duplicate phase id ${phase.id}`);
+    phaseIds.add(phase.id);
+    if (phase.movement && kindOf(phase.movement) !== "movement") err(where, `phases.${phase.id}.movement: ${phase.movement} is not a kettle movement id`);
+    water += phase.water_fraction ?? 0;
+    const at = (phase.flow_curve ?? []).map((pt) => pt.at_seconds);
+    if (at.some((t, i) => (i > 0 && t <= at[i - 1]) || t > phase.duration_seconds)) err(where, `phases.${phase.id}.flow_curve: at_seconds must increase and stay within duration_seconds`);
+  }
+  if (Math.abs(water - 1) > 0.005) err(where, `phases: water_fraction of the pour phases adds up to ${Math.round(water * 1000) / 1000}, expected 1`);
+}
+
 function checkReferences(ids, err, warn) {
   for (const [family, famIds] of ids) {
     for (const [id, { file, record }] of famIds) {
@@ -167,6 +187,7 @@ function checkReferences(ids, err, warn) {
         checkParent(record, id, famIds, where, err);
       }
       if (family === "equipment") checkEquipment(record, ids, where, err);
+      if (family === "pour-patterns") checkPourPattern(record, ids, where, err);
     }
   }
 }

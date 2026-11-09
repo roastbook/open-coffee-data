@@ -1,0 +1,129 @@
+---
+import Layout from "@roastbook/ui/astro/Layout.astro";
+import { fieldUrl } from "@roastbook/ui/sites";
+import KettlePath from "../components/KettlePath.astro";
+import Nav from "../components/Nav.astro";
+import PourChart from "../components/PourChart.astro";
+import { brewMethods, buildDate, pourPatterns, version } from "../lib/data";
+import { clock, timeline } from "../lib/pour";
+import "../styles/pages.css";
+import "../styles/pour.css";
+
+const f = (path: string) => fieldUrl(path, "latest", "pour-patterns");
+const byId = new Map(pourPatterns.map((p) => [p.id, p]));
+const of = (kind: string) => pourPatterns.filter((p) => p.kind === kind);
+const flows = of("flow"), movements = of("movement"), recipes = of("recipe");
+const methodName = (id: string) => brewMethods.find((m) => m.id === id)?.name ?? id;
+const total = (p: any) => p.phases.reduce((s: number, x: any) => s + x.duration_seconds, 0);
+const movesOf = (p: any) => [...new Set<string>(p.phases.map((x: any) => x.movement).filter(Boolean))].map((id) => byId.get(id)).filter(Boolean);
+const TYPE: Record<string, string> = { pour: "Pour", hold: "Wait", drawdown: "Drawdown" };
+const FLOW: Record<string, string> = { constant: "constant", ramp_up: "speeding up", ramp_down: "slowing down", custom: "custom curve" };
+const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentle swirl", stir: "stir", spin: "spin" };
+---
+<Layout title="Pour patterns" site="data" version={version} buildDate={buildDate} description="Open dataset of pour-over flow patterns, kettle movements and named V60 recipes, drawn as pour curves and kettle paths.">
+  <Nav current="pour-patterns" />
+  <h1>Pour patterns</h1>
+  <p class="lead">How the water goes onto the coffee in pour-over brewing: flow patterns spread the water over time, kettle movements decide where it lands, and named recipes combine both. Download <a href="/datasets/pour-patterns/pour-patterns.json">pour-patterns.json</a> or read the <a href={f("id").split("#")[0]}>schema</a>.</p>
+
+  {pourPatterns.length === 0 ? <p class="muted">No pour patterns are published yet.</p> : (
+    <>
+      <div class="pour-legend" aria-hidden="true">
+        <span><i class="key key-flow"></i>Flow from the kettle (g/s)</span>
+        <span><i class="key key-poured"></i>Water poured (g)</span>
+        <span><i class="key key-hold"></i>Wait</span>
+        <span><i class="key key-drawdown"></i>Drawdown</span>
+        <span><i class="key key-agitation"></i>Agitation</span>
+      </div>
+
+      <nav class="pour-toc" aria-label="On this page">
+        <a href="#recipes">Recipes ({recipes.length})</a>
+        <a href="#flow-patterns">Flow patterns ({flows.length})</a>
+        <a href="#kettle-movements">Kettle movements ({movements.length})</a>
+      </nav>
+
+      <section aria-labelledby="recipes">
+        <h2 id="recipes">Recipes</h2>
+        <p class="muted">Named techniques, drawn for their published amounts. Times are approximate; follow the water targets.</p>
+        <div class="recipe-list">
+          {recipes.map((r) => {
+            const d = r.defaults;
+            const segs = timeline(r.phases, d.brew_water_g);
+            return (
+              <article class="pour-card recipe" id={r.id}>
+                <header>
+                  <h3><a href={`#${r.id}`}>{r.name}</a></h3>
+                  <p class="muted small">{r.creator}{r.published_year && `, ${r.published_year}`}{r.url && <> · <a href={r.url}>original recipe</a></>}</p>
+                </header>
+                <p>{r.description}</p>
+                <dl class="facts recipe-facts">
+                  <div><dt><a href={f("defaults.dose_g")}>Coffee</a></dt><dd>{d.dose_g} g</dd></div>
+                  <div><dt><a href={f("defaults.brew_water_g")}>Water</a></dt><dd>{d.brew_water_g} g (1:{Math.round((d.brew_water_g / d.dose_g) * 10) / 10})</dd></div>
+                  {d.brew_temperature_celsius && <div><dt><a href={f("defaults.brew_temperature_celsius")}>Temperature</a></dt><dd>{d.brew_temperature_celsius} °C</dd></div>}
+                  {d.grind_size && <div><dt><a href={f("defaults.grind_size")}>Grind</a></dt><dd>{d.grind_size.replaceAll("_", " ")}</dd></div>}
+                  <div><dt>Total time</dt><dd>{clock(total(r))}</dd></div>
+                  <div><dt><a href={f("brew_methods")}>Brewers</a></dt><dd>{r.brew_methods.map(methodName).join(", ")}</dd></div>
+                  <div><dt><a href={f("flow_patterns")}>Patterns</a></dt><dd>{r.flow_patterns.map((id: string) => <a class="badge" href={`#${id}`}>{byId.get(id)?.name ?? id}</a>)}</dd></div>
+                </dl>
+                <div class="chart-scroll"><PourChart phases={r.phases} water={d.brew_water_g} label={r.name} width={1000} /></div>
+                {movesOf(r).length > 0 && (
+                  <ul class="moves" aria-label="Kettle movements used">
+                    {movesOf(r).map((m: any) => <li><KettlePath path={m.path} label={m.name} size={72} /><a href={`#${m.id}`}>{m.name}</a></li>)}
+                  </ul>
+                )}
+                <details>
+                  <summary>Step by step</summary>
+                  <div class="table-scroll">
+                    <table class="steps">
+                      <thead><tr><th scope="col">Time</th><th scope="col">Step</th><th scope="col">Water</th><th scope="col">How</th></tr></thead>
+                      <tbody>
+                        {segs.map((s) => (
+                          <tr>
+                            <td>{clock(s.start)}–{clock(s.end)}</td>
+                            <th scope="row">{TYPE[s.phase.type]}</th>
+                            <td>{s.phase.type === "pour" ? `+${Math.round(s.waterEnd - s.waterStart)} g → ${Math.round(s.waterEnd)} g` : "—"}</td>
+                            <td>{[s.phase.flow && FLOW[s.phase.flow], s.phase.movement && byId.get(s.phase.movement)?.name.toLowerCase(), ...(s.phase.agitation ?? []).map((a: string) => AGITATION[a]), s.phase.note].filter(Boolean).join("; ") || "—"}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section aria-labelledby="flow-patterns">
+        <h2 id="flow-patterns">Flow patterns</h2>
+        <p class="muted">How the water is spread over time. Each is drawn from an example brew of {flows[0]?.defaults.dose_g ?? 15} g coffee and {flows[0]?.defaults.brew_water_g ?? 250} g water.</p>
+        <div class="pour-grid">
+          {flows.map((p) => (
+            <article class="pour-card" id={p.id}>
+              <h3><a href={`#${p.id}`}>{p.name}</a></h3>
+              <p class="small">{p.description}</p>
+              <PourChart phases={p.phases} water={p.defaults.brew_water_g} label={p.name} width={420} />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="kettle-movements">
+        <h2 id="kettle-movements">Kettle movements</h2>
+        <p class="muted">Where the stream lands, seen from above, independent of the flow pattern. The dot marks the centre of the bed.</p>
+        <div class="pour-grid movement-grid">
+          {movements.map((p) => (
+            <article class="pour-card movement" id={p.id}>
+              <KettlePath path={p.path} label={p.name} />
+              <div>
+                <h3><a href={`#${p.id}`}>{p.name}</a></h3>
+                <p class="small">{p.description}</p>
+                <p class="muted small">Used in {recipes.filter((r) => r.phases.some((x: any) => x.movement === p.id)).map((r) => r.name).join(", ") || "no recipe here yet"}.</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  )}
+</Layout>

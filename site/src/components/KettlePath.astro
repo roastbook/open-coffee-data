@@ -1,0 +1,25 @@
+---
+// Kettle movement seen from above: the coffee bed and the path the stream takes, drawn on as it moves.
+import { pathPoints, svgPath, type PathSegment } from "../lib/pour";
+
+export interface Props { path: PathSegment[]; label: string; size?: number }
+const { path, label, size = 160 } = Astro.props;
+const S = 80; // bed radius in SVG units
+const sc = (v: number) => v * S;
+---
+<svg class="kettle-path" viewBox="-100 -100 200 200" width={size} height={size} role="img" aria-label={`${label}, seen from above`}>
+  <circle r="96" class="dripper" />
+  <circle r={S} class="bed" />
+  <circle r="3" class="centre" />
+  {path.map((seg, i) => {
+    const pts = pathPoints(seg);
+    return pts.length === 1 ? (
+      <g class={`stream stream-${i % 3}`}>
+        <circle cx={sc(pts[0][0])} cy={sc(pts[0][1])} r="7" class="stream-dot" />
+        <circle cx={sc(pts[0][0])} cy={sc(pts[0][1])} r="7" class="ripple" />
+      </g>
+    ) : (
+      <path d={svgPath(pts, sc, sc)} pathLength="100" class={`stream stream-${i % 3} trace`} />
+    );
+  })}
+</svg>

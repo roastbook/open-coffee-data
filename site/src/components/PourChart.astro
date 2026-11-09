@@ -1,0 +1,39 @@
+---
+// Pour curve: flow from the kettle (area, left axis) and water poured so far (line, right axis) over time.
+import { clock, pouredCurve, svgPath, timeline, type Phase } from "../lib/pour";
+
+export interface Props { phases: Phase[]; water: number; label: string; width?: number }
+const { phases, water, label, width = 640 } = Astro.props;
+
+const W = width, H = 230, L = 40, R = 48, T = 40, B = 30;
+const segs = timeline(phases, water);
+const total = segs.at(-1)?.end ?? 1;
+const maxFlow = Math.max(1, ...segs.flatMap((s) => s.flow.map(([, r]) => r))) * 1.15;
+const maxWater = Math.max(water, segs.at(-1)?.waterEnd ?? 0);
+const x = (t: number) => L + (t / total) * (W - L - R);
+const yf = (r: number) => H - B - (r / maxFlow) * (H - T - B);
+const yw = (g: number) => H - B - (g / maxWater) * (H - T - B);
+const step = total > 240 ? 60 : total > 90 ? 30 : 15;
+const ticks = Array.from({ length: Math.floor(total / step) + 1 }, (_, i) => i * step);
+const flowTicks = [0, maxFlow / 1.15 / 2, maxFlow / 1.15].map((r) => Math.round(r * 10) / 10);
+const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentle swirl", stir: "stir", spin: "spin" };
+const summary = `${label}: ${segs.filter((s) => s.phase.type === "pour").length} pours over ${clock(total)}, ${Math.round(maxWater)} g of water.`;
+---
+<svg class="pour-chart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={summary}>
+  {segs.filter((s) => s.phase.type !== "pour").map((s) => (
+    <rect x={x(s.start)} y={T} width={x(s.end) - x(s.start)} height={H - T - B} class={s.phase.type === "hold" ? "band-hold" : "band-drawdown"} />
+  ))}
+  {ticks.map((t) => <g><line x1={x(t)} x2={x(t)} y1={T} y2={H - B} class="grid" /><text x={x(t)} y={H - B + 16} class="tick" text-anchor="middle">{clock(t)}</text></g>)}
+  {flowTicks.map((r) => <text x={L - 6} y={yf(r) + 4} class="tick flow-tick" text-anchor="end">{r}</text>)}
+  {[0, maxWater / 2, maxWater].map((g) => <text x={W - R + 6} y={yw(g) + 4} class="tick water-tick">{Math.round(g)}</text>)}
+  <text x={L - 6} y={T - 24} class="axis-label flow-tick" text-anchor="end">g/s</text>
+  <text x={W - R + 6} y={T - 24} class="axis-label water-tick">g</text>
+  {segs.filter((s) => s.flow.length).map((s) => (
+    <path d={`${svgPath(s.flow, x, yf)} L${x(s.end).toFixed(1)} ${yf(0)} L${x(s.start).toFixed(1)} ${yf(0)} Z`} class="flow" />
+  ))}
+  <path d={svgPath(pouredCurve(segs), x, yw)} class="poured" />
+  {segs.filter((s) => s.phase.agitation).map((s) => (
+    <g><line x1={x(s.start)} x2={x(s.start)} y1={T - 12} y2={H - B} class="agitation-line" /><circle cx={x(s.start)} cy={T - 12} r="3.5" class="agitation" /><text x={x(s.start) + 6} y={T - 8} class="tick">{s.phase.agitation!.map((a) => AGITATION[a] ?? a).join(", ")}</text></g>
+  ))}
+  <line x1={L} x2={W - R} y1={H - B} y2={H - B} class="axis" />
+</svg>

@@ -7,7 +7,6 @@
 source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
 ensure_deps
 
-families=(common coffee-places brew-methods equipment)
 # Schema versions in use, from the $schema URLs; check.mjs fails when one family mixes versions.
 mapfile -t versions < <(grep -rhoE --include='*.json' '"\$schema": *"https://schema\.roastbook\.coffee/[^"]+\.schema\.v[0-9]+\.[0-9]+\.[0-9]+\.json"' "${DATASETS_DIR:-datasets}" \
   | sed -E 's/.*\.schema\.v([0-9]+\.[0-9]+\.[0-9]+)\.json"$/\1/' | sort -u)
@@ -16,21 +15,20 @@ if [ -n "${OPEN_COFFEE_SCHEMA_DIR:-}" ]; then
   SCHEMA_DIR="$(cd "$OPEN_COFFEE_SCHEMA_DIR" && pwd)"
   echo "::notice::Using local schemas from $SCHEMA_DIR instead of the released schemas (${versions[*]})"
 else
-  SCHEMA_DIR="$ROOT/.cache/schemas"
-  for version in "${versions[@]}"; do
-    for family in "${families[@]}"; do
-      target="$SCHEMA_DIR/v$version/$family/$family.schema.v$version.json"
-      [ -s "$target" ] && continue
-      mkdir -p "$(dirname "$target")"
-      url="https://raw.githubusercontent.com/Roastbook/open-coffee-schema/v$version/schemas/$family/$family.schema.v$version.json"
-      if ! curl -fsSL --retry 3 -o "$target.tmp" "$url"; then
-        rm -f "$target.tmp"
-        echo "::error::Could not fetch $url (is v$version tagged? set OPEN_COFFEE_SCHEMA_DIR for local development)"
-        exit 1
-      fi
-      mv "$target.tmp" "$target"
-    done
-  done
+  # Every release tag holds all earlier schema files too (published files never change), so the
+  # newest version in use brings every family and version the datasets name.
+  latest="$(printf '%s\n' "${versions[@]}" | sort -V | tail -1)"
+  SCHEMA_DIR="$ROOT/.cache/schemas/v$latest"
+  if [ -n "$latest" ] && [ ! -d "$SCHEMA_DIR" ]; then
+    url="https://codeload.github.com/Roastbook/open-coffee-schema/tar.gz/refs/tags/v$latest"
+    mkdir -p "$SCHEMA_DIR.tmp"
+    if ! curl -fsSL --retry 3 "$url" | tar -xz -C "$SCHEMA_DIR.tmp" --strip-components=2 --wildcards '*/schemas/'; then
+      rm -rf "$SCHEMA_DIR.tmp"
+      echo "::error::Could not fetch the schemas of v$latest from $url (is v$latest tagged? set OPEN_COFFEE_SCHEMA_DIR for local development)"
+      exit 1
+    fi
+    mv "$SCHEMA_DIR.tmp" "$SCHEMA_DIR"
+  fi
 fi
 export SCHEMA_DIR
 
