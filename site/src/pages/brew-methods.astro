@@ -1,7 +1,7 @@
 ---
 import Layout from "@roastbook/ui/astro/Layout.astro";
 import { fieldUrl } from "@roastbook/ui/sites";
-import Nav from "../components/Nav.astro";
+import { siteNav } from "../lib/nav";
 import { brewMethods, buildDate, version } from "../lib/data";
 import "../styles/pages.css";
 
@@ -30,10 +30,14 @@ const params = (t: any = {}) => [
 ].filter(([, v]) => v) as [string, string][];
 const LABEL: Record<string, string> = { dose_g: "Dose", brew_ratio: "Coffee to water", yield_ratio: "Coffee to drink", brew_temperature_celsius: "Brew temperature", brew_time_seconds: "Time", brew_pressure_bar: "Pressure", grind_size: "Grind" };
 ---
-<Layout title="Brew methods" site="data" version={version} buildDate={buildDate} description="Open list of coffee brew methods with categories, typical parameters and Wikidata links.">
-  <Nav current="brew-methods" />
-  <h1>Brew methods</h1>
-  <p class="lead">Ways of brewing coffee and their usual starting parameters, as a tree from general methods to specific devices. Download <a href="/datasets/brew-methods/brew-methods.json">brew-methods.json</a>. Column headings link to the field definitions.</p>
+<Layout title="Brew methods" site="data" version={version} buildDate={buildDate} description="Open list of coffee brew methods with categories, typical parameters and Wikidata links." nav={siteNav("brew-methods")}>
+  <header class="page-intro">
+    <div>
+      <h1>Brew methods</h1>
+      <p>Ways of brewing coffee and their usual starting parameters, as a tree from general methods to specific devices. Column headings link to the field definitions.</p>
+    </div>
+    <a class="button" href="/datasets/brew-methods/brew-methods.json">Download brew-methods.json</a>
+  </header>
   {ordered.length === 0 ? <p class="muted">No brew methods are published yet.</p> : (
     <div class="table-scroll">
       <table>

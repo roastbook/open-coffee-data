@@ -2,7 +2,7 @@
 import Layout from "@roastbook/ui/astro/Layout.astro";
 import { fieldUrl } from "@roastbook/ui/sites";
 import KettlePath from "../components/KettlePath.astro";
-import Nav from "../components/Nav.astro";
+import { siteNav } from "../lib/nav";
 import { buildDate, pourPatterns, version } from "../lib/data";
 import { describeSegment } from "../lib/pour";
 import "../styles/pages.css";
@@ -13,10 +13,14 @@ const movements = pourPatterns.filter((p) => p.kind === "movement");
 const recipes = pourPatterns.filter((p) => p.kind === "recipe");
 const usedIn = (id: string) => recipes.filter((r) => r.phases.some((x: any) => x.movement === id));
 ---
-<Layout title="Kettle movements" site="data" version={version} buildDate={buildDate} description="Open list of pour-over kettle movements (centre, circular, spiral, back-and-forth, hybrid, fixed point), drawn from above with the recipes that use them.">
-  <Nav current="kettle-movements" />
-  <h1>Kettle movements</h1>
-  <p class="lead">Where the stream lands on the coffee bed, seen from above. A movement is independent of the <a href="/pour-patterns/#flow-patterns">flow pattern</a>: the same spiral can be poured fast or slow, in one pour or in pulses. The moving dot is the pour point; the light dot marks the centre of the bed. Movements are part of <a href="/datasets/pour-patterns/pour-patterns.json">pour-patterns.json</a> (<a href={f("path")}>path fields</a>).</p>
+<Layout title="Kettle movements" site="data" version={version} buildDate={buildDate} description="Open list of pour-over kettle movements (centre, circular, spiral, back-and-forth, hybrid, fixed point), drawn from above with the recipes that use them." nav={siteNav("kettle-movements")}>
+  <header class="page-intro">
+    <div>
+      <h1>Kettle movements</h1>
+      <p>Where the stream lands on the coffee bed, seen from above. A movement is independent of the <a href="/pour-patterns/#flow-patterns">flow pattern</a>: the same spiral can be poured fast or slow, in one pour or in pulses. The moving dot is the pour point; the light dot marks the centre of the bed. Movements are part of pour-patterns.json (<a href={f("path")}>path fields</a>).</p>
+    </div>
+    <a class="button" href="/datasets/pour-patterns/pour-patterns.json">Download pour-patterns.json</a>
+  </header>
 
   {movements.length === 0 ? <p class="muted">No kettle movements are published yet.</p> : (
     <ol class="movement-list">

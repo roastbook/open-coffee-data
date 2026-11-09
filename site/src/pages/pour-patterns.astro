@@ -2,7 +2,7 @@
 import Layout from "@roastbook/ui/astro/Layout.astro";
 import { fieldUrl } from "@roastbook/ui/sites";
 import KettlePath from "../components/KettlePath.astro";
-import Nav from "../components/Nav.astro";
+import { siteNav } from "../lib/nav";
 import PourChart from "../components/PourChart.astro";
 import { brewMethods, buildDate, pourPatterns, version } from "../lib/data";
 import { clock, phaseLabel, temperatureLines, timeline } from "../lib/pour";
@@ -20,10 +20,14 @@ const moveUrl = (id: string) => `/kettle-movements/#${id}`;
 const FLOW: Record<string, string> = { constant: "steady flow", ramp_up: "speeding up", ramp_down: "slowing down", custom: "varying flow" };
 const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentle swirl", stir: "stir", spin: "spin" };
 ---
-<Layout title="Pour patterns" site="data" version={version} buildDate={buildDate} description="Open dataset of pour-over recipes and flow patterns, drawn as pour curves you can scale to any dose.">
-  <Nav current="pour-patterns" />
-  <h1>Pour patterns</h1>
-  <p class="lead">How the water goes onto the coffee in pour-over brewing. Recipes are built on a ratio: pick your dose and every water target follows. Where the water lands is described under <a href="/kettle-movements/">Kettle movements</a>. Download <a href="/datasets/pour-patterns/pour-patterns.json">pour-patterns.json</a> or read the <a href={f("id").split("#")[0]}>schema</a>.</p>
+<Layout title="Pour patterns" site="data" version={version} buildDate={buildDate} description="Open dataset of pour-over recipes and flow patterns, drawn as pour curves you can scale to any dose." nav={siteNav("pour-patterns")}>
+  <header class="page-intro">
+    <div>
+      <h1>Pour patterns</h1>
+      <p>How the water goes onto the coffee in pour-over brewing. Recipes are built on a ratio: pick your dose and every water target follows. Where the water lands is described under <a href="/kettle-movements/">Kettle movements</a>; the <a href={f("id").split("#")[0]}>schema</a> defines every field.</p>
+    </div>
+    <a class="button" href="/datasets/pour-patterns/pour-patterns.json">Download pour-patterns.json</a>
+  </header>
 
   {pourPatterns.length === 0 ? <p class="muted">No pour patterns are published yet.</p> : (
     <>

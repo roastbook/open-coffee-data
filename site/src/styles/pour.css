@@ -142,13 +142,6 @@ section[aria-labelledby] {
   font-size: 0.875rem;
 }
 
-details summary {
-  cursor: pointer;
-  font-weight: 600;
-  margin: 0.5rem 0;
-}
-
-
 .movement-list {
   display: grid;
   gap: 1rem;
