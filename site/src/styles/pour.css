@@ -257,22 +257,6 @@ section[aria-labelledby] {
   color: var(--muted-foreground);
 }
 
-.dose {
-  width: 4rem;
-  padding: 0 0.35rem;
-  border: 1px solid var(--input);
-  border-radius: var(--radius-sm, 6px);
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  font-variant-numeric: tabular-nums;
-}
-
-.dose:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 1px;
-}
-
 .recipe-foot {
   display: flex;
   flex-wrap: wrap;

@@ -1,6 +1,7 @@
 ---
 import Layout from "@roastbook/ui/astro/Layout.astro";
 import { fieldUrl } from "@roastbook/ui/sites";
+import NumberStepper from "@roastbook/ui/astro/NumberStepper.astro";
 import KettlePath from "../components/KettlePath.astro";
 import { siteNav } from "../lib/nav";
 import PourChart from "../components/PourChart.astro";
@@ -65,7 +66,7 @@ const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentl
                 <p class="recipe-desc">{r.description}</p>
                 <div class="recipe-stats">
                   <div class="stat"><span class="stat-label">Ratio</span><span class="stat-value">1:{d.brew_ratio}</span></div>
-                  <div class="stat"><label class="stat-label" for={`dose-${r.id}`}>Coffee</label><span class="stat-value"><input class="dose" id={`dose-${r.id}`} type="number" min="1" max="200" step="0.5" value={d.dose_g} inputmode="decimal" /> g</span></div>
+                  <div class="stat"><label class="stat-label" for={`dose-${r.id}`}>Coffee</label><span class="stat-value"><NumberStepper class="dose" id={`dose-${r.id}`} min={1} max={200} step={0.5} value={d.dose_g} /> g</span></div>
                   <div class="stat"><span class="stat-label">Water</span><span class="stat-value"><span data-g={d.brew_water_g}>{d.brew_water_g}</span> g</span></div>
                   <div class="stat"><span class="stat-label">Time</span><span class="stat-value">{clock(total(r))}</span></div>
                   {d.grind_size && <div class="stat"><span class="stat-label">Grind</span><span class="stat-value">{d.grind_size.replaceAll("_", " ")}</span></div>}
