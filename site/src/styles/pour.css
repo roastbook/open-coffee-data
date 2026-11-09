@@ -46,7 +46,6 @@ section[aria-labelledby] {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--card);
-  scroll-margin-top: 1rem;
 }
 
 .pour-card:target {

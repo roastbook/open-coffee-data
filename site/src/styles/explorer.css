@@ -21,8 +21,8 @@
 @media (width >= 960px) {
   .filters {
     position: sticky;
-    top: 1rem;
-    max-height: calc(100dvh - 2rem);
+    top: 4rem;
+    max-height: calc(100dvh - 5rem);
     overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;

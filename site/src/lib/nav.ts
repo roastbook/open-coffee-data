@@ -1,7 +1,7 @@
 import type { NavLink } from "@roastbook/ui/sites";
 
 const ITEMS = [
-  ["explorer", "/", "Explorer"],
+  ["explorer", "/", "Home"],
   ["downloads", "/downloads/", "Downloads"],
   ["brew-methods", "/brew-methods/", "Brew methods"],
   ["pour-patterns", "/pour-patterns/", "Pour patterns"],
