@@ -1412,6 +1412,328 @@
       "checked_at": "2026-11-09T12:00:00Z"
     },
     {
+      "id": "pulse-flow-drill",
+      "name": "Pulse flow drill",
+      "kind": "flow",
+      "description": "A pouring exercise rather than a brew: one 48-second pour whose flow swings smoothly between about 2 and 6 g/s every 12 seconds, to practise speeding up and easing off the kettle without stopping.",
+      "defaults": {
+        "brew_ratio": 16,
+        "dose_g": 11.9,
+        "brew_water_g": 190
+      },
+      "phases": [
+        {
+          "id": "drill",
+          "type": "pour",
+          "duration_seconds": 48,
+          "water_fraction": 1,
+          "flow": "custom",
+          "flow_curve": [
+            {
+              "at_seconds": 0,
+              "grams_per_second": 0.0
+            },
+            {
+              "at_seconds": 1,
+              "grams_per_second": 1.55
+            },
+            {
+              "at_seconds": 2,
+              "grams_per_second": 3.0
+            },
+            {
+              "at_seconds": 3,
+              "grams_per_second": 4.24
+            },
+            {
+              "at_seconds": 4,
+              "grams_per_second": 5.2
+            },
+            {
+              "at_seconds": 5,
+              "grams_per_second": 5.8
+            },
+            {
+              "at_seconds": 6,
+              "grams_per_second": 6.0
+            },
+            {
+              "at_seconds": 7,
+              "grams_per_second": 5.73
+            },
+            {
+              "at_seconds": 8,
+              "grams_per_second": 5.0
+            },
+            {
+              "at_seconds": 9,
+              "grams_per_second": 4.0
+            },
+            {
+              "at_seconds": 10,
+              "grams_per_second": 3.0
+            },
+            {
+              "at_seconds": 11,
+              "grams_per_second": 2.27
+            },
+            {
+              "at_seconds": 12,
+              "grams_per_second": 2.0
+            },
+            {
+              "at_seconds": 13,
+              "grams_per_second": 2.27
+            },
+            {
+              "at_seconds": 14,
+              "grams_per_second": 3.0
+            },
+            {
+              "at_seconds": 15,
+              "grams_per_second": 4.0
+            },
+            {
+              "at_seconds": 16,
+              "grams_per_second": 5.0
+            },
+            {
+              "at_seconds": 17,
+              "grams_per_second": 5.73
+            },
+            {
+              "at_seconds": 18,
+              "grams_per_second": 6.0
+            },
+            {
+              "at_seconds": 19,
+              "grams_per_second": 5.73
+            },
+            {
+              "at_seconds": 20,
+              "grams_per_second": 5.0
+            },
+            {
+              "at_seconds": 21,
+              "grams_per_second": 4.0
+            },
+            {
+              "at_seconds": 22,
+              "grams_per_second": 3.0
+            },
+            {
+              "at_seconds": 23,
+              "grams_per_second": 2.27
+            },
+            {
+              "at_seconds": 24,
+              "grams_per_second": 2.0
+            },
+            {
+              "at_seconds": 25,
+              "grams_per_second": 2.27
+            },
+            {
+              "at_seconds": 26,
+              "grams_per_second": 3.0
+            },
+            {
+              "at_seconds": 27,
+              "grams_per_second": 4.0
+            },
+            {
+              "at_seconds": 28,
+              "grams_per_second": 5.0
+            },
+            {
+              "at_seconds": 29,
+              "grams_per_second": 5.73
+            },
+            {
+              "at_seconds": 30,
+              "grams_per_second": 6.0
+            },
+            {
+              "at_seconds": 31,
+              "grams_per_second": 5.73
+            },
+            {
+              "at_seconds": 32,
+              "grams_per_second": 5.0
+            },
+            {
+              "at_seconds": 33,
+              "grams_per_second": 4.0
+            },
+            {
+              "at_seconds": 34,
+              "grams_per_second": 3.0
+            },
+            {
+              "at_seconds": 35,
+              "grams_per_second": 2.27
+            },
+            {
+              "at_seconds": 36,
+              "grams_per_second": 2.0
+            },
+            {
+              "at_seconds": 37,
+              "grams_per_second": 2.27
+            },
+            {
+              "at_seconds": 38,
+              "grams_per_second": 3.0
+            },
+            {
+              "at_seconds": 39,
+              "grams_per_second": 4.0
+            },
+            {
+              "at_seconds": 40,
+              "grams_per_second": 5.0
+            },
+            {
+              "at_seconds": 41,
+              "grams_per_second": 5.73
+            },
+            {
+              "at_seconds": 42,
+              "grams_per_second": 6.0
+            },
+            {
+              "at_seconds": 43,
+              "grams_per_second": 5.8
+            },
+            {
+              "at_seconds": 44,
+              "grams_per_second": 5.2
+            },
+            {
+              "at_seconds": 45,
+              "grams_per_second": 4.24
+            },
+            {
+              "at_seconds": 46,
+              "grams_per_second": 3.0
+            },
+            {
+              "at_seconds": 47,
+              "grams_per_second": 1.55
+            },
+            {
+              "at_seconds": 48,
+              "grams_per_second": 0.0
+            }
+          ]
+        }
+      ],
+      "checked_at": "2026-11-09T22:15:00Z"
+    },
+    {
+      "id": "stepped-flow-drill",
+      "name": "Stepped flow drill",
+      "kind": "flow",
+      "description": "A pouring exercise rather than a brew: one 74-second pour that climbs in steps of 2 g/s from 2 to 10 g/s and back down, holding each rate for 6 seconds, to practise pouring at a steady chosen flow.",
+      "defaults": {
+        "brew_ratio": 16,
+        "dose_g": 25,
+        "brew_water_g": 400
+      },
+      "phases": [
+        {
+          "id": "drill",
+          "type": "pour",
+          "duration_seconds": 74,
+          "water_fraction": 1,
+          "flow": "custom",
+          "flow_curve": [
+            {
+              "at_seconds": 0,
+              "grams_per_second": 0
+            },
+            {
+              "at_seconds": 2,
+              "grams_per_second": 2
+            },
+            {
+              "at_seconds": 8,
+              "grams_per_second": 2
+            },
+            {
+              "at_seconds": 10,
+              "grams_per_second": 4
+            },
+            {
+              "at_seconds": 16,
+              "grams_per_second": 4
+            },
+            {
+              "at_seconds": 18,
+              "grams_per_second": 6
+            },
+            {
+              "at_seconds": 24,
+              "grams_per_second": 6
+            },
+            {
+              "at_seconds": 26,
+              "grams_per_second": 8
+            },
+            {
+              "at_seconds": 32,
+              "grams_per_second": 8
+            },
+            {
+              "at_seconds": 34,
+              "grams_per_second": 10
+            },
+            {
+              "at_seconds": 40,
+              "grams_per_second": 10
+            },
+            {
+              "at_seconds": 42,
+              "grams_per_second": 8
+            },
+            {
+              "at_seconds": 48,
+              "grams_per_second": 8
+            },
+            {
+              "at_seconds": 50,
+              "grams_per_second": 6
+            },
+            {
+              "at_seconds": 56,
+              "grams_per_second": 6
+            },
+            {
+              "at_seconds": 58,
+              "grams_per_second": 4
+            },
+            {
+              "at_seconds": 64,
+              "grams_per_second": 4
+            },
+            {
+              "at_seconds": 66,
+              "grams_per_second": 2
+            },
+            {
+              "at_seconds": 72,
+              "grams_per_second": 2
+            },
+            {
+              "at_seconds": 74,
+              "grams_per_second": 0
+            }
+          ]
+        }
+      ],
+      "checked_at": "2026-11-09T22:15:00Z"
+    },
+    {
       "id": "center",
       "name": "Center pour",
       "kind": "movement",
