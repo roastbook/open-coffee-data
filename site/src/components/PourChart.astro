@@ -1,5 +1,6 @@
 ---
 // Pour curve: flow from the kettle (area, left axis) and water poured so far (line, right axis) over time.
+// data-g / data-gs hold gram and g/s values at the example dose so the page can rescale them (scripts/pour-page.ts).
 import { clock, phaseLabel, pouredCurve, svgPath, timeline, type Phase } from "../lib/pour";
 
 export interface Props { phases: Phase[]; water: number; label: string; width?: number }
@@ -21,12 +22,12 @@ const summary = `${label}: ${segs.filter((s) => s.phase.type === "pour").length}
 ---
 <svg class="pour-chart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={summary}>
   {segs.slice(1).map((s) => <line x1={x(s.start)} x2={x(s.start)} y1={T} y2={H - B + 22} class="phase-edge" />)}
-  {segs.filter((s) => x(s.end) - x(s.start) >= phaseLabel(s.phase).length * 6 + 6).map((s) => (
+  {segs.map((s) => x(s.end) - x(s.start) >= phaseLabel(s.phase).length * 6 + 6 && (
     <text x={(x(s.start) + x(s.end)) / 2} y={H - B + 15} class={`phase-label phase-${s.phase.type}`} text-anchor="middle">{phaseLabel(s.phase)}</text>
   ))}
   {ticks.map((t) => <g><line x1={x(t)} x2={x(t)} y1={T} y2={H - B} class="grid" /><text x={x(t)} y={H - B + 38} class="tick" text-anchor="middle">{clock(t)}</text></g>)}
-  {flowTicks.map((r) => <text x={L - 6} y={yf(r) + 4} class="tick flow-tick" text-anchor="end">{r}</text>)}
-  {[0, maxWater / 2, maxWater].map((g) => <text x={W - R + 6} y={yw(g) + 4} class="tick water-tick">{Math.round(g)}</text>)}
+  {flowTicks.map((r) => <text x={L - 6} y={yf(r) + 4} class="tick flow-tick" text-anchor="end" data-gs={r}>{r}</text>)}
+  {[0, maxWater / 2, maxWater].map((g) => <text x={W - R + 6} y={yw(g) + 4} class="tick water-tick" data-g={g}>{Math.round(g)}</text>)}
   <text x={L - 6} y={T - 24} class="axis-label flow-tick" text-anchor="end">g/s</text>
   <text x={W - R + 6} y={T - 24} class="axis-label water-tick">g</text>
   {segs.filter((s) => s.flow.length).map((s) => (

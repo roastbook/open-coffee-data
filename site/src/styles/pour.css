@@ -71,14 +71,6 @@ section[aria-labelledby] {
   margin: 0;
 }
 
-.recipe-facts {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
-}
-
-.recipe-facts > div {
-  grid-template-columns: 6.5rem 1fr;
-}
-
 .pour-chart {
   display: block;
   width: 100%;
@@ -109,21 +101,6 @@ section[aria-labelledby] {
 .pour-chart .agitation { fill: var(--chart-4); }
 .pour-chart .agitation-line { stroke: var(--chart-4); stroke-width: 1; stroke-dasharray: 2 3; }
 
-.moves {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
-  padding: 0;
-  margin: 0.5rem 0;
-  list-style: none;
-}
-
-.moves li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-}
 
 .movement {
   display: grid;
@@ -140,23 +117,19 @@ section[aria-labelledby] {
 .kettle-path .dripper { fill: none; stroke: var(--border); stroke-width: 2; }
 .kettle-path .bed { fill: color-mix(in oklab, var(--coffee) 55%, var(--card)); }
 .kettle-path .centre { fill: var(--card); opacity: 0.7; }
-.kettle-path .stream { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.kettle-path .trace { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 100; stroke-dashoffset: 0; }
 .kettle-path .stream-0 { stroke: var(--chart-1); color: var(--chart-1); }
 .kettle-path .stream-1 { stroke: var(--chart-2); color: var(--chart-2); }
 .kettle-path .stream-2 { stroke: var(--chart-4); color: var(--chart-4); }
-.kettle-path .stream-dot { fill: currentColor; stroke: none; }
-.kettle-path .ripple { fill: none; stroke: currentColor; stroke-width: 2; }
+.kettle-path .ripple { fill: currentColor; stroke: currentColor; stroke-width: 2; }
+.kettle-path .nozzle { display: none; fill: var(--card); stroke: currentColor; stroke-width: 3; }
 
-/* The path draws itself, then starts again; the ripple shows water landing on one spot. */
-@media (prefers-reduced-motion: no-preference) {
-  .kettle-path .trace { stroke-dasharray: 100; animation: pour-trace 4s linear infinite; }
-  .kettle-path .ripple { transform-box: fill-box; transform-origin: center; animation: pour-ripple 1.6s ease-out infinite; }
-}
-
-@keyframes pour-trace {
-  from { stroke-dashoffset: 100; }
-  80%, to { stroke-dashoffset: 0; }
-}
+/* With motion (scripts/kettle-motion.ts adds .moving): the pour point travels and leaves a trail;
+   inactive segments of a hybrid movement fade; a point pour ripples. */
+.kettle-path.moving .nozzle { display: none; }
+.kettle-path.moving .seg.active .nozzle { display: block; }
+.kettle-path.moving .seg:not(.active) { opacity: 0.35; }
+.kettle-path.moving .seg.active .ripple { fill-opacity: 0; transform-box: fill-box; transform-origin: center; animation: pour-ripple 1.2s ease-out infinite; }
 
 @keyframes pour-ripple {
   from { transform: scale(1); opacity: 0.9; }
@@ -173,4 +146,170 @@ details summary {
   cursor: pointer;
   font-weight: 600;
   margin: 0.5rem 0;
+}
+
+
+.movement-list {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.movement-list .movement {
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+}
+
+.movement-list h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem;
+}
+
+.movement-list h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 36rem) {
+  .movement-list .movement { grid-template-columns: 1fr; justify-items: center; }
+}
+
+.recipe-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem 1rem;
+}
+
+.recipe-head h3 {
+  font-size: 1.375rem;
+}
+
+.recipe-meta {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.recipe-desc {
+  max-width: 75ch;
+  margin: 0.75rem 0 1rem;
+}
+
+.recipe-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 0;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 6rem;
+  padding: 0 1.25rem;
+  border-left: 1px solid var(--border);
+}
+
+.stat:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.stat-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  min-height: 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-temp {
+  flex: 1 1 12rem;
+}
+
+.stat-list {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.stat-note {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.dose {
+  width: 4rem;
+  padding: 0 0.35rem;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-sm, 6px);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.dose:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 1px;
+}
+
+.recipe-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.moves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.moves li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.steps-details {
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 40rem) {
+  .stat { min-width: 45%; padding: 0; border-left: 0; }
 }

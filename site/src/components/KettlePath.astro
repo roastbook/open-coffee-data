@@ -1,5 +1,6 @@
 ---
-// Kettle movement seen from above: the coffee bed and the path the stream takes, drawn on as it moves.
+// Kettle movement seen from above: the coffee bed and the path the stream takes. scripts/kettle-motion.ts
+// moves the pour point (.nozzle) along each segment in turn; without it, or with reduced motion, the full path shows.
 import { pathPoints, svgPath, type PathSegment } from "../lib/pour";
 
 export interface Props { path: PathSegment[]; label: string; size?: number }
@@ -13,13 +14,14 @@ const sc = (v: number) => v * S;
   <circle r="3" class="centre" />
   {path.map((seg, i) => {
     const pts = pathPoints(seg);
-    return pts.length === 1 ? (
-      <g class={`stream stream-${i % 3}`}>
-        <circle cx={sc(pts[0][0])} cy={sc(pts[0][1])} r="7" class="stream-dot" />
-        <circle cx={sc(pts[0][0])} cy={sc(pts[0][1])} r="7" class="ripple" />
+    const [cx, cy] = [sc(pts[0][0]), sc(pts[0][1])];
+    return (
+      <g class={`seg stream-${i % 3}`}>
+        {pts.length === 1
+          ? <circle cx={cx} cy={cy} r="7" class="ripple" />
+          : <path d={svgPath(pts, sc, sc)} pathLength="100" class="trace" />}
+        <circle cx={cx} cy={cy} r="7" class="nozzle" />
       </g>
-    ) : (
-      <path d={svgPath(pts, sc, sc)} pathLength="100" class={`stream stream-${i % 3} trace`} />
     );
   })}
 </svg>

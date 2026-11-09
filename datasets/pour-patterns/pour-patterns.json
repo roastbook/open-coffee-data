@@ -20,9 +20,39 @@
       ],
       "description": "A single cup in five equal pours: a 50 g bloom, then four 50 g pulses every 20 seconds, each a slow circular pour of about 5 g/s with the spout low. A gentle swirl after the bloom and after the last pour.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250,
-        "brew_temperature_celsius": 100,
+        "temperature": {
+          "by_roast": [
+            {
+              "roasts": [
+                "light"
+              ],
+              "celsius": {
+                "typical": 100
+              }
+            },
+            {
+              "roasts": [
+                "medium"
+              ],
+              "celsius": {
+                "min": 90,
+                "max": 95
+              }
+            },
+            {
+              "roasts": [
+                "dark"
+              ],
+              "celsius": {
+                "min": 80,
+                "max": 85
+              }
+            }
+          ]
+        },
         "grind_size": "medium_fine"
       },
       "scaling": {
@@ -120,9 +150,13 @@
       ],
       "description": "A bloom of twice the coffee's weight, swirled until evenly wet, then two continuous pours: to 60% of the water by 1:15, a little agitated, and to 100% by 1:45, slower and gentler. A stir each way and a final swirl flatten the bed.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 30,
         "brew_water_g": 500,
-        "brew_temperature_celsius": 100,
+        "temperature": {
+          "off_the_boil": true,
+          "note": "as hot as possible for light roasts; for dark roasts waiting a little after the boil is fine"
+        },
         "grind_size": "medium_fine"
       },
       "scaling": {
@@ -189,9 +223,14 @@
       ],
       "description": "Five pours of coarse coffee. The first 40% of the water, split in two, sets the balance of sweetness and acidity; the last 60%, split in three, sets the strength. The dripper comes off at 3:30.",
       "defaults": {
+        "brew_ratio": 15.0,
         "dose_g": 20,
         "brew_water_g": 300,
-        "brew_temperature_celsius": 92,
+        "temperature": {
+          "celsius": {
+            "typical": 92
+          }
+        },
         "grind_size": "coarse"
       },
       "scaling": {
@@ -280,9 +319,42 @@
       ],
       "description": "Two short wetting pours of 45 g each, then the rest of the water in one fast pour of about 10 g/s in small coin-sized circles in the centre. Grind so the brew finishes between 2:00 and 2:30.",
       "defaults": {
+        "brew_ratio": 15.0,
         "dose_g": 15,
         "brew_water_g": 225,
-        "brew_temperature_celsius": 93
+        "temperature": {
+          "by_roast": [
+            {
+              "roasts": [
+                "light"
+              ],
+              "celsius": {
+                "min": 93,
+                "max": 96
+              }
+            },
+            {
+              "roasts": [
+                "medium_light"
+              ],
+              "celsius": {
+                "min": 90,
+                "max": 93
+              }
+            },
+            {
+              "roasts": [
+                "medium",
+                "medium_dark",
+                "dark"
+              ],
+              "celsius": {
+                "max": 90
+              }
+            }
+          ],
+          "note": "93 °C in the published brew"
+        }
       },
       "scaling": {
         "water": "proportional",
@@ -347,9 +419,12 @@
       ],
       "description": "A pour every 30 seconds: two small blooms to 50 g and 100 g, each followed by a spin of the brewer, then two fast pours aimed just behind the centre to 220 g and 340 g, each followed by a swirl to level the bed.",
       "defaults": {
+        "brew_ratio": 17.0,
         "dose_g": 20,
         "brew_water_g": 340,
-        "brew_temperature_celsius": 100,
+        "temperature": {
+          "off_the_boil": true
+        },
         "grind_size": "medium"
       },
       "scaling": {
@@ -441,9 +516,12 @@
       ],
       "description": "A long bloom of three times the coffee's weight, poured from high and from the outside in, then swirled hard. At 2:00 one main pour, heavy and high until the cone is half full, then lower and slower in small circles to the top. A shallow stir and small swirls keep the bed flat.",
       "defaults": {
+        "brew_ratio": 17.0,
         "dose_g": 18,
         "brew_water_g": 306,
-        "brew_temperature_celsius": 100,
+        "temperature": {
+          "off_the_boil": true
+        },
         "grind_size": "medium_fine"
       },
       "scaling": {
@@ -505,9 +583,12 @@
       ],
       "description": "A pre-wet of three times the coffee's weight, stirred so every ground is wet within about ten seconds, then one continuous pour at a steady height over the whole slurry. A single gentle stir and a spin of the brewer, the Rao spin, flatten the bed for an even drawdown.",
       "defaults": {
+        "brew_ratio": 16.4,
         "dose_g": 22,
         "brew_water_g": 360,
-        "brew_temperature_celsius": 100
+        "temperature": {
+          "off_the_boil": true
+        }
       },
       "scaling": {
         "water": "proportional",
@@ -568,9 +649,14 @@
       ],
       "description": "Two 100 g pours without a separate bloom, each starting with 30 g in a circle and finishing with 70 g in the centre, at about 10 g/s. Written for the flat-bottomed April Brewer.",
       "defaults": {
+        "brew_ratio": 15.4,
         "dose_g": 13,
         "brew_water_g": 200,
-        "brew_temperature_celsius": 94,
+        "temperature": {
+          "celsius": {
+            "typical": 94
+          }
+        },
         "grind_size": "medium"
       },
       "scaling": {
@@ -639,9 +725,15 @@
       ],
       "description": "Published as The Neo Brew for the HARIO NEO dripper; a V60 also works. Extremely coarse coffee and ten 30 g pours: a bloom, then a pour every 15 seconds. Water should flow straight through rather than pool.",
       "defaults": {
+        "brew_ratio": 15.0,
         "dose_g": 20,
         "brew_water_g": 300,
-        "brew_temperature_celsius": 96,
+        "temperature": {
+          "celsius": {
+            "min": 95,
+            "max": 96
+          }
+        },
         "grind_size": "extra_coarse"
       },
       "scaling": {
@@ -778,6 +870,7 @@
       "kind": "flow",
       "description": "A small first pour, about two to three times the coffee's weight, wets all the grounds; a rest of 30 to 45 seconds lets carbon dioxide escape before the main pours.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -817,6 +910,7 @@
       "kind": "flow",
       "description": "After the bloom, all remaining water goes on in one uninterrupted pour, keeping the slurry level steady until the kettle is empty.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -856,6 +950,7 @@
       "kind": "flow",
       "description": "The water goes on in several separate pours with pauses between them, so the slurry level rises and falls and each pour agitates the bed again.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -934,6 +1029,7 @@
       "kind": "flow",
       "description": "One continuous pour whose rate changes in distinct steps, for example fast to raise the slurry and then slow to hold its level.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -981,6 +1077,7 @@
       "kind": "flow",
       "description": "The kettle keeps one fixed flow rate, for example 5 grams per second, for the whole pour, which makes the brew easy to repeat.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -1020,6 +1117,7 @@
       "kind": "flow",
       "description": "The pour starts gently and gets faster, so the bed is wetted calmly before agitation and slurry height increase.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -1059,6 +1157,7 @@
       "kind": "flow",
       "description": "The pour starts fast to lift and mix the bed and slows down towards the end, so the bed settles flat before the drawdown.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -1098,6 +1197,7 @@
       "kind": "flow",
       "description": "The flow rate changes freely over the pour, faster and slower as the brewer chooses, rather than following one simple shape.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -1163,6 +1263,7 @@
       "kind": "flow",
       "description": "A previously recorded pour, for example from a smart scale, is followed as a target curve so another brewer or another day can reproduce it.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -1223,6 +1324,7 @@
       "kind": "flow",
       "description": "A slow, gentle pour, usually in the centre, that lets water spread through the bed with little agitation instead of churning it.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },
@@ -1262,6 +1364,7 @@
       "kind": "flow",
       "description": "Two separate wetting pours with rests before the main pours, to degas very fresh coffee or reach every dry pocket of the bed.",
       "defaults": {
+        "brew_ratio": 16.7,
         "dose_g": 15,
         "brew_water_g": 250
       },

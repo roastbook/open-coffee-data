@@ -163,6 +163,13 @@ function checkPourPattern(record, ids, where, err) {
   const methods = ids.get("brew-methods") ?? new Map();
   for (const m of record.brew_methods ?? []) if (!methods.has(m)) err(where, `brew_methods: ${m} is not a brew method id`);
   for (const p of record.flow_patterns ?? []) if (kindOf(p) !== "flow") err(where, `flow_patterns: ${p} is not a flow pattern id`);
+  const d = record.defaults;
+  if (d && Math.abs(d.dose_g * d.brew_ratio - d.brew_water_g) > d.brew_water_g * 0.01) err(where, `defaults: dose_g × brew_ratio is ${Math.round(d.dose_g * d.brew_ratio)} g, expected brew_water_g ${d.brew_water_g} within 1%`);
+  const t = d?.temperature;
+  for (const [k, r] of [["celsius", t?.celsius], ...(t?.by_roast ?? []).map((b, i) => [`by_roast.${i}.celsius`, b.celsius])]) {
+    const nums = [r?.min, r?.typical, r?.max].filter((n) => typeof n === "number");
+    if (nums.some((n, i) => i > 0 && n < nums[i - 1])) err(where, `defaults.temperature.${k}: expected min <= typical <= max`);
+  }
   if (!record.phases) return;
   const phaseIds = new Set();
   let water = 0;

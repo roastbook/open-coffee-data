@@ -1,7 +1,7 @@
 // Unit tests for the pour-pattern geometry in site/src/lib/pour.ts.
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { pathPoints, phaseLabel, pouredCurve, timeline } from "../../site/src/lib/pour.ts";
+import { describeSegment, pathPoints, phaseLabel, pouredCurve, temperatureLines, timeline } from "../../site/src/lib/pour.ts";
 
 const phases = [
   { id: "bloom", type: "pour", duration_seconds: 10, water_fraction: 0.2, flow: "constant" },
@@ -36,4 +36,16 @@ test("kettle paths stay inside the bed", () => {
 test("phase labels name waits and drawdowns by type and pours by id", () => {
   assert.deepEqual(phases.map(phaseLabel), ["Bloom", "Wait", "Main", "Drawdown"]);
   assert.equal(phaseLabel({ id: "pour-2", type: "pour" }), "Pour 2");
+});
+
+test("temperatures are shown only as precisely as given", () => {
+  assert.deepEqual(temperatureLines({ celsius: { typical: 92 } }), ["92 °C"]);
+  assert.deepEqual(temperatureLines({ by_roast: [{ roasts: ["light"], celsius: { min: 93, max: 96 } }, { roasts: ["medium", "dark"], celsius: { max: 90 } }] }), ["light: 93–96 °C", "medium, dark: up to 90 °C"]);
+  assert.deepEqual(temperatureLines({ off_the_boil: true }), ["just off the boil"]);
+  assert.deepEqual(temperatureLines(undefined), []);
+});
+
+test("movement segments are described in plain words", () => {
+  assert.equal(describeSegment({ shape: "point", radius: 0 }), "held in the centre");
+  assert.equal(describeSegment({ shape: "spiral", radius: 0.7, turns: 3 }), "spirals out to 70% of the bed and back in, 3 turns");
 });

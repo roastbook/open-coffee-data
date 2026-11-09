@@ -93,4 +93,32 @@ export const svgPath = (pts: Pt[], sx = (x: number) => x, sy = (y: number) => y)
 export const phaseLabel = (p: Phase) =>
   p.type === "hold" ? "Wait" : p.type === "drawdown" ? "Drawdown" : (p.id.charAt(0).toUpperCase() + p.id.slice(1)).replaceAll("-", " ");
 
+export interface Range { min?: number; max?: number; typical?: number }
+export interface Temperature { celsius?: Range; by_roast?: { roasts: string[]; celsius: Range }[]; off_the_boil?: boolean; note?: string }
+
+const range = (r: Range) =>
+  r.min !== undefined && r.max !== undefined ? `${r.min}–${r.max}` : r.min !== undefined ? `${r.min} or more` : r.max !== undefined ? `up to ${r.max}` : `${r.typical}`;
+
+/** Temperature lines as the creator gives them, e.g. ["light: 100 °C", "medium: 90–95 °C"] or ["just off the boil"]. */
+export function temperatureLines(t?: Temperature): string[] {
+  if (!t) return [];
+  return [
+    ...(t.celsius ? [`${range(t.celsius)} °C`] : []),
+    ...(t.by_roast ?? []).map((b) => `${b.roasts.map((r) => r.replace("_", "-")).join(", ")}: ${range(b.celsius)} °C`),
+    ...(t.off_the_boil ? ["just off the boil"] : []),
+  ];
+}
+
+const pct = (v = 0) => `${Math.round(v * 100)}%`;
+/** Plain-words description of one movement segment. */
+export function describeSegment(seg: PathSegment): string {
+  const turns = seg.turns ?? 2;
+  switch (seg.shape) {
+    case "point": return seg.radius ? `held ${pct(seg.radius)} of the way out to the paper` : "held in the centre";
+    case "circle": return `${turns} circles ${pct(seg.radius ?? 0.5)} out from the centre`;
+    case "spiral": return `spirals out to ${pct(seg.radius ?? 0.5)} of the bed and back in, ${turns} turns`;
+    case "line": return `${turns} sweeps across the bed, ${pct(seg.radius ?? 0.5)} to each side`;
+  }
+}
+
 export const clock = (s: number) => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}`;

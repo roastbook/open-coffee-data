@@ -153,3 +153,13 @@ test("brew method parents exist and do not loop", { skip: !schemaDir }, () => {
   loop.brew_methods[0].parent = "example-cone";
   has(run({ brew: loop }), /parent chain loops/);
 });
+
+test("pour recipes: the example brew must match the ratio and temperature ranges must be ordered", { skip: !schemaDir }, () => {
+  const pour = JSON.parse(readFileSync(join(here, "../../datasets/pour-patterns/pour-patterns.json"), "utf8"));
+  const r = pour.pour_patterns.find((p) => p.kind === "recipe");
+  r.defaults.brew_ratio = 20;
+  r.defaults.temperature = { celsius: { min: 96, max: 90 } };
+  const res = run({ extra: { "datasets/pour-patterns/pour-patterns.json": pour } });
+  has(res, /dose_g × brew_ratio/);
+  has(res, /defaults\.temperature\.celsius: expected min <= typical <= max/);
+});

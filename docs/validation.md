@@ -14,7 +14,7 @@
 - Ids are compared with the dataset files at `BASE_REF` (default `origin/main`; CI sets the pull request base). Brew method and equipment ids must never disappear. Coffee places may be removed, because the dataset holds only places confirmed on their own website: each removed place is listed as a warning so the reviewer can check it was unconfirmed or a duplicate. When the ref does not exist (first commit, shallow clone) the check is skipped with a warning.
 - `merged_into` (brew methods and equipment) must point at an existing record of the same family, not at itself; pointing at a record that is itself merged gives a warning. Coffee places do not use it: duplicates are removed.
 - Brew methods: `parent` must exist and parent chains must not loop. Equipment: `brew_methods` entries must be brew method ids. (`equipment_types` values are checked by the schema.)
-- Pour patterns: `brew_methods` entries must be brew method ids, `flow_patterns` entries flow pattern ids and each phase's `movement` a kettle movement id. Phase ids are unique within a record, the pour phases' `water_fraction` values add up to 1, and `flow_curve` times increase and stay within the phase.
+- Pour patterns: `brew_methods` entries must be brew method ids, `flow_patterns` entries flow pattern ids and each phase's `movement` a kettle movement id. `defaults.dose_g` × `brew_ratio` matches `brew_water_g` within 1% and temperature ranges are ordered. Phase ids are unique within a record, the pour phases' `water_fraction` values add up to 1, and `flow_curve` times increase and stay within the phase.
 
 ## Deny-list
 
