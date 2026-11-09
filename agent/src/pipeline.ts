@@ -14,7 +14,7 @@ import { ownHost } from "./names";
 import { loadState, type Job, queueFor, saveState } from "./queue";
 import { searchLog, websiteSeeds } from "./search";
 import { fetchSite, type SitePage } from "./site";
-import { lintPlace, mergeDuplicates, repair } from "./lint";
+import { lintPlace, mergeDuplicates, repair, sameSiteAndAddress } from "./lint";
 import type { Research } from "./research";
 import { SEASONAL } from "./rules";
 import { type RunOptions, type Enriched, type Change, type RunLog, iso } from "./pipeline-model";
@@ -174,9 +174,10 @@ export async function run(o: RunOptions) {
   };
   safeguard();
 
-  // A new record for an Overture place whose old record left in this run (found again through another lead) keeps the old id.
+  // A new record for an Overture place whose old record left in this run (found again through another lead, or under a second
+  // Overture id for the same website and address) keeps the old id.
   for (const r of written) {
-    const gone = !doc.places.some((p) => p.id === r.id) && r.xref?.overture ? removed.find((p) => p.xref?.overture === r.xref?.overture && !byId.get(p.id)) : undefined;
+    const gone = !doc.places.some((p) => p.id === r.id) ? removed.find((p) => !byId.get(p.id) && (!!r.xref?.overture && p.xref?.overture === r.xref.overture || sameSiteAndAddress(p, r))) : undefined;
     if (gone && byId.get(r.id) === r) { byId.delete(r.id); r.id = gone.id; byId.set(r.id, r); removed.splice(removed.indexOf(gone), 1); }
   }
   const places = [...byId.values()].filter((p): p is CoffeeRecord => p !== null);

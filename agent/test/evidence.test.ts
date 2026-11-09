@@ -91,6 +91,11 @@ test("evidence regexes: negations, Speisekarte, Hotdog, supplier roasters, bare 
   expect(one("roasts_own_beans", true, "Unseren Kaffee rösten wir selbst in Giesing")).toBe(1);
   expect(one("roasts_own_beans", true, "We use a LORING roaster and build individual profiles")).toBe(1);
   expect(one("roasts_own_beans", true, "Erstklassiger Kaffee, geröstet von Johannes Bayer")).toBe(0);
+  expect(one("roasts_own_beans", true, "Roasted for espresso by Pacanda Kaffeerösterei")).toBe(0);
+  expect(one("serving.decaf", true, "Decaf Espresso · 500 g Calma")).toBe(0);
+  expect(one("serving.filter", true, "Filterkaffee gemahlen für Siebträger")).toBe(0);
+  expect(one("serving.cold_brew", true, "Cold Brew (seasonal)")).toBe(0);
+  expect(one("serving.decaf", true, "Kaffee auch entkoffeiniert +0,30")).toBe(1);
   expect(one("roasts_own_beans", true, "Wir haben unsere eigene „Espresso Feel Good“-Röstung entwickelt")).toBe(0);
   expect(one("sells_beans", true, "Bowl mit Lachs 250 g")).toBe(0);
   expect(one("sells_beans", true, "Espresso Blend 250 g zum Mitnehmen")).toBe(1);

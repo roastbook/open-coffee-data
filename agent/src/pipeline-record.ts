@@ -46,8 +46,8 @@ function applyStatus(r: CoffeeRecord, e: Enriched, old: CoffeeRecord | null, pro
     return unconfirmedResult(e, old, prov);
   }
   if (isSeasonal(r, temp)) return { record: null, keep: false, provenance: prov, tierWhy: "" };
-  // A site that never mentions coffee is not a coffee place's site (a cake business, a bakery-only shop).
-  if (e.site && !e.site.pages.some((pg) => COFFEE_WORD.test(`${new URL(pg.url).hostname}\n${pg.doc.title}\n${pg.doc.text}`))) return { record: null, keep: false, provenance: prov, tierWhy: "" };
+  // A site whose text never mentions coffee is not a coffee place's site (a cake business, a bakery-only shop, a name that only says "coffee").
+  if (e.site && !e.site.pages.some((pg) => COFFEE_WORD.test(pg.doc.text))) return { record: null, keep: false, provenance: prov, tierWhy: "" };
   if (r.status !== "closed") delete r.closed_on;
   return null;
 }
@@ -252,7 +252,8 @@ function unconfirmedResult(e: Enriched, old: CoffeeRecord | null, prov: Provenan
   return { record: null, keep: known, provenance: prov, conflict: known ? why : undefined, tierWhy: "" };
 }
 
-const COFFEE_WORD = /kaffee|coffee|caf[eéè]|caff[eè]|espresso|cappuccino|barista|röst/i;
+// "Café" in the name is not enough: the site must name a coffee or a coffee drink.
+const COFFEE_WORD = /kaffee|coffee|caff[eè]|espresso|cappuccino|\blatte\b|barista|rösterei|roastery/i;
 
 const CITY_TAIL = /[\s,–-]+(münchen|muenchen|munich)$/i;
 /** A name as a site writes it, minus styling: all-caps logos get normal capitals ("VOLLATHS" -> "Vollaths"; words without a vowel,

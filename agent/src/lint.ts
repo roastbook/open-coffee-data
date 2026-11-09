@@ -123,7 +123,7 @@ function duplicatesAtDistance(a: CoffeeRecord, b: CoffeeRecord, d: number): bool
   // Or one place under two names (e.g. the café and its operator): same street and number, same own website.
   return (sim >= 0.85 && d <= 40) || sim >= 0.99 || sameSiteAndAddress(a, b);
 }
-const sameSiteAndAddress = (a: CoffeeRecord, b: CoffeeRecord) => !!a.links?.website && ownHost(a.links.website) === ownHost(b.links?.website) && sameStreet(a.address?.street_address, b.address?.street_address);
+export const sameSiteAndAddress = (a: CoffeeRecord, b: CoffeeRecord) => !!a.links?.website && ownHost(a.links.website) === ownHost(b.links?.website) && sameStreet(a.address?.street_address, b.address?.street_address);
 
 const postcodePatterns = new Map(Object.entries(POSTCODE));
 const postcodePattern = (country: string) => postcodePatterns.get(country);

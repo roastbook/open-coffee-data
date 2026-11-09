@@ -51,10 +51,14 @@ const COFFEE_IN_QUOTE = /kaffee|coffee|espresso|cappuccino|latte|flat ?white|ame
 const ALLERGEN_LINE = /allergen|kann spuren|zusatzstoff|glutenhaltig|enthält:/;
 
 // "Kaffee von der Rösterei X", "we serve beans from X Roasters": somebody else roasts.
-const SUPPLIER = /\b(von|vom|from|by|with|mit|bezogen|beziehen|bezieht|liefert|geliefert|lieferant\w*|partner\w*|supplied|servieren|serviert|serve[sd]?|ausgeschenkt|zusammen\w*)\b[^.]{0,40}(röst|roast)|wer (sie|ihn|den kaffee) röstet|\b(geröstet|roasted) (von|by) (?!uns\b|us\b)/;
+const SUPPLIER = /\b(von|vom|from|by|with|mit|bezogen|beziehen|bezieht|liefert|geliefert|lieferant\w*|partner\w*|supplied|servieren|serviert|serve[sd]?|ausgeschenkt|zusammen\w*)\b[^.]{0,40}(röst|roast)|wer (sie|ihn|den kaffee) röstet|\b(geröstet|roasted)\b[^.]{0,30}\b(von|by) (?!uns\b|us\b)/;
 // "In unserer Kaffeerösterei", "wir rösten": the place roasts itself, even if a supplier word appears nearby.
 const OWN_ROASTING = /\b(unsere[nmrs]?|our|eigene[nmrs]?|hauseigene[nmrs]?)\s+(\w+\s+)?(kaffee)?(rösterei|roastery|röstung|roasting)|\bwir\s+rösten|rösten\s+wir|we\s+roast|roasted\s+(by us|in-?house)/;
 // A home-brewing guide is not what the café serves.
+// A bean bag or a shop category is not a drink on the menu ("Decaf Espresso 500 g", "Gemahlen für Siebträger", "Warenkorb").
+const RETAIL_LINE = /\b\d+ ?(g|kg|gramm)\b|gemahlen|ganze bohne|whole bean|ground coffee|warenkorb|add to cart|in den korb|\bbohnen\b|\bbeans\b|\bmischung(en)?\b/i;
+// Seasonal drinks are not on the menu all year.
+const SEASONAL_DRINK = /saison|seasonal|nur im (sommer|winter)|im (sommer|winter)\b|in den (sommer|winter)monaten|(sommer|winter)karte/i;
 const HOME_BREWING = /zu ?hause|at home|daheim|anleitung|brew guide|guide|rezept|recipe|tutorial/;
 const NEGATION = /\b(kein|keine|keinen|nicht|no|not|ohne|leider|sorry|ausschließlich bar)\b/;
 // A quote that says the thing is not there can never support true ("Kein WLAN", "no dogs", "ohne Terrasse").
@@ -208,7 +212,8 @@ Return only JSON: {"own_site": bool, "public_cafe": bool, "name": string, "quote
   a café, coffee bar, coffee shop, roastery café, bakery café or similar. false for restaurants, bars, pizzerias, sushi or
   delivery places that do not present themselves as a café; shops without a café (online shops, roasteries that only sell
   beans, tea shops, machine dealers); schools, offices, catering, wholesale, manufacturers; places only for members,
-  residents, staff, students or ticket holders; seasonal or event-only venues (also a yearly winter break of weeks or months);
+  residents, staff, students or ticket holders; venues whose visit is paid admission (indoor playgrounds, museums, zoos,
+  pools) with a café inside, unless the site says the café is open without a ticket; seasonal or event-only venues (also a yearly winter break of weeks or months);
   places not open yet or closed for good. The site must show that coffee is served: a tea, matcha, wine or ice-cream place
   counts only if it clearly serves coffee too.
 - name: the name this place uses for itself on the site (for a chain: the brand name, plus the location name only if the
@@ -457,6 +462,8 @@ export function postcodesOnSite(pages: SitePage[], country: string, cityPostcode
 
 function booleanMeaningProblem(p: Proposal, q: string, f: Field, page: SitePage): string | undefined {
   if (p.value && f.startsWith("serving.") && HOME_BREWING.test(q)) { return "a home-brewing guide, not what the café serves"; }
+  if (p.value && f.startsWith("serving.") && RETAIL_LINE.test(q)) { return "a product for sale, not a drink on the menu"; }
+  if (p.value && f.startsWith("serving.") && SEASONAL_DRINK.test(q)) { return "a seasonal drink"; }
   if (p.value && SERVED_HERE.test(f) && NOT_MENU_PAGE.test(decodeURIComponent(new URL(page.url).pathname))) { return "a shop, guide or catalogue page, not what the place serves"; }
   if (p.value && SERVED_HERE.test(f) && ALLERGEN_LINE.test(q)) { return "an allergen or additives list"; }
   // A decaf or cold brew line that also names coffee ("Kaffee entkoffeiniert, Tee") is still about coffee.
