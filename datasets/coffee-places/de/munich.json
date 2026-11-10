@@ -12,7 +12,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Eisenrieder",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -48,7 +48,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cockpit Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -87,7 +87,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ONE Nation",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -129,7 +129,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Yellow´s Coffee & More",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -162,7 +162,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "schokoAlm",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -200,7 +200,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Plaisir",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -229,7 +229,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mellow",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -270,7 +270,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Palmi",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -302,7 +302,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "BalanDeli",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -339,7 +339,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Man Versus Machine Coffee Roasters",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -350,17 +350,8 @@
         "lat": 48.131018,
         "lon": 11.571123
       },
-      "opening_hours": "Mo-Fr 08:00-19:00; Sa,Su 09:00-19:00",
-      "description": "Man Versus Machine Coffee Roasters is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks, pour-over filter coffee, cold brew and decaf. It also sells brewing equipment. It is open on Sundays.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
-      "serving": {
-        "decaf": true,
-        "cold_brew": true,
-        "espresso": true,
-        "filter": true,
-        "pour_over": true
-      },
+      "opening_hours": "Mo-Fr 08:00-19:00; Sa,Su 09:00-19:00; PH 09:00-19:00",
+      "specialty_tier": "none",
       "sells_equipment": true,
       "operator": {
         "name": "MVSM GmbH",
@@ -380,7 +371,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kyso",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -413,7 +404,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Hungriges Herz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -458,7 +449,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Violin",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -510,7 +501,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe & Bistro Amadeus",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -538,7 +529,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ChiaChia's",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -582,7 +573,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ALRIGHTY Roastery & Coffee Shop",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -594,14 +585,7 @@
         "lon": 11.606618
       },
       "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su,PH 09:00-18:00",
-      "description": "ALRIGHTY Roastery & Coffee Shop is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks, filter coffee and decaf. It also offers courses or cuppings. It is open on Sundays.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
-      "serving": {
-        "filter": true,
-        "espresso": true,
-        "decaf": true
-      },
+      "specialty_tier": "none",
       "offers_courses": true,
       "operator": {
         "name": "care4coffee GmbH",
@@ -621,7 +605,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Daily Coffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -670,7 +654,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Neismanufaktur",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -709,7 +693,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Best Brews",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -746,7 +730,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Vits Coffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -758,14 +742,11 @@
         "lon": 11.581859
       },
       "opening_hours": "Mo-Fr 10:00-18:00; Sa 10:00-18:00; Su off",
-      "description": "Vits Coffee is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks, pour-over filter coffee and decaf. It serves breakfast. It also sells beans to take home, sells brewing equipment and offers courses or cuppings.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
+      "specialty_tier": "none",
       "serving": {
         "espresso": true,
         "filter": true,
-        "pour_over": true,
-        "decaf": true
+        "pour_over": true
       },
       "food": {
         "breakfast": true
@@ -800,7 +781,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -813,11 +794,7 @@
       },
       "specialty_tier": "none",
       "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true,
-        "pour_over": true,
-        "cold_brew": true
+        "espresso": true
       },
       "operator": {
         "name": "Tchibo GmbH",
@@ -838,7 +815,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nuvola Cafè",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -869,7 +846,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -881,11 +858,6 @@
         "lon": 11.460449
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -905,7 +877,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Am Max-Weber-Platz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -936,7 +908,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Era",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -968,7 +940,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tropical coffee & sweets",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -993,7 +965,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Calima Specialty Coffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1040,7 +1012,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cole & Porter",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1088,7 +1060,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café am Beethovenplatz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1119,7 +1091,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale mit Kaffee Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1131,11 +1103,6 @@
         "lon": 11.5646
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -1155,7 +1122,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Bar Tribu",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1193,7 +1160,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café MoKKa",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1229,7 +1196,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Keep Banana Coffee & Gelato",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1273,7 +1240,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Dinatale Café Georgenstrasse",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1310,7 +1277,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Deli Star",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1359,7 +1326,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Seidl´s Cafe & Konditorei",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1384,7 +1351,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Sonnenback",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1429,7 +1396,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Oh Happy Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1466,7 +1433,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale mit Kaffee Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1478,11 +1445,6 @@
         "lon": 11.620725
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -1502,7 +1464,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale mit Kaffee Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1514,11 +1476,6 @@
         "lon": 11.586171
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -1538,7 +1495,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Poppi Farmer",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1571,7 +1528,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ALEX München Pasing Arcaden",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1623,7 +1580,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Studio Cafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1654,7 +1611,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Mona - Specialty Coffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1682,7 +1639,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Lozzi",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1701,8 +1658,7 @@
         }
       ],
       "serving": {
-        "espresso": true,
-        "plant_milk": true
+        "espresso": true
       },
       "amenities": {
         "vegan_options": true,
@@ -1729,7 +1685,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Josefina",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1775,7 +1731,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1807,7 +1763,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kiosk 1917",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1855,7 +1811,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "New Era Coffee & Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1869,11 +1825,7 @@
       "opening_hours": "Mo-Th 07:30-22:00; Fr,Sa,Su 08:00-22:00",
       "specialty_tier": "none",
       "serving": {
-        "espresso": true,
-        "filter": true,
-        "pour_over": true,
-        "cold_brew": true,
-        "plant_milk": true
+        "espresso": true
       },
       "amenities": {
         "vegan_options": true,
@@ -1901,7 +1853,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "O Caffe Mio",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1937,7 +1889,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Matcha Rina",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -1971,7 +1923,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Colombo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2003,7 +1955,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Kreutzkamm, Pacellistraße",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2046,7 +1998,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Barista Sistar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2095,7 +2047,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Backsteinchen",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2113,7 +2065,6 @@
         }
       ],
       "serving": {
-        "plant_milk": true,
         "espresso": true
       },
       "amenities": {
@@ -2136,7 +2087,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Om Nom Nom",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -2172,7 +2123,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Manufactum Brot & Butter",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2213,7 +2164,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Luffy Pancake Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2248,7 +2199,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Conditorei Mische",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2284,7 +2235,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café CADE",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2321,7 +2272,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Münchner Freiheit",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2354,7 +2305,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Roca Junior",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2366,16 +2317,12 @@
         "lon": 11.556491
       },
       "opening_hours": "Mo-Fr 07:00-18:00; Sa 09:00-18:00; Su,PH 09:00-17:00",
-      "description": "Roca Junior is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks, pour-over filter coffee and decaf, with plant-based milk available. It also sells brewing equipment. It is open on Sundays.",
+      "description": "Roca Junior is a specialty coffee place in München that roasts its own beans. The menu includes filter coffee, with plant-based milk available. It also sells beans to take home, sells brewing equipment and offers courses or cuppings. It is open on Sundays.",
       "specialty_tier": "A",
       "roasts_own_beans": true,
       "serving": {
-        "batch_brew": true,
-        "plant_milk": true,
-        "decaf": true,
-        "espresso": true,
         "filter": true,
-        "pour_over": true
+        "plant_milk": true
       },
       "amenities": {
         "vegan_options": true,
@@ -2384,7 +2331,9 @@
       "food": {
         "focus": "coffee_led"
       },
+      "sells_beans": true,
       "sells_equipment": true,
+      "offers_courses": true,
       "links": {
         "website": "https://rocajunior.de/",
         "instagram": "https://www.instagram.com/roca.junior.coffee/"
@@ -2398,7 +2347,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Königin43",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2447,7 +2396,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "3MILLS Cycling & Coffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2481,7 +2430,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2493,10 +2442,6 @@
         "lon": 11.472604
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -2516,7 +2461,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nes Coffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2545,7 +2490,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "StaBi Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2578,7 +2523,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Starbucks",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -2588,7 +2533,6 @@
         "lon": 11.57581
       },
       "specialty_tier": "none",
-      "roasts_own_beans": true,
       "links": {
         "website": "https://www.starbucks.co.uk/store-locator/87033-316297/muenchen-marienplatz-u-bahn",
         "instagram": "https://www.instagram.com/starbucksuk/",
@@ -2603,7 +2547,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "coffeemamas",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2615,9 +2559,7 @@
         "lon": 11.554399
       },
       "opening_hours": "Mo-Fr 07:00-19:00; Sa 09:00-18:00; Su off",
-      "description": "coffeemamas is a specialty coffee place in München that roasts its own beans.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
+      "specialty_tier": "none",
       "links": {
         "website": "https://www.coffeemamas.de/"
       },
@@ -2630,7 +2572,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Loco Cafe & Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2659,7 +2601,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Neuhauser",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2701,7 +2643,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "GötterSpeise Chocolaterie & Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2738,7 +2680,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Story Cafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2774,7 +2716,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Ruffini",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2823,7 +2765,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Schneid-Kaffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2835,18 +2777,12 @@
         "lon": 11.5293
       },
       "opening_hours": "Mo-Fr 10:00-17:00; Sa 10:00-14:00",
-      "description": "Schneid-Kaffee is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks, pour-over filter coffee, cold brew and decaf. It also sells beans to take home and sells brewing equipment.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
-      "serving": {
-        "espresso": true,
-        "decaf": true,
-        "filter": true,
-        "pour_over": true,
-        "cold_brew": true
-      },
+      "specialty_tier": "none",
       "amenities": {
         "vegan_options": true
+      },
+      "food": {
+        "focus": "coffee_led"
       },
       "sells_beans": true,
       "sells_equipment": true,
@@ -2864,7 +2800,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafebar007",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2896,7 +2832,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cotidiano",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2938,7 +2874,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Boymer Cafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -2971,7 +2907,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Haferkater",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3020,7 +2956,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale mit Kaffee Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3032,11 +2968,6 @@
         "lon": 11.531483
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -3056,7 +2987,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3068,11 +2999,6 @@
         "lon": 11.557508
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -3092,7 +3018,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Ludwig",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3124,7 +3050,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Billy's Café & Kiosk",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3165,7 +3091,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Dinatale Café Elisabethstrasse",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3202,7 +3128,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Böcklin Coffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3234,7 +3160,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Die Kuchenmeisterei",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3262,7 +3188,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Casablanca Cafe & Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3290,7 +3216,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Arzmiller",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3321,7 +3247,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Antons",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3365,7 +3291,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tapparo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3411,7 +3337,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "robetti",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3437,9 +3363,9 @@
     {
       "id": "cp-c35kpa7h3a",
       "type": "CafeOrCoffeeShop",
-      "name": "Man Versus Machine Coffee Roasters",
+      "name": "MVSM Maxvorstadt",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3450,25 +3376,15 @@
         "lat": 48.149886,
         "lon": 11.577568
       },
-      "opening_hours": "Mo-Fr 08:00-19:00; Sa,Su,PH 10:00-19:00",
-      "description": "Man Versus Machine Coffee Roasters is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks, pour-over filter coffee, cold brew and decaf. It is open on Sundays.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
-      "serving": {
-        "decaf": true,
-        "cold_brew": true,
-        "espresso": true,
-        "filter": true,
-        "pour_over": true
-      },
+      "opening_hours": "Mo-Fr 08:00-19:00; Sa,Su 10:00-19:00",
+      "specialty_tier": "none",
       "operator": {
         "name": "MVSM GmbH",
         "legal_form": "GmbH",
         "register_id": "HRB 209624"
       },
       "links": {
-        "website": "https://mvsm.coffee/",
-        "instagram": "https://www.instagram.com/manversusmachine/"
+        "website": "https://mvsm.coffee/"
       },
       "xref": {
         "overture": "faf5ad30-4fd5-47d6-b403-a65688e1f7d4"
@@ -3479,7 +3395,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "MiRA Café - Studio",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3509,7 +3425,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Gimbab Cafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3538,7 +3454,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café und Restaurant MUSEUM",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3592,7 +3508,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Blue",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3626,7 +3542,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "LoRossi Caffè House & Lounge",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3667,7 +3583,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Le Petit Jardin",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3695,7 +3611,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café überm Marienplatz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3725,7 +3641,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Dankl",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3768,7 +3684,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Mozart",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3807,7 +3723,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Dompierre",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3844,7 +3760,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cotidiano München Gärtnerplatz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3899,7 +3815,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Solâ",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3947,7 +3863,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Woerner's",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -3981,7 +3897,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Espressitto Tagesbar & Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4012,7 +3928,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ChocoLab",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4068,7 +3984,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Haidhausen",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4119,7 +4035,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Humpback Whale Specialty Coffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4131,19 +4047,13 @@
         "lon": 11.577404
       },
       "opening_hours": "Mo-Fr 08:30-18:00; Sa,Su 09:00-18:00",
-      "description": "Humpback Whale Specialty Coffee is a specialty coffee place in München. It serves coffee from r.d.coffee. The menu includes espresso drinks and pour-over filter coffee. It is open on Sundays.",
+      "description": "Humpback Whale Specialty Coffee is a specialty coffee place in München. It serves coffee from r.d.coffee. It is open on Sundays.",
       "specialty_tier": "A",
       "roasters_served": [
         {
           "name": "r.d.coffee"
         }
       ],
-      "serving": {
-        "pour_over": true,
-        "filter": true,
-        "espresso": true,
-        "batch_brew": true
-      },
       "food": {
         "focus": "coffee_led"
       },
@@ -4160,7 +4070,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Westend",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4198,7 +4108,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nine Fine Roastery & Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4248,7 +4158,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tribeca Cafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4288,7 +4198,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Weyerer",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4336,7 +4246,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "SALLIS Kaffeerösterei & Espressobar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4348,13 +4258,9 @@
         "lon": 11.534281
       },
       "opening_hours": "Mo 07:30-14:00; Tu-Fr 07:30-18:00; Sa 08:00-17:00; Su off",
-      "description": "SALLIS Kaffeerösterei & Espressobar is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks and decaf. It also sells beans to take home.",
+      "description": "SALLIS Kaffeerösterei & Espressobar is a specialty coffee place in München that roasts its own beans. It also sells beans to take home.",
       "specialty_tier": "A",
       "roasts_own_beans": true,
-      "serving": {
-        "espresso": true,
-        "decaf": true
-      },
       "food": {
         "focus": "coffee_led"
       },
@@ -4373,7 +4279,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Grass",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4403,7 +4309,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "WonderWaffel",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4434,7 +4340,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "The Spirited Goat",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4463,7 +4369,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nebenan",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4507,7 +4413,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4540,7 +4446,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Patolli Kaffeebar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4588,7 +4494,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale mit Kaffee Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4600,11 +4506,6 @@
         "lon": 11.694135
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -4624,7 +4525,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Konditorei tanpopo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4658,7 +4559,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café FLOWER",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4703,7 +4604,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "A Little Lost",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4742,7 +4643,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Lollo Rosso",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4770,7 +4671,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Woerner's",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4805,7 +4706,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Höflinger",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -4837,7 +4738,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Soon",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4862,7 +4763,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Stanizl Hofladen und Marktcafé",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4903,7 +4804,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4936,7 +4837,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Niu Asian Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4963,7 +4864,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Camatti",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -4995,7 +4896,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "bacibaci Café & Tagesbar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5024,7 +4925,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Hayalisa",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5063,7 +4964,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Groove Coffee Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5118,7 +5019,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Die Tagesbar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5157,7 +5058,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "THE BARN Coffee Roasters",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5170,11 +5071,6 @@
       },
       "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 09:00-18:00",
       "specialty_tier": "none",
-      "serving": {
-        "pour_over": true,
-        "espresso": true,
-        "filter": true
-      },
       "amenities": {
         "outdoor_seating": true
       },
@@ -5197,7 +5093,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Twins",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5245,7 +5141,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Kreutzkamm",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5288,7 +5184,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Rosalie's Deli Cafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5331,7 +5227,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Konditorei Erbshäuser",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5356,7 +5252,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Zimt",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5404,52 +5300,11 @@
       }
     },
     {
-      "id": "cp-jmhjxeep5v",
-      "type": "CafeOrCoffeeShop",
-      "name": "Man Versus Machine Coffee Roasters",
-      "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
-      "address": {
-        "country_code": "DE",
-        "locality": "München",
-        "street_address": "Hohenzollernstr. 32",
-        "postal_code": "80801"
-      },
-      "location": {
-        "lat": 48.159997,
-        "lon": 11.581577
-      },
-      "opening_hours": "Mo-Fr 08:00-15:30; Sa 09:00-16:30; Su,PH 10:00-17:30",
-      "description": "Man Versus Machine Coffee Roasters is a place in München that serves specialty coffee roasted in house. The menu includes espresso drinks, pour-over filter coffee, cold brew and decaf. It also sells brewing equipment. It is open on Sundays.",
-      "specialty_tier": "B",
-      "roasts_own_beans": true,
-      "serving": {
-        "decaf": true,
-        "cold_brew": true,
-        "espresso": true,
-        "filter": true,
-        "pour_over": true
-      },
-      "sells_equipment": true,
-      "operator": {
-        "name": "MVSM GmbH",
-        "legal_form": "GmbH",
-        "register_id": "HRB 209624"
-      },
-      "links": {
-        "website": "https://mvsm.coffee/",
-        "instagram": "https://www.instagram.com/manversusmachine/"
-      },
-      "xref": {
-        "overture": "92834e17-d68c-4457-ae8f-8c72c146aa52"
-      }
-    },
-    {
       "id": "cp-jq5kyvkfgp",
       "type": "CafeOrCoffeeShop",
       "name": "Stadtteilcafé - Treffpunkt am Hasenbergl",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5481,7 +5336,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Savos French Tacos",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5525,7 +5380,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Caffè Credo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5558,7 +5413,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Dupont",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5591,7 +5446,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Rigoletto",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5632,7 +5487,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Palmz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5684,7 +5539,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Bricelta",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5732,7 +5587,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Crème",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5760,7 +5615,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Reichshof",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5793,7 +5648,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5825,7 +5680,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kaffeerösterei Viktualienmarkt",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -5835,13 +5690,7 @@
         "lon": 11.576326
       },
       "opening_hours": "Mo-Sa 08:00-18:00; Su,PH off",
-      "description": "Kaffeerösterei Viktualienmarkt is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks and decaf.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
-      "serving": {
-        "espresso": true,
-        "decaf": true
-      },
+      "specialty_tier": "none",
       "food": {
         "focus": "coffee_led"
       },
@@ -5862,7 +5711,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Gans Woanders",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5913,7 +5762,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Fortuna Café Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5945,7 +5794,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Messer & Gabel",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -5987,7 +5836,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Standl 20",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6021,7 +5870,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Vollaths",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6056,7 +5905,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Jasmin",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6106,7 +5955,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Aubinger Herzl",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6141,7 +5990,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6153,11 +6002,6 @@
         "lon": 11.502607
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -6177,7 +6021,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "gangundgäbe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6189,16 +6033,7 @@
         "lon": 11.556977
       },
       "opening_hours": "Mo-Fr 12:00-17:00",
-      "description": "gangundgäbe is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks and filter coffee. It also sells beans to take home and sells brewing equipment.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
-      "serving": {
-        "espresso": true,
-        "filter": true
-      },
-      "food": {
-        "focus": "coffee_led"
-      },
+      "specialty_tier": "none",
       "sells_beans": true,
       "sells_equipment": true,
       "links": {
@@ -6215,7 +6050,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Der Pavillon",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6250,7 +6085,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Ciao Amore",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6262,14 +6097,11 @@
         "lon": 11.561878
       },
       "opening_hours": "Mo-Su 07:30-18:00",
-      "description": "Ciao Amore is a place in München that serves specialty coffee roasted in house. The menu includes espresso drinks, filter coffee and decaf, with plant-based milk available. It serves breakfast. It is open on Sundays.",
-      "specialty_tier": "B",
-      "roasts_own_beans": true,
+      "specialty_tier": "none",
       "serving": {
         "espresso": true,
         "plant_milk": true,
-        "decaf": true,
-        "filter": true
+        "decaf": true
       },
       "amenities": {
         "wifi": true,
@@ -6349,7 +6181,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "chicco di caffè",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6390,7 +6222,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Clemens Kaffee Haus",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6437,7 +6269,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Daddy Longlegs",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6486,7 +6318,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Segafredo Espresso Bar Valle Uno",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6525,7 +6357,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "sweet spot kaffee",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6540,9 +6372,7 @@
       "specialty_tier": "none",
       "serving": {
         "espresso": true,
-        "filter": true,
-        "decaf": true,
-        "batch_brew": true
+        "pour_over": false
       },
       "food": {
         "focus": "coffee_led"
@@ -6565,7 +6395,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Rischart",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6600,7 +6430,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Wiener Platz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6641,7 +6471,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mary's Coffee Club",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6674,7 +6504,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Munich Rose Cafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6700,7 +6530,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Zimt und Zucker",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6729,7 +6559,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "The Brother Mill Café & Bakery",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6774,7 +6604,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café zur Mauth",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6810,7 +6640,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Scheidplatz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6857,7 +6687,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Nonnas Cafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6901,7 +6731,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Gans am Wasser",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6940,7 +6770,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Bohne & Malz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -6997,7 +6827,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7030,7 +6860,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coucou Food Market - Jüdisches Museum",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7074,7 +6904,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "sweet spot kaffee Gärtnerplatz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7088,10 +6918,7 @@
       "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 09:00-18:00",
       "specialty_tier": "none",
       "serving": {
-        "filter": true,
-        "espresso": true,
-        "decaf": true,
-        "batch_brew": true
+        "pour_over": false
       },
       "operator": {
         "name": "sweet spot kaffee GmbH",
@@ -7112,7 +6939,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Mr. Baker’s Coffee House",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7145,7 +6972,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "CADU - Cafe an der Uni",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7185,7 +7012,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Luitpold",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7198,10 +7025,6 @@
       },
       "opening_hours": "Mo 08:00-20:00; Tu-Sa 08:00-22:00; Su 09:00-20:00",
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "plant_milk": true
-      },
       "amenities": {
         "outdoor_seating": true,
         "vegan_options": true
@@ -7230,7 +7053,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Lotti",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7278,7 +7101,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Lieblingscafe",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7312,7 +7135,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7349,7 +7172,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Woerner's",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7387,7 +7210,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "MackGorilla",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7429,7 +7252,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Crêperie Carré",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7475,7 +7298,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Walser's Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7504,7 +7327,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Bazaar Noir",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7523,9 +7346,6 @@
           "name": "Vogelmeier"
         }
       ],
-      "serving": {
-        "plant_milk": true
-      },
       "amenities": {
         "outdoor_seating": true
       },
@@ -7546,7 +7366,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Che Follia",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7589,7 +7409,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Voilà",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7627,7 +7447,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Black Bean",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7661,7 +7481,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7673,10 +7493,6 @@
         "lon": 11.572063
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true
-      },
       "links": {
         "website": "https://www.tchibo.de/",
         "instagram": "https://www.instagram.com/tchibo/",
@@ -7691,7 +7507,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kaffeerösterei Leone",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7703,13 +7519,7 @@
         "lon": 11.561565
       },
       "opening_hours": "Mo-Fr 09:00-18:00; Sa 11:00-17:00",
-      "description": "Kaffeerösterei Leone is a place in München that serves specialty coffee roasted in house. The menu includes espresso drinks and decaf. Cakes are baked in house.",
-      "specialty_tier": "B",
-      "roasts_own_beans": true,
-      "serving": {
-        "decaf": true,
-        "espresso": true
-      },
+      "specialty_tier": "none",
       "food": {
         "cakes_baked_in_house": true
       },
@@ -7725,7 +7535,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "IDEAL Espressobar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7771,7 +7581,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Wunderbar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7802,7 +7612,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7814,11 +7624,6 @@
         "lon": 11.644345
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -7838,7 +7643,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Gartensalon",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7885,7 +7690,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Puck",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7922,7 +7727,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Stuzzicadenti",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7964,7 +7769,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Botanista Café Club",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -7977,10 +7782,6 @@
       },
       "opening_hours": "Mo-Th 09:00-22:00; Fr,Sa 09:00-24:00; Su 09:00-22:00",
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "plant_milk": true
-      },
       "amenities": {
         "vegan_options": true
       },
@@ -8005,7 +7806,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tante Chylla",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8017,17 +7818,13 @@
         "lon": 11.448576
       },
       "opening_hours": "Mo-Th 07:30-16:00; Fr-Sa 07:00-16:30",
-      "description": "Tante Chylla is a place in München that serves specialty coffee. It serves coffee from GoodBeans. The menu includes espresso drinks and decaf. It serves breakfast and lunch. It also sells beans to take home.",
+      "description": "Tante Chylla is a place in München that serves specialty coffee. It serves coffee from GoodBeans. It serves breakfast and lunch. It also sells beans to take home.",
       "specialty_tier": "B",
       "roasters_served": [
         {
           "name": "GoodBeans"
         }
       ],
-      "serving": {
-        "espresso": true,
-        "decaf": true
-      },
       "food": {
         "lunch": true,
         "breakfast": true
@@ -8043,7 +7840,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café am Josephsplatz",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8073,7 +7870,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Clara",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8115,7 +7912,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Mauerer",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8161,7 +7958,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café ERIKA",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8207,7 +8004,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "POUR. Coffee & More",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8233,7 +8030,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Wohnwerk",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8282,7 +8079,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Village",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8330,7 +8127,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cupital N°3",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8366,7 +8163,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kuchentratsch",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8378,9 +8175,6 @@
         "lon": 11.54467
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true
-      },
       "amenities": {
         "outdoor_seating": true,
         "vegan_options": true
@@ -8408,7 +8202,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "ORNO Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8438,7 +8232,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Winkelgasse Café & Pub",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8471,7 +8265,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Jasmin",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8501,7 +8295,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Chance",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8534,7 +8328,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kapotheke",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8577,7 +8371,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Schelling Salon",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8591,9 +8385,8 @@
       "opening_hours": "Mo-Th 10:00-24:00; Fr,Sa 10:00-01:00; Su 10:00-23:00",
       "specialty_tier": "none",
       "serving": {
-        "espresso": true,
-        "decaf": true,
-        "plant_milk": true
+        "plant_milk": true,
+        "espresso": true
       },
       "food": {
         "breakfast": true,
@@ -8624,7 +8417,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "TOPIC M Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8637,8 +8430,8 @@
       },
       "specialty_tier": "none",
       "serving": {
-        "espresso": true,
-        "plant_milk": true
+        "plant_milk": true,
+        "espresso": true
       },
       "amenities": {
         "vegan_options": true
@@ -8665,7 +8458,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Kanso Coffee Lab",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8676,14 +8469,7 @@
         "lat": 48.140569,
         "lon": 11.576646
       },
-      "description": "Kanso Coffee Lab is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks and pour-over filter coffee. It also sells beans to take home.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "pour_over": true
-      },
+      "specialty_tier": "none",
       "sells_beans": true,
       "operator": {
         "name": "Kanso Coffee GmbH",
@@ -8703,7 +8489,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Hüller",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8748,7 +8534,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale mit Kaffee Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8760,11 +8546,6 @@
         "lon": 11.581541
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -8784,7 +8565,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Stray Coffee Roasters",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8808,7 +8589,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "JoMa",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8833,7 +8614,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Zeitgeist",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8876,7 +8657,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Blá",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8888,13 +8669,9 @@
         "lon": 11.586417
       },
       "opening_hours": "Mo-Fr 09:00-17:00; Sa,Su,PH 10:00-18:00",
-      "description": "Café Blá is a specialty coffee place in München that roasts its own beans. The menu includes espresso drinks and filter coffee. It serves breakfast and lunch. It also sells beans to take home. It is open on Sundays.",
+      "description": "Café Blá is a specialty coffee place in München that roasts its own beans. It serves breakfast and lunch. It also sells beans to take home. It is open on Sundays.",
       "specialty_tier": "A",
       "roasts_own_beans": true,
-      "serving": {
-        "filter": true,
-        "espresso": true
-      },
       "food": {
         "breakfast": true,
         "lunch": true,
@@ -8919,7 +8696,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Das Neue Kubitscheck",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8958,7 +8735,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Petit Café",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -8990,7 +8767,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Bianco e blue in der Altstadt",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München"
@@ -9019,7 +8796,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "CafédotKom",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9053,7 +8830,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Pacandé",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9065,9 +8842,7 @@
         "lon": 11.548447
       },
       "opening_hours": "Mo-Fr 09:00-13:00,14:00-18:00; Sa 10:00-13:00,14:00-16:00",
-      "description": "Pacandé is a specialty coffee place in München that roasts its own beans.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
+      "specialty_tier": "none",
       "links": {
         "website": "https://pacande.com/"
       },
@@ -9080,7 +8855,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café Fräulein",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9115,7 +8890,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Fräulein Grüneis am Eisbach",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9159,7 +8934,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café la Maison",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9194,7 +8969,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Lost Weekend",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9243,7 +9018,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Café in der Pinakothek der Moderne",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9276,7 +9051,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Dinatale Café Amalienstrasse",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9313,7 +9088,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Cafe Ooh Baby",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9364,7 +9139,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Beans and Books",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9408,7 +9183,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Starbucks",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9420,7 +9195,6 @@
         "lon": 11.53479
       },
       "specialty_tier": "none",
-      "roasts_own_beans": true,
       "sells_beans": true,
       "links": {
         "website": "https://www.starbucks.co.uk/store-locator/84880-314574/muenchen-rotkreuzplatz",
@@ -9436,7 +9210,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "THE BARN Glockenbachviertel",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9449,10 +9223,6 @@
       },
       "opening_hours": "Mo-Fr 08:00-18:00; Sa 09:00-18:00; Su 10:00-18:00",
       "specialty_tier": "none",
-      "serving": {
-        "filter": true,
-        "espresso": true
-      },
       "operator": {
         "name": "THE BARN GmbH",
         "legal_form": "GmbH"
@@ -9471,7 +9241,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Tchibo Filiale mit Kaffee Bar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9483,11 +9253,6 @@
         "lon": 11.574557
       },
       "specialty_tier": "none",
-      "serving": {
-        "espresso": true,
-        "filter": true,
-        "decaf": true
-      },
       "operator": {
         "name": "Tchibo GmbH",
         "legal_form": "GmbH",
@@ -9507,7 +9272,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Helma - Café & Tagesbar",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",
@@ -9555,7 +9320,7 @@
       "type": "CafeOrCoffeeShop",
       "name": "Coffee Fellows",
       "status": "open",
-      "checked_at": "2026-11-09T20:25:52Z",
+      "checked_at": "2026-11-10T01:49:40Z",
       "address": {
         "country_code": "DE",
         "locality": "München",

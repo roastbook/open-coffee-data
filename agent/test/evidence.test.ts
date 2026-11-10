@@ -222,3 +222,34 @@ test("site names lose all-caps styling and a trailing city", async () => {
   expect(siteNameTidy("Seidl`s Cafe Waldtrudering", "München")).toBe("Seidl's Cafe Waldtrudering");
   expect(siteNameTidy("sweet spot kaffee", "München")).toBe("sweet spot kaffee");
 });
+
+test("on a site with a web shop, a serving fact needs a menu line", () => {
+  const ctx = { country: "DE", ownName: "x", multiLocation: false };
+  const shopPage = (q: string) => page(`${q} In den Warenkorb`);
+  const one = (f: Proposal["field"], q: string) => verify([{ field: f, value: true, page: 1, quote: q }], [shopPage(q)], ctx).kept.length;
+  expect(one("serving.decaf", "Entkoffeinierter Kaffee")).toBe(0);
+  expect(one("serving.filter", "Filterkaffee")).toBe(0);
+  expect(one("serving.espresso", "Espresso 2,80 €")).toBe(1);
+  expect(one("serving.decaf", "Decaf +0,30")).toBe(1);
+});
+
+test("own roasting needs a quote that puts the roasting at this place", () => {
+  const ctx = { country: "DE", ownName: "Café Beispiel", multiLocation: false };
+  const one = (q: string, ownName = ctx.ownName) => verify([{ field: "roasts_own_beans", value: true, page: 1, quote: q }], [page(q)], { ...ctx, ownName }).kept.length;
+  expect(one("Unser Kaffee wird sorgfältig geröstet")).toBe(0);
+  expect(one("Unsere Röstungen")).toBe(0);
+  expect(one("Die Beans kommen von zwei Türen weiter, geröstet vom Nachbarn")).toBe(0);
+  expect(one("Hier rösten wir unseren Kaffee selbst")).toBe(1);
+  expect(one("Café & Rösterei in Kreuzberg")).toBe(1);
+  expect(one("Unsere eigene Rösterei im Wedding", "Beispiel Kaffeerösterei")).toBe(1);
+  expect(one("Unsere eigene Rösterei im Wedding")).toBe(0);
+});
+
+test("on a site with several locations, own roasting must be tied to this one", () => {
+  const ctx = { country: "DE", ownName: "x", multiLocation: true, street: "Chausseestraße 5", postcode: "10115" };
+  const text = "19grams Alex ist unsere Rösterei, hier rösten wir. Alexanderstraße 1, 10178 Berlin. Espresso 3,00";
+  const out = verify([{ field: "roasts_own_beans", value: true, page: 1, quote: "hier rösten wir" }], [page(text)], ctx);
+  expect(out.kept.length).toBe(0);
+  const own = "Kaffeebar in der Chausseestraße 5, 10115 Berlin. Hier rösten wir unseren Kaffee selbst.";
+  expect(verify([{ field: "roasts_own_beans", value: true, page: 1, quote: "Hier rösten wir unseren Kaffee selbst" }], [page(own)], ctx).kept.length).toBe(1);
+});

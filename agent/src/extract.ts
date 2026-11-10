@@ -54,6 +54,14 @@ const ALLERGEN_LINE = /allergen|kann spuren|zusatzstoff|glutenhaltig|enthält:/;
 const SUPPLIER = /\b(von|vom|from|by|with|mit|bezogen|beziehen|bezieht|liefert|geliefert|lieferant\w*|partner\w*|supplied|servieren|serviert|serve[sd]?|ausgeschenkt|zusammen\w*)\b[^.]{0,40}(röst|roast)|wer (sie|ihn|den kaffee) röstet|\b(geröstet|roasted)\b[^.]{0,30}\b(von|by) (?!uns\b|us\b)/;
 // "In unserer Kaffeerösterei", "wir rösten": the place roasts itself, even if a supplier word appears nearby.
 const OWN_ROASTING = /\b(unsere[nmrs]?|our|eigene[nmrs]?|hauseigene[nmrs]?)\s+(\w+\s+)?(kaffee)?(rösterei|roastery|röstung|roasting)|\bwir\s+rösten|rösten\s+wir|we\s+roast|roasted\s+(by us|in-?house)/;
+// Own roasting is per place: "unsere Rösterei" or "roasted in Berlin" does not say the roaster is at this address (a company
+// roastery elsewhere, a roaster two doors away). The quote must put the roasting here, or the place's own name must say it roasts.
+const LOCAL_ROASTING = /\b(wir rösten|rösten wir|we roast|roast(ed)? (it |them |our [a-z ]{0,20})?ourselves|selbst geröstet|rösten[^.]{0,40}selbst|we (use|have|operate) (a|our)[^.]{0,30}roaster|probat|loring|giesen|diedrich|ikawa|toper|hier|vor ort|direkt (im|in|bei)|on[- ]?site|in[- ]house|im haus|hauseigen\w*|hausgeröstet\w*|in unserem (café|cafe|laden|shop|geschäft)|in our (café|cafe|shop|store)|gleichzeitig unsere rösterei|(café|cafe|coffee ?shop|kaffeebar|espressobar|bar|bistro|laden|shop) (&|und|and|\+) (kaffee)?(rösterei|roastery)|(kaffee)?(rösterei|roastery) (&|und|and|\+) (café|cafe|coffee ?shop|coffee bar|kaffeebar|espressobar|bar|bistro|laden))/i;
+// On a site with a web shop, a bare "Decaf" or "Filterkaffee" is a product category; only a line that reads like a menu line counts.
+const WEBSHOP = /warenkorb|add to cart|in den korb|zur kasse|checkout|add to basket/i;
+const MENU_LINE = /\d[.,]\d{2}\s?(€|eur)|(€|eur)\s?\d|\b\d+(,\d+)?\s?(l|ml|cl)\b|tasse|glas\b|serviert|ausgeschenkt|bei uns|im café|im cafe|vor ort|\+ ?\d|karte|menu|menü|getränke|we serve|served|zum mitnehmen|to go|cappuccino|flat white|latte|macchiato|americano|cortado/i;
+const ROASTER_NAME = /rösterei|roastery|roasters?\b/i;
+const localRoasting = (q: string, ownName: string) => /röst|roast/i.test(q) && (LOCAL_ROASTING.test(q) || (ROASTER_NAME.test(ownName) && OWN_ROASTING.test(q)));
 // A home-brewing guide is not what the café serves.
 // A bean bag or a shop category is not a drink on the menu ("Decaf Espresso 500 g", "Gemahlen für Siebträger", "Warenkorb").
 const RETAIL_LINE = /\b\d+ ?(g|kg|gramm)\b|gemahlen|ganze bohne|whole bean|ground coffee|warenkorb|add to cart|in den korb|\bbohnen\b|\bbeans\b|\bmischung(en)?\b/i;
@@ -250,7 +258,8 @@ const pageText = (p: SitePage) => (p.doc.title ? `Title: ${p.doc.title}\n` : "")
 
 const CHAIN_WIDE = /^(serving\.|sells_beans$|sells_equipment$|food\.(cakes_baked_in_house|breakfast|lunch)$|amenities\.vegan_options$|reusable_cup$)/; // courses, hours and seating are per place
 // Facts about the business as a whole; everything else describes one location.
-const BRAND_FIELDS = new Set(["roasts_own_beans", "roaster", "operator", "register_id", "specialty", "primary_business", "food_focus"]);
+// roasts_own_beans is per place: a business with several sites may roast at only one of them.
+const BRAND_FIELDS = new Set(["roaster", "operator", "register_id", "specialty", "primary_business", "food_focus"]);
 
 interface VerifyContext { street?: string; postcode?: string; country: string; ownName: string; multiLocation: boolean; cityPostcodes?: Set<string> }
 type ValueCheck = { value: Verified["value"] } | { reason: string } | { skip: true };
@@ -347,6 +356,7 @@ function locationMatches(p: Proposal, page: SitePage, at: number, ctx: VerifyCon
 }
 export function verify(proposals: Proposal[], pages: SitePage[], ctx: VerifyContext) {
   const kept: Verified[] = [], rejected: Rejected[] = [];
+  const shop = pages.some((pg) => WEBSHOP.test(pg.doc.text));
   for (const p of proposals) {
     const page = pages.at(p.page - 1);
     let reason: string | undefined;
@@ -355,6 +365,8 @@ export function verify(proposals: Proposal[], pages: SitePage[], ctx: VerifyCont
       const at = findQuote(pageText(page), p.quote);
       if (at < 0) reason = "quote not on page";
       else if (!locationMatches(p, page, at, ctx)) reason = "several locations and the fact is not tied to this one";
+      else if (p.value === true && p.field.startsWith("serving.") && shop && !MENU_LINE.test(norm(p.quote))) reason = "a product category on a shop page, not a menu line";
+      else if (p.field === "roasts_own_beans" && p.value === true && !localRoasting(norm(p.quote), ctx.ownName)) reason = "the quote does not put the roasting at this place";
       else {
         const result = checkValue(p, page, ctx);
         if ("value" in result) kept.push({ field: p.field, value: result.value, url: page.url, quote: p.quote, fetchedAt: page.fetchedAt });

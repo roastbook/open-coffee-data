@@ -39,3 +39,6 @@ if (!values["dry-run"] && !values["no-pr"] && r.file && m.places_touched) {
   const url = await openPr(c.slug, [r.file], `feat(data): update ${c.name} coffee places`, prBody(c.name, r.changes, m, r.conflicts, r.labels), r.labels);
   console.log(`Opened ${url}`);
 }
+
+// Abandoned timed-out page work must not keep the process alive.
+process.exit(0);
