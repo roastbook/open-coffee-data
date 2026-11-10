@@ -367,6 +367,8 @@ export function verify(proposals: Proposal[], pages: SitePage[], ctx: VerifyCont
       else if (!locationMatches(p, page, at, ctx)) reason = "several locations and the fact is not tied to this one";
       else if (p.value === true && p.field.startsWith("serving.") && shop && !MENU_LINE.test(norm(p.quote))) reason = "a product category on a shop page, not a menu line";
       else if (p.field === "roasts_own_beans" && p.value === true && !localRoasting(norm(p.quote), ctx.ownName)) reason = "the quote does not put the roasting at this place";
+      // A branch page and a page about another branch's roastery say the same words: the page must show this address.
+      else if (p.field === "roasts_own_beans" && p.value === true && ctx.street && !ROASTER_NAME.test(ctx.ownName) && !nearStreet(pageText(page), at, ctx.street, Infinity)) reason = "the page does not show this place's address";
       else {
         const result = checkValue(p, page, ctx);
         if ("value" in result) kept.push({ field: p.field, value: result.value, url: page.url, quote: p.quote, fetchedAt: page.fetchedAt });
@@ -408,7 +410,7 @@ function nearOtherBranch(text: string, at: number, postcode?: string) {
 }
 
 /** The quote at `at` sits within 900 characters of this location's street name. */
-function nearStreet(text: string, at: number, street?: string) {
+function nearStreet(text: string, at: number, street?: string, window = 900) {
   const s = parseStreet(street);
   if (!s || !street) return false;
   const t = norm(text).replace(/strasse|str\./g, "straße");
@@ -417,7 +419,7 @@ function nearStreet(text: string, at: number, street?: string) {
   // A short street name ("Tal 15") counts only together with its house number.
   if (stem.length < 4) { if (!s.number || stem.length < 2) return false; stem = `${name} ${s.number}`; }
   let i = t.indexOf(stem);
-  while (i >= 0) { if (Math.abs(i - at) <= 900) return true; i = t.indexOf(stem, i + 1); }
+  while (i >= 0) { if (Math.abs(i - at) <= window) return true; i = t.indexOf(stem, i + 1); }
   return false;
 }
 

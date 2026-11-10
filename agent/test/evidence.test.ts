@@ -239,6 +239,9 @@ test("own roasting needs a quote that puts the roasting at this place", () => {
   expect(one("Unser Kaffee wird sorgfältig geröstet")).toBe(0);
   expect(one("Unsere Röstungen")).toBe(0);
   expect(one("Die Beans kommen von zwei Türen weiter, geröstet vom Nachbarn")).toBe(0);
+  const withStreet = (text: string) => verify([{ field: "roasts_own_beans", value: true, page: 1, quote: "Hier rösten wir unseren Kaffee selbst" }], [page(text)], { ...ctx, street: "Beispielstraße 5" }).kept.length;
+  expect(withStreet("Hier rösten wir unseren Kaffee selbst. Beispielstraße 5, 10115 Berlin")).toBe(1);
+  expect(withStreet("Hier rösten wir unseren Kaffee selbst. Andere Straße 1, 10115 Berlin")).toBe(0);
   expect(one("Hier rösten wir unseren Kaffee selbst")).toBe(1);
   expect(one("Café & Rösterei in Kreuzberg")).toBe(1);
   expect(one("Unsere eigene Rösterei im Wedding", "Beispiel Kaffeerösterei")).toBe(1);
