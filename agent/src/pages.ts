@@ -231,15 +231,22 @@ async function responseHtml(res: Response): Promise<string> {
   const type = res.headers.get("content-type") ?? "";
   const body = new Uint8Array(await res.arrayBuffer());
   const isPdf = type.includes("application/pdf") || (body[0] === 0x25 && body[1] === 0x50 && body[2] === 0x44 && body[3] === 0x46);
-  if (isPdf) return pdfAsHtml(body);
+  if (isPdf) return withTimeout(pdfAsHtml(body), 60_000, "pdf").catch(() => "");
   const image = type.match(/^image\/(jpeg|png|gif|webp)/)?.[0];
-  if (image) return imageAsHtml(body, image);
+  if (image) return withTimeout(imageAsHtml(body, image), 180_000, "image").catch(() => "");
   return /html|xml|text\/plain/.test(type) || !type ? decodeBody(body, type).slice(0, 3_000_000) : "";
 }
 
 // Headless rendering for JS-only sites. Images, media, fonts and stylesheets are never loaded.
 let browser: Promise<import("playwright-core").Browser> | null = null;
 let openPages = 0;
+/** A step that never settles (a hung browser, a bad PDF) must not stall the whole run. */
+function withTimeout<T>(work: Promise<T>, ms: number, what: string): Promise<T> {
+  let timer: ReturnType<typeof setTimeout>;
+  const limit = new Promise<never>((_, reject) => { timer = setTimeout(() => reject(new Error(`${what} timed out`)), ms); });
+  return Promise.race([work, limit]).finally(() => clearTimeout(timer));
+}
+
 export async function render(url: string): Promise<Page> {
   const file = join(dir, `${key("render:" + url)}.json`);
   const hit = readCache(file);
@@ -250,8 +257,9 @@ export async function render(url: string): Promise<Page> {
   openPages++;
   let page: Page;
   try {
-    page = await renderPage(url);
+    page = await withTimeout(renderPage(url), 90_000, "render");
   } catch (e) {
+    if (/timed out/.test(String(e))) await closeBrowser(); // a hung browser would stall every later render
     page = { url, finalUrl: url, status: 0, fetchedAt: new Date().toISOString(), html: "", rendered: true, error: String(e).slice(0, 200) };
   } finally { openPages--; }
   if (!page.error) writeFileSync(file, JSON.stringify(page)); // failures are retried next time, not cached

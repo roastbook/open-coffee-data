@@ -51,10 +51,22 @@ const COFFEE_IN_QUOTE = /kaffee|coffee|espresso|cappuccino|latte|flat ?white|ame
 const ALLERGEN_LINE = /allergen|kann spuren|zusatzstoff|glutenhaltig|enthält:/;
 
 // "Kaffee von der Rösterei X", "we serve beans from X Roasters": somebody else roasts.
-const SUPPLIER = /\b(von|vom|from|by|with|mit|bezogen|beziehen|bezieht|liefert|geliefert|lieferant\w*|partner\w*|supplied|servieren|serviert|serve[sd]?|ausgeschenkt|zusammen\w*)\b[^.]{0,40}(röst|roast)|wer (sie|ihn|den kaffee) röstet|\b(geröstet|roasted) (von|by) (?!uns\b|us\b)/;
+const SUPPLIER = /\b(von|vom|from|by|with|mit|bezogen|beziehen|bezieht|liefert|geliefert|lieferant\w*|partner\w*|supplied|servieren|serviert|serve[sd]?|ausgeschenkt|zusammen\w*)\b[^.]{0,40}(röst|roast)|wer (sie|ihn|den kaffee) röstet|\b(geröstet|roasted)\b[^.]{0,30}\b(von|by) (?!uns\b|us\b)/;
 // "In unserer Kaffeerösterei", "wir rösten": the place roasts itself, even if a supplier word appears nearby.
 const OWN_ROASTING = /\b(unsere[nmrs]?|our|eigene[nmrs]?|hauseigene[nmrs]?)\s+(\w+\s+)?(kaffee)?(rösterei|roastery|röstung|roasting)|\bwir\s+rösten|rösten\s+wir|we\s+roast|roasted\s+(by us|in-?house)/;
+// Own roasting is per place: "unsere Rösterei" or "roasted in Berlin" does not say the roaster is at this address (a company
+// roastery elsewhere, a roaster two doors away). The quote must put the roasting here, or the place's own name must say it roasts.
+const LOCAL_ROASTING = /\b(wir rösten|rösten wir|we roast|roast(ed)? (it |them |our [a-z ]{0,20})?ourselves|selbst geröstet|rösten[^.]{0,40}selbst|we (use|have|operate) (a|our)[^.]{0,30}roaster|probat|loring|giesen|diedrich|ikawa|toper|hier|vor ort|direkt (im|in|bei)|on[- ]?site|in[- ]house|im haus|hauseigen\w*|hausgeröstet\w*|in unserem (café|cafe|laden|shop|geschäft)|in our (café|cafe|shop|store)|gleichzeitig unsere rösterei|(café|cafe|coffee ?shop|kaffeebar|espressobar|bar|bistro|laden|shop) (&|und|and|\+) (kaffee)?(rösterei|roastery)|(kaffee)?(rösterei|roastery) (&|und|and|\+) (café|cafe|coffee ?shop|coffee bar|kaffeebar|espressobar|bar|bistro|laden))/i;
+// On a site with a web shop, a bare "Decaf" or "Filterkaffee" is a product category; only a line that reads like a menu line counts.
+const WEBSHOP = /warenkorb|add to cart|in den korb|zur kasse|checkout|add to basket/i;
+const MENU_LINE = /\d[.,]\d{2}\s?(€|eur)|(€|eur)\s?\d|\b\d+(,\d+)?\s?(l|ml|cl)\b|tasse|glas\b|serviert|ausgeschenkt|bei uns|im café|im cafe|vor ort|\+ ?\d|karte|menu|menü|getränke|we serve|served|zum mitnehmen|to go|cappuccino|flat white|latte|macchiato|americano|cortado/i;
+const ROASTER_NAME = /rösterei|roastery|roasters?\b/i;
+const localRoasting = (q: string, ownName: string) => /röst|roast/i.test(q) && (LOCAL_ROASTING.test(q) || (ROASTER_NAME.test(ownName) && OWN_ROASTING.test(q)));
 // A home-brewing guide is not what the café serves.
+// A bean bag or a shop category is not a drink on the menu ("Decaf Espresso 500 g", "Gemahlen für Siebträger", "Warenkorb").
+const RETAIL_LINE = /\b\d+ ?(g|kg|gramm)\b|gemahlen|ganze bohne|whole bean|ground coffee|warenkorb|add to cart|in den korb|\bbohnen\b|\bbeans\b|\bmischung(en)?\b/i;
+// Seasonal drinks are not on the menu all year.
+const SEASONAL_DRINK = /saison|seasonal|nur im (sommer|winter)|im (sommer|winter)\b|in den (sommer|winter)monaten|(sommer|winter)karte/i;
 const HOME_BREWING = /zu ?hause|at home|daheim|anleitung|brew guide|guide|rezept|recipe|tutorial/;
 const NEGATION = /\b(kein|keine|keinen|nicht|no|not|ohne|leider|sorry|ausschließlich bar)\b/;
 // A quote that says the thing is not there can never support true ("Kein WLAN", "no dogs", "ohne Terrasse").
@@ -208,7 +220,8 @@ Return only JSON: {"own_site": bool, "public_cafe": bool, "name": string, "quote
   a café, coffee bar, coffee shop, roastery café, bakery café or similar. false for restaurants, bars, pizzerias, sushi or
   delivery places that do not present themselves as a café; shops without a café (online shops, roasteries that only sell
   beans, tea shops, machine dealers); schools, offices, catering, wholesale, manufacturers; places only for members,
-  residents, staff, students or ticket holders; seasonal or event-only venues (also a yearly winter break of weeks or months);
+  residents, staff, students or ticket holders; venues whose visit is paid admission (indoor playgrounds, museums, zoos,
+  pools) with a café inside, unless the site says the café is open without a ticket; seasonal or event-only venues (also a yearly winter break of weeks or months);
   places not open yet or closed for good. The site must show that coffee is served: a tea, matcha, wine or ice-cream place
   counts only if it clearly serves coffee too.
 - name: the name this place uses for itself on the site (for a chain: the brand name, plus the location name only if the
@@ -245,7 +258,8 @@ const pageText = (p: SitePage) => (p.doc.title ? `Title: ${p.doc.title}\n` : "")
 
 const CHAIN_WIDE = /^(serving\.|sells_beans$|sells_equipment$|food\.(cakes_baked_in_house|breakfast|lunch)$|amenities\.vegan_options$|reusable_cup$)/; // courses, hours and seating are per place
 // Facts about the business as a whole; everything else describes one location.
-const BRAND_FIELDS = new Set(["roasts_own_beans", "roaster", "operator", "register_id", "specialty", "primary_business", "food_focus"]);
+// roasts_own_beans is per place: a business with several sites may roast at only one of them.
+const BRAND_FIELDS = new Set(["roaster", "operator", "register_id", "specialty", "primary_business", "food_focus"]);
 
 interface VerifyContext { street?: string; postcode?: string; country: string; ownName: string; multiLocation: boolean; cityPostcodes?: Set<string> }
 type ValueCheck = { value: Verified["value"] } | { reason: string } | { skip: true };
@@ -342,6 +356,7 @@ function locationMatches(p: Proposal, page: SitePage, at: number, ctx: VerifyCon
 }
 export function verify(proposals: Proposal[], pages: SitePage[], ctx: VerifyContext) {
   const kept: Verified[] = [], rejected: Rejected[] = [];
+  const shop = pages.some((pg) => WEBSHOP.test(pg.doc.text));
   for (const p of proposals) {
     const page = pages.at(p.page - 1);
     let reason: string | undefined;
@@ -350,6 +365,10 @@ export function verify(proposals: Proposal[], pages: SitePage[], ctx: VerifyCont
       const at = findQuote(pageText(page), p.quote);
       if (at < 0) reason = "quote not on page";
       else if (!locationMatches(p, page, at, ctx)) reason = "several locations and the fact is not tied to this one";
+      else if (p.value === true && p.field.startsWith("serving.") && shop && !MENU_LINE.test(norm(p.quote))) reason = "a product category on a shop page, not a menu line";
+      else if (p.field === "roasts_own_beans" && p.value === true && !localRoasting(norm(p.quote), ctx.ownName)) reason = "the quote does not put the roasting at this place";
+      // A branch page and a page about another branch's roastery say the same words: the page must show this address.
+      else if (p.field === "roasts_own_beans" && p.value === true && ctx.street && !ROASTER_NAME.test(ctx.ownName) && !nearStreet(pageText(page), at, ctx.street, 900)) reason = "the page does not show this place's address";
       else {
         const result = checkValue(p, page, ctx);
         if ("value" in result) kept.push({ field: p.field, value: result.value, url: page.url, quote: p.quote, fetchedAt: page.fetchedAt });
@@ -390,8 +409,11 @@ function nearOtherBranch(text: string, at: number, postcode?: string) {
   return !!best && best.pc !== postcode;
 }
 
+/** The page lists several street addresses (a site with branches): a quote on it belongs to one of them only when it sits near that address. */
+export const listsBranches = (text: string) => new Set(norm(text).replace(/strasse|str\./g, "straße").match(/[a-zäöü-]+\s?(straße|platz|weg|allee|ring|gasse|damm|ufer)\s+\d+/g)).size > 1;
+
 /** The quote at `at` sits within 900 characters of this location's street name. */
-function nearStreet(text: string, at: number, street?: string) {
+function nearStreet(text: string, at: number, street?: string, window = 900) {
   const s = parseStreet(street);
   if (!s || !street) return false;
   const t = norm(text).replace(/strasse|str\./g, "straße");
@@ -400,7 +422,7 @@ function nearStreet(text: string, at: number, street?: string) {
   // A short street name ("Tal 15") counts only together with its house number.
   if (stem.length < 4) { if (!s.number || stem.length < 2) return false; stem = `${name} ${s.number}`; }
   let i = t.indexOf(stem);
-  while (i >= 0) { if (Math.abs(i - at) <= 900) return true; i = t.indexOf(stem, i + 1); }
+  while (i >= 0) { if (Math.abs(i - at) <= window) return true; i = t.indexOf(stem, i + 1); }
   return false;
 }
 
@@ -457,6 +479,8 @@ export function postcodesOnSite(pages: SitePage[], country: string, cityPostcode
 
 function booleanMeaningProblem(p: Proposal, q: string, f: Field, page: SitePage): string | undefined {
   if (p.value && f.startsWith("serving.") && HOME_BREWING.test(q)) { return "a home-brewing guide, not what the café serves"; }
+  if (p.value && f.startsWith("serving.") && RETAIL_LINE.test(q)) { return "a product for sale, not a drink on the menu"; }
+  if (p.value && f.startsWith("serving.") && SEASONAL_DRINK.test(q)) { return "a seasonal drink"; }
   if (p.value && SERVED_HERE.test(f) && NOT_MENU_PAGE.test(decodeURIComponent(new URL(page.url).pathname))) { return "a shop, guide or catalogue page, not what the place serves"; }
   if (p.value && SERVED_HERE.test(f) && ALLERGEN_LINE.test(q)) { return "an allergen or additives list"; }
   // A decaf or cold brew line that also names coffee ("Kaffee entkoffeiniert, Tee") is still about coffee.
