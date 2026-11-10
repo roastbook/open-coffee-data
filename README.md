@@ -27,9 +27,9 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 | | |
 |---|---:|
 | Coffee places | 249 |
-| Tier A (specialty-focused) | 12 |
-| Tier B (serves specialty) | 14 |
-| Not specialty | 223 |
+| Tier A (specialty-focused) | 10 |
+| Tier B (serves specialty) | 13 |
+| Not specialty | 226 |
 | Cities | 1 |
 | Brew methods | 21 |
 | Pour recipes | 9 |
