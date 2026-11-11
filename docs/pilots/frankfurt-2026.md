@@ -8,12 +8,12 @@ Only places confirmed on their own website are in the dataset.
 
 | | Places |
 |---|---:|
-| Tier A (specialty-focused) | 3 |
+| Tier A (specialty-focused) | 2 |
 | Tier B (serves specialty) | 4 |
-| none (no specialty evidence on its own site) | 161 |
+| none (no specialty evidence on its own site) | 162 |
 | **Total** | **168** |
 
-95% have a postcode, 68% have opening hours and 58% an Instagram link. 2 tier A/B places have all core fields.
+95% have a postcode, 68% have opening hours and 58% an Instagram link.
 
 ## How it was found
 
@@ -28,7 +28,7 @@ No Overture licence was dropped. 14 candidates had no coordinates and 5 conflict
 
 ## How correct it is
 
-Not audited by independent reviewers yet. The seven tier A/B places were only read as a list. One tier B place (Italienische Feinkost 2000) has no street address. The known problems of the Berlin pilot apply here too (branch roasting claims, hours that differ between pages, a chain's social accounts from another country). Treat tier A/B as likely, not checked.
+Not audited by independent reviewers yet. Six tier A/B places remain (one, Café Wacker Grüneburgweg, was corrected to none because its coffee is roasted at the company's roastery in Fechenheim). One tier B place (Italienische Feinkost 2000) has no street address. The known problems of the Berlin pilot apply here too (branch roasting claims, hours that differ between pages, a chain's social accounts from another country). Treat tier A/B as likely, not checked.
 
 ## Timing and cost
 
