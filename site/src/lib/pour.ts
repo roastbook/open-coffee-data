@@ -4,7 +4,7 @@
 export interface FlowPoint { at_seconds: number; grams_per_second: number }
 export interface Phase {
   id: string;
-  type: "pour" | "hold" | "drawdown";
+  type: "pour" | "hold" | "drawdown" | "press";
   duration_seconds: number;
   water_fraction?: number;
   flow?: "constant" | "ramp_up" | "ramp_down" | "custom";
@@ -89,9 +89,9 @@ export function pathPoints(seg: PathSegment): Pt[] {
 export const svgPath = (pts: Pt[], sx = (x: number) => x, sy = (y: number) => y) =>
   pts.map(([x, y], i) => `${i ? "L" : "M"}${sx(x).toFixed(1)} ${sy(y).toFixed(1)}`).join(" ");
 
-/** Short display name of a phase: "Wait" and "Drawdown" by type, pours from their id (pour-2 → Pour 2). */
+/** Short display name of a phase: "Wait", "Drawdown" and "Press" by type, pours from their id (pour-2 → Pour 2). */
 export const phaseLabel = (p: Phase) =>
-  p.type === "hold" ? "Wait" : p.type === "drawdown" ? "Drawdown" : (p.id.charAt(0).toUpperCase() + p.id.slice(1)).replaceAll("-", " ");
+  p.type === "hold" ? "Wait" : p.type === "drawdown" ? "Drawdown" : p.type === "press" ? "Press" : (p.id.charAt(0).toUpperCase() + p.id.slice(1)).replaceAll("-", " ");
 
 export interface Range { min?: number; max?: number; typical?: number }
 export interface Temperature { celsius?: Range; by_roast?: { roasts: string[]; celsius: Range }[]; off_the_boil?: boolean; note?: string }

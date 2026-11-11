@@ -36,6 +36,7 @@ test("kettle paths stay inside the bed", () => {
 test("phase labels name waits and drawdowns by type and pours by id", () => {
   assert.deepEqual(phases.map(phaseLabel), ["Bloom", "Wait", "Main", "Drawdown"]);
   assert.equal(phaseLabel({ id: "pour-2", type: "pour" }), "Pour 2");
+  assert.equal(phaseLabel({ id: "press", type: "press" }), "Press");
 });
 
 test("temperatures are shown only as precisely as given", () => {

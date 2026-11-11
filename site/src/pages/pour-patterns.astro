@@ -21,11 +21,11 @@ const moveUrl = (id: string) => `/kettle-movements/#${id}`;
 const FLOW: Record<string, string> = { constant: "steady flow", ramp_up: "speeding up", ramp_down: "slowing down", custom: "varying flow" };
 const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentle swirl", stir: "stir", spin: "spin" };
 ---
-<Layout title="Pour patterns" site="data" version={version} buildDate={buildDate} description="Open dataset of pour-over recipes and flow patterns, drawn as pour curves you can scale to any dose." nav={siteNav("pour-patterns")}>
+<Layout title="Pour patterns" site="data" version={version} buildDate={buildDate} description="Open dataset of pour-over and AeroPress recipes and flow patterns, drawn as pour curves you can scale to any dose." nav={siteNav("pour-patterns")}>
   <header class="page-intro">
     <div>
       <h1>Pour patterns</h1>
-      <p>How the water goes onto the coffee in pour-over brewing. Recipes are built on a ratio: pick your dose and every water target follows. Where the water lands is described under <a href="/kettle-movements/">Kettle movements</a>; the <a href={f("id").split("#")[0]}>schema</a> defines every field.</p>
+      <p>How the water goes onto the coffee in pour-over and AeroPress brewing. Recipes are built on a ratio: pick your dose and every water target follows. Where the water lands is described under <a href="/kettle-movements/">Kettle movements</a>; the <a href={f("id").split("#")[0]}>schema</a> defines every field.</p>
     </div>
     <a class="button" href="/datasets/pour-patterns/pour-patterns.json">Download pour-patterns.json</a>
   </header>
@@ -68,6 +68,7 @@ const AGITATION: Record<string, string> = { swirl: "swirl", gentle_swirl: "gentl
                   <div class="stat"><span class="stat-label">Ratio</span><span class="stat-value">1:{d.brew_ratio}</span></div>
                   <div class="stat"><label class="stat-label" for={`dose-${r.id}`}>Coffee</label><span class="stat-value"><NumberStepper class="dose" id={`dose-${r.id}`} min={1} max={200} step={0.5} value={d.dose_g} /> g</span></div>
                   <div class="stat"><span class="stat-label">Water</span><span class="stat-value"><span data-g={d.brew_water_g}>{d.brew_water_g}</span> g</span></div>
+                  {d.bypass_water_g && <div class="stat"><span class="stat-label">Bypass</span><span class="stat-value">+<span data-g={d.bypass_water_g}>{d.bypass_water_g}</span> g</span></div>}
                   <div class="stat"><span class="stat-label">Time</span><span class="stat-value">{clock(total(r))}</span></div>
                   {d.grind_size && <div class="stat"><span class="stat-label">Grind</span><span class="stat-value">{d.grind_size.replaceAll("_", " ")}</span></div>}
                   <div class="stat stat-temp">
