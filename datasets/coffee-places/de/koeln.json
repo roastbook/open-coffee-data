@@ -1,0 +1,6901 @@
+{
+  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.3.0.json",
+  "meta": {
+    "licence": "CDLA-Permissive-2.0",
+    "country_code": "DE",
+    "city": "koeln",
+    "city_name": "Köln"
+  },
+  "places": [
+    {
+      "id": "cp-0aabss2hwc",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caffe Kiosk",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Schanzenstraße 28",
+        "postal_code": "51063"
+      },
+      "location": {
+        "lat": 50.967665,
+        "lon": 7.011053
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "wheelchair_accessible": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://caffe-kiosk-tuefekci.metro.biz/"
+      },
+      "xref": {
+        "overture": "3b02a506-4e79-4040-b4d2-aa04ae607121"
+      }
+    },
+    {
+      "id": "cp-0dcj4xabqh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Nimmersatt Café & Konditorei",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Darmstädter Str. 19",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.919216,
+        "lon": 6.96186
+      },
+      "opening_hours": "Th-Fr 11:30-17:30; Sa 09:30-17:30; Su 09:30-16:30; Mo,Tu off",
+      "specialty_tier": "none",
+      "offers_courses": true,
+      "links": {
+        "website": "https://nimmersatt.cafe/",
+        "instagram": "https://www.instagram.com/nimmersatt.cafe/"
+      },
+      "xref": {
+        "overture": "f7240716-f425-463b-974b-d2233da9f680"
+      }
+    },
+    {
+      "id": "cp-0fcr0sthmf",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Trankgasse 11",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.943949,
+        "lon": 6.958683
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100006281",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "8011bd2f-49d4-443e-9855-33f3ff80252a"
+      }
+    },
+    {
+      "id": "cp-0wq97b4968",
+      "type": "CafeOrCoffeeShop",
+      "name": "cafecafe - urban eats & coffee",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloerstraße 206",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.946488,
+        "lon": 6.924973
+      },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Mondo"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "card_payment": true,
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://cdn.website.dish.co/media/a0/f1/10262206/Speisekarte.pdf"
+        }
+      },
+      "links": {
+        "website": "https://cafecafe-ehrenfeld.eatbu.com/",
+        "instagram": "https://www.instagram.com/cafecafe_koeln/"
+      },
+      "xref": {
+        "overture": "e94a39d6-ec59-4954-be93-190b453b02b3"
+      }
+    },
+    {
+      "id": "cp-16wxhmnrqy",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Rotkehlchen",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Goltsteinstraße 51a",
+        "postal_code": "50968"
+      },
+      "location": {
+        "lat": 50.911081,
+        "lon": 6.968831
+      },
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Schamong"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "card_payment": true
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://caferotkehlchen.de/",
+        "instagram": "https://www.instagram.com/cafe_rotkehlchen/",
+        "facebook": "https://www.facebook.com/caferotkehlchen/"
+      },
+      "xref": {
+        "overture": "8b8e021d-0612-40e7-a19b-a2e53490d96c"
+      }
+    },
+    {
+      "id": "cp-1ax736r4pa",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Bahnhofstr. 28",
+        "postal_code": "51143"
+      },
+      "location": {
+        "lat": 50.883731,
+        "lon": 7.057701
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100008146",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "72463617-4876-4791-8ce3-fa6e3c13ec02"
+      }
+    },
+    {
+      "id": "cp-1swgfnk93m",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Rheinspaziert",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hafenstraße 16",
+        "postal_code": "51063"
+      },
+      "location": {
+        "lat": 50.959883,
+        "lon": 6.995659
+      },
+      "opening_hours": "Tu-Sa 10:00-21:30; Su 10:00-19:00; Mo off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Tim & Sebastians"
+        }
+      ],
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "lunch": true,
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.cafe-rheinspaziert.de/",
+        "instagram": "https://www.instagram.com/caferheinspaziert/",
+        "facebook": "https://www.facebook.com/caferheinspaziert/"
+      },
+      "xref": {
+        "overture": "1f998e27-deed-43d9-b318-3dd8194ced51"
+      }
+    },
+    {
+      "id": "cp-1z021qbns3",
+      "type": "CafeOrCoffeeShop",
+      "name": "CaféCulture Köln",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 281",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.964385,
+        "lon": 6.95356
+      },
+      "opening_hours": "Mo-Su 09:30-22:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.3,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "http://www.cafeculture-koeln.com/speisekarte.php"
+        }
+      },
+      "operator": {
+        "name": "F & S Projeckt GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 75451"
+      },
+      "links": {
+        "website": "http://www.cafeculture-koeln.com/",
+        "instagram": "https://www.instagram.com/cafeculture.koeln/",
+        "facebook": "https://www.facebook.com/cafeculture.koeln/"
+      },
+      "xref": {
+        "overture": "64564939-6d0e-4d70-87e1-06150c97654f"
+      }
+    },
+    {
+      "id": "cp-255a51b878",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Extrablatt",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Antoniterstraße 14–16",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.935846,
+        "lon": 6.95331
+      },
+      "opening_hours": "Mo-Th 09:30-22:00; Fr,Sa 09:30-23:00; Su,PH 09:30-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "amenities": {
+        "wheelchair_accessible": true,
+        "wifi": true,
+        "card_payment": true,
+        "kids_friendly": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "Cafe Extrablatt Düren GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 2765"
+      },
+      "links": {
+        "website": "https://cafe-extrablatt.de/standorte/details/cafe-extrablatt-koeln-antoniterquartier"
+      },
+      "xref": {
+        "overture": "7efc3b74-fb47-469b-8e30-7ee2287e1e37"
+      }
+    },
+    {
+      "id": "cp-2a4bc7hh8k",
+      "type": "CafeOrCoffeeShop",
+      "name": "Heilandt",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Am Sportpark Müngersdorf 6",
+        "postal_code": "50933"
+      },
+      "location": {
+        "lat": 50.936756,
+        "lon": 6.869377
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://www.heilandt.de/",
+        "instagram": "https://www.instagram.com/heilandt/",
+        "facebook": "https://www.facebook.com/heilandt/"
+      },
+      "xref": {
+        "overture": "704bd28d-9182-4849-b128-371ca352567e"
+      }
+    },
+    {
+      "id": "cp-2ggjwwm8w9",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Lukha & Herr Landmann",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Landmannstraße 4",
+        "postal_code": "50825"
+      },
+      "location": {
+        "lat": 50.954868,
+        "lon": 6.918146
+      },
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa,Su 10:00-20:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://cafe-lukha-herr-landmann.eatbu.com/",
+        "instagram": "https://www.instagram.com/emi_und_herr_landmann/"
+      },
+      "xref": {
+        "overture": "636791ca-308d-4d22-a4a2-f2c704e32cf8"
+      }
+    },
+    {
+      "id": "cp-2kh7vvhh2h",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Franck",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Eichendorffstr. 30",
+        "postal_code": "50825"
+      },
+      "location": {
+        "lat": 50.956273,
+        "lon": 6.92249
+      },
+      "opening_hours": "Tu-Su 10:00-19:00; Mo off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Van Dyck"
+        }
+      ],
+      "serving": {
+        "filter": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.cafe-franck.de/",
+        "facebook": "https://www.facebook.com/cafefranck/"
+      },
+      "xref": {
+        "overture": "408974d4-199f-4de2-b2bf-34d51cfeec2b"
+      }
+    },
+    {
+      "id": "cp-2sax1rte99",
+      "type": "CafeOrCoffeeShop",
+      "name": "Villa Kalka",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Kalk-Mülheimer Str. 58",
+        "postal_code": "51103"
+      },
+      "location": {
+        "lat": 50.939993,
+        "lon": 7.001426
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "http://www.villakalka.de/"
+      },
+      "xref": {
+        "overture": "395a7094-cae7-4fec-b997-5ee87f8d9d73"
+      }
+    },
+    {
+      "id": "cp-2x9877s8qc",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Deutzer Freiheit 108",
+        "postal_code": "50679"
+      },
+      "location": {
+        "lat": 50.936906,
+        "lon": 6.976667
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100003848",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "5ecef8c5-483f-462c-8db9-e508f0091470"
+      }
+    },
+    {
+      "id": "cp-2yjzra81z9",
+      "type": "CafeOrCoffeeShop",
+      "name": "Heilandt",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Bismarckstr. 41",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.940929,
+        "lon": 6.934395
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "sells_beans": true,
+      "operator": {
+        "name": "Heilandt GmbH & Co.KG",
+        "legal_form": "KG"
+      },
+      "links": {
+        "website": "https://www.heilandt.de/",
+        "instagram": "https://www.instagram.com/heilandt/",
+        "facebook": "https://www.facebook.com/heilandt/"
+      },
+      "xref": {
+        "overture": "e8eb7b37-7ab7-43bd-8194-f9ce3eb566e9"
+      }
+    },
+    {
+      "id": "cp-3400nh229r",
+      "type": "CafeOrCoffeeShop",
+      "name": "Adeli",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Str. 19",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.941391,
+        "lon": 6.936861
+      },
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "zwoo"
+        }
+      ],
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://adeli-koeln.de/pages/speisekarte"
+        }
+      },
+      "links": {
+        "website": "https://adeli-koeln.de/",
+        "instagram": "https://www.instagram.com/adeli_koeln/"
+      },
+      "xref": {
+        "overture": "3d482fc6-753b-4987-a1ad-643897b0c11b"
+      }
+    },
+    {
+      "id": "cp-3bw79hphsm",
+      "type": "CafeOrCoffeeShop",
+      "name": "The Coffice",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Im Zollhafen 24",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.925833,
+        "lon": 6.966383
+      },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "wifi": true,
+        "laptop_friendly": true,
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "lunch": true,
+        "focus": "balanced"
+      },
+      "links": {
+        "website": "https://thecoffice.de/harbour",
+        "instagram": "https://www.instagram.com/cofficecologne/",
+        "facebook": "https://www.facebook.com/thecofficecologne/"
+      },
+      "xref": {
+        "overture": "2bf3cc8d-0ae5-4fb1-ba79-d6bebdfb1e9e"
+      }
+    },
+    {
+      "id": "cp-3em7mka05g",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffee Fellows",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Karolingerring 2",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.921231,
+        "lon": 6.959261
+      },
+      "opening_hours": "Mo-Fr 08:00-19:00; Sa,Su 09:00-19:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true,
+        "outdoor_seating": true,
+        "wheelchair_accessible": true,
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.coffee-fellows.com/locations/koeln-karolingerring",
+        "instagram": "https://www.instagram.com/coffeefellows/",
+        "facebook": "https://www.facebook.com/coffeefellowsdeutschland/"
+      },
+      "xref": {
+        "overture": "a5b12576-c849-4b3f-a789-8b18908a043f"
+      }
+    },
+    {
+      "id": "cp-3fk35zjb44",
+      "type": "CafeOrCoffeeShop",
+      "name": "Woyton",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hohenzollernring 38",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.938771,
+        "lon": 6.939828
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "cold_brew": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://www.woyton.de/",
+        "instagram": "https://www.instagram.com/woyton_rheinland/",
+        "facebook": "https://www.facebook.com/woyton/"
+      },
+      "xref": {
+        "overture": "e3484622-aa6f-40ab-9526-8d9fb43b01f0"
+      }
+    },
+    {
+      "id": "cp-3gchrajjwa",
+      "type": "CafeOrCoffeeShop",
+      "name": "Track One Coffee",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Rothehausstraße 6-12",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.947737,
+        "lon": 6.9184
+      },
+      "opening_hours": "Mo,Tu off; We-Fr 10:00-18:00; Sa 10:00-18:00; Su 12:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "https://trackonecoffee.com/",
+        "instagram": "https://www.instagram.com/trackonecoffee/"
+      },
+      "xref": {
+        "overture": "2a71164d-897a-4a87-81a1-d6f5931292a4"
+      }
+    },
+    {
+      "id": "cp-407wgkvt72",
+      "type": "CafeOrCoffeeShop",
+      "name": "Kaffeehaus Treibgut",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Otto-Fischer-Straße 1",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.926599,
+        "lon": 6.938333
+      },
+      "opening_hours": "Mo off; Tu,Fr,Sa 11:00-19:00; We,Th 11:00-17:00; Su off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "KaffeeKollektiv Aroma Zapatista"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "plant_milk": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://www.treibgut-koeln.de/wp-content/uploads/2024/08/Kaffeespezialitaeten.png"
+        }
+      },
+      "links": {
+        "website": "https://www.treibgut-koeln.de/",
+        "instagram": "https://www.instagram.com/kaffeehaus.treibgut.koeln/",
+        "facebook": "https://www.facebook.com/treibgut.koeln/"
+      },
+      "xref": {
+        "overture": "3afaa3bf-46d0-4b8e-8d72-653cda4e2c0f"
+      }
+    },
+    {
+      "id": "cp-43b1w8ssz5",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Pause",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 287",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.964727,
+        "lon": 6.95357
+      },
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa 09:00-19:00; Su 10:00-19:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://pause-nippes.de/"
+      },
+      "xref": {
+        "overture": "8d22b2a9-1a6a-4659-9eb8-02e1e00aecc6"
+      }
+    },
+    {
+      "id": "cp-469djsgkc3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Zimmermann",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Kirchweg 121",
+        "postal_code": "50858"
+      },
+      "location": {
+        "lat": 50.93259,
+        "lon": 6.858378
+      },
+      "opening_hours": "Mo-Su 10:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "balanced"
+      },
+      "links": {
+        "website": "https://www.cafezimmermann.cafe/"
+      },
+      "xref": {
+        "overture": "bb2f6158-f9a7-49cc-92de-add5ab9f911e"
+      }
+    },
+    {
+      "id": "cp-4eqzqkt4jx",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Elefant",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Weißenburgstraße 50",
+        "postal_code": "50670"
+      },
+      "location": {
+        "lat": 50.953855,
+        "lon": 6.95975
+      },
+      "opening_hours": "Tu-We 09:30-19:00; Th 09:30-21:00; Fr-Su 09:30-19:00; Mo off",
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true,
+        "espresso": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "HAMACHER GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 85127"
+      },
+      "links": {
+        "website": "https://cafeelefant.info/",
+        "instagram": "https://www.instagram.com/cafe__elefant/"
+      },
+      "xref": {
+        "overture": "5d6185fd-0aa0-4ccd-adfb-99cc2d5f6c55"
+      }
+    },
+    {
+      "id": "cp-4rz55bp6gx",
+      "type": "CafeOrCoffeeShop",
+      "name": "Woyton",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Bismarckstraße 44",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.941409,
+        "lon": 6.935183
+      },
+      "opening_hours": "Mo-Fr 08:00-18:30; Sa,Su 08:30-18:30",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "cold_brew": true
+      },
+      "amenities": {
+        "wifi": true,
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://www.woyton.de/",
+        "instagram": "https://www.instagram.com/woyton_rheinland/",
+        "facebook": "https://www.facebook.com/woyton/"
+      },
+      "xref": {
+        "overture": "2d37ddb6-72fa-4cd4-a57e-f6dba587f621"
+      }
+    },
+    {
+      "id": "cp-4w2frrmbhx",
+      "type": "CafeOrCoffeeShop",
+      "name": "Kaffeebar Köln",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Deutzer Freiheit 66",
+        "postal_code": "50679"
+      },
+      "location": {
+        "lat": 50.936718,
+        "lon": 6.97357
+      },
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Schreyögg"
+        },
+        {
+          "name": "Ionia"
+        },
+        {
+          "name": "Mokaflor"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "https://kaffeebar.metro.bar/",
+        "instagram": "https://www.instagram.com/kaffeebarkoeln/",
+        "facebook": "https://www.facebook.com/kaffeebarkoeln/"
+      },
+      "xref": {
+        "overture": "e58c5299-37c2-49a5-9512-93a84c924d00"
+      }
+    },
+    {
+      "id": "cp-4ws65zbbtd",
+      "type": "CafeOrCoffeeShop",
+      "name": "Wo ist Tom? – Tom am Platz",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Elisabeth-von-Mumm-Platz 4",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.915209,
+        "lon": 6.918579
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "wheelchair_accessible": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Perspektive Lebenshilfe gGmbH Köln",
+        "register_id": "HRB 76851"
+      },
+      "links": {
+        "website": "https://www.wo-ist-tom.de/de/",
+        "instagram": "https://www.instagram.com/woisttom/"
+      },
+      "xref": {
+        "overture": "cba67b7e-760b-4420-90cb-6952f7be9811"
+      }
+    },
+    {
+      "id": "cp-59mpgyh2y3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Richter´s Stehcafé",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Liebigstraße 245",
+        "postal_code": "50739"
+      },
+      "location": {
+        "lat": 50.958421,
+        "lon": 6.939504
+      },
+      "opening_hours": "Mo 05:00-13:00; Tu-Fr 05:00-15:00; Sa 05:00-13:00; Su off",
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "wheelchair_accessible": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "lunch": true,
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://richters-stehcafe.eatbu.com/"
+      },
+      "xref": {
+        "overture": "e7c32d92-f138-40fb-b9ee-bf24ab0745b7"
+      }
+    },
+    {
+      "id": "cp-5p7ahq57c1",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Caprista",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Str. 380",
+        "postal_code": "50825"
+      },
+      "location": {
+        "lat": 50.952041,
+        "lon": 6.913975
+      },
+      "opening_hours": "Mo-Fr 10:00-17:00; Sa,Su 09:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Caprista GmbH & Co KG",
+        "legal_form": "GmbH & Co KG",
+        "register_id": "HRA 37002"
+      },
+      "links": {
+        "website": "https://www.caprista.de/",
+        "instagram": "https://www.instagram.com/cafecaprista/"
+      },
+      "xref": {
+        "overture": "1f0117a4-2092-46d9-9a92-4c7aff9c92c2"
+      }
+    },
+    {
+      "id": "cp-5qdzaa3f6q",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caffè è Vita",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hauptstr. 28",
+        "postal_code": "50996"
+      },
+      "location": {
+        "lat": 50.896012,
+        "lon": 6.991024
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://caffeevita.de/",
+        "instagram": "https://www.instagram.com/caffeevita/",
+        "facebook": "https://www.facebook.com/caffeevita/"
+      },
+      "xref": {
+        "overture": "92ff39da-65ff-461d-91ee-d5c17c9e4ed4"
+      }
+    },
+    {
+      "id": "cp-5yjwpgj34r",
+      "type": "CafeOrCoffeeShop",
+      "name": "Zimt und Zucker Café - Dellbrück",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Dellbrücker Hauptstraße 113",
+        "postal_code": "51069"
+      },
+      "location": {
+        "lat": 50.976581,
+        "lon": 7.072493
+      },
+      "opening_hours": "Mo off; Tu-Fr 08:00-18:00; Sa 09:00-18:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.zimt-zucker.net/",
+        "instagram": "https://www.instagram.com/zimtund_zucker_/",
+        "facebook": "https://www.facebook.com/zimtundzucker.net/"
+      },
+      "xref": {
+        "overture": "b27af164-b62e-4197-8f85-f204904ddc78"
+      }
+    },
+    {
+      "id": "cp-6a5366mf19",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Balthasar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Euskirchener Strasse 9",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.919511,
+        "lon": 6.919552
+      },
+      "opening_hours": "Mo-Sa 09:00-24:00; Su 10:00-24:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "MBC GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 29327"
+      },
+      "links": {
+        "website": "https://balthasar-cafe.de/"
+      },
+      "xref": {
+        "overture": "94c9fe66-69fb-446d-b2f7-36fa5921fcf7"
+      }
+    },
+    {
+      "id": "cp-6a9aavmva3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caffé Mondo",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser str. 517",
+        "postal_code": "50737"
+      },
+      "location": {
+        "lat": 50.977875,
+        "lon": 6.948756
+      },
+      "opening_hours": "Mo-Fr 09:00-15:00; Sa 09:00-14:00; Su off",
+      "specialty_tier": "none",
+      "food": {
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "https://www.caffemondo.eu/",
+        "instagram": "https://www.instagram.com/caffe_mondo_koeln/"
+      },
+      "xref": {
+        "overture": "b30bbaef-227d-4f34-b3c2-adc69410b59b"
+      }
+    },
+    {
+      "id": "cp-6jb9dg7g22",
+      "type": "CafeOrCoffeeShop",
+      "name": "Halli Galli – Das Eltern-Kind-Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Mozartstraße 39",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.932938,
+        "lon": 6.935735
+      },
+      "opening_hours": "Mo off; Tu-Sa 09:30-18:00; Su 10:00-13:00,14:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "kids_friendly": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "http://cafe-halligalli.de/",
+        "instagram": "https://www.instagram.com/halligalli_elternkindcafe/",
+        "facebook": "https://www.facebook.com/cafehalligalli/"
+      },
+      "xref": {
+        "overture": "ba26cce5-b337-409a-981a-dfa452f9ad4a"
+      }
+    },
+    {
+      "id": "cp-6v8p5bpvty",
+      "type": "CafeOrCoffeeShop",
+      "name": "pottery art café (Sülz)",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Luxemburger Straße 271",
+        "postal_code": "50939"
+      },
+      "location": {
+        "lat": 50.915087,
+        "lon": 6.927124
+      },
+      "opening_hours": "Mo,Tu off; We-Fr 15:00-18:00; Sa,Su 12:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "links": {
+        "website": "https://www.pottery-art-cafe.de/",
+        "instagram": "https://www.instagram.com/pottery_art_cafe_cologne/",
+        "facebook": "https://www.facebook.com/potteryartcafe/"
+      },
+      "xref": {
+        "overture": "28f81dbd-e5b3-42d1-bab2-8be4900269ff"
+      }
+    },
+    {
+      "id": "cp-6vfznh54ag",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Edelmann",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Bonner Str. 87",
+        "postal_code": "50677"
+      },
+      "location": {
+        "lat": 50.916152,
+        "lon": 6.961508
+      },
+      "opening_hours": "Mo off; Tu-Th 08:30-19:00; Fr 08:30-20:00; Sa 09:00-20:00; Su 09:00-19:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true,
+        "wifi": true,
+        "outdoor_seating": true,
+        "wheelchair_accessible": true
+      },
+      "links": {
+        "website": "https://cafe-edelmann.eatbu.com/",
+        "instagram": "https://www.instagram.com/cafe.edelmann/",
+        "facebook": "https://www.facebook.com/cafe.edelmann/"
+      },
+      "xref": {
+        "overture": "159e79db-4cbf-4242-86dd-29c614522cd9"
+      }
+    },
+    {
+      "id": "cp-787bhy1kjm",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Klar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Klarastr. 3",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.948655,
+        "lon": 6.920468
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true
+      },
+      "links": {
+        "website": "http://cafeklar.de/",
+        "instagram": "https://www.instagram.com/cafe.klar/"
+      },
+      "xref": {
+        "overture": "f443a63b-23c6-4137-a976-6b348fa1c20b"
+      }
+    },
+    {
+      "id": "cp-79s5mt7m2a",
+      "type": "CafeOrCoffeeShop",
+      "name": "Dinger's Palmencafé",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Goldammerweg 361",
+        "postal_code": "50829"
+      },
+      "location": {
+        "lat": 50.965074,
+        "lon": 6.869357
+      },
+      "opening_hours": "Mo-Fr 10:00-17:30; Sa 10:00-17:30; Su 11:00-15:30",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://www.dingers.de/palmencafe/gruene-oase/speisekarte"
+        }
+      },
+      "links": {
+        "website": "https://www.dingers.de/palmencafe/gruene-oase",
+        "facebook": "https://www.facebook.com/dingers.gartencenter.koeln/"
+      },
+      "xref": {
+        "overture": "f9ca8be3-7f0d-4122-9c08-6079fb8345ab"
+      }
+    },
+    {
+      "id": "cp-7bykp7esqw",
+      "type": "CafeOrCoffeeShop",
+      "name": "Starbucks",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Trankgasse 11",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.942863,
+        "lon": 6.957498
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.starbucks.de/de/",
+        "instagram": "https://www.instagram.com/starbucksde/",
+        "facebook": "https://www.facebook.com/starbucksdeutschland/"
+      },
+      "xref": {
+        "overture": "5977651c-7ec3-4b72-8aa0-587c9c55da0c"
+      }
+    },
+    {
+      "id": "cp-7d7ref02qb",
+      "type": "CafeOrCoffeeShop",
+      "name": "MoccaGino",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Severinstraße 19",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.922668,
+        "lon": 6.958971
+      },
+      "opening_hours": "Mo-Su 10:00-22:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "lunch": true
+      },
+      "links": {
+        "website": "https://bar-moccagino-koeln.de/",
+        "instagram": "https://www.instagram.com/moccagino/"
+      },
+      "xref": {
+        "overture": "299a9ab8-6e3c-4251-b366-3bca52318229"
+      }
+    },
+    {
+      "id": "cp-7fcb4rcarr",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Frankfurter Str. 13",
+        "postal_code": "51065"
+      },
+      "location": {
+        "lat": 50.961117,
+        "lon": 7.006154
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100005475",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "83e29135-c2ae-405b-a901-6faf2044f921"
+      }
+    },
+    {
+      "id": "cp-7jnstd9wa1",
+      "type": "CafeOrCoffeeShop",
+      "name": "miss päpki",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Rudolfplatz 2",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.936814,
+        "lon": 6.940182
+      },
+      "opening_hours": "Mo-Sa 10:00-18:30",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Schamong"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "http://xn--miss-ppki-02a.de/",
+        "instagram": "https://www.instagram.com/miss__paepki/"
+      },
+      "xref": {
+        "overture": "4acc427e-108b-4dc4-8f0b-72e861b81e0f"
+      }
+    },
+    {
+      "id": "cp-7mn22fyg3b",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Bar Armer Ritter",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Merowingerstraße 33",
+        "postal_code": "50677"
+      },
+      "location": {
+        "lat": 50.92055,
+        "lon": 6.957465
+      },
+      "opening_hours": "Mo 08:00-16:00; Tu-Fr 08:00-18:00; Sa,Su 09:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Tim & Sebastian´s Kaffeerösterei"
+        }
+      ],
+      "links": {
+        "website": "https://armer-ritter.koeln/",
+        "instagram": "https://www.instagram.com/cafearmerritter/"
+      },
+      "xref": {
+        "overture": "518ef243-1c28-4b63-8711-65a15eab33f1"
+      }
+    },
+    {
+      "id": "cp-7qp5t6n52n",
+      "type": "CafeOrCoffeeShop",
+      "name": "TörtchenTörtchen",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Apostelnstraße 19",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.937971,
+        "lon": 6.945033
+      },
+      "opening_hours": "Mo-Su 11:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Heilandt"
+        }
+      ],
+      "sells_equipment": true,
+      "links": {
+        "website": "https://toertchentoertchen.de/",
+        "instagram": "https://www.instagram.com/toertchentoertchen/"
+      },
+      "xref": {
+        "overture": "4cb92699-a2a2-4920-8a10-7ccb233d69cf"
+      }
+    },
+    {
+      "id": "cp-7s6ykvne20",
+      "type": "CafeOrCoffeeShop",
+      "name": "Awli Backyard",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Sülzburgstraße 96",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.917882,
+        "lon": 6.923646
+      },
+      "opening_hours": "Mo-Sa 09:00-18:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://www.awli.de/",
+        "instagram": "https://www.instagram.com/awli_backyard/"
+      },
+      "xref": {
+        "overture": "b3021588-44e5-4c3a-8b92-a14b600b3649"
+      }
+    },
+    {
+      "id": "cp-7yhj22v63d",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Bauturm",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Aachener Straße 24",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.936576,
+        "lon": 6.936322
+      },
+      "opening_hours": "Mo-Th 09:00-01:00; Fr,Sa 09:00-02:00; Su 09:00-24:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "lunch": true,
+        "breakfast": true
+      },
+      "sells_beans": true,
+      "operator": {
+        "name": "Café im Bauturm GmbH & Co.KG",
+        "legal_form": "KG"
+      },
+      "links": {
+        "website": "https://www.cafe-bauturm.de/",
+        "instagram": "https://www.instagram.com/cafe_bauturm/",
+        "facebook": "https://www.facebook.com/cafebauturm/"
+      },
+      "xref": {
+        "overture": "2ba36555-133e-4204-a93f-59f56a1094cd"
+      }
+    },
+    {
+      "id": "cp-84hmm2d81z",
+      "type": "CafeOrCoffeeShop",
+      "name": "Lifetime-House",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Rondorfer Hauptstraße 22",
+        "postal_code": "50997"
+      },
+      "location": {
+        "lat": 50.87342,
+        "lon": 6.953708
+      },
+      "opening_hours": "We-Th 17:00-22:00; Fr-Sa 15:00-23:00; Su 12:00-22:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "operator": {
+        "name": "Vitasci GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRA 109548"
+      },
+      "links": {
+        "website": "https://lifetime-house.de/",
+        "instagram": "https://www.instagram.com/lifetime_house/",
+        "facebook": "https://www.facebook.com/lifetime_house/"
+      },
+      "xref": {
+        "overture": "6d315631-a101-491d-b875-ace6049fe516"
+      }
+    },
+    {
+      "id": "cp-889790n2ag",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Belgique",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Brüsseler Platz 16",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.938892,
+        "lon": 6.934127
+      },
+      "opening_hours": "Mo-Th 11:30-22:45; Fr 11:30-00:45; Sa,Su 09:00-00:45",
+      "specialty_tier": "none",
+      "amenities": {
+        "wheelchair_accessible": true,
+        "outdoor_seating": true,
+        "wifi": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://cafebelgique.eatbu.com/"
+      },
+      "xref": {
+        "overture": "1bd67ba8-08ee-4158-8dbd-ef9f77bc98fe"
+      }
+    },
+    {
+      "id": "cp-8gtmd1vv9m",
+      "type": "CafeOrCoffeeShop",
+      "name": "Meramanis Coffee Roaster",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Krefelder Str. 7-9",
+        "postal_code": "50670"
+      },
+      "location": {
+        "lat": 50.949808,
+        "lon": 6.952747
+      },
+      "opening_hours": "Tu-Sa 08:00-18:00; Su,Mo 10:00-18:00; PH 10:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true
+      },
+      "sells_equipment": true,
+      "operator": {
+        "name": "Kissia UG (Haftungsbeschränkt)",
+        "register_id": "HRB 110838"
+      },
+      "links": {
+        "website": "https://meramanis.de/",
+        "instagram": "https://www.instagram.com/meramaniscoffee/"
+      },
+      "xref": {
+        "overture": "15d3e92b-f73c-4315-95db-9f2b4ff808d1"
+      }
+    },
+    {
+      "id": "cp-8htbsdsqbz",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hauptstr. 81-83",
+        "postal_code": "50996"
+      },
+      "location": {
+        "lat": 50.892182,
+        "lon": 6.996111
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100006382",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "79b84a81-5db0-4f7d-94e4-a282e19d638b"
+      }
+    },
+    {
+      "id": "cp-8mbqx1w35y",
+      "type": "CafeOrCoffeeShop",
+      "name": "Maora Matcha",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Mittelstraße 23",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.936759,
+        "lon": 6.942071
+      },
+      "opening_hours": "Mo-Fr 08:30-20:00; Sa,Su 09:00-20:00",
+      "description": "Maora Matcha is a place in Köln that serves specialty coffee. It serves coffee from Blooming Coffee. The menu includes espresso drinks. It serves breakfast. It is open on Sundays.",
+      "specialty_tier": "B",
+      "roasters_served": [
+        {
+          "name": "Blooming Coffee"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "card_payment": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Maora Studios GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 123234"
+      },
+      "links": {
+        "website": "https://www.maora-matcha.de/pages/matcha-cafe-koeln",
+        "instagram": "https://www.instagram.com/maora.matcha/"
+      },
+      "xref": {
+        "overture": "4e6222af-2c2e-483c-92c0-d408c2a1c15f"
+      }
+    },
+    {
+      "id": "cp-8p4pcfamrq",
+      "type": "CafeOrCoffeeShop",
+      "name": "Holm Kaffeerösterei",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Lindenthalgürtel 61",
+        "postal_code": "50935"
+      },
+      "location": {
+        "lat": 50.924941,
+        "lon": 6.911023
+      },
+      "opening_hours": "Mo-Sa 09:00-18:00; Su,PH 10:00-18:00",
+      "description": "Holm Kaffeerösterei is a specialty coffee place in Köln that roasts its own beans. It is open on Sundays.",
+      "specialty_tier": "A",
+      "roasts_own_beans": true,
+      "food": {
+        "focus": "coffee_led"
+      },
+      "operator": {
+        "name": "Holm Kaffeerösterei GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 96550"
+      },
+      "links": {
+        "website": "https://holmkaffee.de/pages/cafe-in-koeln-lindenthal-kaffeerosterei",
+        "instagram": "https://www.instagram.com/holmkaffeeroesterei/",
+        "facebook": "https://www.facebook.com/holmkaffee/"
+      },
+      "xref": {
+        "overture": "69635291-7237-4bc8-b58d-5700173137d7"
+      }
+    },
+    {
+      "id": "cp-8rgcq1ycw2",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caffè è Vita",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Maternusstraße 28",
+        "postal_code": "50996"
+      },
+      "location": {
+        "lat": 50.893314,
+        "lon": 6.992454
+      },
+      "opening_hours": "Mo off; Tu-Th 10:00-17:00; Fr 10:00-14:00; Sa off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_equipment": true,
+      "links": {
+        "website": "https://caffeevita.de/",
+        "instagram": "https://www.instagram.com/caffeevita/",
+        "facebook": "https://www.facebook.com/caffeevita/"
+      },
+      "xref": {
+        "overture": "1b149725-2141-4721-a441-8cde7557523c"
+      }
+    },
+    {
+      "id": "cp-8tbkc5833n",
+      "type": "CafeOrCoffeeShop",
+      "name": "Mai´ster Küche",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Str. 302",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.948673,
+        "lon": 6.919811
+      },
+      "opening_hours": "Mo-Su 09:00-22:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://xn--maisterkche-0hb.de/speisekarte"
+        }
+      },
+      "operator": {
+        "name": "Maisterküche GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 99122"
+      },
+      "links": {
+        "website": "https://xn--maisterkche-0hb.de/"
+      },
+      "xref": {
+        "overture": "b9206792-26bc-4b1c-9e2c-51b639c9748e"
+      }
+    },
+    {
+      "id": "cp-8v8x71s6vz",
+      "type": "CafeOrCoffeeShop",
+      "name": "Nanay’s Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Str. 432",
+        "postal_code": "50825"
+      },
+      "location": {
+        "lat": 50.953451,
+        "lon": 6.911857
+      },
+      "opening_hours": "Mo,We-Fr 09:00-18:00; Sa,Su 10:00-18:00; Tu off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Heiland"
+        }
+      ],
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.7,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://bbb19acc-d454-4abc-972a-7eb75a3a222f.filesusr.com/ugd/7d0dce_57448e4fe4404b0fb6084465107f3ac5.pdf"
+        }
+      },
+      "links": {
+        "website": "https://www.nanays-cafe.de/",
+        "instagram": "https://www.instagram.com/nanays.cafe/"
+      },
+      "xref": {
+        "overture": "255b596c-6f1d-41af-9aed-80616f3cd8da"
+      }
+    },
+    {
+      "id": "cp-94gmkmv33w",
+      "type": "CafeOrCoffeeShop",
+      "name": "VAN DYCK Rösterei und Espressobar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln"
+      },
+      "location": {
+        "lat": 50.968266,
+        "lon": 7.014859
+      },
+      "opening_hours": "Mo-Fr 08:30-17:00; Sa,Su off",
+      "specialty_tier": "none",
+      "sells_beans": true,
+      "sells_equipment": true,
+      "operator": {
+        "name": "Van Dyck Rösterei GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 33195"
+      },
+      "links": {
+        "website": "https://vandyckkaffee.de/",
+        "instagram": "https://www.instagram.com/vandyckroesterei/",
+        "facebook": "https://www.facebook.com/vandyckroesterei/"
+      },
+      "xref": {
+        "overture": "b6ed1e3e-d207-426c-9742-47240dee2fa1"
+      }
+    },
+    {
+      "id": "cp-965xndxrkm",
+      "type": "CafeOrCoffeeShop",
+      "name": "CAFE mittendrin",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Berliner Straße 944",
+        "postal_code": "51069"
+      },
+      "location": {
+        "lat": 51.000379,
+        "lon": 7.039324
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Mittendrin Köln-Dünnwald e.V.",
+        "legal_form": "e.V."
+      },
+      "links": {
+        "website": "https://www.cafe-mittendrin.de/"
+      },
+      "xref": {
+        "overture": "dd0c2ffe-ec75-4b09-9c65-ab15f7cdeb95"
+      }
+    },
+    {
+      "id": "cp-9mvpnmfmw5",
+      "type": "CafeOrCoffeeShop",
+      "name": "PARK Café Köln",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Auenweg 17",
+        "postal_code": "50679"
+      },
+      "location": {
+        "lat": 50.947885,
+        "lon": 6.974976
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "card_payment": true,
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://parkcafekoeln.com/essen-trinken/"
+        }
+      },
+      "operator": {
+        "name": "Reineke Park GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 124723"
+      },
+      "links": {
+        "website": "https://parkcafekoeln.com/",
+        "instagram": "https://www.instagram.com/parkcafe_koeln/",
+        "facebook": "https://www.facebook.com/parkcafe.koeln/"
+      },
+      "xref": {
+        "overture": "031a7ba8-d0a9-4382-b57d-c46ce338dfaa"
+      }
+    },
+    {
+      "id": "cp-9y1y76313b",
+      "type": "CafeOrCoffeeShop",
+      "name": "Römerpark Cafehaus & Restaurant",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Teutoburger Str. 42",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.91895,
+        "lon": 6.964224
+      },
+      "opening_hours": "Mo-Sa 09:00-18:00; Su,PH 09:30-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Caffe Batani"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://onecdn.io/media/speisekarte-roemerpark-august-2025-0fd02b7b-e072-492a-ba16-664e5ace07a7.pdf"
+        }
+      },
+      "links": {
+        "website": "https://xn--rmerpark-cafehaus-zzb.de/"
+      },
+      "xref": {
+        "overture": "67d07ff9-581f-479d-bc0a-49e2db294ae8"
+      }
+    },
+    {
+      "id": "cp-a0nb6a11gb",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Konditorei Wahlen",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hohenstaufenring 64",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.933768,
+        "lon": 6.939922
+      },
+      "opening_hours": "Mo off; Tu-Fr 11:00-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "sells_beans": true,
+      "operator": {
+        "name": "Cafe Konditorei Wahlen OHG",
+        "legal_form": "OHG"
+      },
+      "links": {
+        "website": "https://www.cafe-wahlen.de/",
+        "instagram": "https://www.instagram.com/cafe__wahlen/",
+        "facebook": "https://www.facebook.com/cafewahlen/"
+      },
+      "xref": {
+        "overture": "d3756567-b4d0-421e-a519-b900bb1785c5"
+      }
+    },
+    {
+      "id": "cp-a826jvwv2p",
+      "type": "CafeOrCoffeeShop",
+      "name": "UnCappuccio",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Straße 241-245",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.946443,
+        "lon": 6.922675
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "card_payment": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "https://uncappuccio.eatbu.com/"
+      },
+      "xref": {
+        "overture": "8d9280de-4bee-4c70-a07c-5f141407774d"
+      }
+    },
+    {
+      "id": "cp-a8tjsyepz0",
+      "type": "CafeOrCoffeeShop",
+      "name": "sono. Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hohe Straße 30",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.935742,
+        "lon": 6.956246
+      },
+      "opening_hours": "Mo-Sa 08:00-19:00; Su 08:00-15:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://sono-cafe.expoya.com/",
+        "instagram": "https://www.instagram.com/sono.cafe/",
+        "facebook": "https://www.facebook.com/sonocologne/"
+      },
+      "xref": {
+        "overture": "6c3369e2-2985-4607-9b59-eefbaa4c344f"
+      }
+    },
+    {
+      "id": "cp-a9ggqw5pfv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Jackson - Kaffee Werkstatt Rösterei",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Ägidiusstraße 45",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.92191,
+        "lon": 6.925779
+      },
+      "opening_hours": "We 11:00-18:00; Fr 11:00-18:00; Sa 10:00-16:00",
+      "description": "Jackson - Kaffee Werkstatt Rösterei is a specialty coffee place in Köln that roasts its own beans. The menu includes espresso drinks and decaf. It also sells brewing equipment.",
+      "specialty_tier": "A",
+      "roasts_own_beans": true,
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "amenities": {
+        "kids_friendly": true
+      },
+      "sells_equipment": true,
+      "links": {
+        "website": "https://jackson-kaffee.de/"
+      },
+      "xref": {
+        "overture": "3c8bf563-1a57-46e7-a9c8-161ddf45a0e3"
+      }
+    },
+    {
+      "id": "cp-af3pxjygna",
+      "type": "CafeOrCoffeeShop",
+      "name": "Starbucks",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Habsburger Ring 24 28",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.93576,
+        "lon": 6.93941
+      },
+      "opening_hours": "Mo-Fr 07:00-19:30; Sa 08:00-19:30; Su 10:30-18:30",
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://www.starbucks.co.uk/store-locator/81008-309612/koeln-rudolfplatz",
+        "instagram": "https://www.instagram.com/starbucksuk/",
+        "facebook": "https://www.facebook.com/starbucksuk/"
+      },
+      "xref": {
+        "overture": "f0ded280-fa3a-462f-8e39-e4940627219b"
+      }
+    },
+    {
+      "id": "cp-aj0mt5ff4q",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Riese",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Schildergasse 103",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.936696,
+        "lon": 6.950279
+      },
+      "opening_hours": "Mo-Sa 09:00-19:00; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true,
+        "espresso": true,
+        "decaf": true
+      },
+      "amenities": {
+        "kids_friendly": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "CAFÉ RIESE GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://caferiese.de/",
+        "instagram": "https://www.instagram.com/caferiese/",
+        "facebook": "https://www.facebook.com/caferiese/"
+      },
+      "xref": {
+        "overture": "945d8b0e-9946-4c03-bb3e-7760b0319d9f"
+      }
+    },
+    {
+      "id": "cp-anqms799ch",
+      "type": "CafeOrCoffeeShop",
+      "name": "African Roasters",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Sülzburgstraße 27",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.917044,
+        "lon": 6.925709
+      },
+      "opening_hours": "Mo off; Tu-Fr 10:00-18:00; Sa 10:00-16:00; Su off",
+      "description": "African Roasters is a specialty coffee place in Köln that roasts its own beans. The menu includes espresso drinks and decaf.",
+      "specialty_tier": "A",
+      "roasts_own_beans": true,
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "https://www.african-roasters.de/",
+        "instagram": "https://www.instagram.com/africanroasters/"
+      },
+      "xref": {
+        "overture": "ab7191fd-d92f-4f47-b164-590bea1012f7"
+      }
+    },
+    {
+      "id": "cp-b247kb138p",
+      "type": "CafeOrCoffeeShop",
+      "name": "gutebohne Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Kaiser-Wilhelm-Ring 2-4",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.942559,
+        "lon": 6.94069
+      },
+      "opening_hours": "Mo-Fr 08:00-19:30; Sa 10:30-18:30; Su 11:30-18:30",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://gutebohnecafe.de/",
+        "instagram": "https://www.instagram.com/gutebohne_espressobar/"
+      },
+      "xref": {
+        "overture": "2a3d9d65-c404-4a37-9b6d-55024ba048c6"
+      }
+    },
+    {
+      "id": "cp-bnxs62t1be",
+      "type": "CafeOrCoffeeShop",
+      "name": "The Coffee Gang",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Straße 53",
+        "postal_code": "50670"
+      },
+      "location": {
+        "lat": 50.953267,
+        "lon": 6.957151
+      },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://www.thecoffeegang.de/"
+      },
+      "xref": {
+        "overture": "9b1f54d6-dd5f-4ce1-abe8-02e233058c59"
+      }
+    },
+    {
+      "id": "cp-bsmtdexgsm",
+      "type": "CafeOrCoffeeShop",
+      "name": "WuselWerk",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Burgweg 12",
+        "postal_code": "51143"
+      },
+      "location": {
+        "lat": 50.868662,
+        "lon": 7.042877
+      },
+      "opening_hours": "Mo-Su 09:30-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "kids_friendly": true,
+        "vegan_options": true,
+        "dogs_allowed": true,
+        "outdoor_seating": true,
+        "wifi": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "focus": "balanced"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://wuselwerk-koeln.de/cafe/"
+        }
+      },
+      "links": {
+        "website": "https://wuselwerk-koeln.de/",
+        "instagram": "https://www.instagram.com/wuselwerk/"
+      },
+      "xref": {
+        "overture": "5799db5e-f027-4b51-8309-968404bc9a08"
+      }
+    },
+    {
+      "id": "cp-bv1kwrszcy",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Apostelnstr. 4",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.936967,
+        "lon": 6.945141
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100003983",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "d30317e0-1d52-45dd-a526-76a92fefec75"
+      }
+    },
+    {
+      "id": "cp-bv4tf62pbp",
+      "type": "CafeOrCoffeeShop",
+      "name": "People People Coffee",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Maastrichter Straße 24",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.938481,
+        "lon": 6.936658
+      },
+      "opening_hours": "Mo-Fr 08:30-18:30; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "prices": {
+        "cappuccino": {
+          "amount": 4.3,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://www.peoplepeople-coffee.com/"
+        }
+      },
+      "operator": {
+        "name": "Reforma & peoplepeople GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 118975"
+      },
+      "links": {
+        "website": "https://www.peoplepeople-coffee.com/",
+        "instagram": "https://www.instagram.com/peoplepeople.coffee/"
+      },
+      "xref": {
+        "overture": "6084543d-00ad-4629-9615-93b01c160489"
+      }
+    },
+    {
+      "id": "cp-bz83p1ttka",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caffé É Vita",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Kelvinstr. 29",
+        "postal_code": "50996"
+      },
+      "location": {
+        "lat": 50.869936,
+        "lon": 6.990586
+      },
+      "opening_hours": "Mo off; Tu-Th 10:00-18:00; Fr 10:00-14:00; Sa off",
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://caffeevita.de/",
+        "instagram": "https://www.instagram.com/caffeevita/",
+        "facebook": "https://www.facebook.com/caffeevita/"
+      }
+    },
+    {
+      "id": "cp-bzy4wpjqhv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Süd&Salzig",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Darmstädter Straße 1",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.919615,
+        "lon": 6.96042
+      },
+      "opening_hours": "Mo off; Tu-Th 09:00-19:00; Fr,Sa 09:00-22:00; Su 09:00-19:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://suedundsalzig.de/menu"
+        }
+      },
+      "operator": {
+        "name": "Merwin Gastro GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 113597"
+      },
+      "links": {
+        "website": "https://suedundsalzig.de/",
+        "instagram": "https://www.instagram.com/sued.und.salzig/"
+      },
+      "xref": {
+        "overture": "b519ae87-c3b4-40af-b100-676931a7d49b"
+      }
+    },
+    {
+      "id": "cp-c6bgk6kgx3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Easylivin' Coffee",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Thieboldsgasse 117",
+        "postal_code": "50676"
+      },
+      "location": {
+        "lat": 50.934483,
+        "lon": 6.947469
+      },
+      "opening_hours": "Mo-Sa 09:00-18:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://easylivincoffee.de/",
+        "instagram": "https://www.instagram.com/easylivin_cologne/",
+        "facebook": "https://www.facebook.com/easylivin.culture/"
+      },
+      "xref": {
+        "overture": "6d31956a-58c8-42e9-855a-39d9d9988a1c"
+      }
+    },
+    {
+      "id": "cp-d35be4jn97",
+      "type": "CafeOrCoffeeShop",
+      "name": "Brewbees",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Lindenthalgürtel 31",
+        "postal_code": "50935"
+      },
+      "location": {
+        "lat": 50.923632,
+        "lon": 6.911714
+      },
+      "opening_hours": "Tu-Su 10:00-17:00; Mo off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Heilandt"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://www.brewbeescoffee.de/",
+        "instagram": "https://www.instagram.com/brewbees.coffee/"
+      },
+      "xref": {
+        "overture": "6a1252c6-c00c-48e8-998a-2bc4e5f3d565"
+      }
+    },
+    {
+      "id": "cp-dpqe51bx1e",
+      "type": "CafeOrCoffeeShop",
+      "name": "Balthasar Belgisches Viertel",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Aachener Str. 18",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.936533,
+        "lon": 6.936711
+      },
+      "opening_hours": "Mo-Th 09:00-01:00; Fr,Sa 09:00-02:00; Su 10:00-24:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Lavazza"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "card_payment": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4.4,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://balthasar-cafe.de/wp-content/uploads/2026/10/getraenke_aachener.pdf"
+        }
+      },
+      "operator": {
+        "name": "FMB Gastronomiebetriebe GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 29058"
+      },
+      "links": {
+        "website": "https://balthasar-cafe.de/"
+      },
+      "xref": {
+        "overture": "7144fe04-116b-45b8-ae5e-1f174b643311"
+      }
+    },
+    {
+      "id": "cp-dqje1rm3xw",
+      "type": "CafeOrCoffeeShop",
+      "name": "ERNST Kaffeeröster",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Bonner Straße 56",
+        "postal_code": "50677"
+      },
+      "location": {
+        "lat": 50.917919,
+        "lon": 6.960359
+      },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su,PH 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "sells_equipment": true,
+      "links": {
+        "website": "https://www.ernst-kaffee.de/de-de"
+      },
+      "xref": {
+        "overture": "dc3ba4d2-8c84-4229-8407-bc5331d3fd95"
+      }
+    },
+    {
+      "id": "cp-dxqdzwb11n",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caffettiamo",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Mauritiuswall 80",
+        "postal_code": "50676"
+      },
+      "location": {
+        "lat": 50.934374,
+        "lon": 6.940806
+      },
+      "opening_hours": "Mo-Fr 08:30-17:00; Sa 09:30-17:00; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.caffettiamo.de/",
+        "instagram": "https://www.instagram.com/caffettiamo_koeln/"
+      },
+      "xref": {
+        "overture": "e5c994db-7412-4675-af6c-a91d0c3baa71"
+      }
+    },
+    {
+      "id": "cp-dyr9j553mn",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Rotkehlchen",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Str. 400",
+        "postal_code": "50825"
+      },
+      "location": {
+        "lat": 50.952581,
+        "lon": 6.91318
+      },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 09:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Schamong"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "card_payment": true,
+        "vegan_options": true
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://caferotkehlchen.de/",
+        "instagram": "https://www.instagram.com/cafe_rotkehlchen/",
+        "facebook": "https://www.facebook.com/caferotkehlchen/"
+      },
+      "xref": {
+        "overture": "b5d3f4bd-34fa-4aca-beab-eccbffbaf627"
+      }
+    },
+    {
+      "id": "cp-e6agjtcfx7",
+      "type": "CafeOrCoffeeShop",
+      "name": "Offenbach am Carlsgarten",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Schanzenstraße 6-20",
+        "postal_code": "51063"
+      },
+      "location": {
+        "lat": 50.966414,
+        "lon": 7.012248
+      },
+      "opening_hours": "Mo-Sa 09:00-24:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "sells_beans": true,
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://offenbach-am-carlsgarten.de/wp-content/uploads/2024/11/of-getraenke-11.24.pdf"
+        }
+      },
+      "operator": {
+        "name": "Ludwig im Museum GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG"
+      },
+      "links": {
+        "website": "https://offenbach-am-carlsgarten.de/",
+        "facebook": "https://www.facebook.com/offenbachamcarlsgarten/"
+      },
+      "xref": {
+        "overture": "3dcca867-9416-4f6b-b07c-feef12dfe8bf"
+      }
+    },
+    {
+      "id": "cp-e7dseza879",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Chlodwigplatz 26",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.921932,
+        "lon": 6.959579
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100006373",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "09a199ad-7e2b-4ab4-9024-bf999185a9d0"
+      }
+    },
+    {
+      "id": "cp-e8f4qbm8x3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Efulim Bäckerei & Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Gremberger Str. 20",
+        "postal_code": "51105"
+      },
+      "location": {
+        "lat": 50.930572,
+        "lon": 6.994535
+      },
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://www.efulimkoeln.de/"
+      },
+      "xref": {
+        "overture": "3ba49e24-607d-43ab-b3b7-c7c4db919f68"
+      }
+    },
+    {
+      "id": "cp-e96j55vaye",
+      "type": "CafeOrCoffeeShop",
+      "name": "Impact Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Luxemburger Str. 190",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.918796,
+        "lon": 6.93038
+      },
+      "opening_hours": "Mo-Sa 09:00-22:00; Su 09:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "wifi": true,
+        "laptop_friendly": true,
+        "kids_friendly": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "sells_beans": true,
+      "prices": {
+        "cappuccino": {
+          "amount": 4.7,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://cafe.impact.koeln/"
+        }
+      },
+      "operator": {
+        "name": "Plastic2Beans GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 105844"
+      },
+      "links": {
+        "website": "https://cafe.impact.koeln/",
+        "instagram": "https://www.instagram.com/impact__coffee/",
+        "facebook": "https://www.facebook.com/impactcafecgn/"
+      },
+      "xref": {
+        "overture": "a8dce4fb-7c32-4318-bdce-56cc6eab363a"
+      }
+    },
+    {
+      "id": "cp-erx7cfy4e7",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Sisu",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hohe Pforte 29",
+        "postal_code": "50676"
+      },
+      "location": {
+        "lat": 50.934027,
+        "lon": 6.956175
+      },
+      "opening_hours": "We off; Th-Sa 09:00-18:00; Su 09:00-17:00",
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://cafesisu.de/",
+        "instagram": "https://www.instagram.com/cafe.sisuu/"
+      },
+      "xref": {
+        "overture": "65496091-10a8-42a9-bbc4-7c2e8123ab8f"
+      }
+    },
+    {
+      "id": "cp-f0z05dbrf3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Babyzentrum Köln",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Bergerstr. 187a",
+        "postal_code": "51145"
+      },
+      "location": {
+        "lat": 50.892508,
+        "lon": 7.072337
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "plant_milk": true,
+        "espresso": true
+      },
+      "amenities": {
+        "kids_friendly": true
+      },
+      "offers_courses": true,
+      "links": {
+        "website": "https://babyzentrum-koeln.de/",
+        "instagram": "https://www.instagram.com/babyzentrumkoeln/"
+      },
+      "xref": {
+        "overture": "206720db-244f-4f91-a31c-26f2c3a64053"
+      }
+    },
+    {
+      "id": "cp-f3shqk4z93",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffee Fellows",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Trankgasse 11",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.943216,
+        "lon": 6.9586
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.coffee-fellows.com/locations/koeln-hauptbahnhof",
+        "instagram": "https://www.instagram.com/coffeefellows/",
+        "facebook": "https://www.facebook.com/coffeefellowsdeutschland/"
+      },
+      "xref": {
+        "overture": "36d35072-eb8c-4317-ab7a-351d3241906f"
+      }
+    },
+    {
+      "id": "cp-fn2nkpqxgx",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffee Fellows",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Im Media Park 1",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.947849,
+        "lon": 6.945296
+      },
+      "opening_hours": "Mo-Fr 09:00-21:00; Sa,Su 11:00-21:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true,
+        "outdoor_seating": true,
+        "wheelchair_accessible": true,
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.coffee-fellows.com/locations/koeln-cinedom",
+        "instagram": "https://www.instagram.com/coffeefellows/",
+        "facebook": "https://www.facebook.com/coffeefellowsdeutschland/"
+      },
+      "xref": {
+        "overture": "2d89182d-217f-49b5-be58-4e7fc5d583e5"
+      }
+    },
+    {
+      "id": "cp-ft3vwa0kyh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Braun",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Lindenstrasse 97",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.931579,
+        "lon": 6.93256
+      },
+      "opening_hours": "We-Su 11:00-18:00; Mo,Tu off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "http://www.cafebraun.com/karte.html"
+        }
+      },
+      "links": {
+        "website": "http://www.cafebraun.com/",
+        "facebook": "https://www.facebook.com/cafebraun/"
+      },
+      "xref": {
+        "overture": "fb8ad7c0-6103-4648-b7a9-a29fe464400a"
+      }
+    },
+    {
+      "id": "cp-g1me56mrc2",
+      "type": "CafeOrCoffeeShop",
+      "name": "Ain Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Str. 374",
+        "postal_code": "50825"
+      },
+      "location": {
+        "lat": 50.951936,
+        "lon": 6.914115
+      },
+      "opening_hours": "We-Su 10:00-18:00; Mo,Tu off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://ain-cafe.de/wp-content/uploads/2023/10/23-10_Menu-New-Oct-2023_EN_Digital.pdf"
+        }
+      },
+      "links": {
+        "website": "https://ain-cafe.de/"
+      },
+      "xref": {
+        "overture": "ae677c82-21aa-4b16-b779-03c0cfe35d68"
+      }
+    },
+    {
+      "id": "cp-gvjxcdgkb3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Heilandt",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Sülzburgstr. 1",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.916035,
+        "lon": 6.927329
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true,
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "sells_beans": true,
+      "operator": {
+        "name": "HEILANDT GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG"
+      },
+      "links": {
+        "website": "https://www.heilandt.de/",
+        "instagram": "https://www.instagram.com/heilandt/",
+        "facebook": "https://www.facebook.com/heilandt/"
+      },
+      "xref": {
+        "overture": "fed33cba-b0e9-463d-b9a0-1455a4679227"
+      }
+    },
+    {
+      "id": "cp-gxvbwkb6ag",
+      "type": "CafeOrCoffeeShop",
+      "name": "moxxa.caffè",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Aachener Straße 22",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.936608,
+        "lon": 6.936531
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true,
+        "pour_over": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "focus": "balanced"
+      },
+      "sells_beans": true,
+      "sells_equipment": true,
+      "operator": {
+        "name": "moxxa.caffè OHG",
+        "legal_form": "OHG"
+      },
+      "links": {
+        "website": "https://www.moxxacaffe.net/de/"
+      },
+      "xref": {
+        "overture": "a4961bfc-44b0-4b98-a607-c709317d6fbd"
+      }
+    },
+    {
+      "id": "cp-hatdmrfvmz",
+      "type": "CafeOrCoffeeShop",
+      "name": "Meine Ecke Specialty Coffee",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Leonhard-Tietz-Straße 4",
+        "postal_code": "50676"
+      },
+      "location": {
+        "lat": 50.934121,
+        "lon": 6.952414
+      },
+      "opening_hours": "Mo-Sa 08:00-18:00; Su 09:00-17:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "decaf": true,
+        "pour_over": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "reusable_cup_systems": [
+        "own_cup"
+      ],
+      "prices": {
+        "cappuccino": {
+          "amount": 3.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://meineeckecoffee.de/speisekarte"
+        }
+      },
+      "links": {
+        "website": "https://meineeckecoffee.de/",
+        "instagram": "https://www.instagram.com/meineeckecoffee/"
+      }
+    },
+    {
+      "id": "cp-hcxk3yz7hd",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Osterspey",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Luxemburger Str. 267",
+        "postal_code": "50939"
+      },
+      "location": {
+        "lat": 50.915939,
+        "lon": 6.928057
+      },
+      "opening_hours": "Tu-Su 10:00-17:00; Mo off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Schamong"
+        }
+      ],
+      "links": {
+        "website": "https://cafe-osterspey.de/",
+        "instagram": "https://www.instagram.com/cafe_osterspey/"
+      },
+      "xref": {
+        "overture": "5f6b2da2-613f-4722-b050-7ba5cb9864db"
+      }
+    },
+    {
+      "id": "cp-hg7gsq7d69",
+      "type": "CafeOrCoffeeShop",
+      "name": "Perisa Cafe",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Str. 199",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.945902,
+        "lon": 6.925763
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true,
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://persia-cafe-koeln.eatbu.com/"
+      },
+      "xref": {
+        "overture": "38be738f-1ac1-4764-8830-c4b97ad60ba8"
+      }
+    },
+    {
+      "id": "cp-hq6dvfat7z",
+      "type": "CafeOrCoffeeShop",
+      "name": "ERNST Kaffeeröster",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Weyertal 32",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.923374,
+        "lon": 6.927797
+      },
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa,Su 10:00-18:00; PH 10:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "links": {
+        "website": "https://www.ernst-kaffee.de/de-de"
+      },
+      "xref": {
+        "overture": "e01db2ef-eaa5-47f8-87a4-5d2d641d768b"
+      }
+    },
+    {
+      "id": "cp-je30xdzd2x",
+      "type": "CafeOrCoffeeShop",
+      "name": "LAP Coffee",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Chlodwigpl. 2",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.920809,
+        "lon": 6.959948
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "cold_brew": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 2.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-09",
+          "source_url": "https://www.lap.coffee/menu"
+        }
+      },
+      "operator": {
+        "name": "Micro Retail Technologies MRT GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 252024"
+      },
+      "links": {
+        "website": "https://www.lap.coffee/"
+      },
+      "xref": {
+        "overture": "e75d1def-d497-4d06-9a2c-82cd4e9df832"
+      }
+    },
+    {
+      "id": "cp-jfavmrwsew",
+      "type": "CafeOrCoffeeShop",
+      "name": "Meta Caféthek",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Siegburger Str. 385-387",
+        "postal_code": "51105"
+      },
+      "location": {
+        "lat": 50.915632,
+        "lon": 6.992385
+      },
+      "opening_hours": "Mo,We-Su 10:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "GEPA"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "wifi": true
+      },
+      "food": {
+        "lunch": true,
+        "breakfast": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://meta-cafethek.de/speisekarte/"
+        }
+      },
+      "links": {
+        "website": "https://meta-cafethek.de/",
+        "instagram": "https://www.instagram.com/metakoeln/",
+        "facebook": "https://www.facebook.com/meta.koeln/"
+      },
+      "xref": {
+        "overture": "573608ef-8044-4ab6-a967-44bbe48bffbc"
+      }
+    },
+    {
+      "id": "cp-jxn080nv5m",
+      "type": "CafeOrCoffeeShop",
+      "name": "Fassbender",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Mittelstraße 12–14",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.936916,
+        "lon": 6.944205
+      },
+      "opening_hours": "Mo-Sa 09:30-19:00; Su,PH 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4.3,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://www.fassbender.de/wp-content/uploads/Fassbender_Speisekarte_Ko%CC%88Mi_0726.pdf"
+        }
+      },
+      "operator": {
+        "name": "Fassbender GenussKultur GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 15178"
+      },
+      "links": {
+        "website": "https://www.fassbender.de/"
+      },
+      "xref": {
+        "overture": "9ac8b4b1-ac86-4d03-b712-358e37ccabbb"
+      }
+    },
+    {
+      "id": "cp-k3xpq8mrvd",
+      "type": "CafeOrCoffeeShop",
+      "name": "Begegnungscafé St. Mocca",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Am Rosengarten 2",
+        "postal_code": "50827"
+      },
+      "location": {
+        "lat": 50.963909,
+        "lon": 6.89955
+      },
+      "opening_hours": "Mo off; Tu,We,Th,Fr 09:00-18:00; Sa 10:00-18:00; Su,PH 14:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Schamong Kaffee"
+        }
+      ],
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://www.sankt-mocca.de/"
+      },
+      "xref": {
+        "overture": "93d9e3c8-2142-4060-bfb0-b4bcb0c80e01"
+      }
+    },
+    {
+      "id": "cp-k6svrcr71a",
+      "type": "CafeOrCoffeeShop",
+      "name": "Heilandt",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 319",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.966208,
+        "lon": 6.953249
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "card_payment": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "sells_equipment": true,
+      "reusable_cup_systems": [
+        "vytal"
+      ],
+      "operator": {
+        "name": "Heilandt GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG"
+      },
+      "links": {
+        "website": "https://www.heilandt.de/",
+        "instagram": "https://www.instagram.com/heilandt/",
+        "facebook": "https://www.facebook.com/heilandt/"
+      },
+      "xref": {
+        "overture": "369a2bfe-e0ed-4a88-989a-ca38ca244120"
+      }
+    },
+    {
+      "id": "cp-k6y4zvcdmb",
+      "type": "CafeOrCoffeeShop",
+      "name": "La Cafête",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hardtstraße 2",
+        "postal_code": "50939"
+      },
+      "location": {
+        "lat": 50.912564,
+        "lon": 6.927175
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://la-cafete.de/"
+      },
+      "xref": {
+        "overture": "85111158-8441-422f-bb0e-a604cbd74e1a"
+      }
+    },
+    {
+      "id": "cp-kfxq9aqr11",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Extrablatt",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Breite Straße 92–98",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.938952,
+        "lon": 6.947949
+      },
+      "opening_hours": "Mo-Th 09:00-22:00; Fr,Sa 09:00-23:00; Su 09:00-20:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "amenities": {
+        "wifi": true,
+        "card_payment": true,
+        "outdoor_seating": true,
+        "vegan_options": true,
+        "kids_friendly": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "coffee_led"
+      },
+      "operator": {
+        "name": "Pure Gastronomie GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 72881"
+      },
+      "links": {
+        "website": "https://cafe-extrablatt.de/standorte/details/cafe-extrablatt-koeln-breite-strasse"
+      },
+      "xref": {
+        "overture": "bf06ffb7-c1b7-4533-9ace-088f759152d3"
+      }
+    },
+    {
+      "id": "cp-kmjsgch2zw",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Caprista",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Flandrische Str. 15",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.937001,
+        "lon": 6.938106
+      },
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "food_led"
+      },
+      "operator": {
+        "name": "Caprista GmbH & Co KG",
+        "legal_form": "GmbH & Co KG",
+        "register_id": "HRA 37002"
+      },
+      "links": {
+        "website": "https://www.caprista.de/",
+        "instagram": "https://www.instagram.com/cafecaprista/"
+      },
+      "xref": {
+        "overture": "e5d0ca73-f7da-4711-a23f-f6ae794b9e8d"
+      }
+    },
+    {
+      "id": "cp-ksvzez5wea",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Rotkehlchen",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Breuerstraße 10",
+        "postal_code": "51103"
+      },
+      "location": {
+        "lat": 50.939083,
+        "lon": 7.005989
+      },
+      "opening_hours": "Mo-Su 10:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Schamong"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://caferotkehlchen.de/",
+        "instagram": "https://www.instagram.com/cafe_rotkehlchen/",
+        "facebook": "https://www.facebook.com/caferotkehlchen/"
+      },
+      "xref": {
+        "overture": "673a3ab4-2322-494b-a89b-5e895d48a504"
+      }
+    },
+    {
+      "id": "cp-m2zpxyk9fb",
+      "type": "CafeOrCoffeeShop",
+      "name": "Klostercafé",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Kölner Straße 64",
+        "postal_code": "51149"
+      },
+      "location": {
+        "lat": 50.947259,
+        "lon": 6.84445
+      },
+      "opening_hours": "Mo-Fr 09:30-17:00; Sa 10:00-15:45; Su,PH off",
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true,
+        "wheelchair_accessible": true
+      },
+      "food": {
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "operator": {
+        "name": "Alexianer START GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 5916"
+      },
+      "links": {
+        "website": "https://alexianer-klostergaertnerei-koeln.de/",
+        "instagram": "https://www.instagram.com/alexianer_klostergaertnerei/"
+      },
+      "xref": {
+        "overture": "75bdcbfe-d91b-42de-8e1d-0365edc3d2bb"
+      }
+    },
+    {
+      "id": "cp-m7k7wh0jta",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cà Phê Sips",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 415",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.971157,
+        "lon": 6.951679
+      },
+      "opening_hours": "Mo-Fr 10:00-18:00; Sa 10:00-15:00; Su,PH off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "prices": {
+        "cappuccino": {
+          "amount": 4,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://caphesips.de/menue/"
+        }
+      },
+      "links": {
+        "website": "https://caphesips.de/",
+        "instagram": "https://www.instagram.com/caphesips/"
+      },
+      "xref": {
+        "overture": "203ee31b-923a-4133-b2b1-8885013de768"
+      }
+    },
+    {
+      "id": "cp-mk1v4d4a4a",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Extrablatt",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Alter Markt 28",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.938349,
+        "lon": 6.960406
+      },
+      "opening_hours": "Mo-Fr 08:30+; Sa,Su,PH 09:00+",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "amenities": {
+        "wifi": true,
+        "card_payment": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "coffee_led"
+      },
+      "operator": {
+        "name": "Café Extrablatt Alter Markt GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 81017"
+      },
+      "links": {
+        "website": "https://cafe-extrablatt.de/standorte/details/cafe-extrablatt-koeln-alter-markt"
+      },
+      "xref": {
+        "overture": "9a9a1393-2e3a-4a42-9785-2023a1880a09"
+      }
+    },
+    {
+      "id": "cp-mpwsq9vjny",
+      "type": "CafeOrCoffeeShop",
+      "name": "Kaffeebar Presswerk",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Domstraße 54",
+        "postal_code": "50668"
+      },
+      "location": {
+        "lat": 50.94776,
+        "lon": 6.95928
+      },
+      "opening_hours": "Mo-Fr 08:00-17:30; Sa,Su 10:00-16:30",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "batch_brew": true,
+        "decaf": true,
+        "plant_milk": true,
+        "cold_brew": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "http://www.presswerk-koeln.de/",
+        "instagram": "https://www.instagram.com/presswerk_kaffeebar/",
+        "facebook": "https://www.facebook.com/presswerkkaffeebar/"
+      },
+      "xref": {
+        "overture": "3de89404-cfbd-4fc9-9f6e-166d6529a51e"
+      }
+    },
+    {
+      "id": "cp-n03eg2ywta",
+      "type": "CafeOrCoffeeShop",
+      "name": "Galestro",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Gürzenichstr. 7",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.936343,
+        "lon": 6.95674
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "links": {
+        "website": "https://www.galestro.com/",
+        "instagram": "https://www.instagram.com/galestro_caffe/",
+        "facebook": "https://www.facebook.com/friends.of.galestro/"
+      },
+      "xref": {
+        "overture": "6dd3f7f7-37dd-49d9-97e6-d43b2e60fb77"
+      }
+    },
+    {
+      "id": "cp-n51gz2z3pv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Haferkater",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Trankgasse 11",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.943154,
+        "lon": 6.958199
+      },
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Niehoff"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "card_payment": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "Haferkater GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 187883"
+      },
+      "links": {
+        "website": "https://haferkater.com/",
+        "instagram": "https://www.instagram.com/haferkater/"
+      },
+      "xref": {
+        "overture": "1203e78d-c952-4bb7-a35e-5c8d8496321d"
+      }
+    },
+    {
+      "id": "cp-n8dp75yh2n",
+      "type": "CafeOrCoffeeShop",
+      "name": "Visavis",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Westendstraße 8",
+        "postal_code": "50827"
+      },
+      "location": {
+        "lat": 50.970195,
+        "lon": 6.885542
+      },
+      "opening_hours": "Mo,We,Th,Fr,Su 11:30-18:00; Tu off; Sa off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://visavis-koeln.de/getranke/"
+        }
+      },
+      "links": {
+        "website": "https://visavis-koeln.de/"
+      },
+      "xref": {
+        "overture": "fbe8ab09-2270-43ea-bc2a-fad05aa496f1"
+      }
+    },
+    {
+      "id": "cp-nb8n7ab55t",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Wanda",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Zum Alten Paulshof 1-3",
+        "postal_code": "51147"
+      },
+      "location": {
+        "lat": 50.856921,
+        "lon": 7.081605
+      },
+      "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:00-15:00; Su 09:00-13:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true,
+        "lunch": true,
+        "focus": "balanced"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://cafe-wanda.de/speisen-getraenke/"
+        }
+      },
+      "operator": {
+        "name": "Eltzhof Gastronomie & Veranstaltungs GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 68462"
+      },
+      "links": {
+        "website": "https://cafe-wanda.de/",
+        "instagram": "https://www.instagram.com/cafe_wanda_kayser/"
+      },
+      "xref": {
+        "overture": "738fa3ec-b364-4419-b90c-1a79e63fb613"
+      }
+    },
+    {
+      "id": "cp-nd86fhg0y2",
+      "type": "CafeOrCoffeeShop",
+      "name": "about coffee.",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Glockengasse 68",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.938593,
+        "lon": 6.949721
+      },
+      "opening_hours": "Mo-Fr 09:00-17:00; Sa 10:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://sites.google.com/aboutcoffee.cafe/aboutcoffee?usp=sharing&fbclid=PAAaaisdynK0LCo5MfrOz6Jjo3fz151lI2VJzzgPOUXtbVsafpxqIJ2n5xUHE_aem_AWnsxeiTOrJDrm4YhMwwFjjNOnSBlGwhkprttAaL7_h_dxk2WCHPUtJH24_MWFCLwZ0"
+      },
+      "xref": {
+        "overture": "1f08ead3-e092-4a05-a813-9087b3d53a50"
+      }
+    },
+    {
+      "id": "cp-nf64z1tddy",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bomdia Cafe Köln",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Vorgebirgstraße 1C",
+        "postal_code": "50677"
+      },
+      "location": {
+        "lat": 50.922903,
+        "lon": 6.952364
+      },
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Julius Meinl"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "links": {
+        "website": "https://bomdiacafe.de/",
+        "instagram": "https://www.instagram.com/bom_dia_cologne/"
+      },
+      "xref": {
+        "overture": "f775aed8-f59e-408d-92c3-3ef6ead3beab"
+      }
+    },
+    {
+      "id": "cp-nf7mwhc8ek",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 230",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.962431,
+        "lon": 6.954217
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100006460",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "376a47db-5027-4953-9f6f-e7d2cf17db50"
+      }
+    },
+    {
+      "id": "cp-nh8x38a9vn",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café No. 5",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Barbarossapl. 5",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.928951,
+        "lon": 6.941033
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://www.cafenumber5.de/",
+        "instagram": "https://www.instagram.com/cafe.number.5/"
+      },
+      "xref": {
+        "overture": "0a4b6e94-bf78-41e7-8243-42cb49b7573f"
+      }
+    },
+    {
+      "id": "cp-nxn8rtkf2t",
+      "type": "CafeOrCoffeeShop",
+      "name": "Savoca Caffè",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Gottesweg 139",
+        "postal_code": "50939"
+      },
+      "location": {
+        "lat": 50.914304,
+        "lon": 6.931023
+      },
+      "opening_hours": "Mo-Su 08:00-23:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://savoca-caffe.de"
+        }
+      },
+      "links": {
+        "website": "https://savoca-caffe.de/",
+        "instagram": "https://www.instagram.com/savocacaffe/"
+      },
+      "xref": {
+        "overture": "babab551-41b5-4573-883e-6541c337702f"
+      }
+    },
+    {
+      "id": "cp-nybf779t9g",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cup of Sun",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Severinstraße 216",
+        "postal_code": "50676"
+      },
+      "location": {
+        "lat": 50.930579,
+        "lon": 6.957071
+      },
+      "opening_hours": "Tu-Su 09:00-17:00; Mo off",
+      "description": "Cup of Sun is a place in Köln that serves specialty coffee. It serves coffee from Sonndag and Holm. It serves breakfast. Cakes are baked in house. It also sells beans to take home. It is open on Sundays.",
+      "specialty_tier": "B",
+      "roasters_served": [
+        {
+          "name": "Sonndag"
+        },
+        {
+          "name": "Holm"
+        }
+      ],
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true,
+        "focus": "balanced"
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://cupofsuncafe.de/"
+      },
+      "xref": {
+        "overture": "883beac6-a278-4b65-992a-56d715c7fcb4"
+      }
+    },
+    {
+      "id": "cp-nz1y1xnpch",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café del SOL 福岡人氣第一鬆餅",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln"
+      },
+      "location": {
+        "lat": 50.949348,
+        "lon": 6.941769
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.cafedelsol.de/",
+        "instagram": "https://www.instagram.com/cafedelsoldeutschland/",
+        "facebook": "https://www.facebook.com/cafedelsoldeutschland/"
+      },
+      "xref": {
+        "overture": "c1b3a36f-a439-4996-a403-c2552e8b4f23"
+      }
+    },
+    {
+      "id": "cp-p2dyj4pq08",
+      "type": "CafeOrCoffeeShop",
+      "name": "omo",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Anna-Schneider-Steig 3",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.925159,
+        "lon": 6.967022
+      },
+      "opening_hours": "Mo off; Tu-Fr 09:00-17:00; Sa,Su 10:00-18:00",
+      "description": "omo is a specialty coffee place in Köln that roasts its own beans. It also sells beans to take home and offers courses or cuppings. It is open on Sundays.",
+      "specialty_tier": "A",
+      "roasts_own_beans": true,
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "offers_courses": true,
+      "links": {
+        "website": "https://omokaffee.de/",
+        "instagram": "https://www.instagram.com/omo_kaffee/"
+      }
+    },
+    {
+      "id": "cp-pf5htcxdp8",
+      "type": "CafeOrCoffeeShop",
+      "name": "Jansen by Fassbender Köln",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Obenmarspforten 7",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.937772,
+        "lon": 6.956905
+      },
+      "opening_hours": "Mo-Sa 10:00-18:00; Su,PH 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true,
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "Fassbender GenussKultur GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 15178"
+      },
+      "links": {
+        "website": "https://www.fassbender.de/"
+      },
+      "xref": {
+        "overture": "512b0d34-8aee-45e3-aa1c-94fbeba201e5"
+      }
+    },
+    {
+      "id": "cp-pjfnt3a7mv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café KOGI",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Auf dem Berlich 7",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.939508,
+        "lon": 6.947738
+      },
+      "opening_hours": "Mo-Fr 09:30-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "plant_milk": true,
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4.2,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://www.dascafekogi.de/men%C3%BC"
+        }
+      },
+      "links": {
+        "website": "https://www.dascafekogi.de/",
+        "instagram": "https://www.instagram.com/cafe_kogi/"
+      },
+      "xref": {
+        "overture": "d92b8606-b493-4be6-bb72-b46b415d591f"
+      }
+    },
+    {
+      "id": "cp-pkg36z7t7h",
+      "type": "CafeOrCoffeeShop",
+      "name": "Starbucks",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln"
+      },
+      "location": {
+        "lat": 50.966949,
+        "lon": 7.010435
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true
+      },
+      "amenities": {
+        "card_payment": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.starbucks.de/de/",
+        "instagram": "https://www.instagram.com/starbucksde/",
+        "facebook": "https://www.facebook.com/starbucksdeutschland/"
+      },
+      "xref": {
+        "overture": "9e3aa45a-1f16-4f68-a9dc-57ed6752dd3c"
+      }
+    },
+    {
+      "id": "cp-pyz2qg2jcn",
+      "type": "CafeOrCoffeeShop",
+      "name": "Der Tiroler",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Perlenpfuhl 37",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.937062,
+        "lon": 6.954162
+      },
+      "opening_hours": "Mo-Sa 10:30-20:00; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "cold_brew": true,
+        "pour_over": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.cafe-dertiroler.de/"
+      },
+      "xref": {
+        "overture": "93fdbb07-8c32-4ab9-bfe5-9f9bd8799f0e"
+      }
+    },
+    {
+      "id": "cp-q2kf6ssv1w",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Goldjunge Sülz",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Zülpicher Straße 282",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.922693,
+        "lon": 6.922679
+      },
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Heilandt"
+        }
+      ],
+      "serving": {
+        "plant_milk": true,
+        "espresso": true
+      },
+      "amenities": {
+        "dogs_allowed": true,
+        "vegan_options": true,
+        "laptop_friendly": true,
+        "outdoor_seating": true,
+        "kids_friendly": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "reusable_cup_systems": [
+        "own_cup"
+      ],
+      "operator": {
+        "name": "Mitzner & Erdmann GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://www.cafe-goldjunge.de/",
+        "instagram": "https://www.instagram.com/cafegoldjunge/"
+      },
+      "xref": {
+        "overture": "261bc29e-4bae-4235-9d4e-b904b987c445"
+      }
+    },
+    {
+      "id": "cp-q3c8p3j6wh",
+      "type": "CafeOrCoffeeShop",
+      "name": "VAN DYCK Espressobar Ehrenfeld",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Körnerstraße 43",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.949227,
+        "lon": 6.922668
+      },
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa 09:00-18:00; Su off",
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Van Dyck Rösterei GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 33195"
+      },
+      "links": {
+        "website": "https://vandyckkaffee.de/",
+        "instagram": "https://www.instagram.com/vandyckroesterei/",
+        "facebook": "https://www.facebook.com/vandyckroesterei/"
+      },
+      "xref": {
+        "overture": "cd66c526-a18a-4781-b9cc-c7dc400ae47b"
+      }
+    },
+    {
+      "id": "cp-qaq9s62kr9",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe DiMi",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Brüsseler Str. 4",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.933513,
+        "lon": 6.934593
+      },
+      "opening_hours": "Tu-Su 12:00-19:00; Mo off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Julius Meinl"
+        }
+      ],
+      "amenities": {
+        "wifi": true
+      },
+      "reusable_cup_systems": [
+        "own_cup"
+      ],
+      "links": {
+        "website": "http://cafedimi.de/",
+        "instagram": "https://www.instagram.com/cafedimi/"
+      },
+      "xref": {
+        "overture": "afba0b3e-2c4f-4019-953b-0cc29a7251a8"
+      }
+    },
+    {
+      "id": "cp-qb7061qev7",
+      "type": "CafeOrCoffeeShop",
+      "name": "épi Boulangerie Patisserie",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 32",
+        "postal_code": "50670"
+      },
+      "location": {
+        "lat": 50.952625,
+        "lon": 6.957421
+      },
+      "opening_hours": "Mo-Fr 07:00-18:00; Sa 07:00-17:00; Su 07:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "èpi GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 26297"
+      },
+      "links": {
+        "website": "https://www.epi-boulangerie.de/"
+      },
+      "xref": {
+        "overture": "7acf41d4-3901-49ac-9c14-d03204c35046"
+      }
+    },
+    {
+      "id": "cp-qjcdtgrf2m",
+      "type": "CafeOrCoffeeShop",
+      "name": "Nale",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Darmstädter Straße 19",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.919196,
+        "lon": 6.962024
+      },
+      "opening_hours": "Mo-Fr 11:30-21:00; Sa,Su 10:00-21:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 2.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://nale-food.de/getraenke"
+        }
+      },
+      "links": {
+        "website": "https://nale-food.de/",
+        "facebook": "https://www.facebook.com/nale-1452480961669637/"
+      },
+      "xref": {
+        "overture": "43a3267c-665c-4ca7-934e-ac100889a54f"
+      }
+    },
+    {
+      "id": "cp-rfp0td1w6x",
+      "type": "CafeOrCoffeeShop",
+      "name": "The Coffice",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Charles-de-Gaulle-Platz 1D",
+        "postal_code": "50679"
+      },
+      "location": {
+        "lat": 50.94202,
+        "lon": 6.971272
+      },
+      "opening_hours": "Mo-Th 08:00-16:00; Fr 08:00-15:00; Sa,Su off",
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://thecoffice.de/",
+        "instagram": "https://www.instagram.com/cofficecologne/",
+        "facebook": "https://www.facebook.com/thecofficecologne/"
+      },
+      "xref": {
+        "overture": "8fb35154-6e52-447a-9bbf-685dd5308da3"
+      }
+    },
+    {
+      "id": "cp-rk4wyxvck6",
+      "type": "CafeOrCoffeeShop",
+      "name": "épi Boulangerie Patisserie",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 252",
+        "postal_code": "50670"
+      },
+      "location": {
+        "lat": 50.963622,
+        "lon": 6.954105
+      },
+      "opening_hours": "Mo-Sa 07:00-18:00; Su 08:00-17:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "èpi GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 26297"
+      },
+      "links": {
+        "website": "https://www.epi-boulangerie.de/standorte-und-oeffnungszeiten"
+      },
+      "xref": {
+        "overture": "25bc84d5-db87-43fc-a380-ea473bc1a1de"
+      }
+    },
+    {
+      "id": "cp-rkcfgdhte7",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Wo ist Tom?",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Zülpicher Straße 309",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.921643,
+        "lon": 6.920426
+      },
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa,Su 10:00-19:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true,
+        "wheelchair_accessible": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Perspektive Lebenshilfe gGmbH Köln",
+        "register_id": "HRB 76851"
+      },
+      "links": {
+        "website": "https://www.wo-ist-tom.de/de/index.php",
+        "instagram": "https://www.instagram.com/woisttom/"
+      },
+      "xref": {
+        "overture": "c8f27e98-3879-4048-8883-2fcc18907f23"
+      }
+    },
+    {
+      "id": "cp-s5b6nys80s",
+      "type": "CafeOrCoffeeShop",
+      "name": "cafecafe - urban eats & coffee",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Aachener Straße 45",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.936474,
+        "lon": 6.933539
+      },
+      "opening_hours": "Mo-Sa 09:00-18:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Bravi Caffè"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "card_payment": true,
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://cafecafe.eatbu.com/",
+        "instagram": "https://www.instagram.com/cafecafe_koeln/",
+        "facebook": "https://www.facebook.com/cafecafe.koeln/"
+      },
+      "xref": {
+        "overture": "a5c864ff-77c6-4c31-b809-702afa01242e"
+      }
+    },
+    {
+      "id": "cp-s6k8pbq0z6",
+      "type": "CafeOrCoffeeShop",
+      "name": "Funkhaus",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Wallrafplatz 5",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.940343,
+        "lon": 6.955906
+      },
+      "opening_hours": "Su-Th 08:30-24:00; Fr-Sa 08:30-01:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "Funkhaus Gastronomie GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 76165"
+      },
+      "links": {
+        "website": "https://www.funkhaus-koeln.de/",
+        "instagram": "https://www.instagram.com/funkhaus_restaurant/",
+        "facebook": "https://www.facebook.com/funkhaus.koeln/"
+      },
+      "xref": {
+        "overture": "4270d83b-71e1-460a-b364-ebd95e8c2e5a"
+      }
+    },
+    {
+      "id": "cp-s763nts6a7",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Hinz & Kunz",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Schallstraße 34",
+        "postal_code": "50931"
+      },
+      "location": {
+        "lat": 50.931164,
+        "lon": 6.918494
+      },
+      "opening_hours": "Mo-Fr 09:00-17:00; Sa,Su,PH 09:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "HEILANDT Kaffeemanufaktur"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://hinzundkunz.cafe/speisen-und-getraenke/"
+        }
+      },
+      "links": {
+        "website": "https://hinzundkunz.cafe/",
+        "facebook": "https://www.facebook.com/cafehinzundkunz/"
+      },
+      "xref": {
+        "overture": "2f4aac00-00bd-4750-8871-b2fcfbfee50e"
+      }
+    },
+    {
+      "id": "cp-s79aqj8wm2",
+      "type": "CafeOrCoffeeShop",
+      "name": "Crossy & Cream",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Breite Str. 101",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.938739,
+        "lon": 6.949629
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Crossy & Cream GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 19182"
+      },
+      "links": {
+        "website": "https://crossyandcream.de/",
+        "instagram": "https://www.instagram.com/crossyandcream_/"
+      },
+      "xref": {
+        "overture": "b14b3e51-9cfb-43be-b2a5-a686b473f691"
+      }
+    },
+    {
+      "id": "cp-sbpx0dqezk",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café de Joy",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Sürther Hauptstraße 57",
+        "postal_code": "50999"
+      },
+      "location": {
+        "lat": 50.862137,
+        "lon": 7.007132
+      },
+      "opening_hours": "Mo,Tu off; We 14:00-17:00; Th-Su 10:00-17:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.8,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://cafedejoy.de/wp-content/uploads/2024/01/Cafe-De-Joy-Menue-Januar-2024-2.pdf"
+        }
+      },
+      "links": {
+        "website": "https://cafedejoy.de/",
+        "instagram": "https://www.instagram.com/cafedejoy/",
+        "facebook": "https://www.facebook.com/cafedejoykoeln/"
+      },
+      "xref": {
+        "overture": "ad1f0437-bd85-4dd7-9714-a4d7e2f554d6"
+      }
+    },
+    {
+      "id": "cp-shbqm3wpm0",
+      "type": "CafeOrCoffeeShop",
+      "name": "MELT Cookies",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Pfeilstraße 43",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.937842,
+        "lon": 6.941656
+      },
+      "opening_hours": "Mo-Fr 10:00-19:00; Sa 10:00-20:00; Su 11:00-17:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "operator": {
+        "name": "MELT Cookies GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 107771"
+      },
+      "links": {
+        "website": "https://meltcookies.de/"
+      },
+      "xref": {
+        "overture": "e5678671-5a75-4031-ae11-89296dd39e38"
+      }
+    },
+    {
+      "id": "cp-snaev64qyf",
+      "type": "CafeOrCoffeeShop",
+      "name": "Rhein Street Coffee",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Luisenstraße 10",
+        "postal_code": "50679"
+      },
+      "location": {
+        "lat": 50.936032,
+        "lon": 6.975448
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "coffee_led"
+      },
+      "offers_courses": true,
+      "prices": {
+        "cappuccino": {
+          "amount": 4,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://rheinstreet-deutz.de/"
+        }
+      },
+      "links": {
+        "website": "https://rheinstreet-deutz.de/",
+        "instagram": "https://www.instagram.com/rheinstreetdeutz/"
+      },
+      "xref": {
+        "overture": "8fbd59f3-9cbd-4132-ae3d-2fcf9f9a3802"
+      }
+    },
+    {
+      "id": "cp-t53eg9s4qr",
+      "type": "CafeOrCoffeeShop",
+      "name": "Mapita",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Dellbrücker Hauptstraße 139",
+        "postal_code": "51069"
+      },
+      "location": {
+        "lat": 50.977585,
+        "lon": 7.071365
+      },
+      "opening_hours": "Mo-Fr 10:00-18:30; Sa 10:00-14:00; Su,PH off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Van Dyck"
+        }
+      ],
+      "amenities": {
+        "vegan_options": true
+      },
+      "offers_courses": true,
+      "links": {
+        "website": "https://www.mapita.de/",
+        "facebook": "https://www.facebook.com/mapita.cafe/"
+      },
+      "xref": {
+        "overture": "75beb585-4f0e-4290-babb-4583c6af09a9"
+      }
+    },
+    {
+      "id": "cp-thehqz3745",
+      "type": "CafeOrCoffeeShop",
+      "name": "Copenhagen Coffee Lab",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Breite Str. 122",
+        "postal_code": "50677"
+      },
+      "location": {
+        "lat": 50.938752,
+        "lon": 6.945542
+      },
+      "specialty_tier": "none",
+      "food": {
+        "focus": "balanced"
+      },
+      "links": {
+        "website": "https://copenhagencoffeelab.com/en"
+      },
+      "xref": {
+        "overture": "365971c1-f4be-49cc-b711-dbb080a6c30c"
+      }
+    },
+    {
+      "id": "cp-tm2bwm00jr",
+      "type": "CafeOrCoffeeShop",
+      "name": "The Coffee Gang",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hohenstaufenring 19",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.930274,
+        "lon": 6.940897
+      },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://www.thecoffeegang.de/"
+      },
+      "xref": {
+        "overture": "3214e461-9e11-44ff-90dd-2f9551f92b34"
+      }
+    },
+    {
+      "id": "cp-ttnxks8655",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Wölkchen - Nippes",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Kempener Str. 34",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.962446,
+        "lon": 6.95118
+      },
+      "opening_hours": "Mo off; Tu-Sa 09:30-18:00; Su,PH 10:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "dogs_allowed": false,
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.cafe-woelkchen.de/",
+        "instagram": "https://www.instagram.com/cafewoelkchen/"
+      },
+      "xref": {
+        "overture": "4ab34363-a92a-4c82-b1e3-06a9f399c2f9"
+      }
+    },
+    {
+      "id": "cp-tx4skm1z03",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Kult",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Chlodwigplatz 4",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.920922,
+        "lon": 6.959983
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "operator": {
+        "name": "Cafe Kult Gastro GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://www.cafekult.net/home",
+        "instagram": "https://www.instagram.com/cafekultcologne/",
+        "facebook": "https://www.facebook.com/cafekultkoeln/"
+      },
+      "xref": {
+        "overture": "b32018e2-725f-40e6-a629-6e7fee8423a5"
+      }
+    },
+    {
+      "id": "cp-ty49pegz3w",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Garden",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 196",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.960789,
+        "lon": 6.954795
+      },
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa,Su 09:00-19:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "wifi": true,
+        "kids_friendly": true,
+        "outdoor_seating": true,
+        "card_payment": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "balanced"
+      },
+      "links": {
+        "website": "https://cafegardenkoeln.eatbu.com/",
+        "instagram": "https://www.instagram.com/cafegardenkoeln/"
+      },
+      "xref": {
+        "overture": "024e1e18-eb32-4410-8a98-af115606f6af"
+      }
+    },
+    {
+      "id": "cp-v2djhvwq38",
+      "type": "CafeOrCoffeeShop",
+      "name": "Die Crêpe Bude",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Höninger Weg 204",
+        "postal_code": "50969"
+      },
+      "location": {
+        "lat": 50.910561,
+        "lon": 6.941314
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "plant_milk": true,
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.crepe-bude.de/",
+        "instagram": "https://www.instagram.com/crepebude/",
+        "facebook": "https://www.facebook.com/crepebude/"
+      },
+      "xref": {
+        "overture": "5fdff9b5-f17c-4c0c-9f9d-61fb153014d9"
+      }
+    },
+    {
+      "id": "cp-v2kye15br6",
+      "type": "CafeOrCoffeeShop",
+      "name": "épi Boulangerie Patisserie",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Dürener Straße 169",
+        "postal_code": "50931"
+      },
+      "location": {
+        "lat": 50.93081,
+        "lon": 6.915691
+      },
+      "opening_hours": "Mo-Su 08:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "food_led"
+      },
+      "operator": {
+        "name": "èpi GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 26297"
+      },
+      "links": {
+        "website": "https://www.epi-boulangerie.de/"
+      },
+      "xref": {
+        "overture": "a6835ed5-ac5f-4a71-a2c4-e55bade122ae"
+      }
+    },
+    {
+      "id": "cp-v813f0he0s",
+      "type": "CafeOrCoffeeShop",
+      "name": "WIEWALDI coffee roasters",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Kleiner Griechenmarkt 33",
+        "postal_code": "50676"
+      },
+      "location": {
+        "lat": 50.93211,
+        "lon": 6.94873
+      },
+      "opening_hours": "Tu-Fr 08:00-18:00; Sa 10:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "sells_equipment": true,
+      "links": {
+        "website": "https://wiewaldi-coffee.de/",
+        "instagram": "https://www.instagram.com/wiewaldi.coffee/"
+      },
+      "xref": {
+        "overture": "fc535558-e893-4199-8c5b-00bb8d8632ea"
+      }
+    },
+    {
+      "id": "cp-v83f2pz8s9",
+      "type": "CafeOrCoffeeShop",
+      "name": "HaPTiLu",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Kartäuserhof 2",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.922831,
+        "lon": 6.95664
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "http://www.haptilu.de/",
+        "facebook": "https://www.facebook.com/haptilu/"
+      },
+      "xref": {
+        "overture": "f1d695c8-599b-4c8d-ab0f-06f73c6b339e"
+      }
+    },
+    {
+      "id": "cp-vassb851fr",
+      "type": "CafeOrCoffeeShop",
+      "name": "zwoo Kaffeefenster, Ehrenfeld",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Körnerstraße 73",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.950116,
+        "lon": 6.923537
+      },
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa,Su 10:00-18:00; PH 10:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "sells_equipment": true,
+      "links": {
+        "website": "https://www.zwookaffee.de/",
+        "instagram": "https://www.instagram.com/zwookaffeeroester/"
+      },
+      "xref": {
+        "overture": "5d3acc72-5804-4fae-9e08-8ef36ae8dc13"
+      }
+    },
+    {
+      "id": "cp-vcn68h44dw",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café de Paris",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Benesisstraße 61",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.938039,
+        "lon": 6.942153
+      },
+      "opening_hours": "Mo-Th 09:00-24:00; Fr 09:00-01:00; Sa 09:00-01:00; Su 09:00-24:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "sells_beans": true,
+      "prices": {
+        "cappuccino": {
+          "amount": 4.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://cafe-de-paris.de/wp-content/uploads/karten/getraenkekarte.pdf"
+        }
+      },
+      "operator": {
+        "name": "Café de Paris GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 97528"
+      },
+      "links": {
+        "website": "https://cafe-de-paris.de/",
+        "instagram": "https://www.instagram.com/cafedepariscologne/",
+        "facebook": "https://www.facebook.com/cafedepariscologne/"
+      },
+      "xref": {
+        "overture": "a2788d1e-549a-4c99-97af-b264f4b2e6f2"
+      }
+    },
+    {
+      "id": "cp-vd60cn4fg0",
+      "type": "CafeOrCoffeeShop",
+      "name": "Lichtblick - Café + mehr",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Gisbertstraße 98",
+        "postal_code": "51061"
+      },
+      "location": {
+        "lat": 50.987477,
+        "lon": 6.992644
+      },
+      "opening_hours": "Tu-Fr 09:30-13:00,15:00-18:00; Sa 09:30-13:00; Su 14:00-17:00; Mo off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "balanced"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 2.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://lichtblick-cafe.de/speisekarte.pdf"
+        }
+      },
+      "links": {
+        "website": "https://www.lichtblick-cafe.de/"
+      },
+      "xref": {
+        "overture": "bcc6257b-f3aa-4b51-b854-78ae3256a7fc"
+      }
+    },
+    {
+      "id": "cp-vpjmvqjzyy",
+      "type": "CafeOrCoffeeShop",
+      "name": "DRIP. Coffee & Matcha Bar",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Sudermanstraße 12",
+        "postal_code": "50670"
+      },
+      "location": {
+        "lat": 50.951272,
+        "lon": 6.955761
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true,
+        "focus": "balanced"
+      },
+      "links": {
+        "website": "https://drip-cafe.de/",
+        "instagram": "https://www.instagram.com/drip.cafe_cgn/"
+      },
+      "xref": {
+        "overture": "f86731b7-106d-45fe-9ece-e6e3595396ab"
+      }
+    },
+    {
+      "id": "cp-w2bk56285a",
+      "type": "CafeOrCoffeeShop",
+      "name": "Fink",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Siebachstraße 50",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.960779,
+        "lon": 6.949999
+      },
+      "opening_hours": "We-Su 17:00-23:00; Mo,Tu off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.2,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://www.fink-nippes.de/resources/speisekarte/fink_getraenke.jpg"
+        }
+      },
+      "links": {
+        "website": "http://www.fink-nippes.de/"
+      },
+      "xref": {
+        "overture": "329303ba-b928-480f-a004-10109dc84503"
+      }
+    },
+    {
+      "id": "cp-w84apywzw6",
+      "type": "CafeOrCoffeeShop",
+      "name": "Radix & Anima",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Deutz-Mülheimer Str. 183",
+        "postal_code": "51063"
+      },
+      "location": {
+        "lat": 50.957507,
+        "lon": 6.993927
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "balanced"
+      },
+      "links": {
+        "website": "https://www.radixundanima.de/",
+        "instagram": "https://www.instagram.com/radixundanima/"
+      },
+      "xref": {
+        "overture": "712de778-5670-4c83-bfc3-e823eb6099ef"
+      }
+    },
+    {
+      "id": "cp-w9ecgjyzsh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Peva",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Martin-luther-platz 7-11",
+        "postal_code": "50677"
+      },
+      "location": {
+        "lat": 50.919496,
+        "lon": 6.953217
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true,
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://cafe-peva.eatbu.com/"
+      },
+      "xref": {
+        "overture": "eb067962-6607-442b-bd10-6130643f0877"
+      }
+    },
+    {
+      "id": "cp-wm9phenjqb",
+      "type": "CafeOrCoffeeShop",
+      "name": "Gallery4",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Lindenstraße 73",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.932552,
+        "lon": 6.933933
+      },
+      "opening_hours": "Mo-Fr 08:30-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "offers_courses": true,
+      "operator": {
+        "name": "GC Gallery Coffee UG (haftungsbeschränkt)",
+        "legal_form": "UG (haftungsbeschränkt)",
+        "register_id": "HRB 122285"
+      },
+      "links": {
+        "website": "https://gallery4.coffee/",
+        "instagram": "https://www.instagram.com/gallery4.coffee/"
+      },
+      "xref": {
+        "overture": "f5fec386-7013-4756-b724-fda4a93b6dc1"
+      }
+    },
+    {
+      "id": "cp-wnzn5wf3fn",
+      "type": "CafeOrCoffeeShop",
+      "name": "Galestro Bahnhofsvorplatz",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Bahnhofsvorplatz 1",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.942075,
+        "lon": 6.957221
+      },
+      "opening_hours": "Mo-Sa 07:30-21:00; Su,PH 09:30-20:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "operator": {
+        "name": "Galestro GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 87791"
+      },
+      "links": {
+        "website": "https://www.galestro.com/",
+        "instagram": "https://www.instagram.com/galestro_caffe/",
+        "facebook": "https://www.facebook.com/friends.of.galestro/"
+      },
+      "xref": {
+        "overture": "3087200a-82f1-4433-a7f6-7bae2fd7dfa4"
+      }
+    },
+    {
+      "id": "cp-wpdfqakmts",
+      "type": "CafeOrCoffeeShop",
+      "name": "pottery art café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Arndtstrasse 2",
+        "postal_code": "50676"
+      },
+      "location": {
+        "lat": 50.93328,
+        "lon": 6.943662
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://www.pottery-art-cafe.de/",
+        "instagram": "https://www.instagram.com/pottery_art_cafe_cologne/",
+        "facebook": "https://www.facebook.com/potteryartcafe/"
+      },
+      "xref": {
+        "overture": "0da7a3c9-2a4e-4375-9e95-b984779df5f1"
+      }
+    },
+    {
+      "id": "cp-wta796fm55",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Uferglück im Wiesenhaus",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Weidenweg 100",
+        "postal_code": "51105"
+      },
+      "location": {
+        "lat": 50.899211,
+        "lon": 6.997407
+      },
+      "opening_hours": "Mo,Th,Fr 11:00-19:00; Sa,Su,PH 10:00-19:00; Tu,We off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://uferglueck.de/media/speisekarte.pdf"
+        }
+      },
+      "links": {
+        "website": "https://uferglueck.de/",
+        "instagram": "https://www.instagram.com/cafe_uferglueck_im_wiesenhaus/"
+      },
+      "xref": {
+        "overture": "4ce2a042-6ef0-42af-bc3d-ef15a9ac90ea"
+      }
+    },
+    {
+      "id": "cp-wykc6cp897",
+      "type": "CafeOrCoffeeShop",
+      "name": "Starbucks",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Barbarossaplatz 2",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.9288,
+        "lon": 6.94138
+      },
+      "opening_hours": "Mo 07:00-19:30; Tu 07:00-19:30; We off; Th 07:00-19:30; Fr 07:00-19:30; Sa 08:00-19:30; Su 08:00-19:30",
+      "specialty_tier": "none",
+      "sells_beans": true,
+      "links": {
+        "website": "https://www.starbucks.co.uk/store-locator/81838-311117/koeln-barbarossaplatz",
+        "instagram": "https://www.instagram.com/starbucksuk/",
+        "facebook": "https://www.facebook.com/starbucksuk/"
+      },
+      "xref": {
+        "overture": "209c358c-84d8-49cb-9aa6-9f79e5aeacdd"
+      }
+    },
+    {
+      "id": "cp-x4j4p14awe",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Aachener Str. 1253",
+        "postal_code": "50858"
+      },
+      "location": {
+        "lat": 50.938121,
+        "lon": 6.835598
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100003564",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "4af5a540-efc7-411f-8d2d-d8e7c91b3f3c"
+      }
+    },
+    {
+      "id": "cp-x5gph6pcy2",
+      "type": "CafeOrCoffeeShop",
+      "name": "Ario Coffee Manufactory",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Zülpicher Straße 286",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.922655,
+        "lon": 6.922332
+      },
+      "opening_hours": "Mo-Fr 08:30-18:00; Sa,Su 09:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://ario-coffee.de/",
+        "instagram": "https://www.instagram.com/ario_coffee_manufactory/"
+      },
+      "xref": {
+        "overture": "1e49e345-9a0f-4d87-a02f-d8a3a0a60e97"
+      }
+    },
+    {
+      "id": "cp-x7ntqsgr0f",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bingo Club",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Otto-Fischer-Straße 9",
+        "postal_code": "50674"
+      },
+      "location": {
+        "lat": 50.926685,
+        "lon": 6.937953
+      },
+      "opening_hours": "Mo,We,Th 15:00-22:30; Tu off; Fr 15:00-24:00; Sa 12:00-24:00; Su 12:00-21:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://brettspielecafekoeln.de/speisekarte/"
+        }
+      },
+      "links": {
+        "website": "https://brettspielecafekoeln.de/",
+        "instagram": "https://www.instagram.com/bingoclubkoeln/",
+        "facebook": "https://www.facebook.com/brettspielecafekoeln/"
+      },
+      "xref": {
+        "overture": "0b48a099-8e58-43e7-a525-da50fbc7afef"
+      }
+    },
+    {
+      "id": "cp-xcrtck9npv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Löwen Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Severinstraße 54a",
+        "postal_code": "50678"
+      },
+      "location": {
+        "lat": 50.924585,
+        "lon": 6.958773
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "lunch": true,
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Franz Willick Kaffeegroßrösterei GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 111945"
+      },
+      "links": {
+        "website": "https://www.loewenkaffee.de/unser-cafe-in-koeln/"
+      },
+      "xref": {
+        "overture": "12bf3e7a-a828-43df-8b43-c434ed4dc518"
+      }
+    },
+    {
+      "id": "cp-xd6459r36t",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Schmitz",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hansaring 98",
+        "postal_code": "50670"
+      },
+      "location": {
+        "lat": 50.949697,
+        "lon": 6.955031
+      },
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Trombetta"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true,
+        "focus": "balanced"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.7,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://cafeschmitz.de/"
+        }
+      },
+      "links": {
+        "website": "https://cafeschmitz.de/",
+        "instagram": "https://www.instagram.com/cafeschmitzhansaring/"
+      },
+      "xref": {
+        "overture": "2fc59ba4-57dd-46d9-8f6c-6507c14befec"
+      }
+    },
+    {
+      "id": "cp-xe7e09zh0b",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Haselnussweg 33-35",
+        "postal_code": "50767"
+      },
+      "location": {
+        "lat": 51.011506,
+        "lon": 6.906997
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "b2820c3c-3208-4801-986f-c8819008a131"
+      }
+    },
+    {
+      "id": "cp-xekehcgdpw",
+      "type": "CafeOrCoffeeShop",
+      "name": "quer durch's beet",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Lindenthalgürtel 105",
+        "postal_code": "50935"
+      },
+      "location": {
+        "lat": 50.927484,
+        "lon": 6.908824
+      },
+      "opening_hours": "Mo-Fr 12:00-16:00; Sa,Su off",
+      "description": "quer durch's beet is a food-led place in Köln that serves specialty coffee. It serves coffee from Kaffee ERNST. The menu includes espresso drinks, with plant-based milk available. It serves lunch. Cakes are baked in house.",
+      "specialty_tier": "B",
+      "roasters_served": [
+        {
+          "name": "Kaffee ERNST"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://querdurchsbeet-koeln.de/menue/"
+        }
+      },
+      "links": {
+        "website": "https://querdurchsbeet-koeln.de/",
+        "facebook": "https://www.facebook.com/querdurchsbeetkoeln/"
+      },
+      "xref": {
+        "overture": "b8403120-22f1-40f8-bc59-8c6ffc75bb94"
+      }
+    },
+    {
+      "id": "cp-xpyzppw3yb",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffee Fellows",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Antonsgasse 7",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.936066,
+        "lon": 6.95205
+      },
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa 10:00-20:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true,
+        "outdoor_seating": true,
+        "wheelchair_accessible": true,
+        "vegan_options": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "https://www.coffee-fellows.com/locations/koeln-antonsgasse-7",
+        "instagram": "https://www.instagram.com/coffeefellows/",
+        "facebook": "https://www.facebook.com/coffeefellowsdeutschland/"
+      },
+      "xref": {
+        "overture": "36949256-f2ed-4c7f-9efe-7f248b323039"
+      }
+    },
+    {
+      "id": "cp-xtex10f5xe",
+      "type": "CafeOrCoffeeShop",
+      "name": "Froleo",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Gürzenichstraße 30",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.936039,
+        "lon": 6.959394
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "http://www.froleo.de/",
+        "instagram": "https://www.instagram.com/froleo.cologne/"
+      },
+      "xref": {
+        "overture": "2727be72-8ba8-4860-9494-19d810d16349"
+      }
+    },
+    {
+      "id": "cp-y1gh2athgg",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Il Barista",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Hohenzollernring 28",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.938367,
+        "lon": 6.93963
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Espresso Perfetto Il Barista GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 97359"
+      },
+      "links": {
+        "website": "https://ilbarista-koeln.de/"
+      },
+      "xref": {
+        "overture": "a204abd6-3e9e-4982-a057-30a0d40773b3"
+      }
+    },
+    {
+      "id": "cp-y1ymwbp5ah",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Vreiheit",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Wallstraße 91",
+        "postal_code": "51063"
+      },
+      "location": {
+        "lat": 50.96414,
+        "lon": 7.001087
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "lunch": true,
+        "breakfast": true,
+        "focus": "food_led"
+      },
+      "operator": {
+        "name": "Vreiheit UG (haftungsbeschränkt) und Co. KG",
+        "legal_form": "KG"
+      },
+      "links": {
+        "website": "https://cafe-vreiheit.de/",
+        "instagram": "https://www.instagram.com/cafe_vreiheit/",
+        "facebook": "https://www.facebook.com/cafevreiheit/"
+      },
+      "xref": {
+        "overture": "37d451da-160a-4f8f-8a2d-af25df1ca08c"
+      }
+    },
+    {
+      "id": "cp-y9cnged8yh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Kaffeesaurus",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Friesenplatz 15",
+        "postal_code": "50672"
+      },
+      "location": {
+        "lat": 50.94051,
+        "lon": 6.938662
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "operator": {
+        "name": "Kaffeesaurus GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 16431"
+      },
+      "links": {
+        "website": "https://kaffeesaurus.com/"
+      },
+      "xref": {
+        "overture": "cbf2170f-5585-4771-99c8-2b503777d44b"
+      }
+    },
+    {
+      "id": "cp-yn60aed8s1",
+      "type": "CafeOrCoffeeShop",
+      "name": "PARK Café Köln",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Rheinparkweg 1",
+        "postal_code": "50679"
+      },
+      "location": {
+        "lat": 50.945572,
+        "lon": 6.970091
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "card_payment": true,
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://parkcafekoeln.com/essen-trinken/"
+        }
+      },
+      "operator": {
+        "name": "Reineke Park GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 124723"
+      },
+      "links": {
+        "website": "https://parkcafekoeln.com/",
+        "instagram": "https://www.instagram.com/parkcafe_koeln/",
+        "facebook": "https://www.facebook.com/parkcafe.koeln/"
+      },
+      "xref": {
+        "overture": "d11a2ab7-d40f-4737-854a-335281c80f63"
+      }
+    },
+    {
+      "id": "cp-yp8ggpcs7k",
+      "type": "CafeOrCoffeeShop",
+      "name": "ST. LOUIS Café",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Deutzer Freiheit 89",
+        "postal_code": "50679"
+      },
+      "location": {
+        "lat": 50.936841,
+        "lon": 6.974637
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "Saint Louis GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 79441"
+      },
+      "links": {
+        "website": "https://www.st-louis-cafe.de/de",
+        "facebook": "https://www.facebook.com/stlouisbreakfast/"
+      },
+      "xref": {
+        "overture": "a8b19c6e-6961-48c9-a4bf-80767169e8f5"
+      }
+    },
+    {
+      "id": "cp-yy27h3kn17",
+      "type": "CafeOrCoffeeShop",
+      "name": "kunstkAFFEe",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Nonnenwerthstr. 2-4",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.912937,
+        "lon": 6.922379
+      },
+      "opening_hours": "Mo,Tu off; We-Su 10:00-17:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true,
+        "focus": "balanced"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.3,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://www.kunstkaffee-koeln.de/preisliste/"
+        }
+      },
+      "links": {
+        "website": "https://www.kunstkaffee-koeln.de/"
+      },
+      "xref": {
+        "overture": "ad0eed00-bcc2-43c7-bcf8-5cb78e587e68"
+      }
+    },
+    {
+      "id": "cp-yyzv14qkvz",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Wohnraum",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Neusser Str. 314",
+        "postal_code": "50733"
+      },
+      "location": {
+        "lat": 50.966375,
+        "lon": 6.953526
+      },
+      "opening_hours": "Mo-Fr 08:30-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "plant_milk": true,
+        "decaf": true,
+        "espresso": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "reusable_cup_systems": [
+        "recup",
+        "vytal"
+      ],
+      "prices": {
+        "cappuccino": {
+          "amount": 3.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-11",
+          "source_url": "https://www.cafewohnraum.de/wp-content/uploads/sites/115/2024/01/Getraenke_Cafe_Wohnraum.pdf"
+        }
+      },
+      "links": {
+        "website": "https://www.cafewohnraum.de/",
+        "instagram": "https://www.instagram.com/cafewohnraum/",
+        "facebook": "https://www.facebook.com/cafewohnraum/"
+      },
+      "xref": {
+        "overture": "d7be847f-17ec-4ac4-832a-03329ca5a7db"
+      }
+    },
+    {
+      "id": "cp-z00fsmvb2f",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café e bom!",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Berrenrather Straße 211",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.918227,
+        "lon": 6.925294
+      },
+      "opening_hours": "Mo-Su 10:00-18:30",
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "food_led"
+      },
+      "operator": {
+        "name": "Café e bom! GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 73389"
+      },
+      "links": {
+        "website": "https://www.ebom-cafe.de/",
+        "instagram": "https://www.instagram.com/ebomcafe/"
+      },
+      "xref": {
+        "overture": "d836ebb3-859e-4b6e-be8a-86f9539c6aa8"
+      }
+    },
+    {
+      "id": "cp-z5dsfn2eeb",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Bohnenfeld",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Venloer Str. 401",
+        "postal_code": "50825"
+      },
+      "location": {
+        "lat": 50.951789,
+        "lon": 6.914074
+      },
+      "opening_hours": "Mo-Fr 10:00-18:00; Sa,Su,PH 09:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://cafebohnenfeld.de/",
+        "instagram": "https://www.instagram.com/cafebohnenfeld/"
+      },
+      "xref": {
+        "overture": "ceecb4c7-5102-4af1-b0cc-5c3fbcc8cae4"
+      }
+    },
+    {
+      "id": "cp-zf1pdndag1",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Sehnsucht",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Körnerstraße 67",
+        "postal_code": "50823"
+      },
+      "location": {
+        "lat": 50.949914,
+        "lon": 6.923291
+      },
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Van Dyck"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "Khan Rana & Strube ohG",
+        "register_id": "HRA 33486"
+      },
+      "links": {
+        "website": "https://sehnsucht-koeln.de/",
+        "instagram": "https://www.instagram.com/cafe.sehnsucht/",
+        "facebook": "https://www.facebook.com/cafesehnsuchtkoeln/"
+      },
+      "xref": {
+        "overture": "48df0dcd-7c6e-4683-9f75-4bed0fcd79c6"
+      }
+    },
+    {
+      "id": "cp-zmvdcdhck1",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café KOR",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "Zülpicher Str. 233",
+        "postal_code": "50937"
+      },
+      "location": {
+        "lat": 50.92334,
+        "lon": 6.92514
+      },
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true
+      },
+      "amenities": {
+        "kids_friendly": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://cafe-kor.de/"
+      },
+      "xref": {
+        "overture": "8a121c6e-ee9b-453f-aa3c-d87e70e97308"
+      }
+    },
+    {
+      "id": "cp-zrvs2jqdwv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Maison",
+      "status": "open",
+      "checked_at": "2026-11-11T09:58:48Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Köln",
+        "street_address": "In d. Höhle 6a",
+        "postal_code": "50667"
+      },
+      "location": {
+        "lat": 50.936844,
+        "lon": 6.956744
+      },
+      "opening_hours": "Mo-Th 10:00-20:00; Fr,Sa 10:00-01:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://maison-cologne.mssg.me/",
+        "instagram": "https://www.instagram.com/maison.colognede/"
+      },
+      "xref": {
+        "overture": "265c516d-21e1-4c5d-bc7b-f454fcd4d9c0"
+      }
+    }
+  ]
+}
