@@ -2563,9 +2563,7 @@
         "lon": 8.672116
       },
       "opening_hours": "Mo-Fr 07:00-18:30; Sa 08:00-18:00; Su 09:00-18:00",
-      "description": "Café Wacker Grüneburgweg is a specialty coffee place in Frankfurt am Main that roasts its own beans. It serves breakfast. It is open on Sundays.",
-      "specialty_tier": "A",
-      "roasts_own_beans": true,
+      "specialty_tier": "none",
       "food": {
         "breakfast": true
       },

@@ -8,12 +8,12 @@ Only places confirmed on their own website are in the dataset, like Munich.
 
 | | Places |
 |---|---:|
-| Tier A (specialty-focused) | 22 |
-| Tier B (serves specialty) | 19 |
-| none (no specialty evidence on its own site) | 655 |
+| Tier A (specialty-focused) | 18 |
+| Tier B (serves specialty) | 18 |
+| none (no specialty evidence on its own site) | 660 |
 | **Total** | **696**, all open |
 
-99% have a street and postcode, 69% have opening hours (80% of tier A/B), 62% an Instagram link, 48% espresso and 10% filter coffee. 10 tier A/B places have all core fields (6 A, 4 B).
+99% have a street and postcode, 69% have opening hours (80% of tier A/B), 62% an Instagram link, 48% espresso and 10% filter coffee.
 
 ## How it was found
 
@@ -32,7 +32,7 @@ Tier A/B decide what the dataset is for. A random sample of 60 places of the fir
 
 Known and not fixed:
 
-- roasting claims that name the roastery of another branch ("19grams Alex is our roastery") still pass for some branches when the quote sits on a page that lists all of them;
+- roasting claims that name the roastery of another branch ("19grams Alex is our roastery") passed for some branches when the quote sat on a page that lists all of them. A page-by-page audit of the tier A/B places that share a website with other places found five Berlin branches that do not roast at their own address (THE BARN Auguststraße, Espressomania Kastanienallee, Röststätte Hackesche Höfe, 19grams Boxi and Schlesi). They are corrected to none in the data; the agent rule that caused them is not fixed yet, so a re-run can bring such claims back;
 - hours that differ between two pages of one site, and hours from old blog posts;
 - a chain's own site for a Berlin branch (Starbucks, Tchibo) brings the chain's Instagram and Facebook accounts, which can be another country's;
 - menus that are only photos are transcribed, but a place whose pages are almost empty (Kairos Café, Cafe PiK) keeps values that could not be re-checked from text.
