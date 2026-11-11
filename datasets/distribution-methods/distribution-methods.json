@@ -1,0 +1,128 @@
+{
+  "$schema": "https://schema.roastbook.coffee/distribution-methods/distribution-methods.schema.v0.5.1.json",
+  "meta": {
+    "licence": "CDLA-Permissive-2.0"
+  },
+  "distribution_methods": [
+    {
+      "id": "wdt",
+      "name": "Weiss Distribution Technique",
+      "aliases": [
+        "WDT"
+      ],
+      "description": "Thin needles stir the grounds in the basket, usually through a funnel that stops spills, to break up clumps and even out the density from the bottom of the bed to the top before tamping. Any stirring pattern works as long as it reaches the whole bed.",
+      "action": "stir",
+      "reach": "whole_bed",
+      "equipment_types": [
+        "wdt"
+      ],
+      "brew_methods": [
+        "espresso"
+      ],
+      "creator": "John Weiss",
+      "introduced_year": 2005,
+      "url": "https://www.home-barista.com/weiss-distribution-technique-steps.html",
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "blind_shaker",
+      "name": "Blind shaker",
+      "aliases": [
+        "Shaker",
+        "Dosing cup shake"
+      ],
+      "description": "The grinder fills a closed dosing cup, which is shaken gently to break up clumps and mix the grounds before they are emptied into the basket. Weber Workshops introduced its Blind Shaker for this in 2015.",
+      "action": "shake",
+      "reach": "whole_bed",
+      "equipment_types": [
+        "accessory"
+      ],
+      "brew_methods": [
+        "espresso"
+      ],
+      "creator": "Weber Workshops",
+      "introduced_year": 2015,
+      "url": "https://www.youtube.com/watch?v=8kxeBNZIAqk",
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "tapping",
+      "name": "Tapping",
+      "aliases": [
+        "Settling",
+        "Side tap"
+      ],
+      "description": "Light knocks of the portafilter on the counter, or against the palm or a tamper, settle the grounds and level the bed. Done only before tamping.",
+      "action": "tap",
+      "reach": "whole_bed",
+      "brew_methods": [
+        "espresso"
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "nsew",
+      "name": "NSEW",
+      "aliases": [
+        "North-South-East-West",
+        "Finger distribution"
+      ],
+      "description": "A finger laid flat across the basket sweeps the mound away, back, then to each side, filling the edges and levelling the top. Often the first distribution a barista learns.",
+      "action": "sweep",
+      "reach": "surface",
+      "brew_methods": [
+        "espresso"
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "stockfleth_move",
+      "name": "Stockfleth's move",
+      "aliases": [
+        "Stockfleth method"
+      ],
+      "description": "With the thumb on the basket rim and the index finger across the top, the hand and the portafilter turn in opposite directions, pushing the mound out to the edges and levelling the top layer. Named after the Oslo coffee house Stockfleths, whose baristas learned it there.",
+      "action": "rotate",
+      "reach": "surface",
+      "brew_methods": [
+        "espresso"
+      ],
+      "creator": "Tim Wendelboe and Robert Thoresen",
+      "introduced_year": 2000,
+      "origin_country_code": "NO",
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "straight_edge",
+      "name": "Straight-edge levelling",
+      "aliases": [
+        "Levelling"
+      ],
+      "description": "A flat straight edge is dragged across the basket rim, moving surplus grounds off the top into the gaps and leaving a flat bed level with the rim.",
+      "action": "sweep",
+      "reach": "surface",
+      "brew_methods": [
+        "espresso"
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "distribution_tool",
+      "name": "Distribution tool",
+      "aliases": [
+        "Leveller",
+        "OCD"
+      ],
+      "description": "A tool set to a fixed depth sits on the basket and is turned, its angled blades pushing the grounds outwards and down into an even, flat bed ready to tamp. Saša Šestić used his ONA Coffee Distributor at the 2015 World Barista Championship.",
+      "action": "rotate",
+      "reach": "surface",
+      "equipment_types": [
+        "accessory"
+      ],
+      "brew_methods": [
+        "espresso"
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    }
+  ]
+}

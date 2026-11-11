@@ -193,7 +193,7 @@ function checkReferences(ids, err, warn) {
         checkRanges(record, where, err);
         checkParent(record, id, famIds, where, err);
       }
-      if (family === "equipment") checkEquipment(record, ids, where, err);
+      if (family === "equipment" || family === "distribution-methods") checkEquipment(record, ids, where, err);
       if (family === "pour-patterns") checkPourPattern(record, ids, where, err);
     }
   }
