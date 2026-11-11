@@ -1815,6 +1815,924 @@
       "checked_at": "2026-11-11T09:00:00Z"
     },
     {
+      "id": "aeropress-signature-brew",
+      "name": "Signature Brew",
+      "kind": "recipe",
+      "creator": "AeroPress",
+      "url": "https://aeropress.com/pages/how-to-use",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "immersion"
+      ],
+      "description": "The maker's own recipe, brewed upright: a heaping scoop of medium-fine coffee, water to the 4 mark, a 3-second stir, the plunger in to stop the drip, a 30-second wait (60 for pre-ground coffee), then a gentle press until the hiss. The water amount is an estimate for the 4 mark.",
+      "defaults": {
+        "brew_ratio": 12.9,
+        "dose_g": 17,
+        "brew_water_g": 220,
+        "fill_mark": 4,
+        "temperature": {
+          "celsius": {
+            "typical": 85
+          },
+          "note": "boiling water if your kettle has no temperature control"
+        },
+        "grind_size": "medium_fine"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 1,
+          "flow": "constant",
+          "note": "to the 4 mark"
+        },
+        {
+          "id": "stir",
+          "type": "hold",
+          "duration_seconds": 3,
+          "agitation": [
+            "stir"
+          ],
+          "note": "stir gently"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 30,
+          "note": "plunger in about 1 cm, pulled up slightly to stop the drip"
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 30,
+          "note": "gentle, steady pressure until the hiss; the recipe gives no press time"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2011-verellen",
+      "name": "World AeroPress Champion 2011",
+      "kind": "recipe",
+      "creator": "Jeff Verellen",
+      "published_year": 2011,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/1st-jeff-verellen-belgium-2011",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "continuous"
+      ],
+      "description": "Coarse coffee on a wetted filter, a slow 40 g bloom, then the rest of the water poured very slowly so the grounds stay suspended. The brew steeps and drips for about a minute, about half of the rest is pressed through gently, and the last 50 g or so is thrown away.",
+      "defaults": {
+        "brew_ratio": 15.9,
+        "dose_g": 17,
+        "brew_water_g": 270,
+        "temperature": {
+          "celsius": {
+            "typical": 80
+          }
+        },
+        "grind_size": "medium_coarse"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.1481,
+          "flow": "constant",
+          "note": "very slowly over all the grounds"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 20
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 30,
+          "water_fraction": 0.8519,
+          "flow": "constant",
+          "note": "very slowly, re-wetting all the grounds"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 60,
+          "note": "let about a quarter drip through"
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 30,
+          "note": "very gently, about half of the rest; discard the last 50 g; the recipe gives no press time"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2012-de-buysere",
+      "name": "World AeroPress Champion 2012",
+      "kind": "recipe",
+      "creator": "Charlène De Buysere",
+      "published_year": 2012,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/1st-charlene-de-buysere-belgium-2012",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "continuous"
+      ],
+      "description": "A simple upright brew of coarse coffee: about 40 g of water to bloom for around 30 seconds, then the rest of the water and a press that stops before the end.",
+      "defaults": {
+        "brew_ratio": 13.7,
+        "dose_g": 18.3,
+        "brew_water_g": 250,
+        "temperature": {
+          "celsius": {
+            "typical": 85
+          }
+        },
+        "grind_size": "coarse"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.16,
+          "flow": "constant"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 20
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 15,
+          "water_fraction": 0.84,
+          "flow": "constant"
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 30,
+          "note": "not all the way; the recipe gives no press time"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2023-wipvasutt",
+      "name": "World AeroPress Champion 2023",
+      "kind": "recipe",
+      "creator": "Tay Wipvasutt",
+      "published_year": 2023,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/1st-tay-wipvasutt-thailand-2023",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "immersion"
+      ],
+      "description": "Two short brews through three paper filters. 16 g of coffee and 55 g of water are stirred, steeped and pressed into a first server. Then 2 g more coffee and 50 g of water go into the same chamber, are stirred, the first press is poured back in, and everything is pressed again. Room-temperature and hot water bring it to 154 g.",
+      "defaults": {
+        "brew_ratio": 5.83,
+        "dose_g": 18,
+        "brew_water_g": 105,
+        "bypass_water_g": 69,
+        "temperature": {
+          "celsius": {
+            "typical": 89
+          }
+        }
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour-1",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.5238,
+          "flow": "constant",
+          "note": "onto 16 g of coffee"
+        },
+        {
+          "id": "wait-1",
+          "type": "hold",
+          "duration_seconds": 15
+        },
+        {
+          "id": "stir-1",
+          "type": "hold",
+          "duration_seconds": 5,
+          "agitation": [
+            "stir"
+          ],
+          "note": "stir for 5 seconds"
+        },
+        {
+          "id": "steep-1",
+          "type": "hold",
+          "duration_seconds": 15,
+          "note": "plunger in"
+        },
+        {
+          "id": "press-1",
+          "type": "press",
+          "duration_seconds": 10,
+          "note": "into the first server, about 35 g"
+        },
+        {
+          "id": "reload",
+          "type": "hold",
+          "duration_seconds": 15,
+          "note": "plunger out, add 2 g of coffee to the chamber"
+        },
+        {
+          "id": "pour-2",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.4762,
+          "flow": "constant"
+        },
+        {
+          "id": "wait-2",
+          "type": "hold",
+          "duration_seconds": 10
+        },
+        {
+          "id": "stir-2",
+          "type": "hold",
+          "duration_seconds": 5,
+          "agitation": [
+            "stir"
+          ],
+          "note": "stir with a chopstick, pour the first 35 g back in, plunger in"
+        },
+        {
+          "id": "steep-2",
+          "type": "hold",
+          "duration_seconds": 35
+        },
+        {
+          "id": "press-2",
+          "type": "press",
+          "duration_seconds": 10,
+          "note": "about 80 to 85 g; add 25 g room-temperature water, then hot water to 154 g"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2009-kaminsky",
+      "name": "World AeroPress Championship 2009, 2nd place",
+      "kind": "recipe",
+      "creator": "Ben Kaminsky",
+      "published_year": 2009,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/2nd-ben-kaminsky-usa-2009",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "immersion"
+      ],
+      "description": "Brewed inverted. Half the water goes in first, the coffee is stirred into it, then the other half follows. At 0:50 the brewer is flipped with both hands and pressed slowly for about 25 seconds, until it hisses.",
+      "defaults": {
+        "brew_ratio": 13.6,
+        "dose_g": 14,
+        "brew_water_g": 190,
+        "temperature": {
+          "off_the_boil": true,
+          "note": "wait 30 seconds after a rolling boil"
+        },
+        "grind_size": "medium_fine"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour-1",
+          "type": "pour",
+          "duration_seconds": 5,
+          "water_fraction": 0.5,
+          "flow": "constant",
+          "note": "water first"
+        },
+        {
+          "id": "stir",
+          "type": "hold",
+          "duration_seconds": 5,
+          "agitation": [
+            "stir"
+          ],
+          "note": "add the coffee to the water, stir quickly"
+        },
+        {
+          "id": "pour-2",
+          "type": "pour",
+          "duration_seconds": 5,
+          "water_fraction": 0.5,
+          "flow": "constant"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 40
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5,
+          "note": "slowly, with both hands"
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 25,
+          "note": "slowly, until it hisses"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2010-hasager",
+      "name": "World AeroPress Championship 2010, 2nd place",
+      "kind": "recipe",
+      "creator": "Jeppe Hasager",
+      "published_year": 2010,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/2nd-jeppe-hasager-denmark-2010",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "immersion"
+      ],
+      "description": "Brewed inverted with cool water. A gentle pour while turning the brewer, a 10-second stir reaching the bottom, then at 1:15 a flip and a gentle 30-second press that stops when the grounds break the surface.",
+      "defaults": {
+        "brew_ratio": 12.8,
+        "dose_g": 18,
+        "brew_water_g": 230,
+        "temperature": {
+          "celsius": {
+            "typical": 75
+          }
+        },
+        "grind_size": "medium_coarse"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour",
+          "type": "pour",
+          "duration_seconds": 15,
+          "water_fraction": 1,
+          "flow": "constant",
+          "note": "gently, turning the brewer"
+        },
+        {
+          "id": "stir",
+          "type": "hold",
+          "duration_seconds": 10,
+          "agitation": [
+            "stir"
+          ],
+          "note": "gently, all the way to the bottom"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 50
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 30,
+          "note": "gently; stop when the grounds break the surface"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2012-johnsen",
+      "name": "World AeroPress Championship 2012, 2nd place",
+      "kind": "recipe",
+      "creator": "Ingri Margrethe Johnsen",
+      "published_year": 2012,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/2nd-ingri-margrethe-johnsen-norway-2012",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "immersion"
+      ],
+      "description": "Brewed inverted with fine coffee and no stirring: a 50-second steep in very hot water, a flip and a 20-second press that stops before air comes out. The fines settle before serving and the last part is held back.",
+      "defaults": {
+        "brew_ratio": 15.3,
+        "dose_g": 17,
+        "brew_water_g": 260,
+        "temperature": {
+          "celsius": {
+            "typical": 96
+          },
+          "note": "about 90 °C in the brew"
+        },
+        "grind_size": "fine"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 1,
+          "flow": "constant",
+          "note": "no stirring"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 40
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 20,
+          "note": "stop before air comes out"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2013-varady",
+      "name": "World AeroPress Championship 2013, 3rd place",
+      "kind": "recipe",
+      "creator": "Tibor Várady",
+      "published_year": 2013,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/3rd-tibor-varady-hungary-2013",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "continuous"
+      ],
+      "description": "Brewed inverted with a small dose of coarse coffee: 50 g of water stirred five times hard, the remaining 150 g, the cap on with the air squeezed out, then a flip and a slow body-weight press at 2:00.",
+      "defaults": {
+        "brew_ratio": 16.7,
+        "dose_g": 12,
+        "brew_water_g": 200,
+        "temperature": {
+          "celsius": {
+            "typical": 90
+          }
+        },
+        "grind_size": "coarse"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 5,
+          "water_fraction": 0.25,
+          "flow": "constant"
+        },
+        {
+          "id": "stir",
+          "type": "hold",
+          "duration_seconds": 5,
+          "agitation": [
+            "stir"
+          ],
+          "note": "stir 5 times vigorously"
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.75,
+          "flow": "constant"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 95,
+          "note": "cap on, squeeze out the air"
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 30,
+          "note": "body weight, as slowly as possible; the recipe gives no press time"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2015-ong",
+      "name": "World AeroPress Championship 2015, 3rd place",
+      "kind": "recipe",
+      "creator": "Kaye Joy Ong",
+      "published_year": 2015,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/3rd-kaye-joy-ong-phillipines-2015",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "continuous"
+      ],
+      "description": "Brewed inverted with cool water: a 56 g bloom of 30 seconds, the rest poured over a full minute, then a 30-second press.",
+      "defaults": {
+        "brew_ratio": 12.4,
+        "dose_g": 22.5,
+        "brew_water_g": 280,
+        "temperature": {
+          "celsius": {
+            "typical": 79
+          }
+        }
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 5,
+          "water_fraction": 0.2,
+          "flow": "constant"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 25
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 60,
+          "water_fraction": 0.8,
+          "flow": "constant",
+          "note": "slowly, over a minute"
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5,
+          "note": "cap on, turn over"
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 30
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2019-khemacheva",
+      "name": "World AeroPress Championship 2019, 2nd place",
+      "kind": "recipe",
+      "creator": "Benja Khemacheva",
+      "published_year": 2019,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/2nd-benja-khemacheva-thailand-2019",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "immersion"
+      ],
+      "description": "Brewed inverted as a concentrate through one paper and one metal filter: 100 g of water on 35 g of coarse coffee, 15 seconds of stirring and 10 of wiggling, a flip at 1:15 and a 30-second press into 110 g of hot water waiting in the server.",
+      "defaults": {
+        "brew_ratio": 2.86,
+        "dose_g": 35,
+        "brew_water_g": 100,
+        "bypass_water_g": 110,
+        "temperature": {
+          "celsius": {
+            "typical": 94
+          }
+        }
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 1,
+          "flow": "constant"
+        },
+        {
+          "id": "agitate",
+          "type": "hold",
+          "duration_seconds": 25,
+          "agitation": [
+            "stir",
+            "swirl"
+          ],
+          "note": "stir for 15 seconds, then wiggle the brewer for 10"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 35,
+          "note": "cap on"
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 30,
+          "note": "with the elbow, into the server"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2021-mallee",
+      "name": "World AeroPress Championship 2021, 2nd place",
+      "kind": "recipe",
+      "creator": "Maru Mallee",
+      "published_year": 2021,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/2nd-maru-mallee-the-netherlands-2021",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "immersion"
+      ],
+      "description": "Brewed inverted: 150 g of water in 12 seconds, 20 firm stirs, the cap on with the air pressed out, a long steep, then at 1:50 a flip, three swirls and two taps, and a gentle press from 1:55 to 2:15. Diluted with 36 g of room-temperature water and swirled for a minute to cool.",
+      "defaults": {
+        "brew_ratio": 8.33,
+        "dose_g": 18,
+        "brew_water_g": 150,
+        "bypass_water_g": 36,
+        "temperature": {
+          "celsius": {
+            "typical": 93
+          }
+        }
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour",
+          "type": "pour",
+          "duration_seconds": 12,
+          "water_fraction": 1,
+          "flow": "constant"
+        },
+        {
+          "id": "stir",
+          "type": "hold",
+          "duration_seconds": 13,
+          "agitation": [
+            "stir"
+          ],
+          "note": "stir 20 times firmly"
+        },
+        {
+          "id": "cap",
+          "type": "hold",
+          "duration_seconds": 5,
+          "note": "cap on, press out the air, carafe on top"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 80
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5,
+          "agitation": [
+            "swirl"
+          ],
+          "note": "flip with the carafe, swirl 3 times, tap down twice"
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 20,
+          "note": "gently; don't force it"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2021-smith",
+      "name": "World AeroPress Championship 2021, 3rd place",
+      "kind": "recipe",
+      "creator": "Brandon Smith",
+      "published_year": 2021,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/3rd-brandon-smith-south-africa-2021",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "immersion"
+      ],
+      "description": "Brewed inverted with the plunger at the 4 mark: 140 g of water in 10 seconds, five gentle stirs, the cap on with the air pressed out, a flip at 1:25 with one gentle swirl, and a press from 1:30 to 2:00 through the hiss. Diluted with 80 g of water and left a minute to cool.",
+      "defaults": {
+        "brew_ratio": 7.78,
+        "dose_g": 18,
+        "brew_water_g": 140,
+        "bypass_water_g": 80,
+        "temperature": {
+          "celsius": {
+            "typical": 88
+          }
+        }
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "pour",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 1,
+          "flow": "constant"
+        },
+        {
+          "id": "stir",
+          "type": "hold",
+          "duration_seconds": 5,
+          "agitation": [
+            "stir"
+          ],
+          "note": "stir back to front gently 5 times"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 70,
+          "note": "cap on, press out the air"
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5,
+          "agitation": [
+            "gentle_swirl"
+          ],
+          "note": "onto the mug, one gentle swirl"
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 30,
+          "note": "through the hiss"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "wac-2022-ho",
+      "name": "World AeroPress Championship 2022, 3rd place",
+      "kind": "recipe",
+      "creator": "Jennifer Rui Ping Ho",
+      "published_year": 2022,
+      "url": "https://aeropress.com/blogs/w-a-c-aeropress-recipes/3rd-jennifer-rui-ping-ho-singapore-2022",
+      "brew_methods": [
+        "aeropress"
+      ],
+      "flow_patterns": [
+        "bloom",
+        "continuous"
+      ],
+      "description": "Brewed inverted with coarse coffee: 100 ml of water and a gentle stir, a 30-second bloom, another 100 ml and a gentle stir, then a flip at 1:30 and a 30-second press that ends at 2:00. Aerated before serving.",
+      "defaults": {
+        "brew_ratio": 11.1,
+        "dose_g": 18,
+        "brew_water_g": 200,
+        "temperature": {
+          "celsius": {
+            "typical": 84
+          }
+        },
+        "grind_size": "coarse"
+      },
+      "scaling": {
+        "water": "proportional",
+        "timing": "fixed"
+      },
+      "phases": [
+        {
+          "id": "bloom",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.5,
+          "flow": "constant",
+          "agitation": [
+            "stir"
+          ],
+          "note": "then stir gently"
+        },
+        {
+          "id": "bloom-rest",
+          "type": "hold",
+          "duration_seconds": 20
+        },
+        {
+          "id": "main",
+          "type": "pour",
+          "duration_seconds": 10,
+          "water_fraction": 0.5,
+          "flow": "constant",
+          "agitation": [
+            "stir"
+          ],
+          "note": "then stir gently"
+        },
+        {
+          "id": "steep",
+          "type": "hold",
+          "duration_seconds": 50
+        },
+        {
+          "id": "flip",
+          "type": "flip",
+          "duration_seconds": 5
+        },
+        {
+          "id": "press",
+          "type": "press",
+          "duration_seconds": 25,
+          "note": "ends at 2:00"
+        }
+      ],
+      "checked_at": "2026-11-11T09:00:00Z"
+    },
+    {
       "id": "bloom",
       "name": "Bloom",
       "kind": "flow",

@@ -163,3 +163,10 @@ test("pour recipes: the example brew must match the ratio and temperature ranges
   has(res, /dose_g × brew_ratio/);
   has(res, /defaults\.temperature\.celsius: expected min <= typical <= max/);
 });
+
+test("pour recipes: an inverted brew must flip before it presses", { skip: !schemaDir }, () => {
+  const pour = JSON.parse(readFileSync(join(here, "../../datasets/pour-patterns/pour-patterns.json"), "utf8"));
+  const r = pour.pour_patterns.find((p) => p.phases?.some((ph) => ph.type === "flip"));
+  r.phases = r.phases.filter((ph) => ph.type !== "flip").concat({ id: "flip", type: "flip", duration_seconds: 5 });
+  has(run({ extra: { "datasets/pour-patterns/pour-patterns.json": pour } }), /a flip must come before a press/);
+});

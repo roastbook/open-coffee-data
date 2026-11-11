@@ -181,6 +181,8 @@ function checkPourPattern(record, ids, where, err) {
     const at = (phase.flow_curve ?? []).map((pt) => pt.at_seconds);
     if (at.some((t, i) => (i > 0 && t <= at[i - 1]) || t > phase.duration_seconds)) err(where, `phases.${phase.id}.flow_curve: at_seconds must increase and stay within duration_seconds`);
   }
+  const flipAt = record.phases.findIndex((p) => p.type === "flip");
+  if (flipAt >= 0 && !record.phases.slice(flipAt + 1).some((p) => p.type === "press")) err(where, "phases: a flip must come before a press");
   if (Math.abs(water - 1) > 0.005) err(where, `phases: water_fraction of the pour phases adds up to ${Math.round(water * 1000) / 1000}, expected 1`);
 }
 

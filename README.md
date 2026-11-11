@@ -32,7 +32,7 @@ Browse it in the [Data Explorer](https://data.roastbook.coffee/): a map and a ta
 | Not specialty | 881 |
 | Cities | 2 |
 | Brew methods | 21 |
-| Pour recipes | 24 |
+| Pour recipes | 37 |
 | Schema version | `brew-methods 0.4.0, coffee-places 0.3.0, pour-patterns 0.5.1` |
 
 <!-- stats:end -->
