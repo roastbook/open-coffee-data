@@ -17,6 +17,7 @@ export function statsBlock(files) {
   const cities = [...new Set(places.map((p) => `${p._country_code}/${p._city}`))];
   const brew = files.filter((f) => f.family === "brew-methods").reduce((n, f) => n + f.records.length, 0);
   const pour = files.filter((f) => f.family === "pour-patterns").flatMap((f) => f.records);
+  const distribution = files.filter((f) => f.family === "distribution-methods").reduce((n, f) => n + f.records.length, 0);
   const rows = [
     ["Coffee places", places.length],
     ["Tier A (specialty-focused)", tiers.A],
@@ -25,6 +26,7 @@ export function statsBlock(files) {
     ["Cities", cities.length],
     ...(brew ? [["Brew methods", brew]] : []),
     ...(pour.length ? [["Pour recipes", pour.filter((p) => p.kind === "recipe").length]] : []),
+    ...(distribution ? [["Distribution methods", distribution]] : []),
     // No dataset version here: it is the release tag and would make this block stale after every release.
     ["Schema version", `\`${describeSchemaVersions(schemaVersions(files))}\``],
   ];
