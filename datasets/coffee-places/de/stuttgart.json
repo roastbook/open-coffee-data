@@ -1,0 +1,2701 @@
+{
+  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.3.0.json",
+  "meta": {
+    "licence": "CDLA-Permissive-2.0",
+    "country_code": "DE",
+    "city": "stuttgart",
+    "city_name": "Stuttgart"
+  },
+  "places": [
+    {
+      "id": "cp-09fjaajte5",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Chiangmai",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Senefelderstr. 76",
+        "postal_code": "70176"
+      },
+      "location": {
+        "lat": 48.777274,
+        "lon": 9.159559
+      },
+      "opening_hours": "Th-Sa 10:00-20:00",
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true,
+        "pour_over": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.8,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "http://www.caeffchen.de/cafe-chiangmai-menu.pdf"
+        }
+      },
+      "links": {
+        "website": "http://www.caeffchen.de/",
+        "instagram": "https://www.instagram.com/caeffchen.de/"
+      },
+      "xref": {
+        "overture": "542e47c4-04e9-4d2f-b869-ee42d014769a"
+      }
+    },
+    {
+      "id": "cp-0c15zrbqse",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Luv",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Spreuergasse 6",
+        "postal_code": "70372"
+      },
+      "location": {
+        "lat": 48.804279,
+        "lon": 9.216158
+      },
+      "opening_hours": "Th,Fr 14:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "kids_friendly": true,
+        "laptop_friendly": true
+      },
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "operator": {
+        "name": "Stadthafen Kollektiv e.V.",
+        "legal_form": "e.V."
+      },
+      "links": {
+        "website": "https://cafe-luv.de/"
+      },
+      "xref": {
+        "overture": "f5ef2f8e-2d96-4a16-ac60-d6c19add8833"
+      }
+    },
+    {
+      "id": "cp-0mtcac5k2m",
+      "type": "CafeOrCoffeeShop",
+      "name": "Mon Petit Cafe",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Küblergasse 3",
+        "postal_code": "70372"
+      },
+      "location": {
+        "lat": 48.804421,
+        "lon": 9.215489
+      },
+      "opening_hours": "Mo,Tu off; We,Th 14:00-24:00; Fr 14:00-01:00; Sa 12:00-01:00; Su 12:00-21:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "links": {
+        "website": "https://monpetitcafe.de/",
+        "instagram": "https://www.instagram.com/monpetitcafestuttgart/"
+      },
+      "xref": {
+        "overture": "36910ee9-01fb-4bc9-a8fc-a3df588f369e"
+      }
+    },
+    {
+      "id": "cp-126seed3fa",
+      "type": "CafeOrCoffeeShop",
+      "name": "AMADEUS Café-Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Augsburger Str. 690",
+        "postal_code": "70329"
+      },
+      "location": {
+        "lat": 48.762134,
+        "lon": 9.269525
+      },
+      "opening_hours": "Mo-Th 10:00-24:00; Fr,Sa 10:00-02:00; Su 10:00-24:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://amadeus-bar.de/getraenkekarte"
+        }
+      },
+      "links": {
+        "website": "https://amadeus-bar.de/",
+        "facebook": "https://www.facebook.com/cafebaramadeus/"
+      },
+      "xref": {
+        "overture": "89eebfd9-15f6-4820-adc4-9a6aeea606a0"
+      }
+    },
+    {
+      "id": "cp-15379bryqc",
+      "type": "CafeOrCoffeeShop",
+      "name": "OSCHO Stuttgart",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Königstraße 29",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.775429,
+        "lon": 9.176061
+      },
+      "opening_hours": "Mo-Fr 10:00+; Sa 11:00+; Su,PH 14:00-21:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "vegan_options": true,
+        "kids_friendly": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Zweiundzwanzig GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://oscho-stuttgart.de/"
+      },
+      "xref": {
+        "overture": "461ffd4e-c37d-4f8c-a783-0a81754184da"
+      }
+    },
+    {
+      "id": "cp-177xay1xcz",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Galao",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Tübinger Str. 90",
+        "postal_code": "70178"
+      },
+      "location": {
+        "lat": 48.765179,
+        "lon": 9.168528
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.galao-stuttgart.de/",
+        "instagram": "https://www.instagram.com/cafegalao/",
+        "facebook": "https://www.facebook.com/cafegalao/"
+      },
+      "xref": {
+        "overture": "b7699ad0-dc56-45e1-ac38-8b4a2142965d"
+      }
+    },
+    {
+      "id": "cp-23e9apyzhg",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Schwabenplatz 1",
+        "postal_code": "70563"
+      },
+      "location": {
+        "lat": 48.730516,
+        "lon": 9.108574
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100006150",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "bccd3e67-79dc-40d1-a12a-42410158b95a"
+      }
+    },
+    {
+      "id": "cp-27zspr407v",
+      "type": "CafeOrCoffeeShop",
+      "name": "Kaffeerakete Stuttgart",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Silberburgstraße 36",
+        "postal_code": "70176"
+      },
+      "location": {
+        "lat": 48.783109,
+        "lon": 9.15984
+      },
+      "opening_hours": "Mo-Fr 09:00-17:30; We 09:00-14:30; Sa 09:30-14:00",
+      "description": "Kaffeerakete Stuttgart is a specialty coffee place in Stuttgart that roasts its own beans. The menu includes espresso drinks and filter coffee. It also sells beans to take home.",
+      "specialty_tier": "A",
+      "roasts_own_beans": true,
+      "serving": {
+        "filter": true,
+        "espresso": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://kaffeerakete-stuttgart.de/"
+      },
+      "xref": {
+        "overture": "4ae65b8f-6531-4099-a6ea-5ea895070648"
+      }
+    },
+    {
+      "id": "cp-29ayyck5ar",
+      "type": "CafeOrCoffeeShop",
+      "name": "alf cycling Café & Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Villastraße 14",
+        "postal_code": "70190"
+      },
+      "location": {
+        "lat": 48.794143,
+        "lon": 9.20295
+      },
+      "opening_hours": "Th-Su 10:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Schwarzmahler"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "balanced"
+      },
+      "operator": {
+        "name": "alleliebenfahrrad GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 784724"
+      },
+      "links": {
+        "website": "https://www.alfcycling.com/",
+        "instagram": "https://www.instagram.com/alf_cycling/"
+      },
+      "xref": {
+        "overture": "ba45a15c-5ced-40db-bffa-858b9a26c592"
+      }
+    },
+    {
+      "id": "cp-2brm7txs3v",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffee Berry",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Neue Brücke 2",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.774746,
+        "lon": 9.176575
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "pour_over": true,
+        "cold_brew": true,
+        "decaf": true
+      },
+      "operator": {
+        "name": "JKC GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://coffeeberry-bw.de/",
+        "instagram": "https://www.instagram.com/coffeeberry_str_neuebruecke/",
+        "facebook": "https://www.facebook.com/coffeeberry.str.neuebruecke/"
+      },
+      "xref": {
+        "overture": "9003ca96-ebf7-449d-bd0f-8920adbc2f45"
+      }
+    },
+    {
+      "id": "cp-2y0hvtg4a5",
+      "type": "CafeOrCoffeeShop",
+      "name": "Maison Karl",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Calwer Straße 50",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.775507,
+        "lon": 9.173115
+      },
+      "opening_hours": "Mo-Th 09:30-21:00; Fr-Sa 09:30-22:00; Su 10:00-20:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true
+      },
+      "sells_beans": true,
+      "prices": {
+        "cappuccino": {
+          "amount": 4.3,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://static1.squarespace.com/static/60d973ab5de30045e51f445c/t/673622df6a19182fb4bee1e1/1731601119925/2024+11+Men%C3%BCDrinks.pdf"
+        }
+      },
+      "operator": {
+        "name": "Maison Karl GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://www.maisonkarl.com/",
+        "instagram": "https://www.instagram.com/maisonkarl/"
+      },
+      "xref": {
+        "overture": "81659a6a-7641-47ca-8c8c-cfa450dfb9c0"
+      }
+    },
+    {
+      "id": "cp-3jbrhzejvv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caffè-Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Torstraße 27",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.772759,
+        "lon": 9.176679
+      },
+      "opening_hours": "Mo-We 08:00-01:00; Th-Fr 08:00-02:00; Sa 09:00-03:00; Su 12:00-24:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Danesi"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "offers_courses": true,
+      "links": {
+        "website": "https://caffe-bar.com/",
+        "instagram": "https://www.instagram.com/caffe_bar/"
+      },
+      "xref": {
+        "overture": "7e175641-995b-4dea-a236-5c4e79f2ddca"
+      }
+    },
+    {
+      "id": "cp-49n5syd902",
+      "type": "CafeOrCoffeeShop",
+      "name": "Ca Phe Ca Phao",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Birkenwaldstraße 217",
+        "postal_code": "70191"
+      },
+      "location": {
+        "lat": 48.799339,
+        "lon": 9.175202
+      },
+      "opening_hours": "Tu-Su 10:30-19:30; Mo off",
+      "specialty_tier": "none",
+      "food": {
+        "cakes_baked_in_house": true,
+        "focus": "balanced"
+      },
+      "operator": {
+        "name": "HaGiMa GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://caphecaphao.de/",
+        "instagram": "https://www.instagram.com/caphecaphao.stg/",
+        "facebook": "https://www.facebook.com/caphecaphao.stg/"
+      },
+      "xref": {
+        "overture": "4c191c0d-c0b5-4c89-a8e1-f825ce7fa917"
+      }
+    },
+    {
+      "id": "cp-4a5t70f062",
+      "type": "CafeOrCoffeeShop",
+      "name": "Lib-Room",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Konrad-Adenauer-Straße 10",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.777801,
+        "lon": 9.184689
+      },
+      "opening_hours": "Mo-We 09:00-19:30; Th 09:00-22:00; Fr 09:00-18:00; Sa 12:00-17:00; Su off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Cafésito"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.3,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://lib-room.de/speisekarte-lib-room-restaurant-stuttgart/"
+        }
+      },
+      "links": {
+        "website": "https://lib-room.de/",
+        "instagram": "https://www.instagram.com/lib_room.stuttgart/"
+      },
+      "xref": {
+        "overture": "466cc849-6b51-472e-bbdb-b0aa89a4d35d"
+      }
+    },
+    {
+      "id": "cp-4bthp4ct3a",
+      "type": "CafeOrCoffeeShop",
+      "name": "Academie der schönsten Künste",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Charlottenstraße 5",
+        "postal_code": "70182"
+      },
+      "location": {
+        "lat": 48.775314,
+        "lon": 9.184058
+      },
+      "opening_hours": "Mo-Su 08:00-24:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://academie-der-schoensten-kuenste.de/wp-content/uploads/2025/07/Academie_Speisekarte_110x300_15_05_2025_WEB.pdf"
+        }
+      },
+      "operator": {
+        "name": "Academie der schönsten Künste GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://academie-der-schoensten-kuenste.de/",
+        "instagram": "https://www.instagram.com/academiederschoenstenkuenste/"
+      },
+      "xref": {
+        "overture": "147b29a1-068d-491b-8bf4-d1bf9eaa465e"
+      }
+    },
+    {
+      "id": "cp-4dtj7sq5fw",
+      "type": "CafeOrCoffeeShop",
+      "name": "Nanou Cafe Bar Bistro Darts",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Neuhauser Straße 3",
+        "postal_code": "70599"
+      },
+      "location": {
+        "lat": 48.700532,
+        "lon": 9.215332
+      },
+      "opening_hours": "Mo,Tu 15:00-02:00; We,Th,Su 12:00-02:00; Fr,Sa 12:00-04:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "links": {
+        "website": "https://cafebar-nanou.de/"
+      },
+      "xref": {
+        "overture": "7aff0238-628c-4980-b73d-42b37b05cd37"
+      }
+    },
+    {
+      "id": "cp-4kx4tdxcan",
+      "type": "CafeOrCoffeeShop",
+      "name": "abnorm concept space",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Christophstraße 5",
+        "postal_code": "70178"
+      },
+      "location": {
+        "lat": 48.772245,
+        "lon": 9.175258
+      },
+      "opening_hours": "Mo-Sa 11:00-19:00",
+      "description": "abnorm concept space is a place in Stuttgart that serves specialty coffee. It serves coffee from Südhang, Stray, Ordinary and HALBSTARK. The menu includes espresso drinks and filter coffee, with plant-based milk available. It also sells beans to take home and sells brewing equipment.",
+      "specialty_tier": "B",
+      "roasts_own_beans": false,
+      "roasters_served": [
+        {
+          "name": "Südhang"
+        },
+        {
+          "name": "Stray"
+        },
+        {
+          "name": "Ordinary"
+        },
+        {
+          "name": "HALBSTARK"
+        },
+        {
+          "name": "Südseite"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "plant_milk": true
+      },
+      "sells_beans": true,
+      "sells_equipment": true,
+      "operator": {
+        "name": "Abnorm Studio GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 796269"
+      },
+      "links": {
+        "website": "https://abnorm.space/",
+        "instagram": "https://www.instagram.com/abnorm.space/"
+      },
+      "xref": {
+        "overture": "866f8b15-7411-4272-94f6-489de07b1662"
+      }
+    },
+    {
+      "id": "cp-52cbkcjc27",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Konditorei Rosenstöckle",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Tuttlinger Straße 10",
+        "postal_code": "70619"
+      },
+      "location": {
+        "lat": 48.744588,
+        "lon": 9.214582
+      },
+      "opening_hours": "Mo off; Tu-Sa 09:00-17:00; Su 10:00-17:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://www.rosenstoeckle.de/",
+        "facebook": "https://www.facebook.com/rosenstoeckle.de/"
+      },
+      "xref": {
+        "overture": "2efb389f-cede-4dd8-ae14-ccdca80823fc"
+      }
+    },
+    {
+      "id": "cp-5v7pqnxdd3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Poffers",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Urbanstraße 86",
+        "postal_code": "70190"
+      },
+      "location": {
+        "lat": 48.783863,
+        "lon": 9.190667
+      },
+      "opening_hours": "Mo-Fr 09:00-16:00; Sa,Su 09:30-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "operator": {
+        "name": "Poffers UG (haftungsbeschränkt)",
+        "legal_form": "UG (haftungsbeschränkt)",
+        "register_id": "HRB 759784"
+      },
+      "links": {
+        "website": "https://poffers.de/"
+      },
+      "xref": {
+        "overture": "030dd767-7cf2-4756-ab8e-59224cf9c4c0"
+      }
+    },
+    {
+      "id": "cp-5y616104vj",
+      "type": "CafeOrCoffeeShop",
+      "name": "Fietsen Radcafé",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Silberburgstr. 84",
+        "postal_code": "70176"
+      },
+      "location": {
+        "lat": 48.779391,
+        "lon": 9.162385
+      },
+      "opening_hours": "Mo-Fr 09:00-21:00; Sa,Su,PH 09:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Blackbird Coffee"
+        },
+        {
+          "name": "Paso Paso"
+        },
+        {
+          "name": "Hoppenworth & Ploch"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_equipment": true,
+      "links": {
+        "website": "https://fietsen-stuttgart.de/",
+        "facebook": "https://www.facebook.com/fietsen.stuttgart/"
+      },
+      "xref": {
+        "overture": "26234545-3393-40cc-a5ad-2604c3c35191"
+      }
+    },
+    {
+      "id": "cp-6khm6q5475",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Le Mai",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Vaihinger Straße 54",
+        "postal_code": "70567"
+      },
+      "location": {
+        "lat": 48.727933,
+        "lon": 9.144784
+      },
+      "opening_hours": "Th-Su 09:30-17:30; Mo,Tu,We off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://www.cafelemai.de/speisekarte.html"
+        }
+      },
+      "links": {
+        "website": "https://www.cafelemai.de/",
+        "instagram": "https://www.instagram.com/cafelemai/"
+      },
+      "xref": {
+        "overture": "cbe6b99c-fa72-4aa5-abbb-94eb18c16e31"
+      }
+    },
+    {
+      "id": "cp-6rc6tamxcy",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Justus",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Olgastraße 118",
+        "postal_code": "70180"
+      },
+      "location": {
+        "lat": 48.767181,
+        "lon": 9.178353
+      },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa 09:00-14:00; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://cafejustus.de/",
+        "facebook": "https://www.facebook.com/cafejustus/"
+      },
+      "xref": {
+        "overture": "cabe1245-6160-488b-9b45-68baac17c032"
+      }
+    },
+    {
+      "id": "cp-6zg4y4pbp8",
+      "type": "CafeOrCoffeeShop",
+      "name": "Take A Break",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Nesenbachstraße 50",
+        "postal_code": "70178"
+      },
+      "location": {
+        "lat": 48.772131,
+        "lon": 9.17633
+      },
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa 10:00-19:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://www.take-abreak.de/",
+        "instagram": "https://www.instagram.com/takeabreak_stuttgart/"
+      },
+      "xref": {
+        "overture": "f8945225-ddc3-4056-a582-8365bc193846"
+      }
+    },
+    {
+      "id": "cp-7h1ytvjy99",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tulip",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Wartbergstraße 40",
+        "postal_code": "70191"
+      },
+      "location": {
+        "lat": 48.804908,
+        "lon": 9.177558
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "kids_friendly": true,
+        "outdoor_seating": true
+      },
+      "links": {
+        "website": "https://www.tulip-stuttgart.de/",
+        "instagram": "https://www.instagram.com/tulip.stuttgart/"
+      },
+      "xref": {
+        "overture": "79353607-1f1b-46bc-b263-66687165311e"
+      }
+    },
+    {
+      "id": "cp-9ft1bk5gsr",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Epplestr. 12",
+        "postal_code": "70597"
+      },
+      "location": {
+        "lat": 48.748073,
+        "lon": 9.170077
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100000526",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "61c97671-ad9a-469e-a4f5-7342ace5ace6"
+      }
+    },
+    {
+      "id": "cp-9j7dtfbhx1",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bäckerei Konditorei Café Nast",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Röckenwiesenstr. 28",
+        "postal_code": "70197"
+      },
+      "location": {
+        "lat": 48.768217,
+        "lon": 9.1487
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true,
+        "outdoor_seating": true
+      },
+      "operator": {
+        "name": "Café Nast GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 741750"
+      },
+      "links": {
+        "website": "https://cafenast.com/",
+        "instagram": "https://www.instagram.com/cafenast/"
+      },
+      "xref": {
+        "overture": "f862b7e9-500f-4958-b1eb-e5dfe3839643"
+      }
+    },
+    {
+      "id": "cp-9n9px87z62",
+      "type": "CafeOrCoffeeShop",
+      "name": "Taraba",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Neckarstraße 216",
+        "postal_code": "70190"
+      },
+      "location": {
+        "lat": 48.792663,
+        "lon": 9.20155
+      },
+      "opening_hours": "Mo-Su 10:00-17:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "operator": {
+        "name": "TARABA Coffee Roasters – Prosic GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 331447"
+      },
+      "links": {
+        "website": "https://www.taraba.coffee/de",
+        "instagram": "https://www.instagram.com/taraba.coffee/",
+        "facebook": "https://www.facebook.com/tarabastuttgart/"
+      },
+      "xref": {
+        "overture": "04454129-200b-4d1c-924f-87b16a562fbb"
+      }
+    },
+    {
+      "id": "cp-9nxavma29j",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Sacco",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Johannesstraße 60",
+        "postal_code": "70176"
+      },
+      "location": {
+        "lat": 48.779481,
+        "lon": 9.160238
+      },
+      "opening_hours": "Mo,Tu,Th,Fr 09:30-14:30,16:30-21:00; We 09:30-14:30; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "links": {
+        "website": "http://www.cafesacco.de/",
+        "instagram": "https://www.instagram.com/cafe_sacco_/"
+      },
+      "xref": {
+        "overture": "fffeb60a-0b51-4c5f-aaf2-25aeddc63823"
+      }
+    },
+    {
+      "id": "cp-a0pctfersw",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Treppe",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Kleiner Schlossplatz 13-15",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.778656,
+        "lon": 9.177339
+      },
+      "opening_hours": "Mo-Th 08:00-24:00; Fr-Sa 08:00-02:00; Su,PH 10:00-24:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://cafe-treppe.de/english-menu.pdf"
+        }
+      },
+      "operator": {
+        "name": "Treppe-Onlinecafé GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://cafe-treppe.de/",
+        "instagram": "https://www.instagram.com/cafe_treppe/"
+      },
+      "xref": {
+        "overture": "a2318b19-2758-473a-81a6-d7041e9cee57"
+      }
+    },
+    {
+      "id": "cp-a2q6fzk8hk",
+      "type": "CafeOrCoffeeShop",
+      "name": "Herbert'z Espressobar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Immenhofer Straße 13",
+        "postal_code": "70180"
+      },
+      "location": {
+        "lat": 48.767091,
+        "lon": 9.175588
+      },
+      "opening_hours": "Mo-Fr 07:00-18:00; Sa 08:00-18:00; Su 09:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://www.cafe-herbertz.de/de"
+        }
+      },
+      "links": {
+        "website": "https://www.cafe-herbertz.de/de",
+        "facebook": "https://www.facebook.com/herbertz.espresso/"
+      },
+      "xref": {
+        "overture": "0d64681c-62a0-4c85-bc1a-47a032c4af25"
+      }
+    },
+    {
+      "id": "cp-a4tfp50bgg",
+      "type": "CafeOrCoffeeShop",
+      "name": "Faultier Hafen",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Seestraße 63",
+        "postal_code": "70174"
+      },
+      "location": {
+        "lat": 48.786457,
+        "lon": 9.168317
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://faultiercafe.de/",
+        "instagram": "https://www.instagram.com/faultier_cafe/"
+      },
+      "xref": {
+        "overture": "b3ee0d72-57a6-4475-b7b7-f76ce6f6c8e1"
+      }
+    },
+    {
+      "id": "cp-a99205w5c0",
+      "type": "CafeOrCoffeeShop",
+      "name": "Raupe Immersatt",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Johannesstraße 97",
+        "postal_code": "70176"
+      },
+      "location": {
+        "lat": 48.78199,
+        "lon": 9.158073
+      },
+      "opening_hours": "Mo,We-Fr 10:00-23:00; Sa,Su 10:00-19:00; Tu off",
+      "specialty_tier": "none",
+      "amenities": {
+        "cash_only": true
+      },
+      "links": {
+        "website": "https://www.raupeimmersatt.de/",
+        "instagram": "https://www.instagram.com/raupe.immersatt/"
+      },
+      "xref": {
+        "overture": "14fdec3e-7f97-41e7-b020-c0e665d8a900"
+      }
+    },
+    {
+      "id": "cp-a9tfgctrc1",
+      "type": "CafeOrCoffeeShop",
+      "name": "Lumen",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Schwabstraße 65",
+        "postal_code": "70197"
+      },
+      "location": {
+        "lat": 48.772415,
+        "lon": 9.156675
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://lumen-stuttgart.com/"
+      },
+      "xref": {
+        "overture": "3d4a037f-4bbe-4aa7-a1c7-849f4ddfeaef"
+      }
+    },
+    {
+      "id": "cp-aa3vp982m1",
+      "type": "CafeOrCoffeeShop",
+      "name": "Taraba 2.0",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "König-Karl-Straße 44",
+        "postal_code": "70372"
+      },
+      "location": {
+        "lat": 48.804626,
+        "lon": 9.217821
+      },
+      "opening_hours": "Mo-Su 10:00-17:00",
+      "specialty_tier": "none",
+      "food": {
+        "focus": "coffee_led"
+      },
+      "operator": {
+        "name": "TARABA Coffee Roasters – Prosic GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 331447"
+      },
+      "links": {
+        "website": "https://www.taraba.coffee/de",
+        "instagram": "https://www.instagram.com/taraba.coffee/",
+        "facebook": "https://www.facebook.com/tarabastuttgart/"
+      },
+      "xref": {
+        "overture": "4e05c8f4-af07-4e17-bc1a-030fbb63aa90"
+      }
+    },
+    {
+      "id": "cp-afwek31dj0",
+      "type": "CafeOrCoffeeShop",
+      "name": "Leo's",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Kronenstraße 7",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.78191,
+        "lon": 9.179659
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://leos-stuttgart.de/"
+      },
+      "xref": {
+        "overture": "15aa3cdf-14d6-412d-a427-f19695b917f9"
+      }
+    },
+    {
+      "id": "cp-akberxyaaa",
+      "type": "CafeOrCoffeeShop",
+      "name": "Mission Coffee Schwabstraße",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart"
+      },
+      "location": {
+        "lat": 48.770593,
+        "lon": 9.158022
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://mission-coffee.com/",
+        "facebook": "https://www.facebook.com/missioncoffeee/"
+      },
+      "xref": {
+        "overture": "6449d126-7239-43d2-bbee-ae6a34c12da4"
+      }
+    },
+    {
+      "id": "cp-apcabm0zvt",
+      "type": "CafeOrCoffeeShop",
+      "name": "Starbucks",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart"
+      },
+      "location": {
+        "lat": 48.7842,
+        "lon": 9.18087
+      },
+      "opening_hours": "Mo-Su 06:00-21:30",
+      "specialty_tier": "none",
+      "sells_beans": true,
+      "links": {
+        "website": "https://www.starbucks.co.uk/store-locator/59910-294154/stuttgart-hb-kiosk",
+        "instagram": "https://www.instagram.com/starbucksuk/",
+        "facebook": "https://www.facebook.com/starbucksuk/"
+      },
+      "xref": {
+        "overture": "77f53963-eab8-4152-a2e8-4eb16e6a08dc"
+      }
+    },
+    {
+      "id": "cp-av1zz0xqf8",
+      "type": "CafeOrCoffeeShop",
+      "name": "Glora Kaffeehaus Genussmanufaktur",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Bahnhofstraße 30",
+        "postal_code": "70372"
+      },
+      "location": {
+        "lat": 48.801681,
+        "lon": 9.217531
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://glora-kaffeehaus.eatbu.com/"
+      },
+      "xref": {
+        "overture": "78cf76f3-e30b-4b72-9ee9-0088e2ebf8f2"
+      }
+    },
+    {
+      "id": "cp-b6nqby779s",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caffe Grazioso",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Dornbirner Straße 8",
+        "postal_code": "70469"
+      },
+      "location": {
+        "lat": 48.81279,
+        "lon": 9.167157
+      },
+      "opening_hours": "Mo-Sa 09:00-20:00; Su 11:00-20:00; PH 10:00-20:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://caffe-grazioso.de/"
+        }
+      },
+      "links": {
+        "website": "https://caffe-grazioso.de/"
+      },
+      "xref": {
+        "overture": "b64873d7-59b8-4de6-8edc-11c1f6589902"
+      }
+    },
+    {
+      "id": "cp-bp9kbj29fg",
+      "type": "CafeOrCoffeeShop",
+      "name": "Kaffeehaus Villa Berg",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Hackstraße 71",
+        "postal_code": "70190"
+      },
+      "location": {
+        "lat": 48.789137,
+        "lon": 9.205822
+      },
+      "opening_hours": "Mo-Fr 07:00-19:00; Sa,Su 10:00-19:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "coffee_led"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://kaffeehaus-villa-berg.de/getraenke-und-speisekarte/"
+        }
+      },
+      "links": {
+        "website": "https://kaffeehaus-villa-berg.de/",
+        "instagram": "https://www.instagram.com/kaffeehaus_villaberg_ost/"
+      },
+      "xref": {
+        "overture": "1c54efe3-1cc2-4e84-8257-5fd81183f8e7"
+      }
+    },
+    {
+      "id": "cp-cb2gwjd79r",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bäckerei Konditorei Schrade",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Fuchswaldstr. 103",
+        "postal_code": "70569"
+      },
+      "location": {
+        "lat": 48.741479,
+        "lon": 9.126748
+      },
+      "opening_hours": "Mo-Fr 07:00-13:00,15:00-18:00; Sa 06:30-13:00; Su off",
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Bäckerei Konditorei Schrade GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 12904"
+      },
+      "links": {
+        "website": "https://www.baeckerei-schrade.de/",
+        "instagram": "https://www.instagram.com/baeckerei.schrade/"
+      },
+      "xref": {
+        "overture": "acb5d41b-5d3f-4a43-8669-5fd781e8ba67"
+      }
+    },
+    {
+      "id": "cp-d30h5wdnr8",
+      "type": "CafeOrCoffeeShop",
+      "name": "Die Wunderkammer",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Rosenstr. 33",
+        "postal_code": "70182"
+      },
+      "location": {
+        "lat": 48.774306,
+        "lon": 9.184165
+      },
+      "opening_hours": "Tu 08:00-14:00; We-Fr 08:00-16:30; Sa 08:00-16:30; Su,PH 08:00-15:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "kids_friendly": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "offers_courses": true,
+      "links": {
+        "website": "https://www.wunderkammer-stuttgart.de/",
+        "instagram": "https://www.instagram.com/die_wunderkammer/",
+        "facebook": "https://www.facebook.com/diewunderkammerstuttgart/"
+      },
+      "xref": {
+        "overture": "ce02c880-055a-4b77-9c72-8bf9a7201d63"
+      }
+    },
+    {
+      "id": "cp-d8hedqgseh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Gustav Cafe & Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Schwabstraße 47",
+        "postal_code": "70197"
+      },
+      "location": {
+        "lat": 48.771153,
+        "lon": 9.157551
+      },
+      "opening_hours": "Mo-We,Fr 08:00-19:00; Th 08:00-20:00; Sa,Su 09:00-19:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true
+      },
+      "sells_beans": true,
+      "offers_courses": true,
+      "prices": {
+        "cappuccino": {
+          "amount": 4.2,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "http://in-promo.de/cafegustavwebsite/wp-content/uploads/2026/11/Speisekarte2026-12verschoben2.jpg"
+        }
+      },
+      "operator": {
+        "name": "Gustav Gastro GmbH",
+        "legal_form": "GmbH"
+      },
+      "links": {
+        "website": "https://gustav.cafe/"
+      },
+      "xref": {
+        "overture": "dd1dca71-5393-4050-aa21-80538df37db3"
+      }
+    },
+    {
+      "id": "cp-dgp7a17mje",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffee Connection",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Gablenberger Hauptstraße 126",
+        "postal_code": "70186"
+      },
+      "location": {
+        "lat": 48.775058,
+        "lon": 9.203523
+      },
+      "opening_hours": "Mo-Fr 12:00-18:00; Sa 11:30-14:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Torrefazione Mike"
+        },
+        {
+          "name": "Alberto Verani"
+        },
+        {
+          "name": "Mokaflor"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "sells_beans": true,
+      "sells_equipment": true,
+      "links": {
+        "website": "http://www.coffeecon.de/"
+      },
+      "xref": {
+        "overture": "4e0bd943-786a-4634-a10f-4f77808fb155"
+      }
+    },
+    {
+      "id": "cp-e34vf1c024",
+      "type": "CafeOrCoffeeShop",
+      "name": "Lamber – Kaffee am Killesberg",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Eduard-Pfeiffer-Straße 121",
+        "postal_code": "70192"
+      },
+      "location": {
+        "lat": 48.789657,
+        "lon": 9.170396
+      },
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa 08:00-17:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.lamber-killesberg.de/"
+      },
+      "xref": {
+        "overture": "ae1c18cb-3b4e-4e15-b638-f593e7dec159"
+      }
+    },
+    {
+      "id": "cp-erxm4awnn4",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bäckerei Konditorei Schrade",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Widmaierstr. 110",
+        "postal_code": "70567"
+      },
+      "location": {
+        "lat": 48.72223,
+        "lon": 9.158553
+      },
+      "opening_hours": "Mo-Fr 07:00-18:00; Sa 07:00-13:00; Su off",
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Bäckerei Konditorei Schrade GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 12904"
+      },
+      "links": {
+        "website": "https://www.baeckerei-schrade.de/",
+        "instagram": "https://www.instagram.com/baeckerei.schrade/"
+      },
+      "xref": {
+        "overture": "12a7f7ce-4eaf-4a48-96ef-f8a23e3969f9"
+      }
+    },
+    {
+      "id": "cp-g5s076d1we",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Weiß",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Geißstraße 16",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.773477,
+        "lon": 9.176826
+      },
+      "opening_hours": "Mo-Th 18:00-03:00; Fr,Sa 18:00-04:00; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 4,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://www.cafe-weiss.de/getraenke/"
+        }
+      },
+      "links": {
+        "website": "https://www.cafe-weiss.de/home/"
+      },
+      "xref": {
+        "overture": "740fcddb-6b8a-4b74-894c-c0c8bdd36487"
+      }
+    },
+    {
+      "id": "cp-gcsg7kjhjm",
+      "type": "CafeOrCoffeeShop",
+      "name": "LUDO - Drinks & Food",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Silberburgstraße 158",
+        "postal_code": "70178"
+      },
+      "location": {
+        "lat": 48.772692,
+        "lon": 9.167286
+      },
+      "opening_hours": "Mo-Fr 06:00-21:00; Sa 09:00-15:00; Su 10:00-16:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "focus": "balanced"
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.5,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://www.ludo-stuttgart.de/"
+        }
+      },
+      "links": {
+        "website": "https://www.ludo-stuttgart.de/",
+        "instagram": "https://www.instagram.com/ludo_stuttgart/"
+      },
+      "xref": {
+        "overture": "c1e0fed6-fd05-4494-9eb1-c8124d374923"
+      }
+    },
+    {
+      "id": "cp-h0bfn2q46w",
+      "type": "CafeOrCoffeeShop",
+      "name": "Danis Eule",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Filderhauptstraße 155",
+        "postal_code": "70599"
+      },
+      "location": {
+        "lat": 48.710548,
+        "lon": 9.20319
+      },
+      "opening_hours": "Mo-Fr 07:00-20:00; Sa 07:00-19:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "operator": {
+        "name": "Danis Eule GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 753119"
+      },
+      "links": {
+        "website": "https://daniseule.de/",
+        "facebook": "https://www.facebook.com/daniseulegmbh/"
+      },
+      "xref": {
+        "overture": "cd80f217-c7b1-407e-8c77-d2739814889f"
+      }
+    },
+    {
+      "id": "cp-h55rvfz0k9",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bäckerei Konditorei Schrade",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Epplestr. 11",
+        "postal_code": "70597"
+      },
+      "location": {
+        "lat": 48.748043,
+        "lon": 9.170253
+      },
+      "opening_hours": "Mo-Fr 06:30-18:30; Sa 06:30-14:00; Su off",
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Bäckerei Konditorei Schrade GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 12904"
+      },
+      "links": {
+        "website": "https://www.baeckerei-schrade.de/",
+        "instagram": "https://www.instagram.com/baeckerei.schrade/"
+      },
+      "xref": {
+        "overture": "ec8d63bc-21b6-4213-b009-e97248f8b6af"
+      }
+    },
+    {
+      "id": "cp-hnbna7f2b4",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café LIST",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Liststraße 25",
+        "postal_code": "70180"
+      },
+      "location": {
+        "lat": 48.763363,
+        "lon": 9.173753
+      },
+      "opening_hours": "Mo 09:00-17:00; Tu 09:00-15:00; We 09:00-17:00; Th 09:00-17:00; Fr 09:00-18:00; Sa 09:00-18:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://www.cafe-list.de/"
+      },
+      "xref": {
+        "overture": "a0602f1a-18ef-44d5-8abb-f55145913ce0"
+      }
+    },
+    {
+      "id": "cp-k3q1sepeg7",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Schöngeist",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Bebelstraße 85",
+        "postal_code": "70193"
+      },
+      "location": {
+        "lat": 48.774616,
+        "lon": 9.147421
+      },
+      "opening_hours": "Fr 12:30-19:30; Sa,Su 09:30-19:30",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-12",
+          "source_url": "https://cafe-schoengeist.de/wp-content/uploads/2026/02/karte.pdf"
+        }
+      },
+      "links": {
+        "website": "https://cafe-schoengeist.de/",
+        "instagram": "https://www.instagram.com/cafe_schoengeist/"
+      },
+      "xref": {
+        "overture": "60f84acc-f771-4fa4-b6a5-9a86b3157e49"
+      }
+    },
+    {
+      "id": "cp-m2wvs63gmh",
+      "type": "CafeOrCoffeeShop",
+      "name": "kuchenliebe",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Schwabstraße 24",
+        "postal_code": "70197"
+      },
+      "location": {
+        "lat": 48.770368,
+        "lon": 9.158337
+      },
+      "opening_hours": "Mo-Su 11:00-17:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "kuchenliebe UG haftungsbeschränkt"
+      },
+      "links": {
+        "website": "https://www.kuchenliebe.de/",
+        "instagram": "https://www.instagram.com/kuchenliebe.stuttgart/"
+      },
+      "xref": {
+        "overture": "e36cbd66-705a-42fa-a4be-29b995cd55f7"
+      }
+    },
+    {
+      "id": "cp-m4fj6kd7h4",
+      "type": "CafeOrCoffeeShop",
+      "name": "Mókuska Kaffeerösterei",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Johannesstraße 34",
+        "postal_code": "70176"
+      },
+      "location": {
+        "lat": 48.777205,
+        "lon": 9.16202
+      },
+      "opening_hours": "Mo-Sa 08:00-18:00; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "sells_beans": true,
+      "offers_courses": true,
+      "links": {
+        "website": "https://mokuska-caffe.de/",
+        "instagram": "https://www.instagram.com/mokuskacaffe/"
+      },
+      "xref": {
+        "overture": "0f0e951c-cb2c-4f1e-9b25-29f9b8dc1fbb"
+      }
+    },
+    {
+      "id": "cp-mh3dwdn2bp",
+      "type": "CafeOrCoffeeShop",
+      "name": "MAIBACH Café",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Vaihinger str. 54",
+        "postal_code": "70567"
+      },
+      "location": {
+        "lat": 48.727933,
+        "lon": 9.144784
+      },
+      "specialty_tier": "none",
+      "food": {
+        "focus": "balanced"
+      },
+      "links": {
+        "website": "https://maibachcafe.de/"
+      },
+      "xref": {
+        "overture": "63188adc-5931-4b2b-b84e-704ca927ad72"
+      }
+    },
+    {
+      "id": "cp-mtm4qd1eaq",
+      "type": "CafeOrCoffeeShop",
+      "name": "Mocca Espresso & Weinbar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Tübingerstr. 20",
+        "postal_code": "70178"
+      },
+      "location": {
+        "lat": 48.771899,
+        "lon": 9.17409
+      },
+      "opening_hours": "Mo-We 10:00-23:00; Th 10:00-02:00; Fr-Sa 10:00-04:00; Su 12:30-23:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Segafredo"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "links": {
+        "website": "https://www.mocca-stuttgart.de/",
+        "instagram": "https://www.instagram.com/mocca_espressoweinbar/"
+      },
+      "xref": {
+        "overture": "e83c62a0-c727-4268-8e81-5e84ea530fa3"
+      }
+    },
+    {
+      "id": "cp-mwwnsjyjsa",
+      "type": "CafeOrCoffeeShop",
+      "name": "Kantinchen",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Alexanderstraße 180",
+        "postal_code": "70180"
+      },
+      "location": {
+        "lat": 48.764025,
+        "lon": 9.176761
+      },
+      "opening_hours": "Mo-Fr 07:00-18:00; Sa 08:00-13:00",
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://www.kantinchen.com/"
+      },
+      "xref": {
+        "overture": "eb803417-2403-4249-a84c-a1bd46426e06"
+      }
+    },
+    {
+      "id": "cp-n9wegxz8q5",
+      "type": "CafeOrCoffeeShop",
+      "name": "Schwarzmahler",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Landhausstraße 154",
+        "postal_code": "70188"
+      },
+      "location": {
+        "lat": 48.786293,
+        "lon": 9.206192
+      },
+      "opening_hours": "Mo 10:00-14:00; We 10:00-14:00,17:00-20:00; Fr 10:00-14:00,17:00-20:00; Sa 10:00-16:00; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "pour_over": true,
+        "cold_brew": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "offers_courses": true,
+      "links": {
+        "website": "https://www.schwarzmahler.de/",
+        "instagram": "https://www.instagram.com/schwarzmahler/",
+        "facebook": "https://www.facebook.com/schwarzmahlerkaffee/"
+      },
+      "xref": {
+        "overture": "d96951ab-6b40-401b-8662-4b54787ed90a"
+      }
+    },
+    {
+      "id": "cp-nc4a8gqwkw",
+      "type": "CafeOrCoffeeShop",
+      "name": "Walther Café Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Calwer Straße 64",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.774934,
+        "lon": 9.172593
+      },
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.walthercafebar.de/",
+        "instagram": "https://www.instagram.com/walther_cafe_bar/"
+      },
+      "xref": {
+        "overture": "0d8db5f3-7a4f-4c2a-ad2f-c83b5f04d290"
+      }
+    },
+    {
+      "id": "cp-qrtyr9swq4",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffeebrands",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Stuttgarter Straße 82",
+        "postal_code": "70469"
+      },
+      "location": {
+        "lat": 48.809558,
+        "lon": 9.159971
+      },
+      "opening_hours": "Mo-Su 06:00-22:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "cold_brew": true
+      },
+      "food": {
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "https://coffeebrands.gr/",
+        "instagram": "https://www.instagram.com/coffeebrands_gr/",
+        "facebook": "https://www.facebook.com/coffeebrands.gr/"
+      },
+      "xref": {
+        "overture": "88a09ba8-bb58-4cd3-8b3d-53bd92c9c8e6"
+      }
+    },
+    {
+      "id": "cp-qvq356k0qk",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Lesbar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Mailänder Platz 1",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.790131,
+        "lon": 9.183048
+      },
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "MAYCOFFEE"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "focus": "balanced"
+      },
+      "links": {
+        "website": "https://cafe-lesbar.de/",
+        "instagram": "https://www.instagram.com/cafe_lesbar/"
+      },
+      "xref": {
+        "overture": "7efda8a1-fe0d-418d-b287-1517f3257df1"
+      }
+    },
+    {
+      "id": "cp-r1vfwqzpqe",
+      "type": "CafeOrCoffeeShop",
+      "name": "TSIMPO Café",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Frösnerstraße 6",
+        "postal_code": "70372"
+      },
+      "location": {
+        "lat": 48.802224,
+        "lon": 9.218114
+      },
+      "opening_hours": "Mo-Su 08:00-22:00",
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://tsimpo.cafe/",
+        "instagram": "https://www.instagram.com/tsimpocafekonditorei/",
+        "facebook": "https://www.facebook.com/tsimpocafe/"
+      },
+      "xref": {
+        "overture": "d1c49c02-3101-45ec-9c4e-8c7b808bc64b"
+      }
+    },
+    {
+      "id": "cp-rv32p5z1t3",
+      "type": "CafeOrCoffeeShop",
+      "name": "Werkstatthaus Stuttgart",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Gerokstraße 7",
+        "postal_code": "70188"
+      },
+      "location": {
+        "lat": 48.779982,
+        "lon": 9.193526
+      },
+      "opening_hours": "We-Fr 16:00-22:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "operator": {
+        "name": "Stuttgarter Jugendhaus gGmbH",
+        "legal_form": "gGmbH"
+      },
+      "links": {
+        "website": "https://werkstatthaus.net/werkstaetten/cafe-arg/",
+        "instagram": "https://www.instagram.com/werkstatthaus.stuttgart/",
+        "facebook": "https://www.facebook.com/werkstatthaus/"
+      },
+      "xref": {
+        "overture": "810a10da-9a51-4fd8-9bf8-2e6c73f00937"
+      }
+    },
+    {
+      "id": "cp-saseaxny0v",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Hegel",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Eberhardstraße 35",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.773236,
+        "lon": 9.17796
+      },
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://www.cafehegel.de/",
+        "instagram": "https://www.instagram.com/cafehegel/",
+        "facebook": "https://www.facebook.com/cafehegel/"
+      },
+      "xref": {
+        "overture": "f4b506d4-e551-4024-84f3-3255781f4e1e"
+      }
+    },
+    {
+      "id": "cp-tahn07bxy5",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bäckerei Konditorei Schrade",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Leinenweberstr. 38",
+        "postal_code": "70567"
+      },
+      "location": {
+        "lat": 48.729459,
+        "lon": 9.146237
+      },
+      "opening_hours": "Mo-Fr 06:00-19:00; Sa 06:00-13:00; Su off",
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Bäckerei Konditorei Schrade GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 12904"
+      },
+      "links": {
+        "website": "https://www.baeckerei-schrade.de/",
+        "instagram": "https://www.instagram.com/baeckerei.schrade/"
+      },
+      "xref": {
+        "overture": "9ee4f5b8-8864-4fdd-b4f7-af359dfeff5d"
+      }
+    },
+    {
+      "id": "cp-vv2xy5qdj2",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café am Markt",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Vaihinger Markt 14",
+        "postal_code": "70563"
+      },
+      "location": {
+        "lat": 48.730744,
+        "lon": 9.110337
+      },
+      "opening_hours": "Mo-Sa 09:00-18:00; Su,PH 09:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://cafe-vaihingen.de/",
+        "instagram": "https://www.instagram.com/cafeammarktvaihingen/"
+      },
+      "xref": {
+        "overture": "10a23822-ebf0-44bf-8dc5-781450c417ac"
+      }
+    },
+    {
+      "id": "cp-xed7j2acr4",
+      "type": "CafeOrCoffeeShop",
+      "name": "Aroma Café Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Waiblinger Straße 1–3",
+        "postal_code": "70372"
+      },
+      "location": {
+        "lat": 48.803624,
+        "lon": 9.217641
+      },
+      "opening_hours": "Mo-Th 09:00-03:00; Fr-Sa 09:00-05:00; Su 09:00-03:00",
+      "specialty_tier": "none",
+      "links": {
+        "website": "https://aroma-stuttgart.de/",
+        "instagram": "https://www.instagram.com/cafebar_aroma/",
+        "facebook": "https://www.facebook.com/cafebararoma/"
+      },
+      "xref": {
+        "overture": "824b34fe-eb40-4362-83dd-13cb69431a0b"
+      }
+    },
+    {
+      "id": "cp-yaqha8yswv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Try It",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Seelbergstr. 4",
+        "postal_code": "70372"
+      },
+      "location": {
+        "lat": 48.803032,
+        "lon": 9.217704
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "wheelchair_accessible": true,
+        "wifi": true
+      },
+      "links": {
+        "website": "https://try-it-cafe-stuttgart.eatbu.com/"
+      },
+      "xref": {
+        "overture": "9ad08172-bfe8-4a33-baff-969a8ca95b28"
+      }
+    },
+    {
+      "id": "cp-z1m54453ed",
+      "type": "CafeOrCoffeeShop",
+      "name": "wylđ",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Rosenbergplatz 1",
+        "postal_code": "70193"
+      },
+      "location": {
+        "lat": 48.778314,
+        "lon": 9.156
+      },
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "description": "wylđ is a place in Stuttgart that serves specialty coffee. It serves coffee from Schwarzmahler. The menu includes espresso drinks, with plant-based milk available. It serves breakfast and lunch. Cakes are baked in house. It is open on Sundays.",
+      "specialty_tier": "B",
+      "roasters_served": [
+        {
+          "name": "Schwarzmahler"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true,
+        "focus": "balanced"
+      },
+      "operator": {
+        "name": "Lekka Kaek GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 748"
+      },
+      "links": {
+        "website": "https://www.wyld-stuttgart.de/",
+        "instagram": "https://www.instagram.com/wyld_stuttgart/"
+      },
+      "xref": {
+        "overture": "2ec8dbbd-c745-4c30-b945-13ab6d31e36d"
+      }
+    },
+    {
+      "id": "cp-z60z3h4esg",
+      "type": "CafeOrCoffeeShop",
+      "name": "Holanka Bar Kleiner Schlossplatz",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Königstraße 30",
+        "postal_code": "70173"
+      },
+      "location": {
+        "lat": 48.778181,
+        "lon": 9.177056
+      },
+      "opening_hours": "Mo-Sa 10:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "focus": "coffee_led"
+      },
+      "operator": {
+        "name": "Hochland Kaffee Hunzelmann RS GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 788339"
+      },
+      "links": {
+        "website": "https://www.hochland-kaffee.de/",
+        "instagram": "https://www.instagram.com/hochlandkaffee/",
+        "facebook": "https://www.facebook.com/hochland.kaffee.hunzelmann/"
+      },
+      "xref": {
+        "overture": "95f73e48-1862-46c3-ba86-00d82b852b00"
+      }
+    },
+    {
+      "id": "cp-z64t5kf5d9",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffeebrands",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Seelbergstraße 14",
+        "postal_code": "70372"
+      },
+      "location": {
+        "lat": 48.802669,
+        "lon": 9.218346
+      },
+      "opening_hours": "Mo-Su 06:00-22:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "cold_brew": true
+      },
+      "links": {
+        "website": "https://coffeebrands.gr/",
+        "instagram": "https://www.instagram.com/coffeebrands_gr/",
+        "facebook": "https://www.facebook.com/coffeebrands.gr/"
+      },
+      "xref": {
+        "overture": "7e68bb2d-297b-483c-a26e-6fe42ca81afc"
+      }
+    },
+    {
+      "id": "cp-z7jcmdzjxs",
+      "type": "CafeOrCoffeeShop",
+      "name": "Fröhlich Kaffeerösterei",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Gutenbergstraße 120",
+        "postal_code": "70197"
+      },
+      "location": {
+        "lat": 48.770532,
+        "lon": 9.154127
+      },
+      "opening_hours": "Mo,Tu,Th,Fr 10:00-13:30,15:00-18:00; Sa 10:00-13:30; We,Su off",
+      "specialty_tier": "none",
+      "food": {
+        "focus": "coffee_led"
+      },
+      "links": {
+        "website": "https://froehlich-kaffee.de/",
+        "instagram": "https://www.instagram.com/froehlichkaffee/",
+        "facebook": "https://www.facebook.com/froehlichkaffeeroesterei/"
+      },
+      "xref": {
+        "overture": "ef3f2188-4438-4278-be44-e8761f32ad73"
+      }
+    },
+    {
+      "id": "cp-zbxggh5w25",
+      "type": "CafeOrCoffeeShop",
+      "name": "Nine Pleasure Cafè Bar",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Gablenberger Hauptstraße 114",
+        "postal_code": "70186"
+      },
+      "location": {
+        "lat": 48.775678,
+        "lon": 9.203801
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "card_payment": true,
+        "wheelchair_accessible": true
+      },
+      "links": {
+        "website": "https://nine-pleasure-cafe-bar.metro.bar/"
+      },
+      "xref": {
+        "overture": "1d0bbd84-af7f-4b9b-85c8-c595f3598db3"
+      }
+    },
+    {
+      "id": "cp-znr7dpj7zm",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Blüte",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Schloßstr. 94",
+        "postal_code": "70176"
+      },
+      "location": {
+        "lat": 48.776142,
+        "lon": 9.161244
+      },
+      "opening_hours": "Mo off; Tu off; We-Fr 08:00-17:00; Sa,Su,PH 09:30-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true,
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://www.cafebluete.de/",
+        "instagram": "https://www.instagram.com/cafebluete/",
+        "facebook": "https://www.facebook.com/cafe.bluete/"
+      },
+      "xref": {
+        "overture": "d7bcb0aa-b377-4d4b-8de6-56c6e48c0c20"
+      }
+    },
+    {
+      "id": "cp-zzc811xrck",
+      "type": "CafeOrCoffeeShop",
+      "name": "kuchenliebe",
+      "status": "open",
+      "checked_at": "2026-11-12T07:21:30Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Stuttgart",
+        "street_address": "Wilhelmsplatz 7",
+        "postal_code": "70182"
+      },
+      "location": {
+        "lat": 48.771244,
+        "lon": 9.179223
+      },
+      "opening_hours": "Mo-Su 11:00-17:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "kuchenliebe UG haftungsbeschränkt"
+      },
+      "links": {
+        "website": "https://www.kuchenliebe.de/",
+        "instagram": "https://www.instagram.com/kuchenliebe.stuttgart/"
+      },
+      "xref": {
+        "overture": "2ab90258-d7c5-4655-8dcf-7003eafe509b"
+      }
+    }
+  ]
+}
