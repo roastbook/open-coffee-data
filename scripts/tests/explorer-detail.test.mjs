@@ -11,7 +11,7 @@ const place = {
 
 test("Explorer payload parsing checks the fields consumed by filters, maps and images", () => {
   assert.deepEqual(parsePlacesPayload({ places: [place] }), [place]);
-  const dataset = JSON.parse(readFileSync(new URL("../../datasets/coffee-places/de/munich.json", import.meta.url), "utf8"));
+  const dataset = JSON.parse(readFileSync(new URL("./fixtures/minimal-record.json", import.meta.url), "utf8"));
   assert.equal(parsePlacesPayload({ places: dataset.places.map((p) => ({ ...p, _city: "munich", _city_name: "Munich", _file: place._file })) }).length, dataset.places.length);
   for (const invalid of [null, {}, { places: [null] }, { places: [{ ...place, location: { lat: "48", lon: 11 } }] },
     { places: [{ ...place, image: { url: "x", author: "a", licence: "CC0-1.0", source_url: "x", width: '\" onerror="alert(1)' } }] },
