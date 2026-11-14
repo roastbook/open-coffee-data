@@ -1,0 +1,1558 @@
+{
+  "$schema": "https://schema.roastbook.coffee/coffee-places/coffee-places.schema.v0.3.0.json",
+  "meta": {
+    "licence": "CDLA-Permissive-2.0",
+    "country_code": "DE",
+    "city": "dortmund",
+    "city_name": "Dortmund"
+  },
+  "places": [
+    {
+      "id": "cp-1gjq2gazr9",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bäckermeister Grobe",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund"
+      },
+      "location": {
+        "lat": 51.521239,
+        "lon": 7.518949
+      },
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Bäckermeister Grobe GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG"
+      },
+      "links": {
+        "website": "https://www.baeckerei-grobe.de/",
+        "instagram": "https://www.instagram.com/baeckermeistergrobe/",
+        "facebook": "https://www.facebook.com/baeckermeistergrobe/"
+      },
+      "xref": {
+        "overture": "563a3353-a9d4-4b79-8801-6e9f42ca93d8"
+      }
+    },
+    {
+      "id": "cp-249esa92dt",
+      "type": "CafeOrCoffeeShop",
+      "name": "Yorma'S",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Königswall 15",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.517193,
+        "lon": 7.459721
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "card_payment": true,
+        "vegan_options": true,
+        "outdoor_seating": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 1.6,
+          "currency": "EUR",
+          "observed_on": "2026-11-09",
+          "source_url": "https://www.yormas.de/produktuebersicht/"
+        }
+      },
+      "operator": {
+        "name": "YORMA’S AG",
+        "legal_form": "AG",
+        "register_id": "HRB 2303"
+      },
+      "links": {
+        "website": "https://www.yormas.de/",
+        "instagram": "https://www.instagram.com/yormas.de/",
+        "facebook": "https://www.facebook.com/yormas.ag/"
+      },
+      "xref": {
+        "overture": "7e027cf7-7545-4ee1-bb07-2a0f876f9ba5"
+      }
+    },
+    {
+      "id": "cp-3gwmn705ft",
+      "type": "CafeOrCoffeeShop",
+      "name": "Barcelona Cafe",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Heroldstr. 2",
+        "postal_code": "44145"
+      },
+      "location": {
+        "lat": 51.522825,
+        "lon": 7.464519
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "wheelchair_accessible": true,
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://barcelona-cafe.metro.bar/"
+      },
+      "xref": {
+        "overture": "be8cd167-ec8e-4c9c-86b3-b076480dc7b5"
+      }
+    },
+    {
+      "id": "cp-3v68109yb6",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Kleimann",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Petrikirchhof 8",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.514849,
+        "lon": 7.45958
+      },
+      "opening_hours": "Mo-Sa 11:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "http://www.cafe-kleimann.de/"
+      },
+      "xref": {
+        "overture": "54988d96-63af-4000-8540-cac4b69a288a"
+      }
+    },
+    {
+      "id": "cp-44wkj0aekh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Donat Eis",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Brüderweg 9",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.514989,
+        "lon": 7.47121
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true,
+        "wifi": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://donat-eis.eatbu.com/"
+      },
+      "xref": {
+        "overture": "da2fbd68-409e-4cdf-bb9b-40522ece664d"
+      }
+    },
+    {
+      "id": "cp-4q2j41z4wk",
+      "type": "CafeOrCoffeeShop",
+      "name": "KaffeeLoft",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Kaiserstraße 144",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.513814,
+        "lon": 7.487504
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "pour_over": true
+      },
+      "links": {
+        "website": "https://kaffeeloft.de/"
+      },
+      "xref": {
+        "overture": "09007c8c-36d3-4f28-a7ca-d752c1ac88da"
+      }
+    },
+    {
+      "id": "cp-58zsq53x40",
+      "type": "CafeOrCoffeeShop",
+      "name": "Caliente Café Bar",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Kuckelke 14",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.515893,
+        "lon": 7.46839
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "lunch": true,
+        "focus": "food_led"
+      },
+      "links": {
+        "website": "https://caliente-cafe-bar.eatbu.com/"
+      },
+      "xref": {
+        "overture": "d48e8abd-dd09-4a53-b118-fbfd894f52fc"
+      }
+    },
+    {
+      "id": "cp-67apwykcxd",
+      "type": "CafeOrCoffeeShop",
+      "name": "Limon Dortmund",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Neuer Graben 55",
+        "postal_code": "44139"
+      },
+      "location": {
+        "lat": 51.505753,
+        "lon": 7.454446
+      },
+      "opening_hours": "Mo-Su 09:00-01:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "lunch": true
+      },
+      "links": {
+        "website": "https://limondortmund.online/",
+        "instagram": "https://www.instagram.com/limon.dortmund/"
+      },
+      "xref": {
+        "overture": "69ed8394-7dc1-45e9-87fc-cfb5e7a2cfcf"
+      }
+    },
+    {
+      "id": "cp-6bnkkycayb",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Fleur",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Alfred-Trappen-Straße 8",
+        "postal_code": "44263"
+      },
+      "location": {
+        "lat": 51.48999,
+        "lon": 7.502096
+      },
+      "opening_hours": "Mo-Fr 09:00-19:00; Sa 10:00-19:00; Su 10:00-18:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-13",
+          "source_url": "https://www.cafefleur-dortmund.de/speisekarte/"
+        }
+      },
+      "links": {
+        "website": "https://www.cafefleur-dortmund.de/"
+      },
+      "xref": {
+        "overture": "bc9db9ef-cf8f-40c1-a76d-0b3df8226efc"
+      }
+    },
+    {
+      "id": "cp-6dgathbhz1",
+      "type": "CafeOrCoffeeShop",
+      "name": "Ihsanet Cafe",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Münsterstraße 101",
+        "postal_code": "44145"
+      },
+      "location": {
+        "lat": 51.524705,
+        "lon": 7.461883
+      },
+      "opening_hours": "Mo,We,Th,Fr,Sa,Su 09:00-21:00; Tu off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 2.8,
+          "currency": "EUR",
+          "observed_on": "2026-11-13",
+          "source_url": "https://ihsanet.org/upload/2026/05/06052026172050-1778077250.png"
+        }
+      },
+      "links": {
+        "website": "https://ihsanet.org/",
+        "instagram": "https://www.instagram.com/ihsanetorg/",
+        "facebook": "https://www.facebook.com/ihsanetorg/"
+      },
+      "xref": {
+        "overture": "fda21f8b-5630-4f89-bf1b-4d964f1620c0"
+      }
+    },
+    {
+      "id": "cp-6t1r70nqyw",
+      "type": "CafeOrCoffeeShop",
+      "name": "Borsigschänke",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Oesterholzstraße 30",
+        "postal_code": "44145"
+      },
+      "location": {
+        "lat": 51.522567,
+        "lon": 7.481281
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "links": {
+        "website": "https://borigschaenke.metro.bar/"
+      },
+      "xref": {
+        "overture": "2052cad7-babe-40f9-92df-2546de1bc0dd"
+      }
+    },
+    {
+      "id": "cp-7q03zwf12t",
+      "type": "CafeOrCoffeeShop",
+      "name": "Landcafé kleiner König",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Ellinghauser Straße 309",
+        "postal_code": "44359"
+      },
+      "location": {
+        "lat": 51.562609,
+        "lon": 7.415524
+      },
+      "opening_hours": "Fr-Su 11:00-19:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true,
+        "kids_friendly": true,
+        "dogs_allowed": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true,
+        "lunch": true
+      },
+      "links": {
+        "website": "https://www.helpandhope-stiftung.com/",
+        "instagram": "https://www.instagram.com/helpandhopestiftung/",
+        "facebook": "https://www.facebook.com/helpandhope.gutkoenigsmuehle/"
+      },
+      "xref": {
+        "overture": "02cb55cf-b624-4309-a430-cda18c71e412"
+      }
+    },
+    {
+      "id": "cp-885qcsqsz5",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffee Fellows",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Schwarze-Brüder-Str. 1",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.513765,
+        "lon": 7.463213
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "card_payment": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.coffee-fellows-hotels.com/hotel/dortmund",
+        "instagram": "https://www.instagram.com/coffeefellows_hotel/",
+        "facebook": "https://www.facebook.com/coffeefellowshotel/"
+      },
+      "xref": {
+        "overture": "2030ece7-4e9b-4ccf-8972-531620ad1744"
+      }
+    },
+    {
+      "id": "cp-92tw53p3ze",
+      "type": "CafeOrCoffeeShop",
+      "name": "Herr Liebig Kaffeehaus",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Liebigstrasse 24",
+        "postal_code": "44139"
+      },
+      "location": {
+        "lat": 51.504603,
+        "lon": 7.454715
+      },
+      "opening_hours": "Mo 09:00-17:00; Th,Fr 09:00-17:00; Sa,Su 10:00-17:00; Tu,We off",
+      "specialty_tier": "none",
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://www.herrliebig.de/",
+        "instagram": "https://www.instagram.com/herrliebig/",
+        "facebook": "https://www.facebook.com/herrliebig/"
+      },
+      "xref": {
+        "overture": "979fa86a-a43a-4101-b082-704b9ae43913"
+      }
+    },
+    {
+      "id": "cp-9n5vqfpj4h",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo Filiale mit Kaffee Bar",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Ostenhellweg 21",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.514462,
+        "lon": 7.468899
+      },
+      "opening_hours": "Mo-Sa 09:30-20:00; Su off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100006498",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "9a740451-a1c4-4f3f-a8e0-b1f68bfb9a50"
+      }
+    },
+    {
+      "id": "cp-awzyasa0cz",
+      "type": "CafeOrCoffeeShop",
+      "name": "ButterRaum",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Emscherallee 11",
+        "postal_code": "44369"
+      },
+      "location": {
+        "lat": 51.540705,
+        "lon": 7.412476
+      },
+      "opening_hours": "We-Fr 11:00-18:00; Sa,Su 10:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "AZUL"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "operator": {
+        "name": "dinner&co GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 23773"
+      },
+      "links": {
+        "website": "https://butterraum-dortmund.de/",
+        "instagram": "https://www.instagram.com/butterraum/"
+      },
+      "xref": {
+        "overture": "8cdee8c6-c154-4ec3-9a99-6e78936143c2"
+      }
+    },
+    {
+      "id": "cp-b3n6x3r4q0",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Bernstein",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Kampstraße 45",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.515079,
+        "lon": 7.459551
+      },
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Lavazza"
+        }
+      ],
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true
+      },
+      "operator": {
+        "name": "Starfoods GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 26367"
+      },
+      "links": {
+        "website": "https://www.bernsteincafe.de/",
+        "instagram": "https://www.instagram.com/bernsteindortmund/",
+        "facebook": "https://www.facebook.com/bernsteindortmund/"
+      },
+      "xref": {
+        "overture": "e8827d54-6c4b-4449-924a-b2402a760a70"
+      }
+    },
+    {
+      "id": "cp-bm0agjdr36",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Rot",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Robert-Koch-Straße 26",
+        "postal_code": "44143"
+      },
+      "location": {
+        "lat": 51.512007,
+        "lon": 7.48781
+      },
+      "opening_hours": "Mo,Tu off; We-Su 09:00-18:30",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true
+      },
+      "amenities": {
+        "vegan_options": true,
+        "kids_friendly": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true
+      },
+      "sells_beans": true,
+      "prices": {
+        "cappuccino": {
+          "amount": 3.9,
+          "currency": "EUR",
+          "observed_on": "2026-11-13",
+          "source_url": "https://cafe-rot.de/wp-content/uploads/2024/09/CR_Speisekarte_0624_148_layout_NEU-27_09_24.pdf"
+        }
+      },
+      "links": {
+        "website": "https://cafe-rot.de/"
+      },
+      "xref": {
+        "overture": "f9bef1a2-4845-45ee-b4e7-a1dce899de73"
+      }
+    },
+    {
+      "id": "cp-c6qrn8f6nr",
+      "type": "CafeOrCoffeeShop",
+      "name": "beezou",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Fred-Ape-Weg 66",
+        "postal_code": "44263"
+      },
+      "location": {
+        "lat": 51.489302,
+        "lon": 7.503901
+      },
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true,
+        "filter": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "reusable_cup_systems": [
+        "own_cup"
+      ],
+      "operator": {
+        "name": "BEEZOU UG",
+        "legal_form": "UG",
+        "register_id": "HRB 31460"
+      },
+      "links": {
+        "website": "https://beezou.de/",
+        "instagram": "https://www.instagram.com/beezou.de/",
+        "facebook": "https://www.facebook.com/beezou.de/"
+      },
+      "xref": {
+        "overture": "6430f676-eead-4d15-9914-2ea574e7a181"
+      }
+    },
+    {
+      "id": "cp-cytyehv0ww",
+      "type": "CafeOrCoffeeShop",
+      "name": "Kuhbar",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Alte Benninghofer Straße 26",
+        "postal_code": "44263"
+      },
+      "location": {
+        "lat": 51.485647,
+        "lon": 7.501828
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://kuhbar.com/",
+        "instagram": "https://www.instagram.com/kuhbar/"
+      },
+      "xref": {
+        "overture": "73afc4eb-0012-438d-bfb1-d9bfc0a85c9b"
+      }
+    },
+    {
+      "id": "cp-cz65m84wjq",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Ohana",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Asselner Hellweg 205",
+        "postal_code": "44319"
+      },
+      "location": {
+        "lat": 51.529319,
+        "lon": 7.595527
+      },
+      "opening_hours": "Mo-Fr 10:00-17:30; Sa off; Su 10:00-17:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true
+      },
+      "food": {
+        "breakfast": true,
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "https://www.bubblecafeohana.de/",
+        "instagram": "https://www.instagram.com/bubblecafeohana/"
+      },
+      "xref": {
+        "overture": "96403245-bd1c-4b40-b597-af306bc81faf"
+      }
+    },
+    {
+      "id": "cp-db7tv44n21",
+      "type": "CafeOrCoffeeShop",
+      "name": "MALZERS Backstube im REWE Filips",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Rheinische Str. 47",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.513305,
+        "lon": 7.449541
+      },
+      "opening_hours": "Mo-Sa 06:30-21:00; Su off",
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "outdoor_seating": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Detlef Malzers Backstube GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 1835"
+      },
+      "links": {
+        "website": "https://malzers.de/filialen/dortmund/155-malzers-backstube-im-rewe-filips-44137-dortmund",
+        "instagram": "https://www.instagram.com/_malzers_/",
+        "facebook": "https://www.facebook.com/malzers/"
+      },
+      "xref": {
+        "overture": "e623aa10-02b6-4940-9d25-a6e9d802b96f"
+      }
+    },
+    {
+      "id": "cp-e8pg9pgbsn",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Delis",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Kirchenstr. 5",
+        "postal_code": "44147"
+      },
+      "location": {
+        "lat": 51.520731,
+        "lon": 7.456825
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "wheelchair_accessible": true,
+        "outdoor_seating": true
+      },
+      "links": {
+        "website": "https://cafe-delis.eatbu.com/"
+      },
+      "xref": {
+        "overture": "d8fa49ad-9898-4759-846a-e98276fee3cd"
+      }
+    },
+    {
+      "id": "cp-fhk3wv7yaa",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Auszeit",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Kaiserstraße 17a",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.513722,
+        "lon": 7.475563
+      },
+      "opening_hours": "We-Su 10:00-20:00; Mo,Tu off",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "wifi": true,
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true,
+        "cakes_baked_in_house": true,
+        "focus": "food_led"
+      },
+      "operator": {
+        "name": "Café Auszeit Dortmund UG (haftungsbeschränkt)",
+        "legal_form": "UG (haftungsbeschränkt)",
+        "register_id": "HRB 37929"
+      },
+      "links": {
+        "website": "https://cafeauszeitdo.com/",
+        "instagram": "https://www.instagram.com/cafeauszeitdo/",
+        "facebook": "https://www.facebook.com/cafeauszeitdo/"
+      },
+      "xref": {
+        "overture": "d0c1f198-0a09-4953-b769-4b221bdf84bc"
+      }
+    },
+    {
+      "id": "cp-g5fph4k5zh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Aufbruch",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Hintere Schildstr. 18",
+        "postal_code": "44263"
+      },
+      "location": {
+        "lat": 51.486756,
+        "lon": 7.499054
+      },
+      "opening_hours": "Mo-Fr 15:00-18:00",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Café Libertad"
+        }
+      ],
+      "food": {
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Anders Besser Leben e.V.",
+        "legal_form": "e.V."
+      },
+      "links": {
+        "website": "http://agora.free.de/cafe-aufbruch"
+      },
+      "xref": {
+        "overture": "0f84523c-bcc3-4c83-b274-ac4f2adc611c"
+      }
+    },
+    {
+      "id": "cp-gpy750mc2d",
+      "type": "CafeOrCoffeeShop",
+      "name": "MALZERS Backstube im REWE Homberg & Budnik",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Pfarrer Rüter Weg 2",
+        "postal_code": "44267"
+      },
+      "location": {
+        "lat": 51.464131,
+        "lon": 7.525548
+      },
+      "specialty_tier": "none",
+      "food": {
+        "focus": "food_led"
+      },
+      "operator": {
+        "name": "Detlef Malzers Backstube GmbH & Co. KG",
+        "legal_form": "GmbH & Co. KG",
+        "register_id": "HRA 1835"
+      },
+      "links": {
+        "website": "https://malzers.de/filialen/dortmund/189-malzers-backstube-im-rewe-homberg-budnik-44267-dortmund",
+        "instagram": "https://www.instagram.com/_malzers_/",
+        "facebook": "https://www.facebook.com/malzers/"
+      },
+      "xref": {
+        "overture": "0f145f0f-fc22-4417-b399-029cc7533001"
+      }
+    },
+    {
+      "id": "cp-kmekyvnmdy",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Bistro Blickpunkt bei Joanna",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Limbecker Str. 17",
+        "postal_code": "44388"
+      },
+      "location": {
+        "lat": 51.500245,
+        "lon": 7.336435
+      },
+      "opening_hours": "Mo,We,Th,Fr,Sa 08:30-18:00; Su 14:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "wifi": true,
+        "outdoor_seating": true,
+        "card_payment": true
+      },
+      "food": {
+        "lunch": true
+      },
+      "links": {
+        "website": "https://cafe-blickpunkt.eatbu.com/"
+      },
+      "xref": {
+        "overture": "b368283e-cfe1-4578-b075-20dbc0a142da"
+      }
+    },
+    {
+      "id": "cp-mqp5n3w95p",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Strickmann",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Wißstraße 26-28",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.512058,
+        "lon": 7.464508
+      },
+      "specialty_tier": "none",
+      "amenities": {
+        "outdoor_seating": true
+      },
+      "food": {
+        "lunch": true,
+        "breakfast": true
+      },
+      "operator": {
+        "name": "Dortmunder Café GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 30"
+      },
+      "links": {
+        "website": "https://www.cafe-strickmann.de/",
+        "instagram": "https://www.instagram.com/cafestrickmann/"
+      },
+      "xref": {
+        "overture": "afd96ce9-6b15-4578-b04c-ae0aa6d68e79"
+      }
+    },
+    {
+      "id": "cp-n0n2akfydz",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Hemmer",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Ostenhellweg 62",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.51432,
+        "lon": 7.472413
+      },
+      "opening_hours": "Tu-Sa 09:00-18:00; Su 10:00-18:00; Mo off",
+      "specialty_tier": "none",
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "links": {
+        "website": "http://www.cafe-hemmer.de/"
+      },
+      "xref": {
+        "overture": "6695737e-e0ab-4c68-9ba5-9fd3abba9dde"
+      }
+    },
+    {
+      "id": "cp-n80nf584a4",
+      "type": "CafeOrCoffeeShop",
+      "name": "Bäckerei Vorwerk",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Saarlandstraße 97",
+        "postal_code": "44139"
+      },
+      "location": {
+        "lat": 51.5048,
+        "lon": 7.461832
+      },
+      "opening_hours": "Mo-Fr 05:30-18:30; Sa 05:30-17:00; Su 07:30-15:00",
+      "specialty_tier": "none",
+      "serving": {
+        "filter": true
+      },
+      "amenities": {
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "food": {
+        "lunch": true,
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://baeckerei-vorwerk.de/"
+      },
+      "xref": {
+        "overture": "d9ae3123-e811-4f58-9289-b46cc8d56ddd"
+      }
+    },
+    {
+      "id": "cp-nca3tydhgh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Hermannstr. 48-50",
+        "postal_code": "44263"
+      },
+      "location": {
+        "lat": 51.489433,
+        "lon": 7.501853
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100004681",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "4aedaf36-58db-4315-ab64-bd7d8a01800e"
+      }
+    },
+    {
+      "id": "cp-nh36w43j24",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Wulfshofstr. 6-8",
+        "postal_code": "44149"
+      },
+      "location": {
+        "lat": 51.494928,
+        "lon": 7.371455
+      },
+      "opening_hours": "Mo-Sa 09:00-20:00; Su off",
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/service/storefinder/store/100007782",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "90d7c82d-00c0-417b-969c-7ddecae61775"
+      }
+    },
+    {
+      "id": "cp-nwgf5qd75x",
+      "type": "CafeOrCoffeeShop",
+      "name": "Café Kreidezeit",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Münsterstraße 271",
+        "postal_code": "44145"
+      },
+      "location": {
+        "lat": 51.535735,
+        "lon": 7.458003
+      },
+      "opening_hours": "Tu-Su 10:00-17:30",
+      "specialty_tier": "none",
+      "amenities": {
+        "wheelchair_accessible": true,
+        "kids_friendly": true,
+        "outdoor_seating": true,
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://kreidezeit.cafe/",
+        "instagram": "https://www.instagram.com/cafekreidezeit/"
+      },
+      "xref": {
+        "overture": "b915636f-f1cd-4512-8203-c1079d144cc5"
+      }
+    },
+    {
+      "id": "cp-nxcgtfnrt9",
+      "type": "CafeOrCoffeeShop",
+      "name": "Cafe Lotte",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Dresdener Straße 31",
+        "postal_code": "44139"
+      },
+      "location": {
+        "lat": 51.505182,
+        "lon": 7.465257
+      },
+      "opening_hours": "Mo-Sa 09:00-19:00; Su 10:00-19:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "filter": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true
+      },
+      "sells_beans": true,
+      "links": {
+        "website": "https://cafelotte.de/"
+      },
+      "xref": {
+        "overture": "be848510-2131-470e-8e4c-ed423de4c5cb"
+      }
+    },
+    {
+      "id": "cp-pz5z4md1qh",
+      "type": "CafeOrCoffeeShop",
+      "name": "Coffee Fellows",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Königswall 15",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.51823,
+        "lon": 7.45899
+      },
+      "opening_hours": "Mo-Fr 07:00-19:00; Sa 08:00-19:00; Su 08:00-18:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "card_payment": true,
+        "outdoor_seating": true,
+        "wheelchair_accessible": true,
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.coffee-fellows.com/locations/dortmund-hauptbahnhof",
+        "instagram": "https://www.instagram.com/coffeefellows/",
+        "facebook": "https://www.facebook.com/coffeefellowsdeutschland/"
+      },
+      "xref": {
+        "overture": "27d5c4c3-261c-4dcf-aee1-48bf56b7549d"
+      }
+    },
+    {
+      "id": "cp-qfq9j9f2h6",
+      "type": "CafeOrCoffeeShop",
+      "name": "LebensArt Café",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Buschstraße 172",
+        "postal_code": "44369"
+      },
+      "location": {
+        "lat": 51.536591,
+        "lon": 7.38904
+      },
+      "opening_hours": "We-Sa 09:30-18:00; Mo,Tu,Su off",
+      "specialty_tier": "none",
+      "roasters_served": [
+        {
+          "name": "Neues Schwarz"
+        }
+      ],
+      "serving": {
+        "espresso": true,
+        "filter": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "cakes_baked_in_house": true,
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://lebensart-dortmund.de/",
+        "instagram": "https://www.instagram.com/lebensartcafe/"
+      },
+      "xref": {
+        "overture": "1a27828e-0d12-4046-bb9b-85927d8bb046"
+      }
+    },
+    {
+      "id": "cp-r3w9r9ddwv",
+      "type": "CafeOrCoffeeShop",
+      "name": "Neues Schwarz",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Viktoriastraße 10",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.513243,
+        "lon": 7.468431
+      },
+      "opening_hours": "Mo-Sa 10:00-18:00",
+      "specialty_tier": "none",
+      "food": {
+        "cakes_baked_in_house": true,
+        "focus": "coffee_led"
+      },
+      "operator": {
+        "name": "Neues Schwarz GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 26868"
+      },
+      "links": {
+        "website": "https://www.neuesschwarz.de/"
+      },
+      "xref": {
+        "overture": "ea4679fe-d2fb-4810-acb0-5bdfdd47504f"
+      }
+    },
+    {
+      "id": "cp-rv0qz4aghz",
+      "type": "CafeOrCoffeeShop",
+      "name": "Mai's Kuchenbar",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Lindemannstr. 15",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.505863,
+        "lon": 7.451051
+      },
+      "opening_hours": "Mo-Su 12:00-22:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "plant_milk": true,
+        "decaf": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true,
+        "lunch": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.1,
+          "currency": "EUR",
+          "observed_on": "2026-11-13",
+          "source_url": "https://www.missmai.de/miss-mai-men%C3%BC/fl%C3%BCssiges/"
+        }
+      },
+      "links": {
+        "website": "https://www.missmai.de/kuchenbar",
+        "instagram": "https://www.instagram.com/cafemissmai/"
+      },
+      "xref": {
+        "overture": "aeda29b2-7211-4cd6-9b85-4a3f87d8f0d4"
+      }
+    },
+    {
+      "id": "cp-s6w4ghj0pt",
+      "type": "CafeOrCoffeeShop",
+      "name": "Tchibo",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Sonnenplatz 11",
+        "postal_code": "44137"
+      },
+      "location": {
+        "lat": 51.506775,
+        "lon": 7.44855
+      },
+      "specialty_tier": "none",
+      "operator": {
+        "name": "Tchibo GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 43618"
+      },
+      "links": {
+        "website": "https://www.tchibo.de/",
+        "instagram": "https://www.instagram.com/tchibo/",
+        "facebook": "https://www.facebook.com/tchibo.de/"
+      },
+      "xref": {
+        "overture": "30e4d6fd-69a2-48c6-80e7-92aa1088c642"
+      }
+    },
+    {
+      "id": "cp-t9en9h2va9",
+      "type": "CafeOrCoffeeShop",
+      "name": "omaRosa Café Dortmund",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Chemnitzerstraße 9",
+        "postal_code": "44139"
+      },
+      "location": {
+        "lat": 51.508659,
+        "lon": 7.462917
+      },
+      "opening_hours": "We-Fr 09:00-14:00; Sa,Su 09:00-16:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true,
+        "decaf": true,
+        "filter": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "links": {
+        "website": "https://omarosa.de/",
+        "instagram": "https://www.instagram.com/omarosacafedortmund/",
+        "facebook": "https://www.facebook.com/omarosacafe/"
+      },
+      "xref": {
+        "overture": "26794d0f-f76f-4911-a1a3-54e9e7da8b1b"
+      }
+    },
+    {
+      "id": "cp-tv4pqzgq1s",
+      "type": "CafeOrCoffeeShop",
+      "name": "Shades Cafe Bar Atelier",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Klönnestraße 75",
+        "postal_code": "44143"
+      },
+      "location": {
+        "lat": 51.517719,
+        "lon": 7.487835
+      },
+      "opening_hours": "Mo 11:00-22:30; Tu,We off; Th 16:00-22:30; Fr 16:00-24:00; Sa 11:00-24:00; Su 11:00-22:00",
+      "specialty_tier": "none",
+      "amenities": {
+        "vegan_options": true
+      },
+      "links": {
+        "website": "https://www.shades-dortmund.de/",
+        "instagram": "https://www.instagram.com/shades.dortmund/",
+        "facebook": "https://www.facebook.com/shades.dortmund/"
+      },
+      "xref": {
+        "overture": "33c2bdd9-11b1-468b-9d96-07dabb6d6e8e"
+      }
+    },
+    {
+      "id": "cp-vc1g3rxhhm",
+      "type": "CafeOrCoffeeShop",
+      "name": "Neues Schwarz",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Kaiserstraße 52",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.513694,
+        "lon": 7.478219
+      },
+      "opening_hours": "Mo-Sa 10:00-19:00",
+      "specialty_tier": "none",
+      "food": {
+        "cakes_baked_in_house": true
+      },
+      "operator": {
+        "name": "Neues Schwarz GmbH",
+        "legal_form": "GmbH",
+        "register_id": "HRB 26868"
+      },
+      "links": {
+        "website": "https://www.neuesschwarz.de/",
+        "instagram": "https://www.instagram.com/neuesschwarz/"
+      },
+      "xref": {
+        "overture": "9ea647d1-80a8-4ebd-9daf-0f7c8eaeb0f7"
+      }
+    },
+    {
+      "id": "cp-vf4hqg6b6r",
+      "type": "CafeOrCoffeeShop",
+      "name": "Küchen-Wirtschaft Bismarck",
+      "status": "open",
+      "checked_at": "2026-11-14T13:01:44Z",
+      "address": {
+        "country_code": "DE",
+        "locality": "Dortmund",
+        "street_address": "Bismarckstraße 1",
+        "postal_code": "44135"
+      },
+      "location": {
+        "lat": 51.512877,
+        "lon": 7.483226
+      },
+      "opening_hours": "Mo-Fr 08:30-22:00; Sa 09:00-22:00; Su 09:00-21:00",
+      "specialty_tier": "none",
+      "serving": {
+        "espresso": true
+      },
+      "amenities": {
+        "vegan_options": true
+      },
+      "food": {
+        "breakfast": true
+      },
+      "prices": {
+        "cappuccino": {
+          "amount": 3.65,
+          "currency": "EUR",
+          "observed_on": "2026-11-13",
+          "source_url": "https://bismarck-do.de/food-drinks/"
+        }
+      },
+      "operator": {
+        "name": "KWB UG (haftungsbeschränkt)",
+        "legal_form": "UG (haftungsbeschränkt)"
+      },
+      "links": {
+        "website": "https://bismarck-do.de/"
+      },
+      "xref": {
+        "overture": "720c9f1b-f217-4c3a-892e-7e6219c90ac1"
+      }
+    }
+  ]
+}
