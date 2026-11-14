@@ -2,7 +2,7 @@
 // Data linter for datasets/coffee-places: catches values that pass the schema but are wrong or suspicious
 // (platform sites as websites, contact data in addresses, duplicates, contradictions, unsupported tiers).
 // Errors fail CI (scripts/validate.sh); warnings are printed for review. The agent runs the same checks before writing.
-import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { parseCityDocument, type CoffeeRecord } from "./record";
 import { describe } from "./describe";
@@ -115,6 +115,7 @@ export function mergeDuplicates(places: CoffeeRecord[]): string[] {
 }
 
 function files(dir: string): string[] {
+  if (!existsSync(dir)) return []; // no city lists on this branch
   return readdirSync(dir).flatMap((n) => { const p = join(dir, n); return statSync(p).isDirectory() ? files(p) : p.endsWith(".json") ? [p] : []; });
 }
 
