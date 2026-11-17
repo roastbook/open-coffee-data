@@ -20,7 +20,7 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: Roastbook/workflows/.github/workflows/site-build.yml@9729d824c87cc4cd56759d36887496bfc8f396d5 # analytics variables
+    uses: Roastbook/workflows/.github/workflows/site-build.yml@0f13885f04d5f4d83f358f9de63d8e3a3b8579fe # main
 
   deploy:
     name: Deploy
